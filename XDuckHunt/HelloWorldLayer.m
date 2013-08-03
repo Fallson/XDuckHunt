@@ -48,12 +48,14 @@
 	if( (self=[super init]) )
     {
         CGSize sz = [ [CCDirector sharedDirector] winSize];
+        CGRect rect = {ccp(0,0), sz};
         
-        bgObj = [[DHBackGroundObj alloc] initWithWinSZ: sz];
+        bgObj = [[DHBackGroundObj alloc] initWithWinRect: rect];
         [bgObj addtoScene: self];
         
-        //duck testing
-        duckObj = [[DHDuckObj alloc] initWithWinSZ: sz];
+        //CGRect rect1 = {ccp(0,sz.height*0.25), }; //same rect now, To do
+        CGRect rect1 = rect;
+        duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
         [duckObj addtoScene: self];
         
         //[self schedule:@selector(nextFrame:)];

@@ -11,7 +11,7 @@
 
 @interface DHBackGroundObj : NSObject
 
--(id) initWithWinSZ: (CGSize)sz;
+-(id) initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;
 -(void)update:(ccTime)dt;
 @end

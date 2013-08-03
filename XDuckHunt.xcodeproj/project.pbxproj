@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
 		D27049C017A6AB1600342505 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BF17A6AB1600342505 /* Cloud.png */; };
@@ -154,6 +155,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
+		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
+		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
 		D27049BC17A6A4C300342505 /* sky_smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky_smoke.png; path = Resources/sky_smoke.png; sourceTree = "<group>"; };
 		D27049BF17A6AB1600342505 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cloud.png; path = Resources/Cloud.png; sourceTree = "<group>"; };
@@ -514,6 +518,8 @@
 				D29EEB2A17A3AC7A0072B0EA /* HelloWorldLayer.m */,
 				D29EEB2C17A3AC7A0072B0EA /* IntroLayer.h */,
 				D29EEB2D17A3AC7A0072B0EA /* IntroLayer.m */,
+				D2B6748017ABE3A200363DAC /* DHConstons.h */,
+				D227F06A17ACD4C600981E06 /* DHZDepth.h */,
 				D29EE99617A3AC760072B0EA /* Resources */,
 				D29EE9AE17A3AC770072B0EA /* libs */,
 				D29EEB2217A3AC7A0072B0EA /* Supporting Files */,
@@ -521,7 +527,8 @@
 				D29EEB5817A4F3130072B0EA /* DHBackGroundObj.m */,
 				D29EEB5A17A4FDAD0072B0EA /* DHDuckObj.h */,
 				D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */,
-				D2B6748017ABE3A200363DAC /* DHConstons.h */,
+				D227F06717ACC74500981E06 /* DHPilot.h */,
+				D227F06817ACC7C300981E06 /* DHPilot.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1110,6 +1117,7 @@
 				D29EEB2E17A3AC7A0072B0EA /* IntroLayer.m in Sources */,
 				D29EEB5917A4F3140072B0EA /* DHBackGroundObj.m in Sources */,
 				D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */,
+				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

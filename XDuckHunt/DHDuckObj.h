@@ -9,22 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface DHDuckPilot: NSObject
-
-@end
+@class DHDuckPilot;
 
 enum DUCK_STATE{FLYING=0, SHOT, DEAD};
 
 @interface DHDuckObj : NSObject
-{
-    DHDuckPilot* _duck_pilot;
-    enum DUCK_STATE _duck_state;
-}
 
 @property(nonatomic, retain) DHDuckPilot* duck_pilot;
 @property(nonatomic, assign) enum DUCK_STATE duck_state;
 
--(id)initWithWinSZ: (CGSize)sz;
+-(id)initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;
 -(void)update:(ccTime)dt;
 -(bool)hit:(CGPoint)pnt;

@@ -12,4 +12,11 @@
 #define HIT_RADIUS     11
 #define HIT_RADIUS_POW 121
 
+
+#define PI 3.14159
+//public const int Ratio = 2;
+//public const int Groupfactor = 10;
+#define MaxLineSteps  160
+#define MaxCurveSteps 400
+
 #endif

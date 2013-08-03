@@ -9,15 +9,10 @@
 #import "DHDuckObj.h"
 #import "cocos2d.h"
 #import "DHConstons.h"
-
+#import "DHPilot.h"
+#import "DHZDepth.h"
 
 #define DUCK_SPRITE_NUM 3
-
-#pragma mark - DHDuckPilot
-@implementation DHDuckPilot
-
-@end
-
 
 #pragma mark - DHDuckObj
 
@@ -27,28 +22,30 @@
     CCSprite* _duck;
     int _duck_idx;
     
-    CGSize _winSz;
+    CGRect _winRect;
 }
 
 @synthesize duck_pilot = _duck_pilot;
 @synthesize duck_state = _duck_state;
 
 
--(id)initWithWinSZ:(CGSize)sz
+-(id)initWithWinRect:(CGRect)rect
 {
     if( (self=[super init]) )
     {
         self.duck_pilot = nil;
         self.duck_state = FLYING;
         
-        _winSz = sz;
+        _winRect = rect;
+        CGSize sz = rect.size;
+        CGPoint ori = rect.origin;
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"duck_black_flying.plist"];
         _duck_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"duck_black_flying.png"];
         
         _duck = [CCSprite spriteWithSpriteFrameName:@"duck_black_flying_1.png"];
-        _duck.position = ccp(sz.width*0.5, sz.height*0.5);
-        _duck.zOrder = 0;
+        _duck.position = ccp(ori.x + sz.width*0.5, ori.y + sz.height*0.5);//self.duck_pilot.position;
+        _duck.zOrder = DUCK_Z;
         
         _duck_idx = 0;
         [_duck_spriteSheet addChild:_duck];
@@ -81,10 +78,10 @@
             [_duck setDisplayFrame:frame];
             
             CGPoint cur = _duck.position;
-            cur.x -= 10;
-            if( cur.x < -_duck.contentSize.width/2 )
+            cur.x += 10;
+            if( cur.x > _winRect.size.width + _duck.contentSize.width/2)
             {
-                cur.x = _winSz.width + _duck.contentSize.width/2;
+                cur.x = -_duck.contentSize.width/2;
             }
             [_duck setPosition:cur];
         }
