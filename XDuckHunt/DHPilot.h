@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-enum Direction { LEFT, BOTTOM, RIGHT, UP, RANDOM, IN, OUT };
+enum Direction { LEFT=0, BOTTOM, RIGHT, UP, RANDOM, IN, OUT };
 
 #pragma mark - DHPilotProtocol
 @protocol DHPilotProtocol
--(id)initWithWinRect:(CGRect)rect;
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
 -(void)update:(ccTime)dt;
 -(void)setStartPos:(CGPoint)pos;
 -(void)setEndPos:(CGPoint)pos;
@@ -24,8 +24,8 @@ enum Direction { LEFT, BOTTOM, RIGHT, UP, RANDOM, IN, OUT };
 @end
 
 #pragma mark - DHDuckPilot
-@interface DHDuckPilot: NSObject <DHPilotProtocol>
--(id)initWithWinRect:(CGRect)rect;
+@interface DHDuckPilot : NSObject <DHPilotProtocol>
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
 -(void)update:(ccTime) dt;
 -(void)setStartPos:(CGPoint)pos;
 -(void)setEndPos:(CGPoint)pos;
@@ -37,10 +37,18 @@ enum Direction { LEFT, BOTTOM, RIGHT, UP, RANDOM, IN, OUT };
 
 #pragma mark - DHNormalDuckPilot
 @interface DHDuckNormalPilot: DHDuckPilot
-
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
+-(void)update:(ccTime) dt;
+-(void)setSpeedRatio:(float)speedRatio;
+-(enum Direction)getHorizationDirection;
 @end
 
 #pragma mark - DHDuckDeadPilot
 @interface DHDuckDeadPilot: DHDuckPilot
+
+@end
+
+#pragma mark - DHDuckDeadPilot
+@interface DHDuckFlyawayPilot: DHDuckPilot
 
 @end

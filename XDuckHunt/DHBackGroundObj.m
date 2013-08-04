@@ -41,33 +41,35 @@
         CGPoint ori = rect.origin;
         
         _bg_sky = [CCSprite spriteWithFile: @"bg_sky.png"];
-        [_bg_sky setScaleX:sz.width/_bg_sky.contentSize.width];
-        [_bg_sky setScaleY:sz.height/_bg_sky.contentSize.height];
+        float scale_r = sz.height/_bg_sky.contentSize.height;
+//        NSLog(@"sz(%f,%f) and sky(%f,%f), scale_r is: %f", sz.width, sz.height,
+//              _bg_sky.contentSize.width, _bg_sky.contentSize.height ,scale_r);
+        _bg_sky.scale = scale_r;
         _bg_sky.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
         _bg_sky.zOrder = BG_SKY_Z;
         
         _bg_grass = [CCSprite spriteWithFile: @"bg_grass.png"];
-        [_bg_grass setScaleX:sz.width/_bg_grass.contentSize.width];
-        [_bg_grass setScaleY:sz.height/_bg_grass.contentSize.height];
+        _bg_grass.scaleX = sz.width/_bg_grass.contentSize.width;
+        _bg_grass.scaleY = sz.height/_bg_grass.contentSize.height;
         _bg_grass.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
         _bg_grass.zOrder = BG_GRASS_Z;
         
         _bg_tree = [CCSprite spriteWithFile: @"bg_tree.png"];
-        [_bg_tree setScaleX:sz.width/_bg_tree.contentSize.width];
-        [_bg_tree setScaleY:sz.height/_bg_tree.contentSize.height];
+        _bg_tree.scaleX = sz.width/_bg_tree.contentSize.width;
+        _bg_tree.scaleY = sz.height/_bg_tree.contentSize.height;
         _bg_tree.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
         _bg_tree.zOrder = BG_TREE_Z;
         
         _bg_cloud = [CCSprite spriteWithFile: @"Cloud.png"];
-        [_bg_cloud setScale:0.25];
+        _bg_cloud.scale = 0.25;
         _bg_cloud.position = ccp( ori.x, ori.y + sz.height*0.78 );
         _bg_cloud.zOrder = BG_CLOUD_Z;
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"sky_smoke.plist"];
         _smoke_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"sky_smoke.png"];
         _smoke = [CCSprite spriteWithSpriteFrameName:@"sky_smoke_1.png"];
-        _smoke.position = ccp(ori.x + sz.width*0.852, ori.y + sz.height*0.621);
-        [_smoke setScale:0.5];
+        _smoke.position = ccp(ori.x + sz.width*0.969, ori.y + sz.height*0.621);
+        _smoke.scale = 0.5;
         _smoke.zOrder = BG_SMOKE_Z;
         _smoke_idx = 0;
         [_smoke_spriteSheet addChild:_smoke];

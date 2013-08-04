@@ -11,7 +11,7 @@
 
 @class DHDuckPilot;
 
-enum DUCK_STATE{FLYING=0, SHOT, DEAD};
+enum DUCK_STATE{FLYING=0, SHOT, DEAD, FLYAWAY};
 
 @interface DHDuckObj : NSObject
 

@@ -23,6 +23,7 @@
     int _duck_idx;
     
     CGRect _winRect;
+    CGSize _duckSz;
 }
 
 @synthesize duck_pilot = _duck_pilot;
@@ -33,18 +34,20 @@
 {
     if( (self=[super init]) )
     {
-        self.duck_pilot = nil;
         self.duck_state = FLYING;
         
         _winRect = rect;
-        CGSize sz = rect.size;
-        CGPoint ori = rect.origin;
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"duck_black_flying.plist"];
         _duck_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"duck_black_flying.png"];
         
         _duck = [CCSprite spriteWithSpriteFrameName:@"duck_black_flying_1.png"];
-        _duck.position = ccp(ori.x + sz.width*0.5, ori.y + sz.height*0.5);//self.duck_pilot.position;
+        _duck.scale = 0.75;
+        _duckSz.width = _duck.contentSize.width * _duck.scaleX;
+        _duckSz.height = _duck.contentSize.height * _duck.scaleY;
+        self.duck_pilot = [[DHDuckNormalPilot alloc] initWithWinRect: rect andObjSz:_duckSz];
+        
+        _duck.position = [self.duck_pilot getPosition];
         _duck.zOrder = DUCK_Z;
         
         _duck_idx = 0;
@@ -77,13 +80,9 @@
                                     spriteFrameByName:frame_name];
             [_duck setDisplayFrame:frame];
             
-            CGPoint cur = _duck.position;
-            cur.x += 10;
-            if( cur.x > _winRect.size.width + _duck.contentSize.width/2)
-            {
-                cur.x = -_duck.contentSize.width/2;
-            }
-            [_duck setPosition:cur];
+            [self.duck_pilot update:dt];
+            [_duck setPosition:[self.duck_pilot getPosition]];
+            [_duck setFlipX:[self.duck_pilot getHorizationDirection]==LEFT?true:false];
         }
             break;
         case SHOT:
@@ -92,7 +91,16 @@
             CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
                                     spriteFrameByName:frame_name];
             [_duck setDisplayFrame:frame];
+            
             self.duck_state = DEAD;
+            self.duck_pilot = [[DHDuckDeadPilot alloc] initWithWinRect: _winRect andObjSz:_duckSz];
+            CGPoint cur_p = _duck.position;
+            [self.duck_pilot setStartPos:cur_p];
+            //NSLog(@"Dead startPos:(%f,%f)", cur_p.x, cur_p.y);
+            cur_p.y = _winRect.origin.y - _duck.contentSize.height;
+            [self.duck_pilot setEndPos:cur_p];
+            [self.duck_pilot setSpeedRatio:10.0];
+            //NSLog(@"Dead endPos:(%f,%f)", cur_p.x, cur_p.y);
         }
             break;
         case DEAD:
@@ -102,13 +110,26 @@
                                     spriteFrameByName:frame_name];
             [_duck setDisplayFrame:frame];
             
-            CGPoint cur = _duck.position;
-            cur.y -= 10;
-            if( cur.y < -_duck.contentSize.height/2 )
-            {
-                cur.y = -_duck.contentSize.height/2;
-            }
-            [_duck setPosition:cur];
+            [self.duck_pilot update:dt];
+            [_duck setPosition:[self.duck_pilot getPosition]];
+        }
+            break;
+        case FLYAWAY:
+        {
+            _duck_idx = (++_duck_idx)%DUCK_SPRITE_NUM;
+            
+            NSString* frame_name = [NSString stringWithFormat:@"duck_black_flying_%d.png",_duck_idx+1];
+            CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
+                                    spriteFrameByName:frame_name];
+            [_duck setDisplayFrame:frame];
+            
+            self.duck_state = FLYING;
+            self.duck_pilot = [[DHDuckFlyawayPilot alloc] initWithWinRect: _winRect andObjSz:_duckSz];
+            CGPoint cur_p = _duck.position;
+            [self.duck_pilot setStartPos:cur_p];
+            cur_p.y = _winRect.origin.y + _winRect.size.height + _duck.contentSize.height;
+            [self.duck_pilot setEndPos:cur_p];
+            [self.duck_pilot setSpeedRatio:10.0];
         }
             break;
         default:

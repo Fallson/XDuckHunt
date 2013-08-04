@@ -53,8 +53,9 @@
         bgObj = [[DHBackGroundObj alloc] initWithWinRect: rect];
         [bgObj addtoScene: self];
         
-        //CGRect rect1 = {ccp(0,sz.height*0.25), }; //same rect now, To do
         CGRect rect1 = rect;
+        rect1.origin.y += 0.25*rect1.size.height;
+        rect1.size.height *= 0.75;
         duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
         [duckObj addtoScene: self];
         
@@ -94,10 +95,13 @@
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace: touch];
 
-    bool duckHit = [duckObj hit: location];
-    if( duckHit )
+    if( duckObj.duck_state == FLYING )
     {
-        duckObj.duck_state = SHOT;
+        bool duckHit = [duckObj hit: location];
+        if( duckHit )
+        {
+            duckObj.duck_state = SHOT;
+        }
     }
 }
 
