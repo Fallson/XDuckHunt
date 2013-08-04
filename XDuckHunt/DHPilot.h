@@ -52,3 +52,26 @@ enum Direction { LEFT=0, BOTTOM, RIGHT, UP, RANDOM, IN, OUT };
 @interface DHDuckFlyawayPilot: DHDuckPilot
 
 @end
+
+#pragma mark - DHDuckEightPilot
+@interface DHDuckEightPilot: DHDuckPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
+-(void)update:(ccTime)dt;
+-(void)setSpeedRatio:(float)speedRatio;
+-(enum Direction)getHorizationDirection;
+@end
+
+#pragma mark - DHDuckCirclePilot
+@interface DHDuckCirclePilot: DHDuckPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
+@end
+
+#pragma mark - DHDuckEllipsePilot
+@interface DHDuckEllipsePilot: DHDuckPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
+@end
+
+#pragma mark - DHDuckSinPilot
+@interface DHDuckSinPilot: DHDuckPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz;
+@end

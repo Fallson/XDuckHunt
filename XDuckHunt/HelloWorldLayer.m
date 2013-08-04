@@ -15,6 +15,7 @@
 
 #import "DHBackGroundObj.h"
 #import "DHDuckObj.h"
+#import "DHPilot.h"
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -57,7 +58,11 @@
         rect1.origin.y += 0.25*rect1.size.height;
         rect1.size.height *= 0.75;
         duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
+        DHDuckPilot* pilot = [[DHDuckEightPilot alloc] initWithWinRect:rect1 andObjSz:duckObj.duck_size];
+        NSLog(@"duck_size(%f,%f)", duckObj.duck_size.width, duckObj.duck_size.height);
+        duckObj.duck_pilot = pilot;
         [duckObj addtoScene: self];
+        
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];

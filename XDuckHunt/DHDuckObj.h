@@ -17,6 +17,7 @@ enum DUCK_STATE{FLYING=0, SHOT, DEAD, FLYAWAY};
 
 @property(nonatomic, retain) DHDuckPilot* duck_pilot;
 @property(nonatomic, assign) enum DUCK_STATE duck_state;
+@property(nonatomic, readonly) CGSize duck_size;
 
 -(id)initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;

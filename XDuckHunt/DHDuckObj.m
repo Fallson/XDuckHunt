@@ -28,7 +28,7 @@
 
 @synthesize duck_pilot = _duck_pilot;
 @synthesize duck_state = _duck_state;
-
+@synthesize duck_size = _duckSz;
 
 -(id)initWithWinRect:(CGRect)rect
 {
@@ -45,6 +45,7 @@
         _duck.scale = 0.75;
         _duckSz.width = _duck.contentSize.width * _duck.scaleX;
         _duckSz.height = _duck.contentSize.height * _duck.scaleY;
+        NSLog(@"duckSz:(%f,%f)", _duckSz.width, _duckSz.height);
         self.duck_pilot = [[DHDuckNormalPilot alloc] initWithWinRect: rect andObjSz:_duckSz];
         
         _duck.position = [self.duck_pilot getPosition];
@@ -99,7 +100,7 @@
             //NSLog(@"Dead startPos:(%f,%f)", cur_p.x, cur_p.y);
             cur_p.y = _winRect.origin.y - _duck.contentSize.height;
             [self.duck_pilot setEndPos:cur_p];
-            [self.duck_pilot setSpeedRatio:10.0];
+            [self.duck_pilot setSpeedRatio:2.0];
             //NSLog(@"Dead endPos:(%f,%f)", cur_p.x, cur_p.y);
         }
             break;
@@ -129,7 +130,7 @@
             [self.duck_pilot setStartPos:cur_p];
             cur_p.y = _winRect.origin.y + _winRect.size.height + _duck.contentSize.height;
             [self.duck_pilot setEndPos:cur_p];
-            [self.duck_pilot setSpeedRatio:10.0];
+            [self.duck_pilot setSpeedRatio:2.0];
         }
             break;
         default:

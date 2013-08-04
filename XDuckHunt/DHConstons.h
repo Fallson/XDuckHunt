@@ -14,9 +14,9 @@
 
 #define PI  3.14159
 #define EPS 0.00001
-//public const int Ratio = 2;
+#define CURVE_RATIO 2
 //public const int Groupfactor = 10;
-#define MaxLineSteps  160
-#define MaxCurveSteps 400
+#define MaxLineSteps  40
+#define MaxCurveSteps 100
 
 #endif
