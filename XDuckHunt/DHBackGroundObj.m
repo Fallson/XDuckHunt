@@ -25,6 +25,8 @@
     CCSprite* _smoke;
     int _smoke_idx;
     
+    ccTime _accDT;
+    
     CGRect _winRect;
 }
 
@@ -90,11 +92,10 @@
 
 -(void)update:(ccTime)dt
 {
-    static ccTime accDT = 0;
-    accDT += dt;
-    if( accDT < 0.5 )
+    _accDT += dt;
+    if( _accDT < 0.5 )
         return;
-    accDT = 0;
+    _accDT = 0;
     
     //smoke animation
     _smoke_idx = (++_smoke_idx)%SMOKE_SPRITE_NUM;

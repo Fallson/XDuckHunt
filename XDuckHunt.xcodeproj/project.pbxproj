@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
+		D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B706417AFDD3500F7C915 /* DHGameChapter.m */; };
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
 		D27049C017A6AB1600342505 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BF17A6AB1600342505 /* Cloud.png */; };
@@ -158,6 +159,8 @@
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
+		D26B706317AFDD3500F7C915 /* DHGameChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameChapter.h; sourceTree = "<group>"; };
+		D26B706417AFDD3500F7C915 /* DHGameChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameChapter.m; sourceTree = "<group>"; };
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
 		D27049BC17A6A4C300342505 /* sky_smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky_smoke.png; path = Resources/sky_smoke.png; sourceTree = "<group>"; };
 		D27049BF17A6AB1600342505 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cloud.png; path = Resources/Cloud.png; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 				D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */,
 				D227F06717ACC74500981E06 /* DHPilot.h */,
 				D227F06817ACC7C300981E06 /* DHPilot.m */,
+				D26B706317AFDD3500F7C915 /* DHGameChapter.h */,
+				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1118,6 +1123,7 @@
 				D29EEB5917A4F3140072B0EA /* DHBackGroundObj.m in Sources */,
 				D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */,
 				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
+				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

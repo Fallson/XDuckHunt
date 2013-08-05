@@ -247,8 +247,8 @@
         
         _centerPos = _endPos;
         
-        NSLog(@"_startPos(%f,%f)...._endPos(%f,%f)...._centerPos(%f,%f)",
-              _startPos.x, _startPos.y, _endPos.x, _endPos.y, _centerPos.x, _centerPos.y);
+//        NSLog(@"_startPos(%f,%f)...._endPos(%f,%f)...._centerPos(%f,%f)",
+//              _startPos.x, _startPos.y, _endPos.x, _endPos.y, _centerPos.x, _centerPos.y);
     }
     return self;
 }

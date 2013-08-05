@@ -16,13 +16,16 @@
 #import "DHBackGroundObj.h"
 #import "DHDuckObj.h"
 #import "DHPilot.h"
+#import "DHConstons.h"
+#import "DHGameChapter.h"
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 {
-    DHBackGroundObj* bgObj;
-    DHDuckObj* duckObj;
+    DHBackGroundObj* _bgObj;
+    DHGameChapter* _gameChps;
+    //DHDuckObj* duckObj;
 }
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -51,18 +54,23 @@
         CGSize sz = [ [CCDirector sharedDirector] winSize];
         CGRect rect = {ccp(0,0), sz};
         
-        bgObj = [[DHBackGroundObj alloc] initWithWinRect: rect];
-        [bgObj addtoScene: self];
+        _bgObj = [[DHBackGroundObj alloc] initWithWinRect: rect];
+        [_bgObj addtoScene: self];
         
         CGRect rect1 = rect;
         rect1.origin.y += 0.25*rect1.size.height;
         rect1.size.height *= 0.75;
+        _gameChps = [[DHGameChapter alloc] initWithWinRect:rect1];
+        for( DHDuckObj* duckObj in [_gameChps getDucks:CHAPTER1])
+        {
+            [duckObj addtoScene: self];
+        }
+        /*
         duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
         DHDuckPilot* pilot = [[DHDuckEightPilot alloc] initWithWinRect:rect1 andObjSz:duckObj.duck_size];
-        NSLog(@"duck_size(%f,%f)", duckObj.duck_size.width, duckObj.duck_size.height);
         duckObj.duck_pilot = pilot;
         [duckObj addtoScene: self];
-        
+        */
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -75,8 +83,17 @@
 
 -(void) update:(ccTime)dt
 {
-    [bgObj update:dt];
-    [duckObj update:dt];
+    [_bgObj update:dt];
+    
+    for( DHDuckObj* duckObj in [_gameChps getDucks:CHAPTER1])
+    {
+        [duckObj update:dt];
+        
+        if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
+        {
+            duckObj.duck_state = START_FLYAWAY;
+        }
+    }
 }
 
 - (void) nextFrame:(ccTime)dt {
@@ -100,12 +117,15 @@
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace: touch];
 
-    if( duckObj.duck_state == FLYING )
+    for( DHDuckObj* duckObj in [_gameChps getDucks:CHAPTER1])
     {
-        bool duckHit = [duckObj hit: location];
-        if( duckHit )
+        if( duckObj.duck_state == FLYING )
         {
-            duckObj.duck_state = SHOT;
+            bool duckHit = [duckObj hit: location];
+            if( duckHit )
+            {
+                duckObj.duck_state = START_DEAD;
+            }
         }
     }
 }

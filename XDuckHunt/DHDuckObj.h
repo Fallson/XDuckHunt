@@ -11,13 +11,14 @@
 
 @class DHDuckPilot;
 
-enum DUCK_STATE{FLYING=0, SHOT, DEAD, FLYAWAY};
+enum DUCK_STATE{FLYING=0, START_DEAD, DEAD, START_FLYAWAY, FLYAWAY, DISAPPEAR};
 
 @interface DHDuckObj : NSObject
 
 @property(nonatomic, retain) DHDuckPilot* duck_pilot;
 @property(nonatomic, assign) enum DUCK_STATE duck_state;
 @property(nonatomic, readonly) CGSize duck_size;
+@property(nonatomic, readonly) ccTime duck_living_time;
 
 -(id)initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;

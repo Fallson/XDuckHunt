@@ -11,6 +11,8 @@
 
 #define HIT_RADIUS     12
 #define HIT_RADIUS_POW 144
+#define DUCK_FLYAWAY_TIME 12
+
 
 #define PI  3.14159
 #define EPS 0.00001
