@@ -24,8 +24,13 @@
 @implementation HelloWorldLayer
 {
     DHBackGroundObj* _bgObj;
-    DHGameChapter* _gameChps;
-    //DHDuckObj* duckObj;
+    CGRect           _bgRect;
+    
+    DHGameChapter*   _gameChps;
+    enum Chapter_lvl _cur_chp;
+    CGRect         _duckRect;
+    
+    ccTime         _gameTime;
 }
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -44,6 +49,7 @@
 	return scene;
 }
 
+#pragma mark - init part
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -51,27 +57,9 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) )
     {
-        CGSize sz = [ [CCDirector sharedDirector] winSize];
-        CGRect rect = {ccp(0,0), sz};
-        
-        _bgObj = [[DHBackGroundObj alloc] initWithWinRect: rect];
-        [_bgObj addtoScene: self];
-        
-        CGRect rect1 = rect;
-        rect1.origin.y += 0.25*rect1.size.height;
-        rect1.size.height *= 0.75;
-        _gameChps = [[DHGameChapter alloc] initWithWinRect:rect1];
-        for( DHDuckObj* duckObj in [_gameChps getDucks:CHAPTER1])
-        {
-            [duckObj addtoScene: self];
-        }
-        /*
-        duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
-        DHDuckPilot* pilot = [[DHDuckEightPilot alloc] initWithWinRect:rect1 andObjSz:duckObj.duck_size];
-        duckObj.duck_pilot = pilot;
-        [duckObj addtoScene: self];
-        */
-        
+        [self initBG];
+        [self initDucks];
+         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
         
@@ -81,22 +69,95 @@
 	return self;
 }
 
+-(void)initBG
+{
+    CGSize sz = [ [CCDirector sharedDirector] winSize];
+    CGPoint ori = ccp(0,0);
+    _bgRect.origin = ori;
+    _bgRect.size = sz;
+    _bgObj = [[DHBackGroundObj alloc] initWithWinRect: _bgRect];
+    [_bgObj addtoScene: self];
+}
+
+-(void)initDucks
+{
+    _duckRect = _bgRect;
+    _duckRect.origin.y += 0.25*_duckRect.size.height;
+    _duckRect.size.height *= 0.75;
+    _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
+    _cur_chp = CHAPTER1;
+    for( int i = 0; i <= _cur_chp; i++ )
+    {
+        NSMutableArray* ducks = [_gameChps getDucks:i];
+        for( DHDuckObj* duckObj in ducks )
+        {
+            [duckObj addtoScene: self];
+        }
+    }
+    /*
+     duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
+     DHDuckPilot* pilot = [[DHDuckEightPilot alloc] initWithWinRect:rect1 andObjSz:duckObj.duck_size];
+     duckObj.duck_pilot = pilot;
+     [duckObj addtoScene: self];
+     */
+}
+
+#pragma mark - update part
 -(void) update:(ccTime)dt
 {
-    [_bgObj update:dt];
+    _gameTime += dt;
     
-    for( DHDuckObj* duckObj in [_gameChps getDucks:CHAPTER1])
+    [self updateBG:dt];
+    [self updateDucks:dt withGameTime:_gameTime];
+}
+
+-(void) updateBG:(ccTime)dt
+{
+    [_bgObj update:dt];
+}
+
+-(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
+{
+    /*
+    for( int i = 0; i < CHAPTER_MAX; i++ )
     {
-        [duckObj update:dt];
-        
-        if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
+        if( (i+1)*DUCK_FLYAWAY_TIME > gt )
         {
-            duckObj.duck_state = START_FLYAWAY;
+            if( i != _cur_chp)
+            {
+                _cur_chp = i;
+                NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
+                for( DHDuckObj* duckObj in ducks )
+                {
+                    [duckObj addtoScene:self];
+                }
+            }
+            break;
+        }
+    }*/
+    
+    for( int i = 0; i <= _cur_chp; i++ )
+    {
+        NSMutableArray* ducks = [_gameChps getDucks:i];
+        for( DHDuckObj* duckObj in ducks )
+        {
+            [duckObj update:dt];
+            
+            if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
+            {
+                duckObj.duck_state = START_FLYAWAY;
+            }
+            else if( duckObj.duck_state == DISAPPEAR )
+            {
+                //do some free oprations on ducks
+                //not done yet
+            }
         }
     }
 }
 
-- (void) nextFrame:(ccTime)dt {
+- (void) nextFrame:(ccTime)dt
+{
 //    CGSize sz = [ [CCDirector sharedDirector] winSize];
 //    seeker1.position = ccp( seeker1.position.x + 100*dt, seeker1.position.y );
 //    //NSLog(@"rect: (%f, %f)", seeker1.textureRect.size.width, seeker1.textureRect.size.height);
@@ -105,6 +166,7 @@
 //    }
 }
 
+#pragma mark - touch part
 -(void) registerWithTouchDispatcher
 {
 	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
@@ -117,19 +179,29 @@
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace: touch];
 
-    for( DHDuckObj* duckObj in [_gameChps getDucks:CHAPTER1])
+    [self touchDucks:location];
+}
+
+-(void)touchDucks:(CGPoint)location
+{
+    for( int i = 0; i <= _cur_chp; i++ )
     {
-        if( duckObj.duck_state == FLYING )
+        NSMutableArray* ducks = [_gameChps getDucks:i];
+        for( DHDuckObj* duckObj in ducks)
         {
-            bool duckHit = [duckObj hit: location];
-            if( duckHit )
+            if( duckObj.duck_state == FLYING )
             {
-                duckObj.duck_state = START_DEAD;
+                bool duckHit = [duckObj hit: location];
+                if( duckHit )
+                {
+                    duckObj.duck_state = START_DEAD;
+                }
             }
         }
     }
 }
 
+#pragma mark - dealloc part
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {

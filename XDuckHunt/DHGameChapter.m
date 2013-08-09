@@ -52,6 +52,14 @@
 -(void)setDucks_Chapter1:(NSMutableArray*)ducks
 {
     DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
+    DHDuckPilot* pilot1 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck1.duck_size];
+    duck1.duck_pilot = pilot1;
+    [ducks addObject:duck1];
+}
+
+-(void)setDucks_Chapter2:(NSMutableArray*)ducks
+{
+    DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
     DHDuckPilot* pilot1 = [[DHDuckEightPilot alloc] initWithWinRect:_winRect andObjSz:duck1.duck_size];
     duck1.duck_pilot = pilot1;
     [ducks addObject:duck1];
@@ -60,18 +68,6 @@
     DHDuckPilot* pilot2 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck2.duck_size];
     duck2.duck_pilot = pilot2;
     [ducks addObject:duck2];
-    
-   /*
-    DHDuckObj* duck3 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot3 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck3.duck_size];
-    duck3.duck_pilot = pilot3;
-    [ducks addObject:duck3];
-     */
-}
-
--(void)setDucks_Chapter2:(NSMutableArray*)ducks
-{
-    //
 }
 
 -(void)setDucks_Chapter3:(NSMutableArray*)ducks
