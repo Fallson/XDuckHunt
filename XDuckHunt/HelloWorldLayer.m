@@ -118,24 +118,6 @@
 
 -(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
 {
-    /*
-    for( int i = 0; i < CHAPTER_MAX; i++ )
-    {
-        if( (i+1)*DUCK_FLYAWAY_TIME > gt )
-        {
-            if( i != _cur_chp)
-            {
-                _cur_chp = i;
-                NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
-                for( DHDuckObj* duckObj in ducks )
-                {
-                    [duckObj addtoScene:self];
-                }
-            }
-            break;
-        }
-    }*/
-    
     for( int i = 0; i <= _cur_chp; i++ )
     {
         NSMutableArray* ducks = [_gameChps getDucks:i];
@@ -152,6 +134,23 @@
                 //do some free oprations on ducks
                 //not done yet
             }
+        }
+    }
+    
+    for( int i = 0; i < CHAPTER_MAX; i++ )
+    {
+        if( (i+1)*DUCK_FLYAWAY_TIME > gt )
+        {
+            if( i != _cur_chp)
+            {
+                _cur_chp = i;
+                NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
+                for( DHDuckObj* duckObj in ducks )
+                {
+                    [duckObj addtoScene:self];
+                }
+            }
+            break;
         }
     }
 }
