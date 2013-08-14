@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-enum Chapter_lvl{CHAPTER1=0,CHAPTER2,CHAPTER3,CHAPTER4,CHAPTER5,
+enum CHAPTER_LVL{CHAPTER1=0,CHAPTER2,CHAPTER3,CHAPTER4,CHAPTER5,
                  CHAPTER6, CHAPTER7, CHAPTER8, CHAPTER9, CHAPTER10, CHAPTER_MAX};
 @interface DHGameChapter : NSObject
 
 -(id)initWithWinRect: (CGRect)rect;
--(NSMutableArray*)getDucks:(enum Chapter_lvl) lvl;
+-(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl;
 @end

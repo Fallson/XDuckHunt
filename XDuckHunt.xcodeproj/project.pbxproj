@@ -153,6 +153,7 @@
 		D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */; };
 		D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748217ABE89800363DAC /* duck_black_flying.plist */; };
 		D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748317ABE89800363DAC /* duck_black_flying.png */; };
+		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -455,6 +456,8 @@
 		D2B6748017ABE3A200363DAC /* DHConstons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHConstons.h; sourceTree = "<group>"; };
 		D2B6748217ABE89800363DAC /* duck_black_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_black_flying.plist; path = Resources/duck_black_flying.plist; sourceTree = "<group>"; };
 		D2B6748317ABE89800363DAC /* duck_black_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_black_flying.png; path = Resources/duck_black_flying.png; sourceTree = "<group>"; };
+		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
+		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +535,8 @@
 				D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */,
 				D227F06717ACC74500981E06 /* DHPilot.h */,
 				D227F06817ACC7C300981E06 /* DHPilot.m */,
+				D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */,
+				D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */,
 				D26B706317AFDD3500F7C915 /* DHGameChapter.h */,
 				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
 			);
@@ -1124,6 +1129,7 @@
 				D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */,
 				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
 				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
+				D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

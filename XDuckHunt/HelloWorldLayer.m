@@ -27,7 +27,7 @@
     CGRect           _bgRect;
     
     DHGameChapter*   _gameChps;
-    enum Chapter_lvl _cur_chp;
+    enum CHAPTER_LVL _cur_chp;
     CGRect         _duckRect;
     
     ccTime         _gameTime;

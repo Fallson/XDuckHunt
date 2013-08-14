@@ -246,9 +246,6 @@
         _delta_angle = 2 * PI / MaxCurveSteps;
         
         _centerPos = _endPos;
-        
-//        NSLog(@"_startPos(%f,%f)...._endPos(%f,%f)...._centerPos(%f,%f)",
-//              _startPos.x, _startPos.y, _endPos.x, _endPos.y, _centerPos.x, _centerPos.y);
     }
     return self;
 }
@@ -312,24 +309,259 @@
 
 #pragma mark - DHDuckCirclePilot
 @implementation DHDuckCirclePilot
+{
+    double _cur_angle;
+    double _delta_angle;
+    
+    CGPoint _centerPos;
+}
+
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
 {
+    if( self = [super initWithWinRect: rect andObjSz:sz] )
+    {
+        _cur_angle = 0.0;
+        _delta_angle = 2 * PI / MaxCurveSteps;
+        
+        _centerPos = _endPos;
+    }
     return self;
+}
+
+-(void)update:(ccTime)dt
+{
+    if ([super inCurve])
+    {
+        _cur_angle += _delta_angle;
+        if (_cur_angle > 2 * PI)
+        {
+            _cur_angle = 0.0;
+        }
+        
+        float a = min(_bbox.size.width, _bbox.size.height);
+        a /= (1.5*CURVE_RATIO);
+        
+        _position.x = _centerPos.x + (float)(a * cos(_cur_angle));
+        _position.y = _centerPos.y + (float)(a * sin(_cur_angle));
+    }
+    else
+    {
+        [super update:dt];
+    }
+}
+
+-(void)setSpeedRatio:(float)speedRatio
+{
+    [super setSpeedRatio:speedRatio];
+    
+    _delta_angle = (2 * PI / MaxCurveSteps) * speedRatio;
+    
+}
+
+-(enum Direction)getHorizationDirection
+{
+    if ([super inCurve])
+    {
+        if (_cur_angle >= 0 && _cur_angle < PI)
+        {
+            return LEFT;
+        }
+        else if (_cur_angle >= PI && _cur_angle < PI * 2)
+        {
+            return RIGHT;
+        }
+        else
+        {
+            return RIGHT;
+        }
+    }
+    else
+    {
+        return [super getHorizationDirection];
+    }
 }
 @end
 
 #pragma mark - DHDuckEllipsePilot
 @implementation DHDuckEllipsePilot
+{
+    double _cur_angle;
+    double _delta_angle;
+    
+    CGPoint _centerPos;
+}
+
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
+{
+    if( self = [super initWithWinRect: rect andObjSz:sz] )
+    {
+        _cur_angle = 0.0;
+        _delta_angle = 2 * PI / MaxCurveSteps;
+        
+        _centerPos = _endPos;
+    }
+    return self;
+}
+
+-(void)update:(ccTime)dt
+{
+    if ([super inCurve])
+    {
+        _cur_angle += _delta_angle;
+        if (_cur_angle > 2 * PI)
+        {
+            _cur_angle = 0.0;
+        }
+        
+        float a = _bbox.size.width/(2*CURVE_RATIO);
+        float b = _bbox.size.height/(2*CURVE_RATIO);
+        
+        _position.x = _centerPos.x + (float)(a * cos(_cur_angle));
+        _position.y = _centerPos.y + (float)(b * sin(_cur_angle));
+    }
+    else
+    {
+        [super update:dt];
+    }
+}
+
+-(void)setSpeedRatio:(float)speedRatio
+{
+    [super setSpeedRatio:speedRatio];
+    
+    _delta_angle = (2 * PI / MaxCurveSteps) * speedRatio;
+    
+}
+
+-(enum Direction)getHorizationDirection
+{
+    if ([super inCurve])
+    {
+        if (_cur_angle >= 0 && _cur_angle < PI)
+        {
+            return LEFT;
+        }
+        else if (_cur_angle >= PI && _cur_angle < PI * 2)
+        {
+            return RIGHT;
+        }
+        else
+        {
+            return RIGHT;
+        }
+    }
+    else
+    {
+        return [super getHorizationDirection];
+    }
+}
+@end
+
+#pragma mark - DHDuckSinPilot
+@implementation DHDuckSinPilot
+{
+    int _left2right;
+    int _hor_steps;
+    int _max_curveSteps;
+    double _cur_angle;
+    double _delta_angle;
+    
+    CGPoint _centerPos;
+}
+
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
+{
+    if( self = [super initWithWinRect: rect andObjSz:sz] )
+    {
+        _left2right = 1;
+        _hor_steps = 0;
+        _max_curveSteps = MaxCurveSteps;
+        
+        _cur_angle = 0.0;
+        _delta_angle = 2 * PI / MaxCurveSteps;
+        
+        _centerPos = _endPos;
+    }
+    return self;
+}
+
+-(void)update:(ccTime)dt
+{
+    if ([super inCurve])
+    {
+        _cur_angle += _delta_angle;
+        if( _left2right == 1 )
+            _hor_steps++;
+        else
+            _hor_steps--;
+        
+        float a = _bbox.size.width/(CURVE_RATIO);
+        float b = _bbox.size.height/(1.5*CURVE_RATIO);
+        
+        _position.x = _centerPos.x + (float)(_hor_steps * a / _max_curveSteps);
+        if( _position.x >= (_bbox.origin.x + _bbox.size.width) )
+        {
+            _position.x = (_bbox.origin.x + _bbox.size.width);
+            _left2right = 0;
+        }
+        else if(_position.x <= _bbox.origin.x)
+        {
+            _position.x = _bbox.origin.x;
+            _left2right = 1;
+        }
+        _position.y = _centerPos.y + (float)(b * sin(_cur_angle));
+    }
+    else
+    {
+        [super update:dt];
+    }
+}
+
+-(void)setSpeedRatio:(float)speedRatio
+{
+    [super setSpeedRatio:speedRatio];
+    
+    _delta_angle = (2 * PI / MaxCurveSteps) * speedRatio;
+    _max_curveSteps = MaxCurveSteps / speedRatio;
+}
+
+-(enum Direction)getHorizationDirection
+{
+    if ([super inCurve])
+    {
+        if(_left2right == 1)
+            return RIGHT;
+        else
+            return LEFT;
+    }
+    else
+    {
+        return [super getHorizationDirection];
+    }
+}
+
+@end
+
+#pragma mark - DHDuckILOVEUPilot
+@implementation DHDuckILoveU_IPilot
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
 {
     return self;
 }
 @end
 
-#pragma mark - DHDuckSinPilot
-@implementation DHDuckSinPilot
+@implementation DHDuckILoveU_LPilot
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
 {
     return self;
 }
+
+@end
+
+@implementation DHDuckILoveU_UPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
+{
+    return self;
+}
+
 @end

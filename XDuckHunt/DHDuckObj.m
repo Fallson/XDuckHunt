@@ -33,7 +33,7 @@
 
 @synthesize duck_pilot = _duck_pilot;
 @synthesize duck_state = _duck_state;
-@synthesize duck_size = _duckSz;
+@synthesize duck_size = _duck_size;
 @synthesize duck_living_time = _duck_living_time;
 
 @synthesize duck_spriteSheet = _duck_spriteSheet;
@@ -52,9 +52,9 @@
         self.duck_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"duck_black_flying.png"];
         self.duck = [CCSprite spriteWithSpriteFrameName:@"duck_black_flying_1.png"];
         self.duck.scale = 0.75;
-        _duckSz.width = self.duck.contentSize.width * self.duck.scaleX;
-        _duckSz.height = self.duck.contentSize.height * self.duck.scaleY;
-        self.duck_pilot = [[DHDuckNormalPilot alloc] initWithWinRect: rect andObjSz:_duckSz];
+        _duck_size.width = self.duck.contentSize.width * self.duck.scaleX;
+        _duck_size.height = self.duck.contentSize.height * self.duck.scaleY;
+        self.duck_pilot = [[DHDuckNormalPilot alloc] initWithWinRect: rect andObjSz:_duck_size];
         
         self.duck.position = [self.duck_pilot getPosition];
         self.duck.zOrder = DUCK_Z;
@@ -69,7 +69,7 @@
 
 -(void)addtoScene:(CCLayer *)layer
 {
-    NSLog(@"duck_spritesheet:%d",(int)self.duck_spriteSheet);
+    //NSLog(@"duck_spritesheet:%d",(int)self.duck_spriteSheet);
     [layer addChild:self.duck_spriteSheet];
 }
 
@@ -120,7 +120,7 @@
             [self.duck setDisplayFrame:frame];
             
             self.duck_state = DEAD;
-            self.duck_pilot = [[DHDuckDeadPilot alloc] initWithWinRect: _winRect andObjSz:_duckSz];
+            self.duck_pilot = [[DHDuckDeadPilot alloc] initWithWinRect: _winRect andObjSz:_duck_size];
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
             cur_p.y = _winRect.origin.y - self.duck_size.height;
@@ -149,7 +149,7 @@
             [self.duck setDisplayFrame:frame];
             
             self.duck_state = FLYAWAY;
-            self.duck_pilot = [[DHDuckFlyawayPilot alloc] initWithWinRect: _winRect andObjSz:_duckSz];
+            self.duck_pilot = [[DHDuckFlyawayPilot alloc] initWithWinRect: _winRect andObjSz:_duck_size];
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
             cur_p.y = _winRect.origin.y + _winRect.size.height + self.duck_size.height;
