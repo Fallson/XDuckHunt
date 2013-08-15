@@ -18,6 +18,7 @@
 #import "DHPilot.h"
 #import "DHConstons.h"
 #import "DHGameChapter.h"
+#import "DHTimeModePannel.h"
 #pragma mark - HelloWorldLayer
 
 // HelloWorldLayer implementation
@@ -28,9 +29,13 @@
     
     DHGameChapter*   _gameChps;
     enum CHAPTER_LVL _cur_chp;
-    CGRect         _duckRect;
+    CGRect           _duckRect;
+    
+    DHTimeModePannel* _pannel;
+    CGRect            _pannelRect;
     
     ccTime         _gameTime;
+    int            _hit_count;
 }
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -59,7 +64,11 @@
     {
         [self initBG];
         [self initDucks];
-         
+        [self initPannel];
+        
+        _gameTime = 0;
+        _hit_count = 0;
+        
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
         
@@ -94,12 +103,17 @@
             [duckObj addtoScene: self];
         }
     }
-    /*
-     duckObj = [[DHDuckObj alloc] initWithWinRect: rect1];
-     DHDuckPilot* pilot = [[DHDuckEightPilot alloc] initWithWinRect:rect1 andObjSz:duckObj.duck_size];
-     duckObj.duck_pilot = pilot;
-     [duckObj addtoScene: self];
-     */
+}
+
+-(void)initPannel
+{
+    _pannelRect = _bgRect;
+    _pannelRect.origin.y += 0.9*_pannelRect.size.height;
+    _pannelRect.size.height *= 0.1;
+    NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
+          _pannelRect.size.width, _pannelRect.size.height);
+    _pannel = [[DHTimeModePannel alloc] initWithWinRect:_pannelRect];
+    [_pannel addtoScene:self];
 }
 
 #pragma mark - update part
@@ -109,6 +123,7 @@
     
     [self updateBG:dt];
     [self updateDucks:dt withGameTime:_gameTime];
+    [self updatePannel:dt];
 }
 
 -(void) updateBG:(ccTime)dt
@@ -155,6 +170,14 @@
     }
 }
 
+-(void)updatePannel:(ccTime)dt
+{
+    [_pannel setLeft_time:_gameTime];
+    [_pannel setHit_count:_hit_count];
+    [_pannel setScore:_hit_count*100];
+    [_pannel update:dt];
+}
+
 - (void) nextFrame:(ccTime)dt
 {
 //    CGSize sz = [ [CCDirector sharedDirector] winSize];
@@ -194,6 +217,7 @@
                 if( duckHit )
                 {
                     duckObj.duck_state = START_DEAD;
+                    _hit_count++;
                 }
             }
         }
@@ -207,7 +231,10 @@
 	// in case you have something to dealloc, do it in this method
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
-	
+	[_bgObj release];
+    [_gameChps release];
+    [_pannel release];
+    
 	// don't forget to call "super dealloc"
 	[super dealloc];
 }

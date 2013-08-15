@@ -8,6 +8,7 @@
 
 #import "DHGameChapter.h"
 #import "DHDuckObj.h"
+#import "DHPilotManager.h"
 #import "DHPilot.h"
 
 @interface DHGameChapter()
@@ -44,55 +45,41 @@
 -(void)setDucks_Chapter1:(NSMutableArray*)ducks
 {
     DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot1 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck1.duck_size];
-    duck1.duck_pilot = pilot1;
+    duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_NORMAL andWinRect:_winRect andObjSz:duck1.duck_size];
     [ducks addObject:duck1];
 }
 
 -(void)setDucks_Chapter2:(NSMutableArray*)ducks
 {
-    DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot1 = [[DHDuckEightPilot alloc] initWithWinRect:_winRect andObjSz:duck1.duck_size];
-    duck1.duck_pilot = pilot1;
-    [ducks addObject:duck1];
-    
-    DHDuckObj* duck2 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot2 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck2.duck_size];
-    duck2.duck_pilot = pilot2;
-    [ducks addObject:duck2];
+    enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL};
+    for( int i = 0; i < 2; i++ )
+    {
+        DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
+        duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:ptypes[i] andWinRect:_winRect andObjSz:duck1.duck_size];
+        [ducks addObject:duck1];
+    }
 }
 
 -(void)setDucks_Chapter3:(NSMutableArray*)ducks
 {
-    DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot1 = [[DHDuckEightPilot alloc] initWithWinRect:_winRect andObjSz:duck1.duck_size];
-    duck1.duck_pilot = pilot1;
-    [ducks addObject:duck1];
-    
-    DHDuckObj* duck2 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot2 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck2.duck_size];
-    duck2.duck_pilot = pilot2;
-    [ducks addObject:duck2];
-    
-    DHDuckObj* duck3 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot3 = [[DHDuckCirclePilot alloc] initWithWinRect:_winRect andObjSz:duck3.duck_size];
-    duck3.duck_pilot = pilot3;
-    [ducks addObject:duck3];
+    enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN};
+    for( int i = 0; i < 4; i++ )
+    {
+        DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
+        duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:ptypes[i] andWinRect:_winRect andObjSz:duck1.duck_size];
+        [ducks addObject:duck1];
+    }
 }
 
 -(void)setDucks_Chapter4:(NSMutableArray*)ducks
 {
-    DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-    DHDuckPilot* pilot1 = [[DHDuckNormalPilot alloc] initWithWinRect:_winRect andObjSz:duck1.duck_size];
-    duck1.duck_pilot = pilot1;
-    [ducks addObject:duck1];
-    
-    for( int i = 0; i < 5; i++ )
+    enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_NORMAL,
+                                DUCK_ELLIPSE, DUCK_SIN, DUCK_NORMAL};
+    for( int i = 0; i < 6; i++ )
     {
-        DHDuckObj* duck2 = [[DHDuckObj alloc] initWithWinRect:_winRect];
-        DHDuckPilot* pilot2 = [[DHDuckEllipsePilot alloc] initWithWinRect:_winRect andObjSz:duck2.duck_size];
-        duck2.duck_pilot = pilot2;
-        [ducks addObject:duck2];
+        DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];
+        duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:ptypes[i] andWinRect:_winRect andObjSz:duck1.duck_size];
+        [ducks addObject:duck1];
     }
 }
 

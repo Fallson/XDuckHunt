@@ -9,6 +9,7 @@
 #import "DHDuckObj.h"
 #import "cocos2d.h"
 #import "DHConstons.h"
+#import "DHPilotManager.h"
 #import "DHPilot.h"
 #import "DHZDepth.h"
 
@@ -54,7 +55,7 @@
         self.duck.scale = 0.75;
         _duck_size.width = self.duck.contentSize.width * self.duck.scaleX;
         _duck_size.height = self.duck.contentSize.height * self.duck.scaleY;
-        self.duck_pilot = [[DHDuckNormalPilot alloc] initWithWinRect: rect andObjSz:_duck_size];
+        self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_NORMAL andWinRect:_winRect andObjSz:_duck_size];
         
         self.duck.position = [self.duck_pilot getPosition];
         self.duck.zOrder = DUCK_Z;
@@ -120,7 +121,8 @@
             [self.duck setDisplayFrame:frame];
             
             self.duck_state = DEAD;
-            self.duck_pilot = [[DHDuckDeadPilot alloc] initWithWinRect: _winRect andObjSz:_duck_size];
+            self.duck_pilot =[[DHPilotManager sharedDHPilotManager] createPilot:DUCK_DEAD andWinRect:_winRect andObjSz:_duck_size];
+            
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
             cur_p.y = _winRect.origin.y - self.duck_size.height;
@@ -149,7 +151,8 @@
             [self.duck setDisplayFrame:frame];
             
             self.duck_state = FLYAWAY;
-            self.duck_pilot = [[DHDuckFlyawayPilot alloc] initWithWinRect: _winRect andObjSz:_duck_size];
+            self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_FLYAWAY andWinRect:_winRect andObjSz:_duck_size];
+
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
             cur_p.y = _winRect.origin.y + _winRect.size.height + self.duck_size.height;

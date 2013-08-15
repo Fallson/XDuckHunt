@@ -13,7 +13,7 @@
 #define CLOUD_MV_STEP    5
 #define SMOKE_SPRITE_NUM 5
 
-@implementation DHBackGroundObj
+@interface DHBackGroundObj()
 {
     CCSprite* _bg_sky;
     CCSprite* _bg_grass;
@@ -24,11 +24,27 @@
     CCSpriteBatchNode* _smoke_spriteSheet;
     CCSprite* _smoke;
     int _smoke_idx;
-    
     ccTime _accDT;
-    
     CGRect _winRect;
 }
+
+@property(nonatomic, retain)CCSprite* bg_sky;
+@property(nonatomic, retain)CCSprite* bg_grass;
+@property(nonatomic, retain)CCSprite* bg_tree;
+@property(nonatomic, retain)CCSprite* bg_cloud;
+@property(nonatomic, retain)CCSpriteBatchNode* smoke_spriteSheet;
+@property(nonatomic, retain)CCSprite* smoke;
+
+@end
+@implementation DHBackGroundObj
+
+@synthesize bg_sky=_bg_sky;
+@synthesize bg_grass=_bg_grass;
+@synthesize bg_tree=_bg_tree;
+@synthesize bg_cloud=_bg_cloud;
+@synthesize smoke_spriteSheet=_smoke_spriteSheet;
+@synthesize smoke=_smoke;
+
 
 -(id) initWithWinRect: (CGRect)rect
 {
@@ -42,39 +58,39 @@
         CGSize sz = rect.size;
         CGPoint ori = rect.origin;
         
-        _bg_sky = [CCSprite spriteWithFile: @"bg_sky.png"];
-        float scale_r = sz.height/_bg_sky.contentSize.height;
+        self.bg_sky = [CCSprite spriteWithFile: @"bg_sky.png"];
+        float scale_r = sz.height/self.bg_sky.contentSize.height;
 //        NSLog(@"sz(%f,%f) and sky(%f,%f), scale_r is: %f", sz.width, sz.height,
 //              _bg_sky.contentSize.width, _bg_sky.contentSize.height ,scale_r);
-        _bg_sky.scale = scale_r;
-        _bg_sky.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
-        _bg_sky.zOrder = BG_SKY_Z;
+        self.bg_sky.scale = scale_r;
+        self.bg_sky.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
+        self.bg_sky.zOrder = BG_SKY_Z;
         
-        _bg_grass = [CCSprite spriteWithFile: @"bg_grass.png"];
-        _bg_grass.scaleX = sz.width/_bg_grass.contentSize.width;
-        _bg_grass.scaleY = sz.height/_bg_grass.contentSize.height;
-        _bg_grass.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
-        _bg_grass.zOrder = BG_GRASS_Z;
+        self.bg_grass = [CCSprite spriteWithFile: @"bg_grass.png"];
+        self.bg_grass.scaleX = sz.width/self.bg_grass.contentSize.width;
+        self.bg_grass.scaleY = sz.height/self.bg_grass.contentSize.height;
+        self.bg_grass.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
+        self.bg_grass.zOrder = BG_GRASS_Z;
         
-        _bg_tree = [CCSprite spriteWithFile: @"bg_tree.png"];
-        _bg_tree.scaleX = sz.width/_bg_tree.contentSize.width;
-        _bg_tree.scaleY = sz.height/_bg_tree.contentSize.height;
-        _bg_tree.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
-        _bg_tree.zOrder = BG_TREE_Z;
+        self.bg_tree = [CCSprite spriteWithFile: @"bg_tree.png"];
+        self.bg_tree.scaleX = sz.width/self.bg_tree.contentSize.width;
+        self.bg_tree.scaleY = sz.height/self.bg_tree.contentSize.height;
+        self.bg_tree.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
+        self.bg_tree.zOrder = BG_TREE_Z;
         
-        _bg_cloud = [CCSprite spriteWithFile: @"Cloud.png"];
-        _bg_cloud.scale = 0.25;
-        _bg_cloud.position = ccp( ori.x, ori.y + sz.height*0.78 );
-        _bg_cloud.zOrder = BG_CLOUD_Z;
+        self.bg_cloud = [CCSprite spriteWithFile: @"Cloud.png"];
+        self.bg_cloud.scale = 0.25;
+        self.bg_cloud.position = ccp( ori.x, ori.y + sz.height*0.78 );
+        self.bg_cloud.zOrder = BG_CLOUD_Z;
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"sky_smoke.plist"];
-        _smoke_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"sky_smoke.png"];
-        _smoke = [CCSprite spriteWithSpriteFrameName:@"sky_smoke_1.png"];
-        _smoke.position = ccp(ori.x + sz.width*0.969, ori.y + sz.height*0.621);
-        _smoke.scale = 0.5;
-        _smoke.zOrder = BG_SMOKE_Z;
+        self.smoke_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"sky_smoke.png"];
+        self.smoke = [CCSprite spriteWithSpriteFrameName:@"sky_smoke_1.png"];
+        self.smoke.position = ccp(ori.x + sz.width*0.969, ori.y + sz.height*0.621);
+        self.smoke.scale = 0.5;
+        self.smoke.zOrder = BG_SMOKE_Z;
         _smoke_idx = 0;
-        [_smoke_spriteSheet addChild:_smoke];
+        [self.smoke_spriteSheet addChild:self.smoke];
         
 	}
 	return self;
@@ -82,12 +98,12 @@
 
 -(void)addtoScene: (CCLayer*)layer
 {
-    [layer addChild:_bg_sky];
-    [layer addChild:_bg_grass];
-    [layer addChild:_bg_tree];
-    [layer addChild:_bg_cloud];
+    [layer addChild:self.bg_sky];
+    [layer addChild:self.bg_grass];
+    [layer addChild:self.bg_tree];
+    [layer addChild:self.bg_cloud];
     
-    [layer addChild:_smoke_spriteSheet];
+    [layer addChild:self.smoke_spriteSheet];
 }
 
 -(void)update:(ccTime)dt
@@ -103,16 +119,16 @@
     NSString* frame_name = [NSString stringWithFormat:@"sky_smoke_%i.png",_smoke_idx+1];
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
                             spriteFrameByName:frame_name];
-    [_smoke setDisplayFrame:frame];
+    [self.smoke setDisplayFrame:frame];
     
     //cloud animation
-    CGPoint cur = _bg_cloud.position;
+    CGPoint cur = self.bg_cloud.position;
     cur.x += CLOUD_MV_STEP;
-    if( cur.x > _winRect.size.width + _bg_cloud.contentSize.width/2 )
+    if( cur.x > _winRect.size.width + self.bg_cloud.contentSize.width/2 )
     {
-        cur.x = -_bg_cloud.contentSize.width/2;
+        cur.x = -self.bg_cloud.contentSize.width/2;
     }
-    _bg_cloud.position = cur;
+    self.bg_cloud.position = cur;
     
 }
 

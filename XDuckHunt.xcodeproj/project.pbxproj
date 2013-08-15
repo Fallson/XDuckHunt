@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
+		D24DEADA17BD146600514902 /* sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24DEAD917BD146600514902 /* sniglet.ttf */; };
+		D24DEADD17BD14A500514902 /* DHTimeModePannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannel.m */; };
 		D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B706417AFDD3500F7C915 /* DHGameChapter.m */; };
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
@@ -160,6 +162,9 @@
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
+		D24DEAD917BD146600514902 /* sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sniglet.ttf; path = Resources/sniglet.ttf; sourceTree = "<group>"; };
+		D24DEADB17BD14A500514902 /* DHTimeModePannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannel.h; sourceTree = "<group>"; };
+		D24DEADC17BD14A500514902 /* DHTimeModePannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannel.m; sourceTree = "<group>"; };
 		D26B706317AFDD3500F7C915 /* DHGameChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameChapter.h; sourceTree = "<group>"; };
 		D26B706417AFDD3500F7C915 /* DHGameChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameChapter.m; sourceTree = "<group>"; };
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
@@ -539,6 +544,8 @@
 				D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */,
 				D26B706317AFDD3500F7C915 /* DHGameChapter.h */,
 				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
+				D24DEADB17BD14A500514902 /* DHTimeModePannel.h */,
+				D24DEADC17BD14A500514902 /* DHTimeModePannel.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -546,6 +553,7 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D24DEAD917BD146600514902 /* sniglet.ttf */,
 				D2B6748217ABE89800363DAC /* duck_black_flying.plist */,
 				D2B6748317ABE89800363DAC /* duck_black_flying.png */,
 				D27049BF17A6AB1600342505 /* Cloud.png */,
@@ -1003,6 +1011,7 @@
 				D27049C017A6AB1600342505 /* Cloud.png in Resources */,
 				D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */,
 				D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */,
+				D24DEADA17BD146600514902 /* sniglet.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1139,7 @@
 				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
 				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
 				D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */,
+				D24DEADD17BD14A500514902 /* DHTimeModePannel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

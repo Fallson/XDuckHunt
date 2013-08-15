@@ -17,6 +17,7 @@
     int _max_lineSteps;
     
     CGPoint _startPos;
+    CGPoint _centerPos;
     CGPoint _endPos;
     float   _speedRatio;
     CGPoint _position;
@@ -48,11 +49,12 @@
         
         int r = min(_bbox.size.width, _bbox.size.height);
         r /= (CURVE_RATIO * 2);
-        _endPos = [self centerPnt:_bbox];
-        //NSLog(@"r is %d, and _endPos(%f,%f)", r, _endPos.x, _endPos.y);
-        _endPos.x += ((int)(arc4random()%(2*r))-r);
-        _endPos.y += ((int)(arc4random()%(2*r))-r);
+        _centerPos = [self centerPnt:_bbox];
+        _centerPos.x += ((int)(arc4random()%(2*r))-r);
+        _centerPos.y += ((int)(arc4random()%(2*r))-r);
        
+        _endPos = _centerPos;
+        
         _speedRatio = 1.0;
         _position = _startPos;
         _depth = 0.0;
@@ -95,7 +97,8 @@
 
 -(void)setEndPos:(CGPoint)pos
 {
-    _endPos = pos;
+    _centerPos = pos;
+    _endPos = _centerPos;
 }
 
 -(void)setSpeedRatio:(float)speedRatio
@@ -156,7 +159,6 @@
         return;
     
     _speedRatio = speedRatio;
-    
     _step_dist = DUCK_STEP_DIST*speedRatio;
 }
 
@@ -234,8 +236,15 @@
 {
     double _cur_angle;
     double _delta_angle;
+}
+
+-(void)adjustEndPos
+{
+    float a = min(_bbox.size.width, _bbox.size.height);
+    a /= CURVE_RATIO;
     
-    CGPoint _centerPos;
+    _endPos.x = _centerPos.x + (float)(a * sin(_cur_angle));
+    _endPos.y = _centerPos.y + (float)(a * cos(_cur_angle) * sin(_cur_angle));
 }
 
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
@@ -245,7 +254,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        _centerPos = _endPos;
+        [self adjustEndPos];
     }
     return self;
 }
@@ -312,8 +321,15 @@
 {
     double _cur_angle;
     double _delta_angle;
+}
+
+-(void)adjustEndPos
+{
+    float a = min(_bbox.size.width, _bbox.size.height);
+    a /= (1.5*CURVE_RATIO);
     
-    CGPoint _centerPos;
+    _endPos.x = _centerPos.x + (float)(a * cos(_cur_angle));
+    _endPos.y = _centerPos.y + (float)(a * sin(_cur_angle));
 }
 
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
@@ -323,7 +339,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        _centerPos = _endPos;
+        [self adjustEndPos];
     }
     return self;
 }
@@ -387,8 +403,15 @@
 {
     double _cur_angle;
     double _delta_angle;
+}
+
+-(void)adjustEndPos
+{
+    float a = _bbox.size.width/(2*CURVE_RATIO);
+    float b = _bbox.size.height/(2*CURVE_RATIO);
     
-    CGPoint _centerPos;
+    _endPos.x = _centerPos.x + (float)(a * cos(_cur_angle));
+    _endPos.y = _centerPos.y + (float)(b * sin(_cur_angle));
 }
 
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
@@ -398,7 +421,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        _centerPos = _endPos;
+        [self adjustEndPos];
     }
     return self;
 }
@@ -465,8 +488,15 @@
     int _max_curveSteps;
     double _cur_angle;
     double _delta_angle;
+}
+
+-(void)adjustEndPos
+{
+    float a = _bbox.size.width/(CURVE_RATIO);
+    float b = _bbox.size.height/(1.5*CURVE_RATIO);
     
-    CGPoint _centerPos;
+    _endPos.x = _centerPos.x + (float)(_hor_steps * a / _max_curveSteps);
+    _endPos.y = _centerPos.y + (float)(b * sin(_cur_angle));
 }
 
 -(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
@@ -480,7 +510,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        _centerPos = _endPos;
+        [self adjustEndPos];
     }
     return self;
 }
