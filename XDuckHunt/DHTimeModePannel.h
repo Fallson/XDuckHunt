@@ -10,11 +10,6 @@
 #import "cocos2d.h"
 
 @interface DHTimeModePannel : NSObject
-{
-    int _score;
-    ccTime _left_time;
-    int _hit_count;
-}
 
 -(id) initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;

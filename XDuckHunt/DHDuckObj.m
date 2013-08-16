@@ -19,9 +19,6 @@
 
 @interface DHDuckObj()
 {
-    CCSpriteBatchNode* _duck_spriteSheet;
-    CCSprite* _duck;
-    
     int _duck_idx;
     ccTime _accDT;
     CGRect _winRect;

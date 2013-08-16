@@ -10,11 +10,7 @@
 #import "ccTypes.h"
 
 @interface DHTimeModePannel()
-{
-    CCLabelTTF* _score_label;
-    CCLabelTTF* _left_time_label;
-    CCLabelTTF* _hit_count_label;
-    
+{    
     CGRect _winRect;
 }
 

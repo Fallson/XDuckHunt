@@ -14,12 +14,7 @@
 enum DUCK_STATE{FLYING=0, START_DEAD, DEAD, START_FLYAWAY, FLYAWAY, DISAPPEAR};
 
 @interface DHDuckObj : NSObject
-{
-    DHDuckPilot* _duck_pilot;
-    enum DUCK_STATE _duck_state;
-    CGSize _duck_size;
-    ccTime _duck_living_time;
-}
+
 @property(nonatomic, retain) DHDuckPilot* duck_pilot;
 @property(nonatomic, assign) enum DUCK_STATE duck_state;
 @property(nonatomic, assign) CGSize duck_size;

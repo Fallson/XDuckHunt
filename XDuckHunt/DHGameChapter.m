@@ -12,9 +12,6 @@
 #import "DHPilot.h"
 
 @interface DHGameChapter()
-{
-    NSMutableArray * _chapters;
-}
 @property(nonatomic, retain)NSMutableArray* chapters;
 @end
 

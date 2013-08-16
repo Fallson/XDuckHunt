@@ -15,14 +15,6 @@
 
 @interface DHBackGroundObj()
 {
-    CCSprite* _bg_sky;
-    CCSprite* _bg_grass;
-    CCSprite* _bg_tree;
-    CCSprite* _bg_cloud;
-    
-    
-    CCSpriteBatchNode* _smoke_spriteSheet;
-    CCSprite* _smoke;
     int _smoke_idx;
     ccTime _accDT;
     CGRect _winRect;
