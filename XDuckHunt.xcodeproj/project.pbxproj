@@ -13,9 +13,11 @@
 		D21E8C8A17C0AC3300D1F499 /* DHGameOptionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */; };
 		D21E8C8B17C0AC3300D1F499 /* DHGameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */; };
 		D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */; };
+		D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */; };
+		D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C9217C1D37900D1F499 /* DHMenuObj.m */; };
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
 		D24DEADA17BD146600514902 /* sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24DEAD917BD146600514902 /* sniglet.ttf */; };
-		D24DEADD17BD14A500514902 /* DHTimeModePannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannel.m */; };
+		D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */; };
 		D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B706417AFDD3500F7C915 /* DHGameChapter.m */; };
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
@@ -177,12 +179,16 @@
 		D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameOverLayer.m; sourceTree = "<group>"; };
 		D21E8C8717C0AC3200D1F499 /* DHGameScoreListLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameScoreListLayer.h; sourceTree = "<group>"; };
 		D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameScoreListLayer.m; sourceTree = "<group>"; };
+		D21E8C8E17C1CE6A00D1F499 /* DHFreeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFreeModePannelObj.h; sourceTree = "<group>"; };
+		D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModePannelObj.m; sourceTree = "<group>"; };
+		D21E8C9117C1D37800D1F499 /* DHMenuObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHMenuObj.h; sourceTree = "<group>"; };
+		D21E8C9217C1D37900D1F499 /* DHMenuObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHMenuObj.m; sourceTree = "<group>"; };
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
 		D24DEAD917BD146600514902 /* sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sniglet.ttf; path = Resources/sniglet.ttf; sourceTree = "<group>"; };
-		D24DEADB17BD14A500514902 /* DHTimeModePannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannel.h; sourceTree = "<group>"; };
-		D24DEADC17BD14A500514902 /* DHTimeModePannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannel.m; sourceTree = "<group>"; };
+		D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannelObj.h; sourceTree = "<group>"; };
+		D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannelObj.m; sourceTree = "<group>"; };
 		D26B706317AFDD3500F7C915 /* DHGameChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameChapter.h; sourceTree = "<group>"; };
 		D26B706417AFDD3500F7C915 /* DHGameChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameChapter.m; sourceTree = "<group>"; };
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
@@ -580,10 +586,14 @@
 				D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */,
 				D26B706317AFDD3500F7C915 /* DHGameChapter.h */,
 				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
-				D24DEADB17BD14A500514902 /* DHTimeModePannel.h */,
-				D24DEADC17BD14A500514902 /* DHTimeModePannel.m */,
+				D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */,
+				D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */,
+				D21E8C8E17C1CE6A00D1F499 /* DHFreeModePannelObj.h */,
+				D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */,
 				D21E8C7B17C0884E00D1F499 /* DHDogObj.h */,
 				D21E8C7C17C0884E00D1F499 /* DHDogObj.m */,
+				D21E8C9117C1D37800D1F499 /* DHMenuObj.h */,
+				D21E8C9217C1D37900D1F499 /* DHMenuObj.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1177,13 +1187,15 @@
 				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
 				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
 				D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */,
-				D24DEADD17BD14A500514902 /* DHTimeModePannel.m in Sources */,
+				D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */,
 				D21E8C7D17C0884E00D1F499 /* DHDogObj.m in Sources */,
 				D21E8C8017C0ABAF00D1F499 /* DHFreeModeGameLayer.m in Sources */,
 				D21E8C8917C0AC3300D1F499 /* DHGameMenuLayer.m in Sources */,
 				D21E8C8A17C0AC3300D1F499 /* DHGameOptionLayer.m in Sources */,
 				D21E8C8B17C0AC3300D1F499 /* DHGameOverLayer.m in Sources */,
 				D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */,
+				D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */,
+				D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

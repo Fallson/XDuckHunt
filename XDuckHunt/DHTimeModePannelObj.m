@@ -1,15 +1,15 @@
 //
-//  DHTimeModePannel.m
+//  DHTimeModePannelObj.m
 //  XDuckHunt
 //
 //  Created by Fallson on 8/15/13.
 //  Copyright (c) 2013 Fallson. All rights reserved.
 //
 
-#import "DHTimeModePannel.h"
+#import "DHTimeModePannelObj.h"
 #import "ccTypes.h"
 
-@interface DHTimeModePannel()
+@interface DHTimeModePannelObj()
 {
     CGRect _winRect;
 }
@@ -19,7 +19,7 @@
 @property (nonatomic, retain)CCLabelTTF* hit_count_label;
 @end
 
-@implementation DHTimeModePannel
+@implementation DHTimeModePannelObj
 
 @synthesize score = _score;
 @synthesize left_time = _left_time;

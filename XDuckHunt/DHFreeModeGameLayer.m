@@ -18,7 +18,7 @@
 #import "DHPilot.h"
 #import "DHConstons.h"
 #import "DHGameChapter.h"
-#import "DHTimeModePannel.h"
+#import "DHFreeModePannelObj.h"
 #pragma mark - DHFreeModeGameLayer
 
 // DHFreeModeGameLayer implementation
@@ -31,7 +31,7 @@
     enum CHAPTER_LVL _cur_chp;
     CGRect           _duckRect;
     
-    DHTimeModePannel* _pannel;
+    DHFreeModePannelObj* _pannel;
     CGRect            _pannelRect;
     
     ccTime         _gameTime;
@@ -112,7 +112,7 @@
     _pannelRect.size.height *= 0.1;
     NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
           _pannelRect.size.width, _pannelRect.size.height);
-    _pannel = [[DHTimeModePannel alloc] initWithWinRect:_pannelRect];
+    _pannel = [[DHFreeModePannelObj alloc] initWithWinRect:_pannelRect];
     [_pannel addtoScene:self];
 }
 
@@ -172,7 +172,7 @@
 
 -(void)updatePannel:(ccTime)dt
 {
-    [_pannel setLeft_time:_gameTime];
+    [_pannel setLeft_duck:(int)_gameTime];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_hit_count*100];
     [_pannel update:dt];

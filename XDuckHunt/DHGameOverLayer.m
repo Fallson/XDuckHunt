@@ -18,7 +18,6 @@
 #import "DHPilot.h"
 #import "DHConstons.h"
 #import "DHGameChapter.h"
-#import "DHTimeModePannel.h"
 #pragma mark - DHGameOverLayer
 
 // DHGameOverLayer implementation
@@ -30,9 +29,6 @@
     DHGameChapter*   _gameChps;
     enum CHAPTER_LVL _cur_chp;
     CGRect           _duckRect;
-    
-    DHTimeModePannel* _pannel;
-    CGRect            _pannelRect;
     
     ccTime         _gameTime;
     int            _hit_count;
@@ -64,7 +60,6 @@
     {
         [self initBG];
         [self initDucks];
-        [self initPannel];
         
         _gameTime = 0;
         _hit_count = 0;
@@ -105,17 +100,6 @@
     }
 }
 
--(void)initPannel
-{
-    _pannelRect = _bgRect;
-    _pannelRect.origin.y += 0.9*_pannelRect.size.height;
-    _pannelRect.size.height *= 0.1;
-    NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
-          _pannelRect.size.width, _pannelRect.size.height);
-    _pannel = [[DHTimeModePannel alloc] initWithWinRect:_pannelRect];
-    [_pannel addtoScene:self];
-}
-
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
@@ -123,7 +107,6 @@
     
     [self updateBG:dt];
     [self updateDucks:dt withGameTime:_gameTime];
-    [self updatePannel:dt];
 }
 
 -(void) updateBG:(ccTime)dt
@@ -168,14 +151,6 @@
             break;
         }
     }
-}
-
--(void)updatePannel:(ccTime)dt
-{
-    [_pannel setLeft_time:_gameTime];
-    [_pannel setHit_count:_hit_count];
-    [_pannel setScore:_hit_count*100];
-    [_pannel update:dt];
 }
 
 - (void) nextFrame:(ccTime)dt
@@ -233,7 +208,6 @@
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
     [_gameChps release];
-    [_pannel release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];
