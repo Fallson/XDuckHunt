@@ -1,5 +1,5 @@
 //
-//  HelloWorldLayer.m
+//  DHGameOverLayer.m
 //  XDuckHunt
 //
 //  Created by Fallson on 7/27/13.
@@ -8,7 +8,7 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
+#import "DHGameOverLayer.h"
 #import "CCTouchDispatcher.h"
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -19,10 +19,10 @@
 #import "DHConstons.h"
 #import "DHGameChapter.h"
 #import "DHTimeModePannel.h"
-#pragma mark - HelloWorldLayer
+#pragma mark - DHGameOverLayer
 
-// HelloWorldLayer implementation
-@implementation HelloWorldLayer
+// DHGameOverLayer implementation
+@implementation DHGameOverLayer
 {
     DHBackGroundObj* _bgObj;
     CGRect           _bgRect;
@@ -38,14 +38,14 @@
     int            _hit_count;
 }
 
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
+// Helper class method that creates a Scene with the DHGameOverLayer as the only child.
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	DHGameOverLayer *layer = [DHGameOverLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];

@@ -1,5 +1,5 @@
 //
-//  HelloWorldLayer.h
+//  DHTimeModeGameLayer.h
 //  XDuckHunt
 //
 //  Created by Fallson on 7/27/13.
@@ -12,11 +12,11 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-// HelloWorldLayer
-@interface HelloWorldLayer : CCLayer{
+// DHTimeModeGameLayer
+@interface DHTimeModeGameLayer : CCLayer{
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
+// returns a CCScene that contains the DHTimeModeGameLayer as the only child
 +(CCScene *) scene;
 
 @end

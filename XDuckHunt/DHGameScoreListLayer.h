@@ -1,5 +1,5 @@
 //
-//  IntroLayer.h
+//  DHGameScoreListLayer.h
 //  XDuckHunt
 //
 //  Created by Fallson on 7/27/13.
@@ -10,8 +10,7 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-// HelloWorldLayer
-@interface IntroLayer : CCLayer
+@interface DHGameScoreListLayer : CCLayer
 {
 }
 

@@ -10,7 +10,7 @@
 #import "ccTypes.h"
 
 @interface DHTimeModePannel()
-{    
+{
     CGRect _winRect;
 }
 

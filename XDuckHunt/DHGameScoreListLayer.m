@@ -1,5 +1,5 @@
 //
-//  IntroLayer.m
+//  DHGameScoreListLayer.m
 //  XDuckHunt
 //
 //  Created by Fallson on 7/27/13.
@@ -8,23 +8,19 @@
 
 
 // Import the interfaces
-#import "IntroLayer.h"
-#import "HelloWorldLayer.h"
+#import "DHGameScoreListLayer.h"
 
+#pragma mark - DHGameScoreListLayer
+@implementation DHGameScoreListLayer
 
-#pragma mark - IntroLayer
-
-// HelloWorldLayer implementation
-@implementation IntroLayer
-
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
+// Helper class method that creates a Scene with the DHGameScoreListLayer as the only child.
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	IntroLayer *layer = [IntroLayer node];
+	DHGameScoreListLayer *layer = [DHGameScoreListLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -58,9 +54,4 @@
 	return self;
 }
 
--(void) onEnter
-{
-	[super onEnter];
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
-}
 @end

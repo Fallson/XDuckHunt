@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D21E8C7D17C0884E00D1F499 /* DHDogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C7C17C0884E00D1F499 /* DHDogObj.m */; };
+		D21E8C8017C0ABAF00D1F499 /* DHFreeModeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C7F17C0ABAF00D1F499 /* DHFreeModeGameLayer.m */; };
+		D21E8C8917C0AC3300D1F499 /* DHGameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8217C0AC3200D1F499 /* DHGameMenuLayer.m */; };
+		D21E8C8A17C0AC3300D1F499 /* DHGameOptionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */; };
+		D21E8C8B17C0AC3300D1F499 /* DHGameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */; };
+		D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */; };
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
 		D24DEADA17BD146600514902 /* sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24DEAD917BD146600514902 /* sniglet.ttf */; };
 		D24DEADD17BD14A500514902 /* DHTimeModePannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannel.m */; };
@@ -146,8 +152,8 @@
 		D29EEB2017A3AC7A0072B0EA /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB1F17A3AC7A0072B0EA /* vec4.c */; };
 		D29EEB2517A3AC7A0072B0EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2417A3AC7A0072B0EA /* main.m */; };
 		D29EEB2817A3AC7A0072B0EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2717A3AC7A0072B0EA /* AppDelegate.m */; };
-		D29EEB2B17A3AC7A0072B0EA /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2A17A3AC7A0072B0EA /* HelloWorldLayer.m */; };
-		D29EEB2E17A3AC7A0072B0EA /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2D17A3AC7A0072B0EA /* IntroLayer.m */; };
+		D29EEB2B17A3AC7A0072B0EA /* DHTimeModeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */; };
+		D29EEB2E17A3AC7A0072B0EA /* DHGameSplashLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2D17A3AC7A0072B0EA /* DHGameSplashLayer.m */; };
 		D29EEB5417A4F2130072B0EA /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EEB5117A4F2130072B0EA /* bg_grass.png */; };
 		D29EEB5517A4F2130072B0EA /* bg_sky.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EEB5217A4F2130072B0EA /* bg_sky.png */; };
 		D29EEB5617A4F2130072B0EA /* bg_tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EEB5317A4F2130072B0EA /* bg_tree.png */; };
@@ -159,6 +165,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D21E8C7B17C0884E00D1F499 /* DHDogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHDogObj.h; sourceTree = "<group>"; };
+		D21E8C7C17C0884E00D1F499 /* DHDogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHDogObj.m; sourceTree = "<group>"; };
+		D21E8C7E17C0ABAF00D1F499 /* DHFreeModeGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFreeModeGameLayer.h; sourceTree = "<group>"; };
+		D21E8C7F17C0ABAF00D1F499 /* DHFreeModeGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModeGameLayer.m; sourceTree = "<group>"; };
+		D21E8C8117C0AC3200D1F499 /* DHGameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameMenuLayer.h; sourceTree = "<group>"; };
+		D21E8C8217C0AC3200D1F499 /* DHGameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameMenuLayer.m; sourceTree = "<group>"; };
+		D21E8C8317C0AC3200D1F499 /* DHGameOptionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameOptionLayer.h; sourceTree = "<group>"; };
+		D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameOptionLayer.m; sourceTree = "<group>"; };
+		D21E8C8517C0AC3200D1F499 /* DHGameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameOverLayer.h; sourceTree = "<group>"; };
+		D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameOverLayer.m; sourceTree = "<group>"; };
+		D21E8C8717C0AC3200D1F499 /* DHGameScoreListLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameScoreListLayer.h; sourceTree = "<group>"; };
+		D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameScoreListLayer.m; sourceTree = "<group>"; };
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
@@ -447,10 +465,10 @@
 		D29EEB2417A3AC7A0072B0EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D29EEB2617A3AC7A0072B0EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D29EEB2717A3AC7A0072B0EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D29EEB2917A3AC7A0072B0EA /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		D29EEB2A17A3AC7A0072B0EA /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		D29EEB2C17A3AC7A0072B0EA /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		D29EEB2D17A3AC7A0072B0EA /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		D29EEB2917A3AC7A0072B0EA /* DHTimeModeGameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeModeGameLayer.h; sourceTree = "<group>"; };
+		D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTimeModeGameLayer.m; sourceTree = "<group>"; };
+		D29EEB2C17A3AC7A0072B0EA /* DHGameSplashLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHGameSplashLayer.h; sourceTree = "<group>"; };
+		D29EEB2D17A3AC7A0072B0EA /* DHGameSplashLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHGameSplashLayer.m; sourceTree = "<group>"; };
 		D29EEB5117A4F2130072B0EA /* bg_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_grass.png; path = Resources/bg_grass.png; sourceTree = "<group>"; };
 		D29EEB5217A4F2130072B0EA /* bg_sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_sky.png; path = Resources/bg_sky.png; sourceTree = "<group>"; };
 		D29EEB5317A4F2130072B0EA /* bg_tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_tree.png; path = Resources/bg_tree.png; sourceTree = "<group>"; };
@@ -486,6 +504,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21E8C8D17C0AC5400D1F499 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				D29EEB2917A3AC7A0072B0EA /* DHTimeModeGameLayer.h */,
+				D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */,
+				D21E8C7E17C0ABAF00D1F499 /* DHFreeModeGameLayer.h */,
+				D21E8C7F17C0ABAF00D1F499 /* DHFreeModeGameLayer.m */,
+				D29EEB2C17A3AC7A0072B0EA /* DHGameSplashLayer.h */,
+				D29EEB2D17A3AC7A0072B0EA /* DHGameSplashLayer.m */,
+				D21E8C8117C0AC3200D1F499 /* DHGameMenuLayer.h */,
+				D21E8C8217C0AC3200D1F499 /* DHGameMenuLayer.m */,
+				D21E8C8317C0AC3200D1F499 /* DHGameOptionLayer.h */,
+				D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */,
+				D21E8C8517C0AC3200D1F499 /* DHGameOverLayer.h */,
+				D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */,
+				D21E8C8717C0AC3200D1F499 /* DHGameScoreListLayer.h */,
+				D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
 		D29EE97517A3AC760072B0EA = {
 			isa = PBXGroup;
 			children = (
@@ -523,17 +562,14 @@
 		D29EE99517A3AC760072B0EA /* XDuckHunt */ = {
 			isa = PBXGroup;
 			children = (
+				D21E8C8D17C0AC5400D1F499 /* Layers */,
 				D29EEB2617A3AC7A0072B0EA /* AppDelegate.h */,
 				D29EEB2717A3AC7A0072B0EA /* AppDelegate.m */,
-				D29EEB2917A3AC7A0072B0EA /* HelloWorldLayer.h */,
-				D29EEB2A17A3AC7A0072B0EA /* HelloWorldLayer.m */,
-				D29EEB2C17A3AC7A0072B0EA /* IntroLayer.h */,
-				D29EEB2D17A3AC7A0072B0EA /* IntroLayer.m */,
-				D2B6748017ABE3A200363DAC /* DHConstons.h */,
-				D227F06A17ACD4C600981E06 /* DHZDepth.h */,
 				D29EE99617A3AC760072B0EA /* Resources */,
 				D29EE9AE17A3AC770072B0EA /* libs */,
 				D29EEB2217A3AC7A0072B0EA /* Supporting Files */,
+				D2B6748017ABE3A200363DAC /* DHConstons.h */,
+				D227F06A17ACD4C600981E06 /* DHZDepth.h */,
 				D29EEB5717A4F3130072B0EA /* DHBackGroundObj.h */,
 				D29EEB5817A4F3130072B0EA /* DHBackGroundObj.m */,
 				D29EEB5A17A4FDAD0072B0EA /* DHDuckObj.h */,
@@ -546,6 +582,8 @@
 				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
 				D24DEADB17BD14A500514902 /* DHTimeModePannel.h */,
 				D24DEADC17BD14A500514902 /* DHTimeModePannel.m */,
+				D21E8C7B17C0884E00D1F499 /* DHDogObj.h */,
+				D21E8C7C17C0884E00D1F499 /* DHDogObj.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1132,14 +1170,20 @@
 				D29EEB2017A3AC7A0072B0EA /* vec4.c in Sources */,
 				D29EEB2517A3AC7A0072B0EA /* main.m in Sources */,
 				D29EEB2817A3AC7A0072B0EA /* AppDelegate.m in Sources */,
-				D29EEB2B17A3AC7A0072B0EA /* HelloWorldLayer.m in Sources */,
-				D29EEB2E17A3AC7A0072B0EA /* IntroLayer.m in Sources */,
+				D29EEB2B17A3AC7A0072B0EA /* DHTimeModeGameLayer.m in Sources */,
+				D29EEB2E17A3AC7A0072B0EA /* DHGameSplashLayer.m in Sources */,
 				D29EEB5917A4F3140072B0EA /* DHBackGroundObj.m in Sources */,
 				D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */,
 				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
 				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
 				D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */,
 				D24DEADD17BD14A500514902 /* DHTimeModePannel.m in Sources */,
+				D21E8C7D17C0884E00D1F499 /* DHDogObj.m in Sources */,
+				D21E8C8017C0ABAF00D1F499 /* DHFreeModeGameLayer.m in Sources */,
+				D21E8C8917C0AC3300D1F499 /* DHGameMenuLayer.m in Sources */,
+				D21E8C8A17C0AC3300D1F499 /* DHGameOptionLayer.m in Sources */,
+				D21E8C8B17C0AC3300D1F499 /* DHGameOverLayer.m in Sources */,
+				D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
