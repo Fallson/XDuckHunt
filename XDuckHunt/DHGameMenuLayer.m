@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 
 #import "DHBackGroundObj.h"
+#import "DHMenuObj.h"
 #pragma mark - DHGameMenuLayer
 
 // DHGameMenuLayer implementation
@@ -23,6 +24,8 @@
     CGRect           _bgRect;
 
     //menus
+    DHMenuObj*       _menuObj;
+    CGRect           _menuRect;
 }
 
 // Helper class method that creates a Scene with the DHGameMenuLayer as the only child.
@@ -50,6 +53,7 @@
 	if( (self=[super init]) )
     {
         [self initBG];
+        [self initMenu];
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -70,10 +74,18 @@
     [_bgObj addtoScene: self];
 }
 
+-(void)initMenu
+{
+    _menuRect = _bgRect;
+    _menuObj = [[DHMenuObj alloc] initWithWinRect:_menuRect];
+    [_menuObj addtoScene: self];
+}
+
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
     [self updateBG:dt];
+    [self updateMenu:dt];
 }
 
 -(void) updateBG:(ccTime)dt
@@ -81,21 +93,12 @@
     [_bgObj update:dt];
 }
 
-#pragma mark - touch part
--(void) registerWithTouchDispatcher
+-(void)updateMenu:(ccTime)dt
 {
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    [_menuObj update:dt];
 }
 
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
-}
-
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-	CGPoint location = [self convertTouchToNodeSpace: touch];
-    
-    location.x += 1;
-}
+#pragma mark - touch part
 
 #pragma mark - dealloc part
 // on "dealloc" you need to release all your retained objects
@@ -105,6 +108,7 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
+    [_menuObj release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

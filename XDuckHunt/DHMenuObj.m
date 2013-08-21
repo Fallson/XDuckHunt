@@ -7,39 +7,44 @@
 //
 
 #import "DHMenuObj.h"
-#import "DHConstons.h"
-#import "DHZDepth.h"
-
-#define CLOUD_MV_STEP    5
-#define SMOKE_SPRITE_NUM 5
+#import "DHLabel.h"
+#import "DHTimeModeGameLayer.h"
+#import "DHFreeModeGameLayer.h"
+#import "DHGameOptionLayer.h"
+#import "DHGameScoreListLayer.h"
 
 @interface DHMenuObj()
 {
-    int _smoke_idx;
-    ccTime _accDT;
     CGRect _winRect;
 }
 
-@property(nonatomic, retain)CCSprite* bg_sky;
-@property(nonatomic, retain)CCSprite* bg_grass;
-@property(nonatomic, retain)CCSprite* bg_tree;
-@property(nonatomic, retain)CCSprite* bg_cloud;
-@property(nonatomic, retain)CCSpriteBatchNode* smoke_spriteSheet;
-@property(nonatomic, retain)CCSprite* smoke;
+@property(nonatomic, retain)CCMenu* main_menu;
+//@property(nonatomic, retain)CCMenuItem* menuitem_freemode;
+//@property(nonatomic, retain)CCMenuItem* menuitem_timemode;
+//@property(nonatomic, retain)CCMenuItem* menuitem_option;
+//@property(nonatomic, retain)CCMenuItem* menuitem_scorelist;
+@property(nonatomic, retain) DHLabel* freemode_label;
+@property(nonatomic, retain) DHLabel* timemode_label;
+@property(nonatomic, retain) DHLabel* option_label;
+@property(nonatomic, retain) DHLabel* scorelist_label;
+
 @end
 
 @implementation DHMenuObj
-@synthesize bg_sky=_bg_sky;
-@synthesize bg_grass=_bg_grass;
-@synthesize bg_tree=_bg_tree;
-@synthesize bg_cloud=_bg_cloud;
-@synthesize smoke_spriteSheet=_smoke_spriteSheet;
-@synthesize smoke=_smoke;
+@synthesize main_menu=_main_menu;
+//@synthesize menuitem_freemode=_menuitem_freemode;
+//@synthesize menuitem_timemode=_menuitem_timemode;
+//@synthesize menuitem_option=_menuitem_option;
+//@synthesize menuitem_scorelist=_menuitem_scorelist;
+@synthesize freemode_label=_freemode_label;
+@synthesize timemode_label=_timemode_label;
+@synthesize option_label=_option_label;
+@synthesize scorelist_label=_scorelist_label;
+
+
 
 -(id) initWithWinRect: (CGRect)rect
 {
-    //static int inited = 0; //we should use singleton
-    
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) )
@@ -48,78 +53,84 @@
         CGSize sz = rect.size;
         CGPoint ori = rect.origin;
         
-        self.bg_sky = [CCSprite spriteWithFile: @"bg_sky.png"];
-        float scale_r = sz.height/self.bg_sky.contentSize.height;
-        //        NSLog(@"sz(%f,%f) and sky(%f,%f), scale_r is: %f", sz.width, sz.height,
-        //              _bg_sky.contentSize.width, _bg_sky.contentSize.height ,scale_r);
-        self.bg_sky.scale = scale_r;
-        self.bg_sky.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
-        self.bg_sky.zOrder = BG_SKY_Z;
+        CCMenuItem *menuitem_freemode = [CCMenuItemImage
+                                         itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+                                         target:self selector:@selector(FreeModeMenuPressed:)];
+        menuitem_freemode.position = ccp(ori.x + sz.width*0.2, ori.y + sz.height*0.8);
+        NSString* freemode_str = [NSString stringWithFormat:@"Free Mode"];
+        self.freemode_label = [DHLabel labelWithString:freemode_str fontName:@"sniglet.ttf" fontSize:20];
+        self.freemode_label.color=ccORANGE;
+        self.freemode_label.position = menuitem_freemode.position;
+        [self.freemode_label setAnchorPoint: ccp(0.5f, 0.5f)];
         
-        self.bg_grass = [CCSprite spriteWithFile: @"bg_grass.png"];
-        self.bg_grass.scaleX = sz.width/self.bg_grass.contentSize.width;
-        self.bg_grass.scaleY = sz.height/self.bg_grass.contentSize.height;
-        self.bg_grass.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
-        self.bg_grass.zOrder = BG_GRASS_Z;
         
-        self.bg_tree = [CCSprite spriteWithFile: @"bg_tree.png"];
-        self.bg_tree.scaleX = sz.width/self.bg_tree.contentSize.width;
-        self.bg_tree.scaleY = sz.height/self.bg_tree.contentSize.height;
-        self.bg_tree.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
-        self.bg_tree.zOrder = BG_TREE_Z;
+        CCMenuItem *menuitem_timemode = [CCMenuItemImage
+                                         itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+                                         target:self selector:@selector(TimeModeMenuPressed:)];
+        menuitem_timemode.position = ccp(ori.x + sz.width*0.35, ori.y + sz.height*0.6);
+        NSString* timemode_str = [NSString stringWithFormat:@"Time Mode"];
+        self.timemode_label = [DHLabel labelWithString:timemode_str fontName:@"sniglet.ttf" fontSize:20];
+        self.timemode_label.color=ccORANGE;
+        self.timemode_label.position = menuitem_timemode.position;
+        [self.timemode_label setAnchorPoint: ccp(0.5f, 0.5f)];
         
-        self.bg_cloud = [CCSprite spriteWithFile: @"Cloud.png"];
-        self.bg_cloud.scale = 0.25;
-        self.bg_cloud.position = ccp( ori.x, ori.y + sz.height*0.78 );
-        self.bg_cloud.zOrder = BG_CLOUD_Z;
+        CCMenuItem *menuitem_option = [CCMenuItemImage
+                                       itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+                                       target:self selector:@selector(OptionMenuPressed:)];
+        menuitem_option.position = ccp(ori.x + sz.width*0.6, ori.y + sz.height*0.6);
+        NSString* option_str = [NSString stringWithFormat:@"Game Option"];
+        self.option_label = [DHLabel labelWithString:option_str fontName:@"sniglet.ttf" fontSize:20];
+        self.option_label.color=ccORANGE;
+        self.option_label.position = menuitem_option.position;
+        [self.option_label setAnchorPoint: ccp(0.5f, 0.5f)];
         
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"sky_smoke.plist"];
-        self.smoke_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"sky_smoke.png"];
-        self.smoke = [CCSprite spriteWithSpriteFrameName:@"sky_smoke_1.png"];
-        self.smoke.position = ccp(ori.x + sz.width*0.969, ori.y + sz.height*0.621);
-        self.smoke.scale = 0.5;
-        self.smoke.zOrder = BG_SMOKE_Z;
-        _smoke_idx = 0;
-        [self.smoke_spriteSheet addChild:self.smoke];
+        CCMenuItem *menuitem_scorelist = [CCMenuItemImage
+                                          itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+                                          target:self selector:@selector(ScoreListMenuPressed:)];
+        menuitem_scorelist.position = ccp(ori.x + sz.width*0.8, ori.y + sz.height*0.8);
+        NSString* scorelist_str = [NSString stringWithFormat:@"Score List"];
+        self.scorelist_label = [DHLabel labelWithString:scorelist_str fontName:@"sniglet.ttf" fontSize:20];
+        self.scorelist_label.color=ccORANGE;
+        self.scorelist_label.position = menuitem_scorelist.position;
+        [self.scorelist_label setAnchorPoint: ccp(0.5f, 0.5f)];
         
+        _main_menu = [CCMenu menuWithItems:menuitem_freemode, menuitem_timemode, menuitem_option, menuitem_scorelist, nil];
+        _main_menu.position = CGPointZero;
 	}
 	return self;
 }
 
 -(void)addtoScene: (CCLayer*)layer
 {
-    [layer addChild:self.bg_sky];
-    [layer addChild:self.bg_grass];
-    [layer addChild:self.bg_tree];
-    [layer addChild:self.bg_cloud];
-    
-    [layer addChild:self.smoke_spriteSheet];
+    [layer addChild:self.main_menu];
+    [layer addChild:self.freemode_label];
+    [layer addChild:self.timemode_label];
+    [layer addChild:self.option_label];
+    [layer addChild:self.scorelist_label];
 }
 
 -(void)update:(ccTime)dt
 {
-    _accDT += dt;
-    if( _accDT < 0.5 )
-        return;
-    _accDT = 0;
-    
-    //smoke animation
-    _smoke_idx = (++_smoke_idx)%SMOKE_SPRITE_NUM;
-    
-    NSString* frame_name = [NSString stringWithFormat:@"sky_smoke_%i.png",_smoke_idx+1];
-    CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
-                            spriteFrameByName:frame_name];
-    [self.smoke setDisplayFrame:frame];
-    
-    //cloud animation
-    CGPoint cur = self.bg_cloud.position;
-    cur.x += CLOUD_MV_STEP;
-    if( cur.x > _winRect.size.width + self.bg_cloud.contentSize.width/2 )
-    {
-        cur.x = -self.bg_cloud.contentSize.width/2;
-    }
-    self.bg_cloud.position = cur;
-    
+}
+
+-(void)FreeModeMenuPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHFreeModeGameLayer scene] ]];
+}
+
+-(void)TimeModeMenuPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHTimeModeGameLayer scene] ]];
+}
+
+-(void)OptionMenuPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOptionLayer scene] ]];
+}
+
+-(void)ScoreListMenuPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameScoreListLayer scene] ]];
 }
 
 @end
