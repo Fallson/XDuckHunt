@@ -36,6 +36,7 @@
     
     ccTime         _gameTime;
     int            _hit_count;
+    int            _miss_count;
 }
 
 // Helper class method that creates a Scene with the DHFreeModeGameLayer as the only child.
@@ -68,6 +69,7 @@
         
         _gameTime = 0;
         _hit_count = 0;
+        _miss_count = 0;
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];

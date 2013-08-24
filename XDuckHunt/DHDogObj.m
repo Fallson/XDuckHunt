@@ -8,6 +8,10 @@
 
 #import "DHDogObj.h"
 #import "DHZDepth.h"
+#import "DHConstons.h"
+
+#define DOG_SPRITE_NUM 4
+#define DOG_MV_STEP    10
 
 @interface DHDogObj()
 {
@@ -31,7 +35,7 @@
 {
     if( (self=[super init]) )
     {
-        self.dog_state = RUNNING;
+        self.dog_state = DOG_RUNNING;
         
         _winRect = rect;
         
@@ -42,7 +46,7 @@
         _dog_size.width = self.dog.contentSize.width * self.dog.scaleX;
         _dog_size.height = self.dog.contentSize.height * self.dog.scaleY;
 
-        self.dog.position = ccp(0,_winRect.size.height/8);
+        self.dog.position = ccp(0,_winRect.size.height/2);
         self.dog.zOrder = DOG_Z;
         [self.dog_spriteSheet addChild:self.dog];
         
@@ -59,7 +63,102 @@
 
 -(void)update:(ccTime)dt
 {
+    _accDT += dt;
+    if( _accDT < DOG_UPDATE_TIME )
+        return;
+    _accDT = 0;
     
+    switch( self.dog_state )
+    {
+        case DOG_RUNNING:
+        {
+            ++_dog_idx;
+            
+            NSString* frame_name = [NSString stringWithFormat:@"dog_%d.png",_dog_idx+1];
+            CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
+                                    spriteFrameByName:frame_name];
+            [self.dog setDisplayFrame:frame];
+            
+            if( _dog_idx == 3 )
+            {
+                self.dog_state = DOG_SEEKING;
+            }
+        }
+            break;
+        case DOG_SEEKING:
+        {
+            ++_dog_idx;
+            NSString* frame_name = [NSString stringWithFormat:@"dog_%d.png", _dog_idx+1];
+            CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
+                                    spriteFrameByName:frame_name];
+            [self.dog setDisplayFrame:frame];
+            
+            if( _dog_idx == 5 )
+            {
+                self.dog_state = DOG_RUNNING2;
+                _dog_idx = 0;
+            }
+        }
+            break;
+        case DOG_RUNNING2:
+        {
+            ++_dog_idx;
+            NSString* frame_name = [NSString stringWithFormat:@"dog_%d.png",_dog_idx];
+            CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
+                                    spriteFrameByName:frame_name];
+            [self.dog setDisplayFrame:frame];
+            
+            if( _dog_idx == 3 )
+            {
+                self.dog_state = DOG_JUMPING;
+                _dog_idx = 5;
+            }
+        }
+            break;
+        case DOG_JUMPING:
+        {
+            ++_dog_idx;
+            NSString* frame_name = [NSString stringWithFormat:@"dog_%d.png",_dog_idx+1];
+            CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
+                                    spriteFrameByName:frame_name];
+            [self.dog setDisplayFrame:frame];
+            
+            if(_dog_idx == 6)
+            {
+                //
+            }
+            else if(_dog_idx == 7)
+            {
+                CGPoint cur = self.dog.position;
+                cur.y += _winRect.size.height/5;
+                self.dog.position = cur;
+            }
+            else if(_dog_idx == 8)
+            {
+                CGPoint cur = self.dog.position;
+                cur.y += _winRect.size.height/5;
+                self.dog.position = cur;
+                
+                self.dog_state = DOG_DISAPPEAR;
+            }
+        }
+            break;
+        case DOG_DISAPPEAR:
+        {
+            self.dog.visible = FALSE;
+        }
+            break;
+        default:
+            break;
+    }
+
+    CGPoint cur = self.dog.position;
+    cur.x += DOG_MV_STEP;
+    if( cur.x > _winRect.size.width + self.dog.contentSize.width/2 )
+    {
+        cur.x = -self.dog.contentSize.width/2;
+    }
+    self.dog.position = cur;
 }
 
 @end

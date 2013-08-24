@@ -19,6 +19,7 @@
 #import "DHConstons.h"
 #import "DHGameChapter.h"
 #import "DHTimeModePannelObj.h"
+#import "DHDogObj.h"
 #pragma mark - DHTimeModeGameLayer
 
 // DHTimeModeGameLayer implementation
@@ -33,6 +34,9 @@
     
     DHTimeModePannelObj* _pannel;
     CGRect            _pannelRect;
+    
+    DHDogObj*        _dogObj;
+    CGRect          _dogRect;
     
     ccTime         _gameTime;
     int            _hit_count;
@@ -63,6 +67,7 @@
 	if( (self=[super init]) )
     {
         [self initBG];
+        [self initDog];
         [self initDucks];
         [self initPannel];
         
@@ -88,6 +93,15 @@
     [_bgObj addtoScene: self];
 }
 
+-(void)initDog
+{
+    _dogRect = _bgRect;
+    _dogRect.size.height *= 0.75;
+    
+    _dogObj = [[DHDogObj alloc] initWithWinRect:_dogRect];
+    [_dogObj addtoScene: self];
+}
+
 -(void)initDucks
 {
     _duckRect = _bgRect;
@@ -110,8 +124,8 @@
     _pannelRect = _bgRect;
     _pannelRect.origin.y += 0.9*_pannelRect.size.height;
     _pannelRect.size.height *= 0.1;
-    NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
-          _pannelRect.size.width, _pannelRect.size.height);
+//    NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
+//          _pannelRect.size.width, _pannelRect.size.height);
     _pannel = [[DHTimeModePannelObj alloc] initWithWinRect:_pannelRect];
     [_pannel addtoScene:self];
 }
@@ -119,16 +133,25 @@
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
-    _gameTime += dt;
-    
     [self updateBG:dt];
-    [self updateDucks:dt withGameTime:_gameTime];
-    [self updatePannel:dt];
+    [self updateDog:dt];
+    
+    if( _dogObj.dog_state == DOG_DISAPPEAR )
+    {
+        _gameTime += dt;
+        [self updateDucks:dt withGameTime:_gameTime];
+        [self updatePannel:dt];
+    }
 }
 
 -(void) updateBG:(ccTime)dt
 {
     [_bgObj update:dt];
+}
+
+-(void) updateDog:(ccTime)dt
+{
+    [_dogObj update:dt];
 }
 
 -(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
@@ -172,7 +195,7 @@
 
 -(void)updatePannel:(ccTime)dt
 {
-    [_pannel setLeft_time:_gameTime];
+    [_pannel setLeft_time: TIMEMODE_TOTAL_TIME - (int)_gameTime];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_hit_count*100];
     [_pannel update:dt];
@@ -232,6 +255,7 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
+    [_dogObj release];
     [_gameChps release];
     [_pannel release];
     

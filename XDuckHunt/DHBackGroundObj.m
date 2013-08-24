@@ -101,7 +101,7 @@
 -(void)update:(ccTime)dt
 {
     _accDT += dt;
-    if( _accDT < 0.5 )
+    if( _accDT < BG_UPDATE_TIME )
         return;
     _accDT = 0;
     

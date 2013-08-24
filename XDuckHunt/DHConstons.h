@@ -11,8 +11,11 @@
 
 #define HIT_RADIUS     12
 #define HIT_RADIUS_POW 144
+#define TIMEMODE_TOTAL_TIME 120
 #define DUCK_FLYAWAY_TIME 12
-
+#define BG_UPDATE_TIME   0.5
+#define DUCK_UPDATE_TIME 0.1
+#define DOG_UPDATE_TIME  0.1
 
 #define PI  3.14159
 #define EPS 0.00001
@@ -20,5 +23,6 @@
 //public const int Groupfactor = 10;
 #define MaxLineSteps  40
 #define MaxCurveSteps 100
+
 
 #endif

@@ -88,7 +88,7 @@
 -(void)update:(ccTime)dt
 {
     _accDT += dt;
-    if( _accDT < 0.1 )
+    if( _accDT < DUCK_UPDATE_TIME )
         return;
     _duck_living_time += _accDT;
     _accDT = 0;
