@@ -16,13 +16,14 @@
 		D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */; };
 		D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C9217C1D37900D1F499 /* DHMenuObj.m */; };
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
-		D24DEADA17BD146600514902 /* sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24DEAD917BD146600514902 /* sniglet.ttf */; };
 		D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */; };
 		D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B4B1A17C4A5420021017C /* DHLabel.m */; };
+		D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25B4B2217C79BEB0021017C /* SnapITC.ttf */; };
 		D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B706417AFDD3500F7C915 /* DHGameChapter.m */; };
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
 		D27049C017A6AB1600342505 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BF17A6AB1600342505 /* Cloud.png */; };
+		D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D290A5D017C8563900C2EDDE /* sniglet.ttf */; };
 		D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33A17C2655C008307ED /* MenuItem_pressed.png */; };
 		D294E33D17C2655C008307ED /* MenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33B17C2655C008307ED /* MenuItem.png */; };
 		D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33E17C26CD0008307ED /* SplashScreen.png */; };
@@ -190,16 +191,17 @@
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
-		D24DEAD917BD146600514902 /* sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sniglet.ttf; path = Resources/sniglet.ttf; sourceTree = "<group>"; };
 		D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannelObj.h; sourceTree = "<group>"; };
 		D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannelObj.m; sourceTree = "<group>"; };
 		D25B4B1917C4A5420021017C /* DHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHLabel.h; sourceTree = "<group>"; };
 		D25B4B1A17C4A5420021017C /* DHLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHLabel.m; sourceTree = "<group>"; };
+		D25B4B2217C79BEB0021017C /* SnapITC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SnapITC.ttf; path = Resources/SnapITC.ttf; sourceTree = "<group>"; };
 		D26B706317AFDD3500F7C915 /* DHGameChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameChapter.h; sourceTree = "<group>"; };
 		D26B706417AFDD3500F7C915 /* DHGameChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameChapter.m; sourceTree = "<group>"; };
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
 		D27049BC17A6A4C300342505 /* sky_smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky_smoke.png; path = Resources/sky_smoke.png; sourceTree = "<group>"; };
 		D27049BF17A6AB1600342505 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cloud.png; path = Resources/Cloud.png; sourceTree = "<group>"; };
+		D290A5D017C8563900C2EDDE /* sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sniglet.ttf; path = Resources/sniglet.ttf; sourceTree = "<group>"; };
 		D294E33A17C2655C008307ED /* MenuItem_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuItem_pressed.png; path = Resources/MenuItem_pressed.png; sourceTree = "<group>"; };
 		D294E33B17C2655C008307ED /* MenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuItem.png; path = Resources/MenuItem.png; sourceTree = "<group>"; };
 		D294E33E17C26CD0008307ED /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Resources/SplashScreen.png; sourceTree = "<group>"; };
@@ -620,10 +622,11 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D290A5D017C8563900C2EDDE /* sniglet.ttf */,
+				D25B4B2217C79BEB0021017C /* SnapITC.ttf */,
 				D294E33E17C26CD0008307ED /* SplashScreen.png */,
 				D294E33A17C2655C008307ED /* MenuItem_pressed.png */,
 				D294E33B17C2655C008307ED /* MenuItem.png */,
-				D24DEAD917BD146600514902 /* sniglet.ttf */,
 				D2B6748217ABE89800363DAC /* duck_black_flying.plist */,
 				D2B6748317ABE89800363DAC /* duck_black_flying.png */,
 				D27049BF17A6AB1600342505 /* Cloud.png */,
@@ -1061,6 +1064,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */,
 				D29EE99817A3AC760072B0EA /* Default.png in Resources */,
 				D29EE99A17A3AC760072B0EA /* Default@2x.png in Resources */,
 				D29EE99C17A3AC760072B0EA /* Default-568h@2x.png in Resources */,
@@ -1081,10 +1085,10 @@
 				D27049C017A6AB1600342505 /* Cloud.png in Resources */,
 				D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */,
 				D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */,
-				D24DEADA17BD146600514902 /* sniglet.ttf in Resources */,
 				D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */,
 				D294E33D17C2655C008307ED /* MenuItem.png in Resources */,
 				D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */,
+				D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

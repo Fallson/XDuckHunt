@@ -8,6 +8,8 @@
 
 #import "CCLabelTTF.h"
 
+#define DHLABEL_FONT @"Snap ITC"
+
 @interface DHLabel : CCLabelTTF
 
 @end
