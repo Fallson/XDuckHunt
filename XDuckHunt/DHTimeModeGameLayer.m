@@ -96,7 +96,7 @@
 -(void)initDog
 {
     _dogRect = _bgRect;
-    _dogRect.size.height *= 0.75;
+    _dogRect.size.height *= 0.25;
     
     _dogObj = [[DHDogObj alloc] initWithWinRect:_dogRect];
     [_dogObj addtoScene: self];
@@ -108,7 +108,7 @@
     _duckRect.origin.y += 0.25*_duckRect.size.height;
     _duckRect.size.height *= 0.75;
     _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
-    _cur_chp = CHAPTER1;
+    _cur_chp = CHAPTER0;
     for( int i = 0; i <= _cur_chp; i++ )
     {
         NSMutableArray* ducks = [_gameChps getDucks:i];
@@ -124,8 +124,6 @@
     _pannelRect = _bgRect;
     _pannelRect.origin.y += 0.9*_pannelRect.size.height;
     _pannelRect.size.height *= 0.1;
-//    NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
-//          _pannelRect.size.width, _pannelRect.size.height);
     _pannel = [[DHTimeModePannelObj alloc] initWithWinRect:_pannelRect];
     [_pannel addtoScene:self];
 }

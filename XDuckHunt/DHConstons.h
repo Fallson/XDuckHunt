@@ -15,7 +15,7 @@
 #define DUCK_FLYAWAY_TIME 12
 #define BG_UPDATE_TIME   0.5
 #define DUCK_UPDATE_TIME 0.1
-#define DOG_UPDATE_TIME  0.1
+#define DOG_UPDATE_TIME  0.3
 
 #define PI  3.14159
 #define EPS 0.00001

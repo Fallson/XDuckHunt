@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-enum DOG_STATE{DOG_RUNNING=0, DOG_SEEKING, DOG_RUNNING2, DOG_JUMPING, DOG_DISAPPEAR};
+enum DOG_STATE{DOG_RUNNING=0, DOG_SEEKING, DOG_RUNNING2, DOG_FOUND,
+               DOG_JUMPING_UP, DOG_JUMPING_DOWN, DOG_DISAPPEAR};
 
 @interface DHDogObj : NSObject
 

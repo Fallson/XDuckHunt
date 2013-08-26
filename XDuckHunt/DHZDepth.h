@@ -9,13 +9,13 @@
 #ifndef XDuckHunt_DHZDepth_h
 #define XDuckHunt_DHZDepth_h
 
-#define BG_SKY_Z     -3
-#define BG_CLOUD_Z   -2
-#define BG_SMOKE_Z   -1
-#define DUCK_Z       0
-#define PARRAT_Z     0
-#define BG_GRASS_Z   1
-#define DOG_Z        2
-#define BG_TREE_Z    3
+#define BG_SKY_Z     -7
+#define BG_CLOUD_Z   -6
+#define BG_SMOKE_Z   -5
+#define DUCK_Z       -4
+#define PARRAT_Z     -4
+#define BG_GRASS_Z   -3
+#define BG_TREE_Z    -2
+#define DOG_Z        -1
 
 #endif

@@ -42,19 +42,19 @@
         
         NSString* score_str = [NSString stringWithFormat:@"score: %d", self.score];
         self.score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
-        self.score_label.color=ccORANGE;
-        self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.5*_winRect.size.height);
+        self.score_label.color=ccGREEN;
+        self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.35*_winRect.size.height);
         [self.score_label setAnchorPoint: ccp(0, 0.5f)];
         
         NSString* left_time_str = [NSString stringWithFormat:@"left time: %d", (int)self.left_time];
         self.left_time_label = [DHLabel labelWithString:left_time_str fontName:DHLABEL_FONT fontSize:24];
-        self.left_time_label.color=ccORANGE;
+        self.left_time_label.color=ccGREEN;
         self.left_time_label.position = ccp(_winRect.origin.x + 0.8*_winRect.size.width, _winRect.origin.y + 0.5*_winRect.size.height);
         [self.left_time_label setAnchorPoint: ccp(0, 0.5f)];
         
         NSString* hit_count_str = [NSString stringWithFormat:@"hit count: %d", self.hit_count];
         self.hit_count_label = [DHLabel labelWithString:hit_count_str fontName:DHLABEL_FONT fontSize:24];
-        self.hit_count_label.color=ccORANGE;
+        self.hit_count_label.color=ccGREEN;
         self.hit_count_label.position = ccp(_winRect.origin.x + 0.8*_winRect.size.width, _winRect.origin.y);
         [self.hit_count_label setAnchorPoint: ccp(0, 0.5f)];
 	}
