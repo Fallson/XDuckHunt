@@ -53,6 +53,7 @@
         self.dog.position = ccp(_dog_size.width,_winRect.size.height/2);
         self.dog.zOrder = DOG_Z;
         [self.dog_spriteSheet addChild:self.dog];
+        self.dog_spriteSheet.zOrder = DOG_Z;
         
         _dog_idx = 0;
         _dog_running_round = 0;
@@ -158,7 +159,7 @@
             [self.dog setDisplayFrame:frame];
             
             _dog_running_round++;
-            if( _dog_running_round >= DOG_RUNNING_ROUND )
+            if( _dog_running_round >= DOG_RUNNING_ROUND/2 )
             {
                 self.dog_state = DOG_JUMPING_UP;
                 _dog_running_round = 0;
@@ -187,7 +188,7 @@
             else
             {
                 CGPoint cur = self.dog.position;
-                cur.y += _winRect.size.height*0.75;
+                cur.y += _winRect.size.height*0.9;
                 self.dog.position = cur;
                 
                 _dog_idx = 7;

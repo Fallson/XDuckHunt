@@ -19,6 +19,7 @@
 #import "DHConstons.h"
 #import "DHGameChapter.h"
 #import "DHFreeModePannelObj.h"
+#import "DHDogObj.h"
 #pragma mark - DHFreeModeGameLayer
 
 // DHFreeModeGameLayer implementation
@@ -33,6 +34,9 @@
     
     DHFreeModePannelObj* _pannel;
     CGRect            _pannelRect;
+    
+    DHDogObj*      _dogObj;
+    CGRect         _dogRect;
     
     ccTime         _gameTime;
     int            _hit_count;
@@ -64,6 +68,7 @@
 	if( (self=[super init]) )
     {
         [self initBG];
+        [self initDog];
         [self initDucks];
         [self initPannel];
         
@@ -90,13 +95,23 @@
     [_bgObj addtoScene: self];
 }
 
+-(void)initDog
+{
+    _dogRect = _bgRect;
+    _dogRect.size.height *= 0.25;
+    
+    _dogObj = [[DHDogObj alloc] initWithWinRect:_dogRect];
+    [_dogObj addtoScene: self];
+}
+
 -(void)initDucks
 {
     _duckRect = _bgRect;
     _duckRect.origin.y += 0.25*_duckRect.size.height;
     _duckRect.size.height *= 0.75;
     _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
-    _cur_chp = CHAPTER1;
+    [_gameChps setGame_mode:FREE_MODE];
+    _cur_chp = CHAPTER0;
     for( int i = 0; i <= _cur_chp; i++ )
     {
         NSMutableArray* ducks = [_gameChps getDucks:i];
@@ -121,16 +136,25 @@
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
-    _gameTime += dt;
-    
     [self updateBG:dt];
-    [self updateDucks:dt withGameTime:_gameTime];
-    [self updatePannel:dt];
+    [self updateDog:dt];
+    
+    if( _dogObj.dog_state == DOG_DISAPPEAR )
+    {
+        _gameTime += dt;
+        [self updateDucks:dt withGameTime:_gameTime];
+        [self updatePannel:dt];
+    }
 }
 
 -(void) updateBG:(ccTime)dt
 {
     [_bgObj update:dt];
+}
+
+-(void) updateDog:(ccTime)dt
+{
+    [_dogObj update:dt];
 }
 
 -(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
@@ -145,6 +169,7 @@
             if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
             {
                 duckObj.duck_state = START_FLYAWAY;
+                _miss_count++;
             }
             else if( duckObj.duck_state == DISAPPEAR )
             {
@@ -174,7 +199,7 @@
 
 -(void)updatePannel:(ccTime)dt
 {
-    [_pannel setLeft_duck:(int)_gameTime];
+    [_pannel setLeft_duck:FREEMODE_TOTAL_DUCK-_miss_count];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_hit_count*100];
     [_pannel update:dt];
@@ -236,6 +261,7 @@
 	[_bgObj release];
     [_gameChps release];
     [_pannel release];
+    [_dogObj release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

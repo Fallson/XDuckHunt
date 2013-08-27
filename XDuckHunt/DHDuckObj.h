@@ -22,6 +22,7 @@ enum DUCK_STATE{FLYING=0, START_DEAD, DEAD, START_FLYAWAY, FLYAWAY, DISAPPEAR};
 
 -(id)initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;
+-(void)updatePos:(CGPoint)pos;
 -(void)update:(ccTime)dt;
 -(bool)hit:(CGPoint)pnt;
 

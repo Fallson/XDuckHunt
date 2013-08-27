@@ -83,6 +83,7 @@
         self.smoke.zOrder = BG_SMOKE_Z;
         _smoke_idx = 0;
         [self.smoke_spriteSheet addChild:self.smoke];
+        self.smoke_spriteSheet.zOrder = BG_SMOKE_Z;
         
 	}
 	return self;

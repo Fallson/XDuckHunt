@@ -57,6 +57,7 @@
         self.duck.position = [self.duck_pilot getPosition];
         self.duck.zOrder = DUCK_Z;
         [self.duck_spriteSheet addChild:self.duck];
+        self.duck_spriteSheet.zOrder = DUCK_Z;
         
         _duck_idx = 0;
         _duck_living_time = 0;
@@ -69,6 +70,11 @@
 {
     //NSLog(@"duck_spritesheet:%d",(int)self.duck_spriteSheet);
     [layer addChild:self.duck_spriteSheet];
+}
+
+-(void)updatePos:(CGPoint)pos
+{
+    self.duck.position = pos;
 }
 
 -(int) PntInRect:(CGPoint)pnt andRect:(CGRect)rect

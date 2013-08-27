@@ -108,6 +108,7 @@
     _duckRect.origin.y += 0.25*_duckRect.size.height;
     _duckRect.size.height *= 0.75;
     _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
+    [_gameChps setGame_mode:TIME_MODE];
     _cur_chp = CHAPTER0;
     for( int i = 0; i <= _cur_chp; i++ )
     {
