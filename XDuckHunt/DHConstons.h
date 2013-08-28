@@ -25,5 +25,4 @@
 #define MaxLineSteps  40
 #define MaxCurveSteps 100
 
-
 #endif

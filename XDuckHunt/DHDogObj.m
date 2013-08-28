@@ -204,7 +204,7 @@
             [self.dog setDisplayFrame:frame];
             
             _dog_running_round++;
-            if( _dog_running_round >= DOG_RUNNING_ROUND/2 )
+            if( _dog_running_round >= DOG_RUNNING_ROUND/5 )
             {
                 self.dog_state = DOG_DISAPPEAR;
                 _dog_running_round = 0;
