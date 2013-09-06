@@ -171,6 +171,7 @@
 		D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748217ABE89800363DAC /* duck_black_flying.plist */; };
 		D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748317ABE89800363DAC /* duck_black_flying.png */; };
 		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
+		D2F81D3817DA09FE0043A338 /* DHGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F81D3717DA09FE0043A338 /* DHGameData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -502,6 +503,8 @@
 		D2B6748317ABE89800363DAC /* duck_black_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_black_flying.png; path = Resources/duck_black_flying.png; sourceTree = "<group>"; };
 		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
 		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
+		D2F81D3617DA09FE0043A338 /* DHGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameData.h; sourceTree = "<group>"; };
+		D2F81D3717DA09FE0043A338 /* DHGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,6 +622,8 @@
 				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
 				D21E8C7B17C0884E00D1F499 /* DHDogObj.h */,
 				D21E8C7C17C0884E00D1F499 /* DHDogObj.m */,
+				D2F81D3617DA09FE0043A338 /* DHGameData.h */,
+				D2F81D3717DA09FE0043A338 /* DHGameData.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1234,6 +1239,7 @@
 				D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */,
 				D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */,
 				D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */,
+				D2F81D3817DA09FE0043A338 /* DHGameData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@
 #ifndef XDuckHunt_DHConstons_h
 #define XDuckHunt_DHConstons_h
 
+enum GAME_MODE{FREE_MODE=0, TIME_MODE};
+
 #define HIT_RADIUS     12
 #define HIT_RADIUS_POW 144
 #define TIMEMODE_TOTAL_TIME 120
