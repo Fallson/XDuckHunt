@@ -17,6 +17,7 @@ static const ccColor3B ccDHGreen = {117,146,28};
     CGRect _winRect;
 }
 
+@property (nonatomic, retain)DHLabel* highest_score_label;
 @property (nonatomic, retain)DHLabel* score_label;
 @property (nonatomic, retain)DHLabel* left_time_label;
 @property (nonatomic, retain)DHLabel* hit_count_label;
@@ -24,10 +25,12 @@ static const ccColor3B ccDHGreen = {117,146,28};
 
 @implementation DHTimeModePannelObj
 
+@synthesize highest_score = _highest_score;
 @synthesize score = _score;
 @synthesize left_time = _left_time;
 @synthesize hit_count = _hit_count;
 
+@synthesize highest_score_label = _highest_score_label;
 @synthesize score_label = _score_label;
 @synthesize left_time_label = _left_time_label;
 @synthesize hit_count_label = _hit_count_label;
@@ -38,14 +41,22 @@ static const ccColor3B ccDHGreen = {117,146,28};
     {
         _winRect = rect;
         
+        self.highest_score = 0;
         self.score = 0;
         self.left_time = 0;
         self.hit_count = 0;
         
+        NSString* highest_score_str = [NSString stringWithFormat:@"highest score: %d", self.highest_score];
+        self.highest_score_label = [DHLabel labelWithString:highest_score_str fontName:DHLABEL_FONT fontSize:24];
+        self.highest_score_label.color=ccDHGreen;
+        self.highest_score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.5*_winRect.size.height);
+        [self.highest_score_label setAnchorPoint: ccp(0, 0.5f)];
+
+        
         NSString* score_str = [NSString stringWithFormat:@"score: %d", self.score];
         self.score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
         self.score_label.color=ccDHGreen;
-        self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.35*_winRect.size.height);
+        self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y);
         [self.score_label setAnchorPoint: ccp(0, 0.5f)];
         
         NSString* left_time_str = [NSString stringWithFormat:@"left time: %d", (int)self.left_time];
@@ -66,6 +77,7 @@ static const ccColor3B ccDHGreen = {117,146,28};
 
 -(void)addtoScene: (CCLayer*)layer
 {
+    [layer addChild:self.highest_score_label];
     [layer addChild:self.score_label];
     [layer addChild:self.left_time_label];
     [layer addChild:self.hit_count_label];
@@ -73,6 +85,9 @@ static const ccColor3B ccDHGreen = {117,146,28};
 
 -(void)update:(ccTime)dt
 {
+    NSString* highest_score_str = [NSString stringWithFormat:@"highest score: %d", self.highest_score];
+    [self.highest_score_label setString:highest_score_str];
+    
     NSString* score_str = [NSString stringWithFormat:@"score: %d", self.score];
     [self.score_label setString:score_str];
     

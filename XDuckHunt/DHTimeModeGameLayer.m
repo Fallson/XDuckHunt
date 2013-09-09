@@ -20,6 +20,8 @@
 #import "DHGameChapter.h"
 #import "DHTimeModePannelObj.h"
 #import "DHDogObj.h"
+#import "DHGameData.h"
+#import "DHGameOverLayer.h"
 #pragma mark - DHTimeModeGameLayer
 
 // DHTimeModeGameLayer implementation
@@ -73,6 +75,9 @@
         
         _gameTime = 0;
         _hit_count = 0;
+        
+        //
+        [DHGameData sharedDHGameData].cur_game_mode = TIME_MODE;
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -140,6 +145,11 @@
         _gameTime += dt;
         [self updateDucks:dt withGameTime:_gameTime];
         [self updatePannel:dt];
+        
+        if( TIMEMODE_TOTAL_TIME < (int)_gameTime )
+        {
+            [self game_over];
+        }
     }
 }
 
@@ -197,7 +207,14 @@
     [_pannel setLeft_time: TIMEMODE_TOTAL_TIME - (int)_gameTime];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_hit_count*100];
+    [_pannel setHighest_score: [[DHGameData sharedDHGameData] getHighestScore:TIME_MODE] ];
     [_pannel update:dt];
+}
+
+-(void)game_over
+{
+    [DHGameData sharedDHGameData].cur_game_score = _hit_count*100;
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];
 }
 
 - (void) nextFrame:(ccTime)dt

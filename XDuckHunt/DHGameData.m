@@ -9,14 +9,34 @@
 #import "DHGameData.h"
 
 @implementation DHGameData
+@synthesize cur_game_score = _cur_game_score;
+@synthesize cur_game_mode = _cur_game_mode;
 @synthesize timemode_scores = _timemode_scores;
 @synthesize freemode_scores = _freemode_scores;
+
+static DHGameData *_sharedDHGameData=nil;
+
++(DHGameData *)sharedDHGameData
+{
+	if (!_sharedDHGameData)
+		_sharedDHGameData = [[DHGameData alloc] init];
+    
+	return _sharedDHGameData;
+}
+
++(id)alloc
+{
+	NSAssert(_sharedDHGameData == nil, @"Attempted to allocate a second instance of a singleton.");
+	return [super alloc];
+}
 
 -(id)init
 {
 	if( (self=[super init]) )
     {
         [self loadScores];
+        self.cur_game_mode = TIME_MODE;
+        self.cur_game_score = 0;
 	}
     
 	return self;
@@ -63,6 +83,22 @@
     }
     
     [self saveScores:game_mode];
+}
+
+-(int)getHighestScore:(enum GAME_MODE)game_mode
+{
+    if( game_mode == TIME_MODE )
+    {
+        if( [self.timemode_scores count] > 0 )
+            return [self.timemode_scores objectAtIndex:0];
+    }
+    else if( game_mode == FREE_MODE )
+    {
+        if( [self.freemode_scores count] > 0 )
+            return [self.freemode_scores objectAtIndex:0];
+    }
+    
+    return 0;
 }
 
 @end

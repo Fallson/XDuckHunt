@@ -15,6 +15,7 @@
 -(void)addtoScene: (CCLayer*)layer;
 -(void)update:(ccTime)dt;
 
+@property (nonatomic, assign)int highest_score;
 @property (nonatomic, assign)int score;
 @property (nonatomic, assign)int left_duck;
 @property (nonatomic, assign)int hit_count;

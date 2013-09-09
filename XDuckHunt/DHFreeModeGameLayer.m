@@ -20,6 +20,8 @@
 #import "DHGameChapter.h"
 #import "DHFreeModePannelObj.h"
 #import "DHDogObj.h"
+#import "DHGameData.h"
+#import "DHGameOverLayer.h"
 #pragma mark - DHFreeModeGameLayer
 
 // DHFreeModeGameLayer implementation
@@ -76,6 +78,9 @@
         _hit_count = 0;
         _miss_count = 0;
         
+        //
+        [DHGameData sharedDHGameData].cur_game_mode = FREE_MODE;
+        
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
         
@@ -127,8 +132,6 @@
     _pannelRect = _bgRect;
     _pannelRect.origin.y += 0.9*_pannelRect.size.height;
     _pannelRect.size.height *= 0.1;
-    NSLog(@"_pannelRect(%f,%f) and (%f, %f)", _pannelRect.origin.x, _pannelRect.origin.y,
-          _pannelRect.size.width, _pannelRect.size.height);
     _pannel = [[DHFreeModePannelObj alloc] initWithWinRect:_pannelRect];
     [_pannel addtoScene:self];
 }
@@ -144,6 +147,11 @@
         _gameTime += dt;
         [self updateDucks:dt withGameTime:_gameTime];
         [self updatePannel:dt];
+        
+        if(FREEMODE_TOTAL_DUCK < _miss_count)
+        {
+            [self game_over];
+        }
     }
 }
 
@@ -202,7 +210,14 @@
     [_pannel setLeft_duck:FREEMODE_TOTAL_DUCK-_miss_count];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_hit_count*100];
+    [_pannel setHighest_score:[[DHGameData sharedDHGameData] getHighestScore:FREE_MODE]];
     [_pannel update:dt];
+}
+
+-(void)game_over
+{
+    [DHGameData sharedDHGameData].cur_game_score = _hit_count*100;
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];    
 }
 
 - (void) nextFrame:(ccTime)dt
