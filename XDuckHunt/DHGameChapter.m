@@ -219,6 +219,8 @@
     for( int i = 0; i < CHAPTER_MAX; i++)
     {
         NSMutableArray* ducks = [self.chapters objectAtIndex:i];
+        for( DHDuckObj* duckObj in ducks )
+            [duckObj release];
         [ducks release];
     }
     [self.chapters release];

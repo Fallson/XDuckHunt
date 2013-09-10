@@ -14,24 +14,18 @@
 #import "AppDelegate.h"
 
 #import "DHBackGroundObj.h"
-#import "DHDuckObj.h"
-#import "DHPilot.h"
 #import "DHConstons.h"
-#import "DHGameChapter.h"
+#import "DHGameData.h"
+#import "DHLabel.h"
+#import "DHGameMenuLayer.h"
 #pragma mark - DHGameOverLayer
+
 
 // DHGameOverLayer implementation
 @implementation DHGameOverLayer
 {
     DHBackGroundObj* _bgObj;
     CGRect           _bgRect;
-    
-    DHGameChapter*   _gameChps;
-    enum CHAPTER_LVL _cur_chp;
-    CGRect           _duckRect;
-    
-    ccTime         _gameTime;
-    int            _hit_count;
 }
 
 // Helper class method that creates a Scene with the DHGameOverLayer as the only child.
@@ -59,10 +53,8 @@
 	if( (self=[super init]) )
     {
         [self initBG];
-        [self initDucks];
-        
-        _gameTime = 0;
-        _hit_count = 0;
+        [self initScores];
+        [self initMenu];
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -83,120 +75,85 @@
     [_bgObj addtoScene: self];
 }
 
--(void)initDucks
+-(void)initScores
 {
-    _duckRect = _bgRect;
-    _duckRect.origin.y += 0.25*_duckRect.size.height;
-    _duckRect.size.height *= 0.75;
-    _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
-    _cur_chp = CHAPTER1;
-    for( int i = 0; i <= _cur_chp; i++ )
+    enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
+    int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
+    
+    [[DHGameData sharedDHGameData] addScore: cur_game_score gameMode:cur_game_mode];
+    
+    
+    NSMutableArray* scores = nil;
+    if( cur_game_mode == TIME_MODE )
     {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks )
-        {
-            [duckObj addtoScene: self];
-        }
+        scores = [DHGameData sharedDHGameData].timemode_scores;
     }
+    else if( cur_game_mode == FREE_MODE )
+    {
+        scores = [DHGameData sharedDHGameData].freemode_scores;
+    }
+    
+    NSString* str = [NSString stringWithFormat:@"Game Over : %d", cur_game_score];
+    DHLabel* lable = [DHLabel labelWithString:str fontName:DHLABEL_FONT fontSize:24];
+    lable.color = ccYELLOW;
+    lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
+    [lable setAnchorPoint: ccp(0, 0.5f)];
+    [self addChild:lable];
+    
+    for( int i = 0; i < [scores count]; i++ )
+    {
+        int s = [scores objectAtIndex:i];
+        NSString* score_str = [NSString stringWithFormat:@"%d", s];
+        DHLabel* score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
+        if( s == cur_game_score )
+            score_label.color = ccRED;
+        else
+            score_label.color = ccYELLOW;
+        score_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + (0.8-0.05*i)*_bgRect.size.height);
+        [score_label setAnchorPoint: ccp(0, 0.5f)];
+        [self addChild:score_label];
+        
+        //left alignment
+        //[label setAnchorPoint: ccp(0, 0.5f)];
+        // right alignment
+        //[label setAnchorPoint: ccp(1, 0.5f)];
+        // center aligment (default)
+        //[label setAnchorPoint: ccp(0.5f, 0.5f)];
+    }
+}
+
+-(void)initMenu
+{
+    NSString* return_str = [NSString stringWithFormat:@"Return"];
+    DHLabel* return_label = [DHLabel labelWithString:return_str fontName:DHLABEL_FONT fontSize:20];
+    return_label.color=ccBLUE;
+    return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    [return_label setAnchorPoint: ccp(0.5f, 0.5f)];
+    [self addChild:return_label];
+    
+    CCMenuItem *menuitem_return = [CCMenuItemImage
+                                   itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+                                   target:self selector:@selector(ReturnMenuPressed:)];
+    menuitem_return.position = return_label.position;
+    CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, nil];
+    main_menu.position = CGPointZero;
+    [self addChild:main_menu];
+}
+
+-(void)ReturnMenuPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameMenuLayer scene] ]];
 }
 
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
-    _gameTime += dt;
-    
     [self updateBG:dt];
-    [self updateDucks:dt withGameTime:_gameTime];
 }
 
 -(void) updateBG:(ccTime)dt
 {
     [_bgObj update:dt];
-}
-
--(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
-{
-    for( int i = 0; i <= _cur_chp; i++ )
-    {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks )
-        {
-            [duckObj update:dt];
-            
-            if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
-            {
-                duckObj.duck_state = START_FLYAWAY;
-            }
-            else if( duckObj.duck_state == DISAPPEAR )
-            {
-                //do some free oprations on ducks
-                //not done yet
-            }
-        }
-    }
-    
-    for( int i = 0; i < CHAPTER_MAX; i++ )
-    {
-        if( (i+1)*DUCK_FLYAWAY_TIME > gt )
-        {
-            if( i != _cur_chp)
-            {
-                _cur_chp = i;
-                NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
-                for( DHDuckObj* duckObj in ducks )
-                {
-                    [duckObj addtoScene:self];
-                }
-            }
-            break;
-        }
-    }
-}
-
-- (void) nextFrame:(ccTime)dt
-{
-//    CGSize sz = [ [CCDirector sharedDirector] winSize];
-//    seeker1.position = ccp( seeker1.position.x + 100*dt, seeker1.position.y );
-//    //NSLog(@"rect: (%f, %f)", seeker1.textureRect.size.width, seeker1.textureRect.size.height);
-//    if (seeker1.position.x > sz.width+seeker1.textureRect.size.width/20) {
-//        seeker1.position = ccp( -seeker1.textureRect.size.width/20, seeker1.position.y );
-//    }
-}
-
-#pragma mark - touch part
--(void) registerWithTouchDispatcher
-{
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-}
-
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
-}
-
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-	CGPoint location = [self convertTouchToNodeSpace: touch];
-
-    [self touchDucks:location];
-}
-
--(void)touchDucks:(CGPoint)location
-{
-    for( int i = 0; i <= _cur_chp; i++ )
-    {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks)
-        {
-            if( duckObj.duck_state == FLYING )
-            {
-                bool duckHit = [duckObj hit: location];
-                if( duckHit )
-                {
-                    duckObj.duck_state = START_DEAD;
-                    _hit_count++;
-                }
-            }
-        }
-    }
 }
 
 #pragma mark - dealloc part
@@ -207,7 +164,6 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
-    [_gameChps release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

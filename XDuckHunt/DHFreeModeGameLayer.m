@@ -182,7 +182,7 @@
             else if( duckObj.duck_state == DISAPPEAR )
             {
                 //do some free oprations on ducks
-                //not done yet
+                [duckObj release];
             }
         }
     }
