@@ -10,8 +10,6 @@
 #import "DHLabel.h"
 #import "ccTypes.h"
 
-static const ccColor3B ccDHGreen = {117,146,28};
-
 @interface DHFreeModePannelObj()
 {
     CGRect _winRect;
@@ -47,25 +45,25 @@ static const ccColor3B ccDHGreen = {117,146,28};
 
         NSString* highest_score_str = [NSString stringWithFormat:@"highest score: %d", self.highest_score];
         self.highest_score_label = [DHLabel labelWithString:highest_score_str fontName:DHLABEL_FONT fontSize:24];
-        self.highest_score_label.color=ccDHGreen;
+        self.highest_score_label.color=ccYELLOW;
         self.highest_score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.5*_winRect.size.height);
         [self.highest_score_label setAnchorPoint: ccp(0, 0.5f)];
         
         NSString* score_str = [NSString stringWithFormat:@"score: %d", self.score];
         self.score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
-        self.score_label.color=ccDHGreen;
+        self.score_label.color=ccYELLOW;
         self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y);
         [self.score_label setAnchorPoint: ccp(0, 0.5f)];
         
         NSString* left_duck_str = [NSString stringWithFormat:@"left duck: %d", (int)self.left_duck];
         self.left_duck_label = [DHLabel labelWithString:left_duck_str fontName:DHLABEL_FONT fontSize:24];
-        self.left_duck_label.color=ccDHGreen;
+        self.left_duck_label.color=ccYELLOW;
         self.left_duck_label.position = ccp(_winRect.origin.x + 0.8*_winRect.size.width, _winRect.origin.y + 0.5*_winRect.size.height);
         [self.left_duck_label setAnchorPoint: ccp(0, 0.5f)];
         
         NSString* hit_count_str = [NSString stringWithFormat:@"hit count: %d", self.hit_count];
         self.hit_count_label = [DHLabel labelWithString:hit_count_str fontName:DHLABEL_FONT fontSize:24];
-        self.hit_count_label.color=ccDHGreen;
+        self.hit_count_label.color=ccYELLOW;
         self.hit_count_label.position = ccp(_winRect.origin.x + 0.8*_winRect.size.width, _winRect.origin.y);
         [self.hit_count_label setAnchorPoint: ccp(0, 0.5f)];
 	}
@@ -75,7 +73,7 @@ static const ccColor3B ccDHGreen = {117,146,28};
 
 -(void)addtoScene: (CCLayer*)layer
 {
-    [layer addChild:self.highest_score];
+    [layer addChild:self.highest_score_label];
     [layer addChild:self.score_label];
     [layer addChild:self.left_duck_label];
     [layer addChild:self.hit_count_label];

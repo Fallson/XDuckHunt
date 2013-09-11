@@ -182,12 +182,13 @@
             else if( duckObj.duck_state == DISAPPEAR )
             {
                 //do some free oprations on ducks
-                [duckObj release];
+                //[duckObj release];
             }
         }
     }
     
-    for( int i = 0; i < CHAPTER_MAX; i++ )
+    int i = 0;
+    for( ; i < CHAPTER_MAX; i++ )
     {
         if( (i+1)*DUCK_FLYAWAY_TIME > gt )
         {
@@ -203,6 +204,8 @@
             break;
         }
     }
+    if( i == CHAPTER_MAX )
+        [self game_over];
 }
 
 -(void)updatePannel:(ccTime)dt
