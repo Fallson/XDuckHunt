@@ -274,7 +274,7 @@
         NSMutableArray* ducks = [_gameChps getDucks:i];
         for( DHDuckObj* duckObj in ducks)
         {
-            if( duckObj.duck_state == FLYING )
+            if( duckObj.duck_state == FLYING || duckObj.duck_state == FLYAWAY )
             {
                 bool duckHit = [duckObj hit: location];
                 if( duckHit )

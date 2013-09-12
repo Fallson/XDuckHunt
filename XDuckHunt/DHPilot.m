@@ -43,8 +43,27 @@
         _bbox = t_bbox;
         _objSz = sz;
         
-        _startPos = ccp(arc4random()%((int)_bbox.size.width) + _bbox.origin.x,
-                        _bbox.origin.y);
+        int startBoundary = arc4random()%5;
+        if( startBoundary == 0 || startBoundary == 4)
+        {
+            _startPos = ccp(arc4random()%((int)_bbox.size.width) + _bbox.origin.x,
+                            _bbox.origin.y);
+        }
+        else if( startBoundary == 1 )
+        {
+            _startPos = ccp(_bbox.origin.x,
+                            arc4random()%((int)_bbox.size.height) + _bbox.origin.y );
+        }
+        else if( startBoundary == 2 )
+        {
+            _startPos = ccp(arc4random()%((int)_bbox.size.width) + _bbox.origin.x,
+                            _bbox.origin.y + _bbox.size.height);
+        }
+        else if( startBoundary == 3 )
+        {
+            _startPos = ccp(_bbox.size.width + _bbox.origin.x,
+                            arc4random()%((int)_bbox.size.height) + _bbox.origin.y);
+        }
         
         
         int r = min(_bbox.size.width, _bbox.size.height);
