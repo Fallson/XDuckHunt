@@ -137,7 +137,7 @@
             {
                 _dog_running_round++;
                 
-                if( _dog_running_round >= DOG_RUNNING_ROUND )
+                if( _dog_running_round >= DOG_RUNNING_ROUND/2 )
                 {
                     self.dog_state = DOG_FOUND;
                     _dog_running_round = 0;

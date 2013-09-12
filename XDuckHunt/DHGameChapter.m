@@ -71,7 +71,8 @@
 {
     if( self.game_mode == TIME_MODE )
     {
-        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL, DUCK_NORMAL, DUCK_SIN, DUCK_ELLIPSE};
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL, DUCK_NORMAL, DUCK_SIN,
+                                    DUCK_ELLIPSE};
         CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
@@ -88,7 +89,8 @@
 {
     if( self.game_mode == TIME_MODE )
     {
-        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN, DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT};
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+                                    DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT};
         CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
@@ -105,9 +107,16 @@
 {
     if( self.game_mode == TIME_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+                                    DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
+                                    DUCK_ELLIPSE};
+        CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+                                    DUCK_NORMAL, DUCK_EIGHT};
+        CREATE_DUCKS
     }
     else
     {
@@ -118,9 +127,16 @@
 {
     if( self.game_mode == TIME_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+                                    DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
+                                    DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE};
+        CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+                                    DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE};
+        CREATE_DUCKS
     }
     else
     {
@@ -131,9 +147,16 @@
 {
     if( self.game_mode == TIME_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
+            DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT};
+        CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT};
+        CREATE_DUCKS
     }
     else
     {
@@ -144,9 +167,18 @@
 {
     if( self.game_mode == TIME_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
+            DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
+            DUCK_EIGHT, DUCK_SIN};
+        CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
+            DUCK_EIGHT, DUCK_SIN};
+        CREATE_DUCKS
     }
     else
     {
@@ -157,9 +189,18 @@
 {
     if( self.game_mode == TIME_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
+            DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
+            DUCK_EIGHT, DUCK_SIN, DUCK_EIGHT, DUCK_SIN};
+        CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
+            DUCK_EIGHT, DUCK_SIN, DUCK_EIGHT, DUCK_SIN};
+        CREATE_DUCKS
     }
     else
     {
@@ -170,9 +211,18 @@
 {
     if( self.game_mode == TIME_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
+            DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
+            DUCK_EIGHT, DUCK_SIN, DUCK_EIGHT, DUCK_SIN, DUCK_CIRCLE, DUCK_ELLIPSE};
+        CREATE_DUCKS
     }
     else if( self.game_mode == FREE_MODE )
     {
+        enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
+            DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
+            DUCK_EIGHT, DUCK_SIN, DUCK_EIGHT, DUCK_SIN, DUCK_CIRCLE, DUCK_ELLIPSE};
+        CREATE_DUCKS
     }
     else
     {
@@ -181,15 +231,11 @@
 
 -(void)setDucks_Chapter10:(NSMutableArray*)ducks
 {
-    if( self.game_mode == TIME_MODE )
-    {
-    }
-    else if( self.game_mode == FREE_MODE )
-    {
-    }
-    else
-    {
-    }
+    enum PILOT_TYPE ptypes[50];
+    for( int i = 0; i < 50; i++ )
+        ptypes[i] = DUCK_NORMAL;
+    
+    CREATE_DUCKS
 }
 
 -(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl

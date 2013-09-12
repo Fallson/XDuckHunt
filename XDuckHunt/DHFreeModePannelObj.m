@@ -49,7 +49,7 @@
         self.highest_score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.5*_winRect.size.height);
         [self.highest_score_label setAnchorPoint: ccp(0, 0.5f)];
         
-        NSString* score_str = [NSString stringWithFormat:@"score: %d", self.score];
+        NSString* score_str = [NSString stringWithFormat:@"current score: %d", self.score];
         self.score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
         self.score_label.color=ccYELLOW;
         self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y);
@@ -84,7 +84,7 @@
     NSString* highest_score_str = [NSString stringWithFormat:@"highest score: %d", self.highest_score];
     [self.highest_score_label setString:highest_score_str];
     
-    NSString* score_str = [NSString stringWithFormat:@"score: %d", self.score];
+    NSString* score_str = [NSString stringWithFormat:@"current score: %d", self.score];
     [self.score_label setString:score_str];
     
     NSString* left_duck_str = [NSString stringWithFormat:@"left duck: %d", (int)self.left_duck];

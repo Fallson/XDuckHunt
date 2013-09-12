@@ -128,7 +128,7 @@
             
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
-            cur_p.y = _winRect.origin.y - self.duck_size.height;
+            cur_p.y = _winRect.origin.y - self.duck_size.height*2;
             [self.duck_pilot setEndPos:cur_p];
             [self.duck_pilot setSpeedRatio:2.0];
         }
@@ -158,14 +158,18 @@
 
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
-            cur_p.y = _winRect.origin.y + _winRect.size.height + self.duck_size.height;
+            cur_p.y = _winRect.origin.y + _winRect.size.height + self.duck_size.height*2;
             [self.duck_pilot setEndPos:cur_p];
             [self.duck_pilot setSpeedRatio:2.0];
         }
             break;
+        case DISAPPEAR:
         default:
             break;
     }
+    
+    if( self.duck_state == DISAPPEAR )
+        return;
     
     CGRect rect = {{_winRect.origin.x - self.duck_size.width, _winRect.origin.y - self.duck_size.height},
                    {_winRect.size.width + self.duck_size.width*2, _winRect.size.height + self.duck_size.height*2}};

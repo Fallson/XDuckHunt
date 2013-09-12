@@ -97,7 +97,7 @@
     DHLabel* lable = [DHLabel labelWithString:str fontName:DHLABEL_FONT fontSize:24];
     lable.color = ccYELLOW;
     lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
-    [lable setAnchorPoint: ccp(0, 0.5f)];
+    [lable setAnchorPoint: ccp(0.5f, 0.5f)];
     [self addChild:lable];
     
     for( int i = 0; i < [scores count]; i++ )
@@ -110,7 +110,7 @@
         else
             score_label.color = ccYELLOW;
         score_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + (0.8-0.05*i)*_bgRect.size.height);
-        [score_label setAnchorPoint: ccp(0, 0.5f)];
+        [score_label setAnchorPoint: ccp(0.5f, 0.5f)];
         [self addChild:score_label];
         
         //left alignment
@@ -129,7 +129,6 @@
     return_label.color=ccBLUE;
     return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.3*_bgRect.size.height);
     [return_label setAnchorPoint: ccp(0.5f, 0.5f)];
-    [self addChild:return_label];
     
     CCMenuItem *menuitem_return = [CCMenuItemImage
                                    itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
@@ -138,6 +137,7 @@
     CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, nil];
     main_menu.position = CGPointZero;
     [self addChild:main_menu];
+    [self addChild:return_label];
 }
 
 -(void)ReturnMenuPressed:(id)sender

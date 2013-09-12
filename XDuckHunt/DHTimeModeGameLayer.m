@@ -40,6 +40,7 @@
     DHDogObj*        _dogObj;
     CGRect          _dogRect;
     
+    ccTime         _nextDuckTime;
     ccTime         _gameTime;
     int            _hit_count;
 }
@@ -73,6 +74,7 @@
         [self initDucks];
         [self initPannel];
         
+        _nextDuckTime = 0;
         _gameTime = 0;
         _hit_count = 0;
         
@@ -143,7 +145,7 @@
     if( _dogObj.dog_state == DOG_DISAPPEAR )
     {
         _gameTime += dt;
-        [self updateDucks:dt withGameTime:_gameTime];
+        [self updateDucks:dt];
         [self updatePannel:dt];
         
         if( TIMEMODE_TOTAL_TIME < (int)_gameTime )
@@ -163,8 +165,9 @@
     [_dogObj update:dt];
 }
 
--(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
+-(void) updateDucks:(ccTime)dt
 {
+    bool need_release_ducks = true;
     for( int i = 0; i <= _cur_chp; i++ )
     {
         NSMutableArray* ducks = [_gameChps getDucks:i];
@@ -176,33 +179,51 @@
             {
                 duckObj.duck_state = START_FLYAWAY;
             }
-            else if( duckObj.duck_state == DISAPPEAR )
+            
+            if( duckObj.duck_state == DISAPPEAR )
             {
                 //do some free oprations on ducks
                 //[duckObj release];
             }
+            else
+            {
+                need_release_ducks = false;
+            }
         }
     }
     
-    int i = 0;
-    for( ; i < CHAPTER_MAX; i++ )
+    if( _gameTime >= _nextDuckTime ) //time out and release ducks
     {
-        if( (i+1)*DUCK_FLYAWAY_TIME > gt )
+        _cur_chp++;
+        _nextDuckTime += DUCK_FLYAWAY_TIME;
+        if( _cur_chp >= CHAPTER_MAX )
         {
-            if( i != _cur_chp)
-            {
-                _cur_chp = i;
-                NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
-                for( DHDuckObj* duckObj in ducks )
-                {
-                    [duckObj addtoScene:self];
-                }
-            }
-            break;
+            [self game_over];
+            return;
+        }
+        
+        NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
+        for( DHDuckObj* duckObj in ducks )
+        {
+            [duckObj addtoScene:self];
         }
     }
-    if( i == CHAPTER_MAX )
-        [self game_over];
+    else if( need_release_ducks )
+    {
+        _cur_chp++;
+        _nextDuckTime = _gameTime + DUCK_FLYAWAY_TIME;
+        if( _cur_chp >= CHAPTER_MAX )
+        {
+            [self game_over];
+            return;
+        }
+        
+        NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
+        for( DHDuckObj* duckObj in ducks )
+        {
+            [duckObj addtoScene:self];
+        }
+    }
 }
 
 -(void)updatePannel:(ccTime)dt
