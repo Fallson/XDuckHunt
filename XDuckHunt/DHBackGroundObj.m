@@ -53,7 +53,7 @@
         self.bg_sky = [CCSprite spriteWithFile: @"bg_sky.png"];
         float scale_r = sz.height/self.bg_sky.contentSize.height;
 //        NSLog(@"sz(%f,%f) and sky(%f,%f), scale_r is: %f", sz.width, sz.height,
-//              _bg_sky.contentSize.width, _bg_sky.contentSize.height ,scale_r);
+//              self.bg_sky.contentSize.width, self.bg_sky.contentSize.height ,scale_r);
         self.bg_sky.scale = scale_r;
         self.bg_sky.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
         self.bg_sky.zOrder = BG_SKY_Z;
@@ -71,7 +71,7 @@
         self.bg_tree.zOrder = BG_TREE_Z;
         
         self.bg_cloud = [CCSprite spriteWithFile: @"Cloud.png"];
-        self.bg_cloud.scale = 0.25;
+        self.bg_cloud.scale = 0.25*CC_CONTENT_SCALE_FACTOR();
         self.bg_cloud.position = ccp( ori.x, ori.y + sz.height*0.78 );
         self.bg_cloud.zOrder = BG_CLOUD_Z;
         
@@ -79,7 +79,7 @@
         self.smoke_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"sky_smoke.png"];
         self.smoke = [CCSprite spriteWithSpriteFrameName:@"sky_smoke_1.png"];
         self.smoke.position = ccp(ori.x + sz.width*0.969, ori.y + sz.height*0.621);
-        self.smoke.scale = 0.5;
+        self.smoke.scale = 0.5*CC_CONTENT_SCALE_FACTOR();
         self.smoke.zOrder = BG_SMOKE_Z;
         _smoke_idx = 0;
         [self.smoke_spriteSheet addChild:self.smoke];

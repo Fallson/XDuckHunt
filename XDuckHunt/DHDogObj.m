@@ -40,13 +40,13 @@
         self.dog_state = DOG_RUNNING;
         
         _winRect = rect;
-        NSLog(@"dog rect is: (%f,%f), (%f,%f)", rect.origin.x, rect.origin.y,
-              rect.size.width, rect.size.height);
+//        NSLog(@"dog rect is: (%f,%f), (%f,%f)", rect.origin.x, rect.origin.y,
+//              rect.size.width, rect.size.height);
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"dog.plist"];
         self.dog_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"dog.png"];
         self.dog = [CCSprite spriteWithSpriteFrameName:@"dog_1.png"];
-        self.dog.scale = 0.75;
+        self.dog.scale = 0.75*CC_CONTENT_SCALE_FACTOR();
         _dog_size.width = self.dog.contentSize.width * self.dog.scaleX;
         _dog_size.height = self.dog.contentSize.height * self.dog.scaleY;
 

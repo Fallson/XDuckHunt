@@ -57,6 +57,7 @@
                                          itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
                                          target:self selector:@selector(FreeModeMenuPressed:)];
         menuitem_freemode.position = ccp(ori.x + sz.width*0.2, ori.y + sz.height*0.8);
+        menuitem_freemode.scale *= CC_CONTENT_SCALE_FACTOR();
         NSString* freemode_str = [NSString stringWithFormat:@"Free Mode"];
         self.freemode_label = [DHLabel labelWithString:freemode_str fontName:DHLABEL_FONT fontSize:20];
         self.freemode_label.color=ccBLUE;
@@ -68,6 +69,7 @@
                                          itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
                                          target:self selector:@selector(TimeModeMenuPressed:)];
         menuitem_timemode.position = ccp(ori.x + sz.width*0.35, ori.y + sz.height*0.6);
+        menuitem_timemode.scale *= CC_CONTENT_SCALE_FACTOR();
         NSString* timemode_str = [NSString stringWithFormat:@"Time Mode"];
         self.timemode_label = [DHLabel labelWithString:timemode_str fontName:DHLABEL_FONT fontSize:20];
         self.timemode_label.color=ccBLUE;
@@ -78,6 +80,7 @@
                                        itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
                                        target:self selector:@selector(OptionMenuPressed:)];
         menuitem_option.position = ccp(ori.x + sz.width*0.6, ori.y + sz.height*0.6);
+        menuitem_option.scale *= CC_CONTENT_SCALE_FACTOR();
         NSString* option_str = [NSString stringWithFormat:@"Game Option"];
         self.option_label = [DHLabel labelWithString:option_str fontName:DHLABEL_FONT fontSize:20];
         self.option_label.color=ccBLUE;
@@ -88,6 +91,7 @@
                                           itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
                                           target:self selector:@selector(ScoreListMenuPressed:)];
         menuitem_scorelist.position = ccp(ori.x + sz.width*0.8, ori.y + sz.height*0.8);
+        menuitem_scorelist.scale *= CC_CONTENT_SCALE_FACTOR();
         NSString* scorelist_str = [NSString stringWithFormat:@"Score List"];
         self.scorelist_label = [DHLabel labelWithString:scorelist_str fontName:DHLABEL_FONT fontSize:20];
         self.scorelist_label.color=ccBLUE;

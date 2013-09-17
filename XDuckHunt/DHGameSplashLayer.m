@@ -51,7 +51,8 @@
 		}
         background = [CCSprite spriteWithFile:@"SplashScreen.png"];
 		background.position = ccp(size.width/2, size.height/2);
-
+        background.scale *= CC_CONTENT_SCALE_FACTOR();
+        
 		// add the label as a child to this Layer
 		[self addChild: background];
 	}
