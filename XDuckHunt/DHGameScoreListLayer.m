@@ -70,14 +70,14 @@
 
 -(void)initScores
 {
-    NSString* timemode_str = [NSString stringWithFormat:@"Time Mode : "];
-    DHLabel* timemode_lable = [DHLabel labelWithString:timemode_str fontName:DHLABEL_FONT fontSize:24];
-    timemode_lable.color = ccYELLOW;
-    timemode_lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
-    [timemode_lable setAnchorPoint: ccp(0.5f, 0.5f)];
-    [self addChild:timemode_lable];
+    NSString* freemode_str = [NSString stringWithFormat:@"Free Mode : "];
+    DHLabel* freemode_lable = [DHLabel labelWithString:freemode_str fontName:DHLABEL_FONT fontSize:24];
+    freemode_lable.color = ccYELLOW;
+    freemode_lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
+    [freemode_lable setAnchorPoint: ccp(0.5f, 0.5f)];
+    [self addChild:freemode_lable];
     
-    NSMutableArray* scores = [DHGameData sharedDHGameData].timemode_scores;
+    NSMutableArray* scores = [DHGameData sharedDHGameData].freemode_scores;
     for( int i = 0; i < [scores count]; i++ )
     {
         int s = [[scores objectAtIndex:i] intValue];
@@ -96,14 +96,14 @@
         //[label setAnchorPoint: ccp(0.5f, 0.5f)];
     }
     
-    NSString* freemode_str = [NSString stringWithFormat:@"Free Mode : "];
-    DHLabel* freemode_lable = [DHLabel labelWithString:freemode_str fontName:DHLABEL_FONT fontSize:24];
-    freemode_lable.color = ccYELLOW;
-    freemode_lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.6*_bgRect.size.height);
-    [freemode_lable setAnchorPoint: ccp(0.5f, 0.5f)];
-    [self addChild:freemode_lable];
-
-    scores = [DHGameData sharedDHGameData].freemode_scores;
+    NSString* timemode_str = [NSString stringWithFormat:@"Time Mode : "];
+    DHLabel* timemode_lable = [DHLabel labelWithString:timemode_str fontName:DHLABEL_FONT fontSize:24];
+    timemode_lable.color = ccYELLOW;
+    timemode_lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.6*_bgRect.size.height);
+    [timemode_lable setAnchorPoint: ccp(0.5f, 0.5f)];
+    [self addChild:timemode_lable];
+    
+    scores = [DHGameData sharedDHGameData].timemode_scores;
     for( int i = 0; i < [scores count]; i++ )
     {
         int s = [[scores objectAtIndex:i] intValue];
@@ -121,7 +121,6 @@
         // center aligment (default)
         //[label setAnchorPoint: ccp(0.5f, 0.5f)];
     }
-    
 }
 
 -(void)initMenu

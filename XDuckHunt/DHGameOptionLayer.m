@@ -92,8 +92,8 @@
 {
     //bgMusic part
     CCMenuItemToggle* mi_bgMusic = nil;
-    _mi_bgMusicOn = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked" selectedImage:@"checkbox_checked" target:nil selector:nil];
-    _mi_bgMusicOff = [CCMenuItemImage itemWithNormalImage:@"checkbox_unchecked" selectedImage:@"checkbox_unchecked" target:nil selector:nil];
+    _mi_bgMusicOn = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked.png" selectedImage:@"checkbox_checked.png" target:nil selector:nil];
+    _mi_bgMusicOff = [CCMenuItemImage itemWithNormalImage:@"checkbox_unchecked.png" selectedImage:@"checkbox_unchecked.png" target:nil selector:nil];
     if( [DHGameData sharedDHGameData].bgMusic == 1 )
     {
         mi_bgMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(bgMusicPressed:) items:_mi_bgMusicOn, _mi_bgMusicOff, nil];
@@ -102,19 +102,19 @@
     {
         mi_bgMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(bgMusicPressed:) items:_mi_bgMusicOff, _mi_bgMusicOn, nil];
     }
-    mi_bgMusic.scale *= CC_CONTENT_SCALE_FACTOR();
-    mi_bgMusic.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.7*_bgRect.size.height);
+    mi_bgMusic.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
+    mi_bgMusic.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.6*_bgRect.size.height);
     
     NSString* bgMusic_str = [NSString stringWithFormat:@"    BackGround Sound"];
     DHLabel* bgMusic_label = [DHLabel labelWithString:bgMusic_str fontName:DHLABEL_FONT fontSize:24];
     bgMusic_label.color=ccYELLOW;
-    bgMusic_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.7*_bgRect.size.height);
+    bgMusic_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.6*_bgRect.size.height);
     [bgMusic_label setAnchorPoint: ccp(0, 0.5f)];
     
     //gameMusic part
     CCMenuItemToggle* mi_gameMusic = nil;
-    _mi_gameMusicOn = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked" selectedImage:@"checkbox_checked" target:nil selector:nil];
-    _mi_gameMusicOff = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked" selectedImage:@"checkbox_checked" target:nil selector:nil];
+    _mi_gameMusicOn = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked.png" selectedImage:@"checkbox_checked.png" target:nil selector:nil];
+    _mi_gameMusicOff = [CCMenuItemImage itemWithNormalImage:@"checkbox_unchecked.png" selectedImage:@"checkbox_unchecked.png" target:nil selector:nil];
     if( [DHGameData sharedDHGameData].gameMusic == 1 )
     {
         mi_gameMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(gameMusicPressed:) items:_mi_gameMusicOn, _mi_gameMusicOff, nil];
@@ -123,8 +123,8 @@
     {
         mi_gameMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(gameMusicPressed:) items:_mi_gameMusicOff, _mi_gameMusicOn, nil];
     }
-    mi_bgMusic.scale *= CC_CONTENT_SCALE_FACTOR();
-    mi_bgMusic.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.5*_bgRect.size.height);
+    mi_gameMusic.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
+    mi_gameMusic.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.5*_bgRect.size.height);
    
     NSString* gameMusic_str = [NSString stringWithFormat:@"    Game Sound"];
     DHLabel* gameMusic_label = [DHLabel labelWithString:gameMusic_str fontName:DHLABEL_FONT fontSize:24];
@@ -132,9 +132,14 @@
     gameMusic_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.5*_bgRect.size.height);
     [gameMusic_label setAnchorPoint: ccp(0, 0.5f)];
     
-    CCMenu* main_menu = [CCMenu menuWithItems:mi_bgMusic, mi_gameMusic, nil];
-    main_menu.position = CGPointZero;
-    [self addChild:main_menu];
+    CCMenu* main_menu1 = [CCMenu menuWithItems: mi_bgMusic, mi_gameMusic, nil];
+    main_menu1.position = CGPointZero;
+    
+//    CCMenu* main_menu2 = [CCMenu menuWithItems: mi_gameMusic, nil];
+//    main_menu2.position = CGPointZero;
+    
+    [self addChild:main_menu1];
+    //[self addChild:main_menu2];
     [self addChild:bgMusic_label];
     [self addChild:gameMusic_label];
 }

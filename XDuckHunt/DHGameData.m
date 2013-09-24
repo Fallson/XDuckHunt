@@ -100,14 +100,10 @@ static DHGameData *_sharedDHGameData=nil;
     }
     [s insertObject:[NSNumber numberWithInt:sc] atIndex:i];
     
-    NSLog(@"1.addScore scorelist count:%@", s);
-    
     while( [s count] > 5 )
     {
         [s removeLastObject];
     }
-    
-    NSLog(@"2.addScore scorelist count:%@", s);
     
     [self saveScores:game_mode];
 }
