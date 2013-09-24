@@ -198,8 +198,7 @@
         _nextDuckTime += DUCK_FLYAWAY_TIME;
         if( _cur_chp >= CHAPTER_MAX )
         {
-            [self game_over];
-            return;
+            _cur_chp = CHAPTER_MAX-1;
         }
         
         NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
@@ -214,8 +213,7 @@
         _nextDuckTime = _gameTime + DUCK_FLYAWAY_TIME;
         if( _cur_chp >= CHAPTER_MAX )
         {
-            [self game_over];
-            return;
+            _cur_chp = CHAPTER_MAX-1;
         }
         
         NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];

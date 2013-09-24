@@ -93,7 +93,7 @@
         scores = [DHGameData sharedDHGameData].freemode_scores;
     }
     
-    NSString* str = [NSString stringWithFormat:@"Game Over : %d", cur_game_score];
+    NSString* str = [NSString stringWithFormat:@"Game Over, Your score : %d", cur_game_score];
     DHLabel* lable = [DHLabel labelWithString:str fontName:DHLABEL_FONT fontSize:24];
     lable.color = ccYELLOW;
     lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
@@ -102,7 +102,7 @@
     
     for( int i = 0; i < [scores count]; i++ )
     {
-        int s = [scores objectAtIndex:i];
+        int s = [[scores objectAtIndex:i] intValue];
         NSString* score_str = [NSString stringWithFormat:@"%d", s];
         DHLabel* score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
         if( s == cur_game_score )
@@ -133,7 +133,9 @@
     CCMenuItem *menuitem_return = [CCMenuItemImage
                                    itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
                                    target:self selector:@selector(ReturnMenuPressed:)];
+    menuitem_return.scale *= CC_CONTENT_SCALE_FACTOR();
     menuitem_return.position = return_label.position;
+    
     CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, nil];
     main_menu.position = CGPointZero;
     [self addChild:main_menu];

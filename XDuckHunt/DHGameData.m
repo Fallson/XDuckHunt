@@ -45,8 +45,24 @@ static DHGameData *_sharedDHGameData=nil;
 -(void)loadScores
 {
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    self.timemode_scores = [settings objectForKey:@"timemode_scores"];
-    self.freemode_scores = [settings objectForKey:@"freemode_scores"];
+    
+    if( [settings objectForKey:@"timemode_scores"] == nil )
+    {
+        self.timemode_scores = [NSMutableArray array];
+    }
+    else
+    {
+        self.timemode_scores = [NSMutableArray arrayWithArray: [settings objectForKey:@"timemode_scores"]];
+    }
+    
+    if( [settings objectForKey:@"freemode_scores"] == nil )
+    {
+        self.freemode_scores = [NSMutableArray array];
+    }
+    else
+    {
+        self.freemode_scores = [NSMutableArray arrayWithArray:[settings objectForKey:@"freemode_scores"]];
+    }
 }
 
 -(void)saveScores:(enum GAME_MODE)game_mode
@@ -61,26 +77,33 @@ static DHGameData *_sharedDHGameData=nil;
 
 -(void)addScore:(int)sc gameMode:(enum GAME_MODE)game_mode
 {
+    if( sc == 0 )
+        return;
+    
     NSMutableArray* s = nil;
     if( game_mode == TIME_MODE )
         s = self.timemode_scores;
     else if( game_mode == FREE_MODE)
         s = self.freemode_scores;
     
-    [s addObject:sc];
-    [s sortUsingComparator:
-    ^(id obj1, id obj2){
-        if ([obj1 integerValue] > [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedDescending;}
-        if ([obj1 integerValue] < [obj2 integerValue]) {
-            return (NSComparisonResult)NSOrderedAscending;}
-        return (NSComparisonResult)NSOrderedSame;
-    }];
+    int i = 0;
+    for( ; i < [s count]; i++ )
+    {
+        if( [[s objectAtIndex:i] intValue] <= sc )
+        {
+            break;
+        }
+    }
+    [s insertObject:[NSNumber numberWithInt:sc] atIndex:i];
     
-    while( [s count] > 10 )
+    NSLog(@"1.addScore scorelist count:%@", s);
+    
+    while( [s count] > 5 )
     {
         [s removeLastObject];
     }
+    
+    NSLog(@"2.addScore scorelist count:%@", s);
     
     [self saveScores:game_mode];
 }
@@ -90,12 +113,12 @@ static DHGameData *_sharedDHGameData=nil;
     if( game_mode == TIME_MODE )
     {
         if( [self.timemode_scores count] > 0 )
-            return [self.timemode_scores objectAtIndex:0];
+            return [[self.timemode_scores objectAtIndex:0] intValue];
     }
     else if( game_mode == FREE_MODE )
     {
         if( [self.freemode_scores count] > 0 )
-            return [self.freemode_scores objectAtIndex:0];
+            return [[self.freemode_scores objectAtIndex:0] intValue];
     }
     
     return 0;

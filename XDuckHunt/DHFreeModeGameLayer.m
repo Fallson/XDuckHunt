@@ -44,6 +44,8 @@
     ccTime         _gameTime;
     int            _hit_count;
     int            _miss_count;
+    
+    bool           _game_over;
 }
 
 // Helper class method that creates a Scene with the DHFreeModeGameLayer as the only child.
@@ -79,6 +81,8 @@
         _gameTime = 0;
         _hit_count = 0;
         _miss_count = 0;
+        
+        _game_over = false;
         
         //
         [DHGameData sharedDHGameData].cur_game_mode = FREE_MODE;
@@ -201,8 +205,7 @@
         _nextDuckTime += DUCK_FLYAWAY_TIME;
         if( _cur_chp >= CHAPTER_MAX )
         {
-            [self game_over];
-            return;
+            _cur_chp = CHAPTER_MAX-1;
         }
 
         NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
@@ -217,8 +220,7 @@
         _nextDuckTime = _gameTime + DUCK_FLYAWAY_TIME;
         if( _cur_chp >= CHAPTER_MAX )
         {
-            [self game_over];
-            return;
+            _cur_chp = CHAPTER_MAX-1;
         }
         
         NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
@@ -240,6 +242,10 @@
 
 -(void)game_over
 {
+    if( _game_over )
+        return;
+    
+    _game_over = true;
     [DHGameData sharedDHGameData].cur_game_score = _hit_count*100;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];    
 }

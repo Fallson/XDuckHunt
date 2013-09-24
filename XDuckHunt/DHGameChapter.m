@@ -253,10 +253,15 @@
         @selector(setDucks_Chapter10:)};
     
     NSMutableArray* ducks = [self.chapters objectAtIndex:(int)lvl];
-    if( [ducks count] == 0 )
+    if( [ducks count] != 0 )
     {
-        [self performSelector:funs[(int)lvl] withObject:ducks];
+        for( DHDuckObj* duckObj in ducks )
+            [duckObj release];
+        [ducks removeAllObjects];
     }
+    
+    [self performSelector:funs[(int)lvl] withObject:ducks];
+    
     return ducks;
 }
 
