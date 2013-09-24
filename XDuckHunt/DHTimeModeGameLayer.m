@@ -43,6 +43,8 @@
     ccTime         _nextDuckTime;
     ccTime         _gameTime;
     int            _hit_count;
+    
+    bool           _game_over;
 }
 
 // Helper class method that creates a Scene with the DHTimeModeGameLayer as the only child.
@@ -78,6 +80,7 @@
         _gameTime = 0;
         _hit_count = 0;
         
+        _game_over = false;
         //
         [DHGameData sharedDHGameData].cur_game_mode = TIME_MODE;
         
@@ -235,6 +238,10 @@
 
 -(void)game_over
 {
+    if( _game_over )
+        return;
+    
+    _game_over = true;
     [DHGameData sharedDHGameData].cur_game_score = _hit_count*100;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];
 }

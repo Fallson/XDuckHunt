@@ -13,11 +13,15 @@
 
 @property(nonatomic, assign)enum GAME_MODE cur_game_mode;
 @property(nonatomic, assign)int cur_game_score;
+@property(nonatomic, assign)int bgMusic;//BackGround Sound
+@property(nonatomic, assign)int gameMusic;//Game Sound
 @property(nonatomic, retain)NSMutableArray* timemode_scores;
 @property(nonatomic, retain)NSMutableArray* freemode_scores;
 
 +(DHGameData *)sharedDHGameData;
 -(int)getHighestScore:(enum GAME_MODE)game_mode;
 -(void)addScore:(int)sc gameMode:(enum GAME_MODE)game_mode;
+-(void)addBGMusic:(int)v;
+-(void)addGameMusic:(int)v;
 
 @end

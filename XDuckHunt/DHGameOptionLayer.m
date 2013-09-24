@@ -14,25 +14,31 @@
 #import "AppDelegate.h"
 
 #import "DHBackGroundObj.h"
-#import "DHDuckObj.h"
-#import "DHPilot.h"
 #import "DHConstons.h"
-#import "DHGameChapter.h"
+#import "DHGameData.h"
+#import "DHLabel.h"
+#import "DHGameMenuLayer.h"
+#import "SimpleAudioEngine.h"
 #pragma mark - DHGameOptionLayer
+
+@interface DHGameOptionLayer()
+@property (nonatomic, retain) CCMenuItem* mi_bgMusicOn;
+@property (nonatomic, retain) CCMenuItem* mi_bgMusicOff;
+@property (nonatomic, retain) CCMenuItem* mi_gameMusicOn;
+@property (nonatomic, retain) CCMenuItem* mi_gameMusicOff;
+@end
 
 // DHGameOptionLayer implementation
 @implementation DHGameOptionLayer
 {
     DHBackGroundObj* _bgObj;
     CGRect           _bgRect;
-    
-    DHGameChapter*   _gameChps;
-    enum CHAPTER_LVL _cur_chp;
-    CGRect           _duckRect;
-    
-    ccTime         _gameTime;
-    int            _hit_count;
 }
+
+@synthesize mi_bgMusicOn = _mi_bgMusicOn;
+@synthesize mi_bgMusicOff = _mi_bgMusicOff;
+@synthesize mi_gameMusicOn = _mi_gameMusicOn;
+@synthesize mi_gameMusicOff = _mi_gameMusicOff;
 
 // Helper class method that creates a Scene with the DHGameOptionLayer as the only child.
 +(CCScene *) scene
@@ -59,10 +65,8 @@
 	if( (self=[super init]) )
     {
         [self initBG];
-        [self initDucks];
-        
-        _gameTime = 0;
-        _hit_count = 0;
+        [self initOption];
+        [self initMenu];
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -72,6 +76,7 @@
     }
 	return self;
 }
+
 
 -(void)initBG
 {
@@ -83,120 +88,134 @@
     [_bgObj addtoScene: self];
 }
 
--(void)initDucks
+-(void)initOption
 {
-    _duckRect = _bgRect;
-    _duckRect.origin.y += 0.25*_duckRect.size.height;
-    _duckRect.size.height *= 0.75;
-    _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
-    _cur_chp = CHAPTER1;
-    for( int i = 0; i <= _cur_chp; i++ )
+    //bgMusic part
+    CCMenuItemToggle* mi_bgMusic = nil;
+    _mi_bgMusicOn = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked" selectedImage:@"checkbox_checked" target:nil selector:nil];
+    _mi_bgMusicOff = [CCMenuItemImage itemWithNormalImage:@"checkbox_unchecked" selectedImage:@"checkbox_unchecked" target:nil selector:nil];
+    if( [DHGameData sharedDHGameData].bgMusic == 1 )
     {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks )
+        mi_bgMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(bgMusicPressed:) items:_mi_bgMusicOn, _mi_bgMusicOff, nil];
+    }
+    else
+    {
+        mi_bgMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(bgMusicPressed:) items:_mi_bgMusicOff, _mi_bgMusicOn, nil];
+    }
+    mi_bgMusic.scale *= CC_CONTENT_SCALE_FACTOR();
+    mi_bgMusic.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.7*_bgRect.size.height);
+    
+    NSString* bgMusic_str = [NSString stringWithFormat:@"    BackGround Sound"];
+    DHLabel* bgMusic_label = [DHLabel labelWithString:bgMusic_str fontName:DHLABEL_FONT fontSize:24];
+    bgMusic_label.color=ccYELLOW;
+    bgMusic_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.7*_bgRect.size.height);
+    [bgMusic_label setAnchorPoint: ccp(0, 0.5f)];
+    
+    //gameMusic part
+    CCMenuItemToggle* mi_gameMusic = nil;
+    _mi_gameMusicOn = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked" selectedImage:@"checkbox_checked" target:nil selector:nil];
+    _mi_gameMusicOff = [CCMenuItemImage itemWithNormalImage:@"checkbox_checked" selectedImage:@"checkbox_checked" target:nil selector:nil];
+    if( [DHGameData sharedDHGameData].gameMusic == 1 )
+    {
+        mi_gameMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(gameMusicPressed:) items:_mi_gameMusicOn, _mi_gameMusicOff, nil];
+    }
+    else
+    {
+        mi_gameMusic = [CCMenuItemToggle itemWithTarget:self selector:@selector(gameMusicPressed:) items:_mi_gameMusicOff, _mi_gameMusicOn, nil];
+    }
+    mi_bgMusic.scale *= CC_CONTENT_SCALE_FACTOR();
+    mi_bgMusic.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.5*_bgRect.size.height);
+   
+    NSString* gameMusic_str = [NSString stringWithFormat:@"    Game Sound"];
+    DHLabel* gameMusic_label = [DHLabel labelWithString:gameMusic_str fontName:DHLABEL_FONT fontSize:24];
+    gameMusic_label.color=ccYELLOW;
+    gameMusic_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.3, _bgRect.origin.y + 0.5*_bgRect.size.height);
+    [gameMusic_label setAnchorPoint: ccp(0, 0.5f)];
+    
+    CCMenu* main_menu = [CCMenu menuWithItems:mi_bgMusic, mi_gameMusic, nil];
+    main_menu.position = CGPointZero;
+    [self addChild:main_menu];
+    [self addChild:bgMusic_label];
+    [self addChild:gameMusic_label];
+}
+
+-(void)bgMusicPressed:(id)sender
+{
+    CCMenuItemToggle* toggleItem = (CCMenuItemToggle*)sender;
+    
+    if( toggleItem.selectedItem == _mi_bgMusicOn )
+    {
+        [[DHGameData sharedDHGameData] addBGMusic:1];
+        
+        if( [SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying )
+        {}
+        else
         {
-            [duckObj addtoScene: self];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"gameMusic.mp3"];
         }
     }
+    else if( toggleItem.selectedItem == _mi_bgMusicOff )
+    {
+        [[DHGameData sharedDHGameData] addBGMusic:0];
+        
+        if( [SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying )
+        {
+            [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        }
+        else
+        {}
+    }
+}
+
+-(void)gameMusicPressed:(id)sender
+{
+    CCMenuItemToggle* toggleItem = (CCMenuItemToggle*)sender;
+    
+    if( toggleItem.selectedItem == _mi_gameMusicOn )
+    {
+        [[DHGameData sharedDHGameData] addGameMusic:1];
+    }
+    else if( toggleItem.selectedItem == _mi_gameMusicOff )
+    {
+        [[DHGameData sharedDHGameData] addGameMusic:0];
+    }
+}
+
+
+-(void)initMenu
+{
+    NSString* return_str = [NSString stringWithFormat:@"Return"];
+    DHLabel* return_label = [DHLabel labelWithString:return_str fontName:DHLABEL_FONT fontSize:20];
+    return_label.color=ccBLUE;
+    return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    [return_label setAnchorPoint: ccp(0.5f, 0.5f)];
+    
+    CCMenuItem *menuitem_return = [CCMenuItemImage
+                                   itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+                                   target:self selector:@selector(ReturnMenuPressed:)];
+    menuitem_return.scale *= CC_CONTENT_SCALE_FACTOR();
+    menuitem_return.position = return_label.position;
+    
+    CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, nil];
+    main_menu.position = CGPointZero;
+    [self addChild:main_menu];
+    [self addChild:return_label];
+}
+
+-(void)ReturnMenuPressed:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameMenuLayer scene] ]];
 }
 
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
-    _gameTime += dt;
-    
     [self updateBG:dt];
-    [self updateDucks:dt withGameTime:_gameTime];
 }
 
 -(void) updateBG:(ccTime)dt
 {
     [_bgObj update:dt];
-}
-
--(void) updateDucks:(ccTime)dt withGameTime: (ccTime)gt
-{
-    for( int i = 0; i <= _cur_chp; i++ )
-    {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks )
-        {
-            [duckObj update:dt];
-            
-            if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
-            {
-                duckObj.duck_state = START_FLYAWAY;
-            }
-            else if( duckObj.duck_state == DISAPPEAR )
-            {
-                //do some free oprations on ducks
-                //not done yet
-            }
-        }
-    }
-    
-    for( int i = 0; i < CHAPTER_MAX; i++ )
-    {
-        if( (i+1)*DUCK_FLYAWAY_TIME > gt )
-        {
-            if( i != _cur_chp)
-            {
-                _cur_chp = i;
-                NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
-                for( DHDuckObj* duckObj in ducks )
-                {
-                    [duckObj addtoScene:self];
-                }
-            }
-            break;
-        }
-    }
-}
-
-- (void) nextFrame:(ccTime)dt
-{
-//    CGSize sz = [ [CCDirector sharedDirector] winSize];
-//    seeker1.position = ccp( seeker1.position.x + 100*dt, seeker1.position.y );
-//    //NSLog(@"rect: (%f, %f)", seeker1.textureRect.size.width, seeker1.textureRect.size.height);
-//    if (seeker1.position.x > sz.width+seeker1.textureRect.size.width/20) {
-//        seeker1.position = ccp( -seeker1.textureRect.size.width/20, seeker1.position.y );
-//    }
-}
-
-#pragma mark - touch part
--(void) registerWithTouchDispatcher
-{
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-}
-
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
-}
-
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-	CGPoint location = [self convertTouchToNodeSpace: touch];
-
-    [self touchDucks:location];
-}
-
--(void)touchDucks:(CGPoint)location
-{
-    for( int i = 0; i <= _cur_chp; i++ )
-    {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks)
-        {
-            if( duckObj.duck_state == FLYING )
-            {
-                bool duckHit = [duckObj hit: location];
-                if( duckHit )
-                {
-                    duckObj.duck_state = START_DEAD;
-                    _hit_count++;
-                }
-            }
-        }
-    }
 }
 
 #pragma mark - dealloc part
@@ -207,7 +226,6 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
-    [_gameChps release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

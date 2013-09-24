@@ -9,6 +9,8 @@
 #import "DHBackGroundObj.h"
 #import "DHConstons.h"
 #import "DHZDepth.h"
+#import "DHGameData.h"
+#import "SimpleAudioEngine.h"
 
 #define CLOUD_MV_STEP    5
 #define SMOKE_SPRITE_NUM 5
@@ -85,6 +87,15 @@
         [self.smoke_spriteSheet addChild:self.smoke];
         self.smoke_spriteSheet.zOrder = BG_SMOKE_Z;
         
+        if( [DHGameData sharedDHGameData].bgMusic==1 )
+        {
+            if( [SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying )
+            {}
+            else
+            {
+                [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"gameMusic.mp3"];
+            }
+        }
 	}
 	return self;
 }

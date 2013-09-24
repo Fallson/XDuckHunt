@@ -11,6 +11,8 @@
 @implementation DHGameData
 @synthesize cur_game_score = _cur_game_score;
 @synthesize cur_game_mode = _cur_game_mode;
+@synthesize bgMusic = _bgMusic;
+@synthesize gameMusic = _gameMusic;
 @synthesize timemode_scores = _timemode_scores;
 @synthesize freemode_scores = _freemode_scores;
 
@@ -35,6 +37,7 @@ static DHGameData *_sharedDHGameData=nil;
 	if( (self=[super init]) )
     {
         [self loadScores];
+        [self loadMusics];
         self.cur_game_mode = TIME_MODE;
         self.cur_game_score = 0;
 	}
@@ -42,6 +45,7 @@ static DHGameData *_sharedDHGameData=nil;
 	return self;
 }
 
+#pragma mark - score part
 -(void)loadScores
 {
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -122,6 +126,48 @@ static DHGameData *_sharedDHGameData=nil;
     }
     
     return 0;
+}
+
+#pragma mark - sound part
+-(void)loadMusics
+{
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    
+    if( [settings objectForKey:@"bgMusic"] == nil )
+    {
+        self.bgMusic = 1;
+    }
+    else
+    {
+        self.bgMusic = [[settings objectForKey:@"bgMusic"] intValue];
+    }
+    
+    if( [settings objectForKey:@"gameMusic"] == nil )
+    {
+        self.gameMusic = 1;
+    }
+    else
+    {
+        self.gameMusic = [[settings objectForKey:@"gameMusic"] intValue];
+    }
+}
+
+-(void)addBGMusic:(int)v
+{
+    self.bgMusic = v;
+    
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings setObject: [NSNumber numberWithInt:v] forKey:@"bgMusic"];
+    [settings synchronize];
+}
+
+-(void)addGameMusic:(int)v
+{
+    self.gameMusic = v;
+    
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings setObject: [NSNumber numberWithInt:v] forKey:@"gameMusic"];
+    [settings synchronize];
 }
 
 @end

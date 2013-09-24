@@ -23,6 +23,11 @@
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
 		D27049C017A6AB1600342505 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BF17A6AB1600342505 /* Cloud.png */; };
+		D273CAB817F16EC700698331 /* duck_dead.wav in Resources */ = {isa = PBXBuildFile; fileRef = D273CAB517F16EC700698331 /* duck_dead.wav */; };
+		D273CAB917F16EC700698331 /* duck_live.wav in Resources */ = {isa = PBXBuildFile; fileRef = D273CAB617F16EC700698331 /* duck_live.wav */; };
+		D273CABA17F16EC700698331 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D273CAB717F16EC700698331 /* gameMusic.mp3 */; };
+		D273CABD17F1872C00698331 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D273CABB17F1872C00698331 /* checkbox_checked.png */; };
+		D273CABE17F1872C00698331 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = D273CABC17F1872C00698331 /* checkbox_unchecked.png */; };
 		D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D290A5D017C8563900C2EDDE /* sniglet.ttf */; };
 		D290A5D617C8709D00C2EDDE /* dog.plist in Resources */ = {isa = PBXBuildFile; fileRef = D290A5D417C8709D00C2EDDE /* dog.plist */; };
 		D290A5D717C8709D00C2EDDE /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = D290A5D517C8709D00C2EDDE /* dog.png */; };
@@ -204,6 +209,11 @@
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
 		D27049BC17A6A4C300342505 /* sky_smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky_smoke.png; path = Resources/sky_smoke.png; sourceTree = "<group>"; };
 		D27049BF17A6AB1600342505 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cloud.png; path = Resources/Cloud.png; sourceTree = "<group>"; };
+		D273CAB517F16EC700698331 /* duck_dead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = duck_dead.wav; path = Resources/duck_dead.wav; sourceTree = "<group>"; };
+		D273CAB617F16EC700698331 /* duck_live.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = duck_live.wav; path = Resources/duck_live.wav; sourceTree = "<group>"; };
+		D273CAB717F16EC700698331 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameMusic.mp3; path = Resources/gameMusic.mp3; sourceTree = "<group>"; };
+		D273CABB17F1872C00698331 /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_checked.png; path = Resources/checkbox_checked.png; sourceTree = "<group>"; };
+		D273CABC17F1872C00698331 /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_unchecked.png; path = Resources/checkbox_unchecked.png; sourceTree = "<group>"; };
 		D290A5D017C8563900C2EDDE /* sniglet.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sniglet.ttf; path = Resources/sniglet.ttf; sourceTree = "<group>"; };
 		D290A5D417C8709D00C2EDDE /* dog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dog.plist; path = Resources/dog.plist; sourceTree = "<group>"; };
 		D290A5D517C8709D00C2EDDE /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dog.png; path = Resources/dog.png; sourceTree = "<group>"; };
@@ -631,6 +641,11 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D273CABB17F1872C00698331 /* checkbox_checked.png */,
+				D273CABC17F1872C00698331 /* checkbox_unchecked.png */,
+				D273CAB517F16EC700698331 /* duck_dead.wav */,
+				D273CAB617F16EC700698331 /* duck_live.wav */,
+				D273CAB717F16EC700698331 /* gameMusic.mp3 */,
 				D290A5D417C8709D00C2EDDE /* dog.plist */,
 				D290A5D517C8709D00C2EDDE /* dog.png */,
 				D290A5D017C8563900C2EDDE /* sniglet.ttf */,
@@ -1092,15 +1107,20 @@
 				D29EEB5517A4F2130072B0EA /* bg_sky.png in Resources */,
 				D29EEB5617A4F2130072B0EA /* bg_tree.png in Resources */,
 				D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */,
+				D273CAB917F16EC700698331 /* duck_live.wav in Resources */,
+				D273CAB817F16EC700698331 /* duck_dead.wav in Resources */,
+				D273CABD17F1872C00698331 /* checkbox_checked.png in Resources */,
 				D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */,
 				D27049C017A6AB1600342505 /* Cloud.png in Resources */,
 				D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */,
 				D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */,
 				D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */,
+				D273CABE17F1872C00698331 /* checkbox_unchecked.png in Resources */,
 				D294E33D17C2655C008307ED /* MenuItem.png in Resources */,
 				D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */,
 				D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */,
 				D290A5D617C8709D00C2EDDE /* dog.plist in Resources */,
+				D273CABA17F16EC700698331 /* gameMusic.mp3 in Resources */,
 				D290A5D717C8709D00C2EDDE /* dog.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
