@@ -147,13 +147,13 @@
 {
     [self updateBG:dt];
     [self updateDog:dt];
+    [self updatePannel:dt];
     
     if( _dogObj.dog_state == DOG_DISAPPEAR )
     {
         _gameTime += dt;
         [self updateDucks:dt];
-        [self updatePannel:dt];
-        
+
         if(FREEMODE_TOTAL_DUCK < _miss_count)
         {
             [self game_over];
