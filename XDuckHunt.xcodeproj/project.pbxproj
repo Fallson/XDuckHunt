@@ -176,6 +176,16 @@
 		D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748217ABE89800363DAC /* duck_black_flying.plist */; };
 		D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748317ABE89800363DAC /* duck_black_flying.png */; };
 		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
+		D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */; };
+		D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */; };
+		D2DF440E17F31BE900461DA4 /* bird_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440717F31BE900461DA4 /* bird_flying.plist */; };
+		D2DF440F17F31BE900461DA4 /* bird_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440817F31BE900461DA4 /* bird_flying.png */; };
+		D2DF441017F31BE900461DA4 /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440917F31BE900461DA4 /* dog.mp3 */; };
+		D2DF441117F31BE900461DA4 /* duck_red_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440A17F31BE900461DA4 /* duck_red_flying.plist */; };
+		D2DF441217F31BE900461DA4 /* duck_red_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440B17F31BE900461DA4 /* duck_red_flying.png */; };
+		D2DF441317F31BE900461DA4 /* parrot_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440C17F31BE900461DA4 /* parrot_flying.plist */; };
+		D2DF441417F31BE900461DA4 /* parrot_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440D17F31BE900461DA4 /* parrot_flying.png */; };
+		D2DF441717F3378C00461DA4 /* DHIntroPannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF441617F3378C00461DA4 /* DHIntroPannelObj.m */; };
 		D2F81D3817DA09FE0043A338 /* DHGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F81D3717DA09FE0043A338 /* DHGameData.m */; };
 /* End PBXBuildFile section */
 
@@ -513,6 +523,17 @@
 		D2B6748317ABE89800363DAC /* duck_black_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_black_flying.png; path = Resources/duck_black_flying.png; sourceTree = "<group>"; };
 		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
 		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
+		D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_blue_flying.plist; path = Resources/duck_blue_flying.plist; sourceTree = "<group>"; };
+		D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_blue_flying.png; path = Resources/duck_blue_flying.png; sourceTree = "<group>"; };
+		D2DF440717F31BE900461DA4 /* bird_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bird_flying.plist; path = Resources/bird_flying.plist; sourceTree = "<group>"; };
+		D2DF440817F31BE900461DA4 /* bird_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bird_flying.png; path = Resources/bird_flying.png; sourceTree = "<group>"; };
+		D2DF440917F31BE900461DA4 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dog.mp3; path = Resources/dog.mp3; sourceTree = "<group>"; };
+		D2DF440A17F31BE900461DA4 /* duck_red_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_red_flying.plist; path = Resources/duck_red_flying.plist; sourceTree = "<group>"; };
+		D2DF440B17F31BE900461DA4 /* duck_red_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_red_flying.png; path = Resources/duck_red_flying.png; sourceTree = "<group>"; };
+		D2DF440C17F31BE900461DA4 /* parrot_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = parrot_flying.plist; path = Resources/parrot_flying.plist; sourceTree = "<group>"; };
+		D2DF440D17F31BE900461DA4 /* parrot_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = parrot_flying.png; path = Resources/parrot_flying.png; sourceTree = "<group>"; };
+		D2DF441517F3378C00461DA4 /* DHIntroPannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHIntroPannelObj.h; sourceTree = "<group>"; };
+		D2DF441617F3378C00461DA4 /* DHIntroPannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHIntroPannelObj.m; sourceTree = "<group>"; };
 		D2F81D3617DA09FE0043A338 /* DHGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameData.h; sourceTree = "<group>"; };
 		D2F81D3717DA09FE0043A338 /* DHGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -562,6 +583,8 @@
 		D25B4B1817C4A4A40021017C /* UIObjs */ = {
 			isa = PBXGroup;
 			children = (
+				D2DF441517F3378C00461DA4 /* DHIntroPannelObj.h */,
+				D2DF441617F3378C00461DA4 /* DHIntroPannelObj.m */,
 				D21E8C9117C1D37800D1F499 /* DHMenuObj.h */,
 				D21E8C9217C1D37900D1F499 /* DHMenuObj.m */,
 				D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */,
@@ -641,6 +664,15 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2DF440717F31BE900461DA4 /* bird_flying.plist */,
+				D2DF440817F31BE900461DA4 /* bird_flying.png */,
+				D2DF440917F31BE900461DA4 /* dog.mp3 */,
+				D2DF440A17F31BE900461DA4 /* duck_red_flying.plist */,
+				D2DF440B17F31BE900461DA4 /* duck_red_flying.png */,
+				D2DF440C17F31BE900461DA4 /* parrot_flying.plist */,
+				D2DF440D17F31BE900461DA4 /* parrot_flying.png */,
+				D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */,
+				D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */,
 				D273CABB17F1872C00698331 /* checkbox_checked.png */,
 				D273CABC17F1872C00698331 /* checkbox_unchecked.png */,
 				D273CAB517F16EC700698331 /* duck_dead.wav */,
@@ -1091,6 +1123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */,
+				D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */,
 				D29EE99817A3AC760072B0EA /* Default.png in Resources */,
 				D29EE99A17A3AC760072B0EA /* Default@2x.png in Resources */,
 				D29EE99C17A3AC760072B0EA /* Default-568h@2x.png in Resources */,
@@ -1098,9 +1131,11 @@
 				D29EE9A017A3AC770072B0EA /* Icon-72.png in Resources */,
 				D29EE9A217A3AC770072B0EA /* Icon-Small-50.png in Resources */,
 				D29EE9A417A3AC770072B0EA /* Icon-Small.png in Resources */,
+				D2DF441217F31BE900461DA4 /* duck_red_flying.png in Resources */,
 				D29EE9A617A3AC770072B0EA /* Icon-Small@2x.png in Resources */,
 				D29EE9A817A3AC770072B0EA /* Icon.png in Resources */,
 				D29EE9AA17A3AC770072B0EA /* Icon@2x.png in Resources */,
+				D2DF441117F31BE900461DA4 /* duck_red_flying.plist in Resources */,
 				D29EE9AD17A3AC770072B0EA /* iTunesArtwork in Resources */,
 				D29EEB0617A3AC790072B0EA /* ChangeLog in Resources */,
 				D29EEB5417A4F2130072B0EA /* bg_grass.png in Resources */,
@@ -1114,14 +1149,20 @@
 				D27049C017A6AB1600342505 /* Cloud.png in Resources */,
 				D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */,
 				D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */,
+				D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */,
 				D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */,
+				D2DF441317F31BE900461DA4 /* parrot_flying.plist in Resources */,
 				D273CABE17F1872C00698331 /* checkbox_unchecked.png in Resources */,
 				D294E33D17C2655C008307ED /* MenuItem.png in Resources */,
 				D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */,
 				D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */,
+				D2DF440E17F31BE900461DA4 /* bird_flying.plist in Resources */,
 				D290A5D617C8709D00C2EDDE /* dog.plist in Resources */,
 				D273CABA17F16EC700698331 /* gameMusic.mp3 in Resources */,
 				D290A5D717C8709D00C2EDDE /* dog.png in Resources */,
+				D2DF441417F31BE900461DA4 /* parrot_flying.png in Resources */,
+				D2DF440F17F31BE900461DA4 /* bird_flying.png in Resources */,
+				D2DF441017F31BE900461DA4 /* dog.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,6 +1240,7 @@
 				D29EEA8417A3AC780072B0EA /* CCTransition.m in Sources */,
 				D29EEA8717A3AC780072B0EA /* CCTransitionPageTurn.m in Sources */,
 				D29EEA8A17A3AC780072B0EA /* CCTransitionProgress.m in Sources */,
+				D2DF441717F3378C00461DA4 /* DHIntroPannelObj.m in Sources */,
 				D29EEA8E17A3AC780072B0EA /* cocos2d.m in Sources */,
 				D29EEA9517A3AC780072B0EA /* CCDirectorIOS.m in Sources */,
 				D29EEA9817A3AC780072B0EA /* CCES2Renderer.m in Sources */,

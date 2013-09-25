@@ -10,7 +10,7 @@
 // Import the interfaces
 #import "DHGameSplashLayer.h"
 #import "DHGameMenuLayer.h"
-
+#import "SimpleAudioEngine.h"
 
 #pragma mark - DHGameSplashLayer
 
@@ -55,6 +55,12 @@
         
 		// add the label as a child to this Layer
 		[self addChild: background];
+        
+        //preload sound
+        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"gameMusic.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"dog.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"duck_live.wav"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"duck_dead.wav"];
 	}
 	
 	return self;

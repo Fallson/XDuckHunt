@@ -24,6 +24,8 @@
 #import "DHGameOverLayer.h"
 #pragma mark - DHTimeModeGameLayer
 
+static int duck_scores[] = {100,100,100,200,400};
+
 // DHTimeModeGameLayer implementation
 @implementation DHTimeModeGameLayer
 {
@@ -43,6 +45,7 @@
     ccTime         _nextDuckTime;
     ccTime         _gameTime;
     int            _hit_count;
+    int            _gameScore;
     
     bool           _game_over;
 }
@@ -79,6 +82,7 @@
         _nextDuckTime = 0;
         _gameTime = 0;
         _hit_count = 0;
+        _gameScore = 0;
         
         _game_over = false;
         //
@@ -231,7 +235,7 @@
 {
     [_pannel setLeft_time: TIMEMODE_TOTAL_TIME - (int)_gameTime];
     [_pannel setHit_count:_hit_count];
-    [_pannel setScore:_hit_count*100];
+    [_pannel setScore:_gameScore];
     [_pannel setHighest_score: [[DHGameData sharedDHGameData] getHighestScore:TIME_MODE] ];
     [_pannel update:dt];
 }
@@ -242,7 +246,7 @@
         return;
     
     _game_over = true;
-    [DHGameData sharedDHGameData].cur_game_score = _hit_count*100;
+    [DHGameData sharedDHGameData].cur_game_score = _gameScore;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];
 }
 
@@ -286,6 +290,7 @@
                 {
                     duckObj.duck_state = START_DEAD;
                     _hit_count++;
+                    _gameScore += duck_scores[duckObj.duck_type];
                 }
             }
         }

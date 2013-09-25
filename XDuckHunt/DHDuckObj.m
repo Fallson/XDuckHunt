@@ -12,16 +12,25 @@
 #import "DHPilotManager.h"
 #import "DHPilot.h"
 #import "DHZDepth.h"
+#import "SimpleAudioEngine.h"
+#import "DHGameData.h"
 
 #define DUCK_SPRITE_NUM 3
 
 #pragma mark - DHDuckObj
+static NSString* duck_files[]={
+    @"duck_black_flying",
+    @"duck_blue_flying",
+    @"duck_red_flying",
+    @"bird_flying",
+    @"parrot_flying"};
 
 @interface DHDuckObj()
 {
     int _duck_idx;
     ccTime _accDT;
     CGRect _winRect;
+    bool _duck_live_sound;
 }
 @property(nonatomic, retain) CCSpriteBatchNode* duck_spriteSheet;
 @property(nonatomic, retain) CCSprite* duck;
@@ -31,6 +40,7 @@
 
 @synthesize duck_pilot = _duck_pilot;
 @synthesize duck_state = _duck_state;
+@synthesize duck_type = _duck_type;
 @synthesize duck_size = _duck_size;
 @synthesize duck_living_time = _duck_living_time;
 
@@ -43,13 +53,24 @@
     if( (self=[super init]) )
     {
         self.duck_state = FLYING;
+        int dt = arc4random()%12;
+        if( dt < 3 && dt >= 0)
+            self.duck_type = BLACK_DUCK;
+        else if( dt < 6 && dt >= 3)
+            self.duck_type = BLUE_DUCK;
+        else if( dt < 9 && dt >= 6)
+            self.duck_type = RED_DUCK;
+        else if( dt == 9 || dt == 10)
+            self.duck_type = BIRD_DUCK;
+        else if( dt == 11)
+            self.duck_type = PARROT_DUCK;
         
         _winRect = rect;
         
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"duck_black_flying.plist"];
-        self.duck_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"duck_black_flying.png"];
-        self.duck = [CCSprite spriteWithSpriteFrameName:@"duck_black_flying_1.png"];
-        self.duck.scale = 0.75;
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: [NSString stringWithFormat:@"%@.plist", duck_files[self.duck_type]]];
+        self.duck_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:[NSString stringWithFormat:@"%@.png", duck_files[self.duck_type]]];
+        self.duck = [CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"%@_1.png", duck_files[self.duck_type]]];
+        self.duck.scale = 0.5*CC_CONTENT_SCALE_FACTOR();
         _duck_size.width = self.duck.contentSize.width * self.duck.scaleX;
         _duck_size.height = self.duck.contentSize.height * self.duck.scaleY;
         self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_NORMAL andWinRect:_winRect andObjSz:_duck_size];
@@ -62,6 +83,8 @@
         _duck_idx = 0;
         _duck_living_time = 0;
         _accDT = 0;
+        
+        _duck_live_sound = false;
 	}
 	return self;
 }
@@ -106,7 +129,7 @@
         {
             _duck_idx = (++_duck_idx)%DUCK_SPRITE_NUM;
             
-            NSString* frame_name = [NSString stringWithFormat:@"duck_black_flying_%d.png",_duck_idx+1];
+            NSString* frame_name = [NSString stringWithFormat:@"%@_%d.png",duck_files[self.duck_type], _duck_idx+1];
             CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
                                     spriteFrameByName:frame_name];
             [self.duck setDisplayFrame:frame];
@@ -114,11 +137,17 @@
             [self.duck_pilot update:dt];
             [self.duck setPosition:[self.duck_pilot getPosition]];
             [self.duck setFlipX:[self.duck_pilot getHorizationDirection]==LEFT?true:false];
+            
+            if( [DHGameData sharedDHGameData].gameMusic == 1 && _duck_live_sound == false)
+            {
+                [[SimpleAudioEngine sharedEngine] playEffect:@"duck_live.wav"];
+                _duck_live_sound = true;
+            }
         }
             break;
         case START_DEAD:
         {
-            NSString* frame_name = [NSString stringWithFormat:@"duck_black_flying_4.png"];
+            NSString* frame_name = [NSString stringWithFormat:@"%@_4.png", duck_files[self.duck_type]];
             CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
                                     spriteFrameByName:frame_name];
             [self.duck setDisplayFrame:frame];
@@ -131,11 +160,14 @@
             cur_p.y = _winRect.origin.y - self.duck_size.height*2;
             [self.duck_pilot setEndPos:cur_p];
             [self.duck_pilot setSpeedRatio:2.0];
+            
+            if( [DHGameData sharedDHGameData].gameMusic == 1 )
+                [[SimpleAudioEngine sharedEngine] playEffect:@"duck_dead.wav"];
         }
             break;
         case DEAD:
         {
-            NSString* frame_name = [NSString stringWithFormat:@"duck_black_flying_5.png"];
+            NSString* frame_name = [NSString stringWithFormat:@"%@_5.png", duck_files[self.duck_type]];
             CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
                                     spriteFrameByName:frame_name];
             [self.duck setDisplayFrame:frame];
@@ -148,7 +180,7 @@
         {
             _duck_idx = (++_duck_idx)%DUCK_SPRITE_NUM;
             
-            NSString* frame_name = [NSString stringWithFormat:@"duck_black_flying_%d.png",_duck_idx+1];
+            NSString* frame_name = [NSString stringWithFormat:@"%@_%d.png",duck_files[self.duck_type], _duck_idx+1];
             CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache]
                                     spriteFrameByName:frame_name];
             [self.duck setDisplayFrame:frame];
@@ -185,12 +217,12 @@
     double dist = (cur.x - pnt.x)*(cur.x-pnt.x) + (cur.y-pnt.y)*(cur.y-pnt.y);
     if (  dist < HIT_RADIUS_POW )
     {
-         NSLog(@"hit: cur(%f,%f) vs pnt(%f,%f) = dist(%f)", cur.x, cur.y, pnt.x, pnt.y, dist);
+        // NSLog(@"hit: cur(%f,%f) vs pnt(%f,%f) = dist(%f)", cur.x, cur.y, pnt.x, pnt.y, dist);
         return true;
     }
     else
     {
-        NSLog(@"not-hit: cur(%f,%f) vs pnt(%f,%f) = dist(%f)", cur.x, cur.y, pnt.x, pnt.y, dist);
+        // NSLog(@"not-hit: cur(%f,%f) vs pnt(%f,%f) = dist(%f)", cur.x, cur.y, pnt.x, pnt.y, dist);
         return false;
     }
 }

@@ -24,6 +24,7 @@
 #import "DHGameOverLayer.h"
 #pragma mark - DHFreeModeGameLayer
 
+static int duck_scores[] = {100,100,100,200,400};
 // DHFreeModeGameLayer implementation
 @implementation DHFreeModeGameLayer
 {
@@ -44,6 +45,7 @@
     ccTime         _gameTime;
     int            _hit_count;
     int            _miss_count;
+    int            _gameScore;
     
     bool           _game_over;
 }
@@ -81,6 +83,7 @@
         _gameTime = 0;
         _hit_count = 0;
         _miss_count = 0;
+        _gameScore = 0;
         
         _game_over = false;
         
@@ -206,6 +209,7 @@
         if( _cur_chp >= CHAPTER_MAX )
         {
             _cur_chp = CHAPTER_MAX-1;
+            //to do
         }
 
         NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
@@ -221,6 +225,7 @@
         if( _cur_chp >= CHAPTER_MAX )
         {
             _cur_chp = CHAPTER_MAX-1;
+            //to do
         }
         
         NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
@@ -235,7 +240,7 @@
 {
     [_pannel setLeft_duck:FREEMODE_TOTAL_DUCK-_miss_count];
     [_pannel setHit_count:_hit_count];
-    [_pannel setScore:_hit_count*100];
+    [_pannel setScore:_gameScore];
     [_pannel setHighest_score:[[DHGameData sharedDHGameData] getHighestScore:FREE_MODE]];
     [_pannel update:dt];
 }
@@ -246,7 +251,7 @@
         return;
     
     _game_over = true;
-    [DHGameData sharedDHGameData].cur_game_score = _hit_count*100;
+    [DHGameData sharedDHGameData].cur_game_score = _gameScore;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];    
 }
 
@@ -290,6 +295,8 @@
                 {
                     duckObj.duck_state = START_DEAD;
                     _hit_count++;
+                    
+                    _gameScore += duck_scores[duckObj.duck_type];
                 }
             }
         }

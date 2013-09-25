@@ -9,6 +9,8 @@
 #import "DHDogObj.h"
 #import "DHZDepth.h"
 #import "DHConstons.h"
+#import "DHGameData.h"
+#import "SimpleAudioEngine.h"
 
 #define DOG_SPRITE_NUM 4
 #define DOG_MV_STEP    8
@@ -169,6 +171,9 @@
             {
                 _dog_idx = 6;
             }
+            
+            if( [DHGameData sharedDHGameData].gameMusic == 1 )
+               [[SimpleAudioEngine sharedEngine] playEffect:@"dog.mp3"];
         }
             break;
         case DOG_JUMPING_UP:
