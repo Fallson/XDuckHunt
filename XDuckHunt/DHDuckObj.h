@@ -24,6 +24,7 @@ enum DUCK_TYPE{BLACK_DUCK=0, BLUE_DUCK, RED_DUCK, BIRD_DUCK, PARROT_DUCK, MAX_DU
 
 -(id)initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;
+-(void)removeFromScene: (CCLayer*)layer;
 -(void)updatePos:(CGPoint)pos;
 -(void)update:(ccTime)dt;
 -(bool)hit:(CGPoint)pnt;

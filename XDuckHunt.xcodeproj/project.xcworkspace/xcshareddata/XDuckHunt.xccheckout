@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0D62BBAF-3E89-457D-8323-C386A91FEDF5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>XDuckHunt</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4B521BBD-D22F-4405-9BAE-E3B89AA4D36F</key>
+		<string>https://github.com/Fallson/XDuckHunt.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>XDuckHunt.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4B521BBD-D22F-4405-9BAE-E3B89AA4D36F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Fallson/XDuckHunt.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4B521BBD-D22F-4405-9BAE-E3B89AA4D36F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4B521BBD-D22F-4405-9BAE-E3B89AA4D36F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>XDuckHunt</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -14,7 +14,6 @@ enum CHAPTER_LVL{CHAPTER0=-1,CHAPTER1=0,CHAPTER2,CHAPTER3,CHAPTER4,CHAPTER5,
 
 @interface DHGameChapter : NSObject
 
-@property (nonatomic, assign) enum GAME_MODE game_mode;
--(id)initWithWinRect: (CGRect)rect;
--(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl;
++(DHGameChapter *)sharedDHGameChapter;
+-(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl andWinRect:(CGRect)rect;
 @end

@@ -16,23 +16,21 @@
     CGRect _winRect;
 }
 
-@property (nonatomic, retain)DHLabel* highest_score_label;
-@property (nonatomic, retain)DHLabel* score_label;
-@property (nonatomic, retain)DHLabel* left_time_label;
-@property (nonatomic, retain)DHLabel* hit_count_label;
+@property (nonatomic, retain) CCSprite* duck;
+@property (nonatomic, retain) CCSprite* bird;
+@property (nonatomic, retain) CCSprite* parrot;
+@property (nonatomic, retain) DHLabel* duck_label;
+@property (nonatomic, retain) DHLabel* bird_label;
+@property (nonatomic, retain) DHLabel* parrot_label;
 @end
 
 @implementation DHIntroPannelObj
-
-@synthesize highest_score = _highest_score;
-@synthesize score = _score;
-@synthesize left_time = _left_time;
-@synthesize hit_count = _hit_count;
-
-@synthesize highest_score_label = _highest_score_label;
-@synthesize score_label = _score_label;
-@synthesize left_time_label = _left_time_label;
-@synthesize hit_count_label = _hit_count_label;
+@synthesize duck = _duck;
+@synthesize bird = _bird;
+@synthesize parrot = _parrot;
+@synthesize duck_label = _duck_label;
+@synthesize bird_label = _bird_label;
+@synthesize parrot_label = _parrot_label;
 
 -(id) initWithWinRect: (CGRect)rect
 {
@@ -40,35 +38,39 @@
     {
         _winRect = rect;
         
-        self.highest_score = 0;
-        self.score = 0;
-        self.left_time = 0;
-        self.hit_count = 0;
+        self.duck = [CCSprite spriteWithFile:@"duck.png"];
+        self.duck.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
+        self.duck.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.6);
+        [self.duck setAnchorPoint:ccp(0.5f, 0.5f)];
         
-        NSString* highest_score_str = [NSString stringWithFormat:@"highest score: %d", self.highest_score];
-        self.highest_score_label = [DHLabel labelWithString:highest_score_str fontName:DHLABEL_FONT fontSize:24];
-        self.highest_score_label.color=ccYELLOW;
-        self.highest_score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y + 0.5*_winRect.size.height);
-        [self.highest_score_label setAnchorPoint: ccp(0, 0.5f)];
+        NSString* duck_str = [NSString stringWithFormat:@" X 1 = 100"];
+        self.duck_label = [DHLabel labelWithString:duck_str fontName:DHLABEL_FONT fontSize:28];
+        self.duck_label.color = ccYELLOW;
+        self.duck_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.6);
+        [self.duck_label setAnchorPoint: ccp(0, 0.5f)];
 
+
+        self.bird = [CCSprite spriteWithFile:@"bird.png"];
+        self.bird.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
+        self.bird.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.45);
+        [self.bird setAnchorPoint:ccp(0.5f, 0.5f)];
         
-        NSString* score_str = [NSString stringWithFormat:@"current score: %d", self.score];
-        self.score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
-        self.score_label.color=ccYELLOW;
-        self.score_label.position = ccp(_winRect.origin.x + 10, _winRect.origin.y);
-        [self.score_label setAnchorPoint: ccp(0, 0.5f)];
+        NSString* bird_str = [NSString stringWithFormat:@" X 1 = 200"];
+        self.bird_label = [DHLabel labelWithString:bird_str fontName:DHLABEL_FONT fontSize:28];
+        self.bird_label.color = ccYELLOW;
+        self.bird_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.45);
+        [self.bird_label setAnchorPoint: ccp(0, 0.5f)];
         
-        NSString* left_time_str = [NSString stringWithFormat:@"left time: %d", (int)self.left_time];
-        self.left_time_label = [DHLabel labelWithString:left_time_str fontName:DHLABEL_FONT fontSize:24];
-        self.left_time_label.color=ccYELLOW;
-        self.left_time_label.position = ccp(_winRect.origin.x + 0.8*_winRect.size.width, _winRect.origin.y + 0.5*_winRect.size.height);
-        [self.left_time_label setAnchorPoint: ccp(0, 0.5f)];
+        self.parrot = [CCSprite spriteWithFile:@"parrot.png"];
+        self.parrot.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
+        self.parrot.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.3);
+        [self.parrot setAnchorPoint:ccp(0.5f, 0.5f)];
         
-        NSString* hit_count_str = [NSString stringWithFormat:@"hit count: %d", self.hit_count];
-        self.hit_count_label = [DHLabel labelWithString:hit_count_str fontName:DHLABEL_FONT fontSize:24];
-        self.hit_count_label.color=ccYELLOW;
-        self.hit_count_label.position = ccp(_winRect.origin.x + 0.8*_winRect.size.width, _winRect.origin.y);
-        [self.hit_count_label setAnchorPoint: ccp(0, 0.5f)];
+        NSString* parrot_str = [NSString stringWithFormat:@" X 1 = 400"];
+        self.parrot_label = [DHLabel labelWithString:parrot_str fontName:DHLABEL_FONT fontSize:28];
+        self.parrot_label.color = ccYELLOW;
+        self.parrot_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.3);
+        [self.parrot_label setAnchorPoint: ccp(0, 0.5f)];
 	}
     
 	return self;
@@ -76,25 +78,26 @@
 
 -(void)addtoScene: (CCLayer*)layer
 {
-    [layer addChild:self.highest_score_label];
-    [layer addChild:self.score_label];
-    [layer addChild:self.left_time_label];
-    [layer addChild:self.hit_count_label];
+    [layer addChild:self.duck];
+    [layer addChild:self.duck_label];
+    [layer addChild:self.bird];
+    [layer addChild:self.bird_label];
+    [layer addChild:self.parrot];
+    [layer addChild:self.parrot_label];
+}
+
+-(void)removeFromScene:(CCLayer *)layer
+{
+    [layer removeChild:self.duck];
+    [layer removeChild:self.duck_label];
+    [layer removeChild:self.bird];
+    [layer removeChild:self.bird_label];
+    [layer removeChild:self.parrot];
+    [layer removeChild:self.parrot_label];
 }
 
 -(void)update:(ccTime)dt
 {
-    NSString* highest_score_str = [NSString stringWithFormat:@"highest score: %d", self.highest_score];
-    [self.highest_score_label setString:highest_score_str];
-    
-    NSString* score_str = [NSString stringWithFormat:@"current score: %d", self.score];
-    [self.score_label setString:score_str];
-    
-    NSString* left_time_str = [NSString stringWithFormat:@"left time: %d", (int)self.left_time];
-    [self.left_time_label setString:left_time_str];
-    
-    NSString* hit_count_str = [NSString stringWithFormat:@"hit count: %d", self.hit_count];
-    [self.hit_count_label setString:hit_count_str];
 }
 
 @end

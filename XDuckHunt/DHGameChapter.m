@@ -10,53 +10,53 @@
 #import "DHDuckObj.h"
 #import "DHPilotManager.h"
 #import "DHPilot.h"
+#import "DHGameData.h"
 
 
 #define CREATE_DUCKS for( int i = 0; i < sizeof(ptypes)/sizeof(enum PILOT_TYPE); i++ ){\
-    DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_winRect];\
-    duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:ptypes[i] andWinRect:_winRect andObjSz:duck1.duck_size];\
+    DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:rect];\
+    duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:ptypes[i] andWinRect:rect andObjSz:duck1.duck_size];\
     [duck1 updatePos: [duck1.duck_pilot getPosition]];\
     [ducks addObject:duck1];}\
 
-@interface DHGameChapter()
-@property(nonatomic, retain)NSMutableArray* chapters;
-@end
 
 @implementation DHGameChapter
-{
-    CGRect _winRect;
-}
-@synthesize game_mode = _game_mode;
-@synthesize chapters = _chapters;
 
+static DHGameChapter *_sharedDHGameChapter=nil;
 
--(id)initWithWinRect: (CGRect)rect
++(DHGameChapter *)sharedDHGameChapter
 {
-    if( self = [super init] )
-    {
-        _winRect = rect;
-         
-        self.chapters = [[NSMutableArray alloc] init];
-        for( int i = 0; i < CHAPTER_MAX; i++)
-        {
-            NSMutableArray* ducks = [[NSMutableArray alloc] init];
-            [self.chapters addObject:ducks];
-        }
-        
-        _game_mode = TIME_MODE;
-    }
+	if (!_sharedDHGameChapter)
+		_sharedDHGameChapter = [[DHGameChapter alloc] init];
     
-    return self;
+	return _sharedDHGameChapter;
 }
 
--(void)setDucks_Chapter1:(NSMutableArray*)ducks
++(id)alloc
 {
-    if( self.game_mode == TIME_MODE )
+	NSAssert(_sharedDHGameChapter == nil, @"Attempted to allocate a second instance of a singleton.");
+	return [super alloc];
+}
+
+-(id)init
+{
+	if( (self=[super init]) )
+    {
+	}
+    
+	return self;
+}
+
+-(void)setDucks_Chapter1:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
+{
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL, DUCK_NORMAL};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_NORMAL};
         CREATE_DUCKS
@@ -67,15 +67,17 @@
     }
 }
 
--(void)setDucks_Chapter2:(NSMutableArray*)ducks
+-(void)setDucks_Chapter2:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL, DUCK_NORMAL, DUCK_SIN,
                                     DUCK_ELLIPSE};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL};
         CREATE_DUCKS
@@ -85,15 +87,17 @@
     }
 }
 
--(void)setDucks_Chapter3:(NSMutableArray*)ducks
+-(void)setDucks_Chapter3:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN};
         CREATE_DUCKS
@@ -103,16 +107,18 @@
     }
 }
 
--(void)setDucks_Chapter4:(NSMutableArray*)ducks
+-(void)setDucks_Chapter4:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
                                     DUCK_ELLIPSE};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT};
@@ -123,16 +129,18 @@
     }
 }
 
--(void)setDucks_Chapter5:(NSMutableArray*)ducks
+-(void)setDucks_Chapter5:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
                                     DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE};
@@ -143,16 +151,18 @@
     }
 }
 
--(void)setDucks_Chapter6:(NSMutableArray*)ducks
+-(void)setDucks_Chapter6:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
             DUCK_ELLIPSE, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT};
@@ -163,9 +173,11 @@
     }
 }
 
--(void)setDucks_Chapter7:(NSMutableArray*)ducks
+-(void)setDucks_Chapter7:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
@@ -173,7 +185,7 @@
             DUCK_EIGHT, DUCK_SIN};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
@@ -185,9 +197,11 @@
     }
 }
 
--(void)setDucks_Chapter8:(NSMutableArray*)ducks
+-(void)setDucks_Chapter8:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
@@ -195,7 +209,7 @@
             DUCK_EIGHT, DUCK_SIN, DUCK_EIGHT, DUCK_SIN};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
@@ -207,9 +221,11 @@
     }
 }
 
--(void)setDucks_Chapter9:(NSMutableArray*)ducks
+-(void)setDucks_Chapter9:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
-    if( self.game_mode == TIME_MODE )
+    CGRect rect = [rectValue CGRectValue];
+    
+    if( [DHGameData sharedDHGameData].cur_game_mode == TIME_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
@@ -217,7 +233,7 @@
             DUCK_EIGHT, DUCK_SIN, DUCK_EIGHT, DUCK_SIN, DUCK_CIRCLE, DUCK_ELLIPSE};
         CREATE_DUCKS
     }
-    else if( self.game_mode == FREE_MODE )
+    else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
             DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_NORMAL, DUCK_EIGHT,
@@ -229,8 +245,10 @@
     }
 }
 
--(void)setDucks_Chapter10:(NSMutableArray*)ducks
+-(void)setDucks_Chapter10:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
+    CGRect rect = [rectValue CGRectValue];
+    
     enum PILOT_TYPE ptypes[50];
     for( int i = 0; i < 50; i++ )
         ptypes[i] = DUCK_NORMAL;
@@ -238,39 +256,25 @@
     CREATE_DUCKS
 }
 
--(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl
+-(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl andWinRect:(CGRect)rect
 {
     SEL funs[] = {
-        @selector(setDucks_Chapter1:),
-        @selector(setDucks_Chapter2:),
-        @selector(setDucks_Chapter3:),
-        @selector(setDucks_Chapter4:),
-        @selector(setDucks_Chapter5:),
-        @selector(setDucks_Chapter6:),
-        @selector(setDucks_Chapter7:),
-        @selector(setDucks_Chapter8:),
-        @selector(setDucks_Chapter9:),
-        @selector(setDucks_Chapter10:)};
+        @selector(setDucks_Chapter1:andWinRect:),
+        @selector(setDucks_Chapter2:andWinRect:),
+        @selector(setDucks_Chapter3:andWinRect:),
+        @selector(setDucks_Chapter4:andWinRect:),
+        @selector(setDucks_Chapter5:andWinRect:),
+        @selector(setDucks_Chapter6:andWinRect:),
+        @selector(setDucks_Chapter7:andWinRect:),
+        @selector(setDucks_Chapter8:andWinRect:),
+        @selector(setDucks_Chapter9:andWinRect:),
+        @selector(setDucks_Chapter10:andWinRect:)};
     
-    NSMutableArray* ducks = [self.chapters objectAtIndex:(int)lvl];
-    if( [ducks count] == 0)
-        [self performSelector:funs[(int)lvl] withObject:ducks];
+    NSMutableArray* ducks = [NSMutableArray array];
+    NSValue* rectValue = [NSValue valueWithCGRect:rect];
+    [self performSelector:funs[(int)lvl] withObject:ducks withObject:rectValue];
     
     return ducks;
-}
-
-- (void) dealloc
-{
-    for( int i = 0; i < CHAPTER_MAX; i++)
-    {
-        NSMutableArray* ducks = [self.chapters objectAtIndex:i];
-        for( DHDuckObj* duckObj in ducks )
-            [duckObj release];
-        [ducks release];
-    }
-    [self.chapters release];
-    
-	[super dealloc];
 }
 
 @end

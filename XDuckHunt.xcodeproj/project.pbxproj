@@ -15,6 +15,10 @@
 		D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */; };
 		D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */; };
 		D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C9217C1D37900D1F499 /* DHMenuObj.m */; };
+		D2219F3C17F857CC00EFC23B /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3917F857CC00EFC23B /* bird.png */; };
+		D2219F3D17F857CC00EFC23B /* duck.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3A17F857CC00EFC23B /* duck.png */; };
+		D2219F3E17F857CC00EFC23B /* parrot.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3B17F857CC00EFC23B /* parrot.png */; };
+		D2219F4017F85A6F00EFC23B /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3F17F85A6F00EFC23B /* shoot.wav */; };
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
 		D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */; };
 		D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B4B1A17C4A5420021017C /* DHLabel.m */; };
@@ -206,6 +210,10 @@
 		D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModePannelObj.m; sourceTree = "<group>"; };
 		D21E8C9117C1D37800D1F499 /* DHMenuObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHMenuObj.h; sourceTree = "<group>"; };
 		D21E8C9217C1D37900D1F499 /* DHMenuObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHMenuObj.m; sourceTree = "<group>"; };
+		D2219F3917F857CC00EFC23B /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bird.png; path = Resources/bird.png; sourceTree = "<group>"; };
+		D2219F3A17F857CC00EFC23B /* duck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck.png; path = Resources/duck.png; sourceTree = "<group>"; };
+		D2219F3B17F857CC00EFC23B /* parrot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = parrot.png; path = Resources/parrot.png; sourceTree = "<group>"; };
+		D2219F3F17F85A6F00EFC23B /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shoot.wav; path = Resources/shoot.wav; sourceTree = "<group>"; };
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
@@ -664,6 +672,10 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2219F3F17F85A6F00EFC23B /* shoot.wav */,
+				D2219F3917F857CC00EFC23B /* bird.png */,
+				D2219F3A17F857CC00EFC23B /* duck.png */,
+				D2219F3B17F857CC00EFC23B /* parrot.png */,
 				D2DF440717F31BE900461DA4 /* bird_flying.plist */,
 				D2DF440817F31BE900461DA4 /* bird_flying.png */,
 				D2DF440917F31BE900461DA4 /* dog.mp3 */,
@@ -1143,11 +1155,15 @@
 				D29EEB5617A4F2130072B0EA /* bg_tree.png in Resources */,
 				D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */,
 				D273CAB917F16EC700698331 /* duck_live.wav in Resources */,
+				D2219F3E17F857CC00EFC23B /* parrot.png in Resources */,
 				D273CAB817F16EC700698331 /* duck_dead.wav in Resources */,
 				D273CABD17F1872C00698331 /* checkbox_checked.png in Resources */,
 				D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */,
 				D27049C017A6AB1600342505 /* Cloud.png in Resources */,
+				D2219F3D17F857CC00EFC23B /* duck.png in Resources */,
 				D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */,
+				D2219F4017F85A6F00EFC23B /* shoot.wav in Resources */,
+				D2219F3C17F857CC00EFC23B /* bird.png in Resources */,
 				D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */,
 				D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */,
 				D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */,

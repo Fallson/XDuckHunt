@@ -13,10 +13,7 @@
 
 -(id) initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;
+-(void)removeFromScene: (CCLayer*)layer;
 -(void)update:(ccTime)dt;
 
-@property (nonatomic, assign)int highest_score;
-@property (nonatomic, assign)int score;
-@property (nonatomic, assign)ccTime left_time;
-@property (nonatomic, assign)int hit_count;
 @end

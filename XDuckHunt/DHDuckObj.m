@@ -95,6 +95,11 @@ static NSString* duck_files[]={
     [layer addChild:self.duck_spriteSheet];
 }
 
+-(void)removeFromScene:(CCLayer *)layer
+{
+    [layer removeChild:self.duck_spriteSheet];
+}
+
 -(void)updatePos:(CGPoint)pos
 {
     self.duck.position = pos;

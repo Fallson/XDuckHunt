@@ -22,16 +22,22 @@
 #import "DHDogObj.h"
 #import "DHGameData.h"
 #import "DHGameOverLayer.h"
+#import "DHIntroPannelObj.h"
+#import "SimpleAudioEngine.h"
 #pragma mark - DHFreeModeGameLayer
 
 static int duck_scores[] = {100,100,100,200,400};
+
+@interface DHFreeModeGameLayer()
+@property (nonatomic,retain) NSMutableArray* ducks;
+@end
+
 // DHFreeModeGameLayer implementation
 @implementation DHFreeModeGameLayer
 {
     DHBackGroundObj* _bgObj;
     CGRect           _bgRect;
     
-    DHGameChapter*   _gameChps;
     enum CHAPTER_LVL _cur_chp;
     CGRect           _duckRect;
     
@@ -41,6 +47,9 @@ static int duck_scores[] = {100,100,100,200,400};
     DHDogObj*      _dogObj;
     CGRect         _dogRect;
     
+    DHIntroPannelObj* _introObj;
+    CGRect            _introRect;
+    
     ccTime         _nextDuckTime;
     ccTime         _gameTime;
     int            _hit_count;
@@ -49,6 +58,8 @@ static int duck_scores[] = {100,100,100,200,400};
     
     bool           _game_over;
 }
+@synthesize ducks = _ducks;
+
 
 // Helper class method that creates a Scene with the DHFreeModeGameLayer as the only child.
 +(CCScene *) scene
@@ -74,8 +85,11 @@ static int duck_scores[] = {100,100,100,200,400};
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) )
     {
+        [DHGameData sharedDHGameData].cur_game_mode = FREE_MODE;
+        
         [self initBG];
         [self initDog];
+        [self initIntro];
         [self initDucks];
         [self initPannel];
         
@@ -86,9 +100,6 @@ static int duck_scores[] = {100,100,100,200,400};
         _gameScore = 0;
         
         _game_over = false;
-        
-        //
-        [DHGameData sharedDHGameData].cur_game_mode = FREE_MODE;
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -118,22 +129,24 @@ static int duck_scores[] = {100,100,100,200,400};
     [_dogObj addtoScene: self];
 }
 
+-(void)initIntro
+{
+    _introRect = _bgRect;
+    _introRect.origin.y +=0.25*_introRect.size.height;
+    _introRect.size.height *= 0.75;
+    
+    _introObj = [[DHIntroPannelObj alloc] initWithWinRect:_introRect];
+    [_introObj addtoScene:self];
+}
+
 -(void)initDucks
 {
     _duckRect = _bgRect;
     _duckRect.origin.y += 0.25*_duckRect.size.height;
     _duckRect.size.height *= 0.75;
-    _gameChps = [[DHGameChapter alloc] initWithWinRect:_duckRect];
-    [_gameChps setGame_mode:FREE_MODE];
+    
     _cur_chp = CHAPTER0;
-    for( int i = 0; i <= _cur_chp; i++ )
-    {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks )
-        {
-            [duckObj addtoScene: self];
-        }
-    }
+    _ducks = [[NSMutableArray alloc] init];
 }
 
 -(void)initPannel
@@ -150,10 +163,13 @@ static int duck_scores[] = {100,100,100,200,400};
 {
     [self updateBG:dt];
     [self updateDog:dt];
+    [self updateIntro:dt];
     [self updatePannel:dt];
     
     if( _dogObj.dog_state == DOG_DISAPPEAR )
     {
+        [_introObj removeFromScene:self];
+        
         _gameTime += dt;
         [self updateDucks:dt];
 
@@ -174,33 +190,40 @@ static int duck_scores[] = {100,100,100,200,400};
     [_dogObj update:dt];
 }
 
+-(void) updateIntro:(ccTime)dt
+{
+    [_introObj update:dt];
+}
+
 -(void) updateDucks:(ccTime)dt
 {
     bool need_release_ducks = true;
-    for( int i = 0; i <= _cur_chp; i++ )
+  
+    NSMutableIndexSet* discardItems = [NSMutableIndexSet indexSet];
+    NSUInteger index = 0;
+    for( DHDuckObj* duckObj in _ducks )
     {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks )
+        [duckObj update:dt];
+        
+        if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
         {
-            [duckObj update:dt];
-            
-            if( duckObj.duck_living_time > DUCK_FLYAWAY_TIME && duckObj.duck_state == FLYING )
-            {
-                duckObj.duck_state = START_FLYAWAY;
-                _miss_count++;
-            }
-            
-            if( duckObj.duck_state == DISAPPEAR )
-            {
-                //do some free oprations on ducks
-                //[duckObj release];
-            }
-            else
-            {
-                need_release_ducks = false;
-            }
+            duckObj.duck_state = START_FLYAWAY;
+            _miss_count++;
         }
+        
+        if( duckObj.duck_state == DISAPPEAR )
+        {
+            [discardItems addIndex:index];
+            [duckObj removeFromScene:self];
+        }
+        else
+        {
+            need_release_ducks = false;
+        }
+        index++;
     }
+    [_ducks removeObjectsAtIndexes:discardItems];
+
     
     if( _gameTime >= _nextDuckTime ) //time out and release ducks
     {
@@ -209,14 +232,14 @@ static int duck_scores[] = {100,100,100,200,400};
         if( _cur_chp >= CHAPTER_MAX )
         {
             _cur_chp = CHAPTER_MAX-1;
-            //to do
         }
 
-        NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
-        for( DHDuckObj* duckObj in ducks )
+        NSMutableArray* new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
+        for( DHDuckObj* duckObj in new_ducks )
         {
             [duckObj addtoScene:self];
         }
+        [_ducks addObjectsFromArray: new_ducks];
     }
     else if( need_release_ducks )
     {
@@ -225,14 +248,14 @@ static int duck_scores[] = {100,100,100,200,400};
         if( _cur_chp >= CHAPTER_MAX )
         {
             _cur_chp = CHAPTER_MAX-1;
-            //to do
         }
         
-        NSMutableArray* ducks = [_gameChps getDucks:_cur_chp];
-        for( DHDuckObj* duckObj in ducks )
+        NSMutableArray* new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
+        for( DHDuckObj* duckObj in new_ducks )
         {
             [duckObj addtoScene:self];
         }
+        [_ducks addObjectsFromArray: new_ducks];
     }
 }
 
@@ -276,28 +299,26 @@ static int duck_scores[] = {100,100,100,200,400};
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    if( [DHGameData sharedDHGameData].gameMusic == 1 )
+        [[SimpleAudioEngine sharedEngine] playEffect:@"shoot.wav"];
+    
 	CGPoint location = [self convertTouchToNodeSpace: touch];
-
     [self touchDucks:location];
 }
 
 -(void)touchDucks:(CGPoint)location
 {
-    for( int i = 0; i <= _cur_chp; i++ )
+    for( DHDuckObj* duckObj in _ducks)
     {
-        NSMutableArray* ducks = [_gameChps getDucks:i];
-        for( DHDuckObj* duckObj in ducks)
+        if( duckObj.duck_state == FLYING || duckObj.duck_state == FLYAWAY )
         {
-            if( duckObj.duck_state == FLYING || duckObj.duck_state == FLYAWAY )
+            bool duckHit = [duckObj hit: location];
+            if( duckHit )
             {
-                bool duckHit = [duckObj hit: location];
-                if( duckHit )
-                {
-                    duckObj.duck_state = START_DEAD;
-                    _hit_count++;
-                    
-                    _gameScore += duck_scores[duckObj.duck_type];
-                }
+                duckObj.duck_state = START_DEAD;
+                _hit_count++;
+                
+                _gameScore += duck_scores[duckObj.duck_type];
             }
         }
     }
@@ -311,9 +332,10 @@ static int duck_scores[] = {100,100,100,200,400};
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
-    [_gameChps release];
+    [_ducks release];
     [_pannel release];
     [_dogObj release];
+    [_introObj release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];
