@@ -23,7 +23,8 @@ enum GAME_MODE{FREE_MODE=0, TIME_MODE};
 #define PI  3.14159
 #define EPS 0.00001
 #define CURVE_RATIO 2
-//public const int Groupfactor = 10;
+
+#define Groupfactor   5
 #define MaxLineSteps  40
 #define MaxCurveSteps 100
 

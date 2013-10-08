@@ -73,7 +73,7 @@ static NSString* duck_files[]={
         self.duck.scale = 0.5*CC_CONTENT_SCALE_FACTOR();
         _duck_size.width = self.duck.contentSize.width * self.duck.scaleX;
         _duck_size.height = self.duck.contentSize.height * self.duck.scaleY;
-        self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_NORMAL andWinRect:_winRect andObjSz:_duck_size];
+        self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_NORMAL andWinRect:_winRect andObjSz:_duck_size andGroupID:0];
         
         self.duck.position = [self.duck_pilot getPosition];
         self.duck.zOrder = DUCK_Z;
@@ -158,7 +158,7 @@ static NSString* duck_files[]={
             [self.duck setDisplayFrame:frame];
             
             self.duck_state = DEAD;
-            self.duck_pilot =[[DHPilotManager sharedDHPilotManager] createPilot:DUCK_DEAD andWinRect:_winRect andObjSz:_duck_size];
+            self.duck_pilot =[[DHPilotManager sharedDHPilotManager] createPilot:DUCK_DEAD andWinRect:_winRect andObjSz:_duck_size andGroupID:0];
             
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];
@@ -191,7 +191,7 @@ static NSString* duck_files[]={
             [self.duck setDisplayFrame:frame];
             
             self.duck_state = FLYAWAY;
-            self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_FLYAWAY andWinRect:_winRect andObjSz:_duck_size];
+            self.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot:DUCK_FLYAWAY andWinRect:_winRect andObjSz:_duck_size andGroupID:0];
 
             CGPoint cur_p = self.duck.position;
             [self.duck_pilot setStartPos:cur_p];

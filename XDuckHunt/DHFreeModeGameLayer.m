@@ -55,6 +55,8 @@ static int duck_scores[] = {100,100,100,200,400};
     int            _hit_count;
     int            _miss_count;
     int            _gameScore;
+    int            _gameBonus;
+    int            _gameBonusLvl;
     
     bool           _game_over;
 }
@@ -98,6 +100,8 @@ static int duck_scores[] = {100,100,100,200,400};
         _hit_count = 0;
         _miss_count = 0;
         _gameScore = 0;
+        _gameBonus = 0;
+        _gameBonusLvl = 1;
         
         _game_over = false;
         
@@ -225,37 +229,41 @@ static int duck_scores[] = {100,100,100,200,400};
     [_ducks removeObjectsAtIndexes:discardItems];
 
     
-    if( _gameTime >= _nextDuckTime ) //time out and release ducks
+    if( _gameTime >= _nextDuckTime || need_release_ducks ) //time out and release ducks
     {
-        _cur_chp++;
-        _nextDuckTime += DUCK_FLYAWAY_TIME;
-        if( _cur_chp >= CHAPTER_MAX )
+        if( _gameTime >= _nextDuckTime )
         {
-            _cur_chp = CHAPTER_MAX-1;
+            _nextDuckTime += DUCK_FLYAWAY_TIME;
         }
-
-        NSMutableArray* new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
-        for( DHDuckObj* duckObj in new_ducks )
+        else
         {
-            [duckObj addtoScene:self];
-        }
-        [_ducks addObjectsFromArray: new_ducks];
-    }
-    else if( need_release_ducks )
-    {
-        _cur_chp++;
-        _nextDuckTime = _gameTime + DUCK_FLYAWAY_TIME;
-        if( _cur_chp >= CHAPTER_MAX )
-        {
-            _cur_chp = CHAPTER_MAX-1;
+            _nextDuckTime = _gameTime + DUCK_FLYAWAY_TIME;
         }
         
-        NSMutableArray* new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
-        for( DHDuckObj* duckObj in new_ducks )
+        NSMutableArray* new_ducks = nil;
+        if( _gameBonus )
         {
-            [duckObj addtoScene:self];
+            _gameBonus = 0;
+            new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:CHAPTER_FUNNY andWinRect:_duckRect];
         }
-        [_ducks addObjectsFromArray: new_ducks];
+        else
+        {
+            _cur_chp++;
+            if( _cur_chp >= CHAPTER_MAX )
+            {
+                _cur_chp = CHAPTER_MAX-2;
+            }
+            new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
+        }
+        
+        if( new_ducks != nil )
+        {
+            for( DHDuckObj* duckObj in new_ducks )
+            {
+                [duckObj addtoScene:self];
+            }
+            [_ducks addObjectsFromArray: new_ducks];
+        }
     }
 }
 
@@ -319,6 +327,11 @@ static int duck_scores[] = {100,100,100,200,400};
                 _hit_count++;
                 
                 _gameScore += duck_scores[duckObj.duck_type];
+                if( _gameScore > _gameBonusLvl * 5000 )
+                {
+                    _gameBonus = 1;
+                    _gameBonusLvl++;
+                }
             }
         }
     }

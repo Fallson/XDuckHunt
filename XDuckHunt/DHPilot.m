@@ -257,8 +257,14 @@
     double _delta_angle;
 }
 
--(void)adjustEndPos
+-(void)adjustEndPos:(int)idx
 {
+    _cur_angle = _delta_angle*Groupfactor*idx;
+    if( _cur_angle > 2 * PI )
+    {
+        _cur_angle = 0.0;
+    }
+    
     float a = min(_bbox.size.width, _bbox.size.height);
     a /= CURVE_RATIO;
     
@@ -273,7 +279,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        [self adjustEndPos];
+        [self adjustEndPos:0];
     }
     return self;
 }
@@ -335,6 +341,21 @@
 
 @end
 
+#pragma mark - DHDuckEightGroupPilot
+@implementation DHDuckEightGroupPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
+{
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        CGPoint pnt = [self centerPnt:_bbox];
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
+    
+    return self;
+}
+@end
+
 #pragma mark - DHDuckCirclePilot
 @implementation DHDuckCirclePilot
 {
@@ -342,8 +363,14 @@
     double _delta_angle;
 }
 
--(void)adjustEndPos
+-(void)adjustEndPos:(int)idx
 {
+    _cur_angle = _delta_angle*Groupfactor*idx;
+    if( _cur_angle > 2 * PI )
+    {
+        _cur_angle = 0.0;
+    }
+    
     float a = min(_bbox.size.width, _bbox.size.height);
     a /= (1.5*CURVE_RATIO);
     
@@ -358,7 +385,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        [self adjustEndPos];
+        [self adjustEndPos:0];
     }
     return self;
 }
@@ -417,6 +444,21 @@
 }
 @end
 
+#pragma mark - DHDuckCircleGroupPilot
+@implementation DHDuckCircleGroupPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
+{
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        CGPoint pnt = [self centerPnt:_bbox];
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
+    
+    return self;
+}
+@end
+
 #pragma mark - DHDuckEllipsePilot
 @implementation DHDuckEllipsePilot
 {
@@ -424,10 +466,16 @@
     double _delta_angle;
 }
 
--(void)adjustEndPos
+-(void)adjustEndPos:(int)idx
 {
-    float a = _bbox.size.width/(2*CURVE_RATIO);
-    float b = _bbox.size.height/(2*CURVE_RATIO);
+    _cur_angle = _delta_angle*Groupfactor*idx;
+    if( _cur_angle > 2 * PI )
+    {
+        _cur_angle = 0.0;
+    }
+    
+    float a = _bbox.size.width/(2.0*CURVE_RATIO);
+    float b = _bbox.size.height/(2.0*CURVE_RATIO);
     
     _endPos.x = _centerPos.x + (float)(a * cos(_cur_angle));
     _endPos.y = _centerPos.y + (float)(b * sin(_cur_angle));
@@ -440,7 +488,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        [self adjustEndPos];
+        [self adjustEndPos:0];
     }
     return self;
 }
@@ -455,8 +503,8 @@
             _cur_angle = 0.0;
         }
         
-        float a = _bbox.size.width/(2*CURVE_RATIO);
-        float b = _bbox.size.height/(2*CURVE_RATIO);
+        float a = _bbox.size.width/(2.0*CURVE_RATIO);
+        float b = _bbox.size.height/(2.0*CURVE_RATIO);
         
         _position.x = _centerPos.x + (float)(a * cos(_cur_angle));
         _position.y = _centerPos.y + (float)(b * sin(_cur_angle));
@@ -499,6 +547,21 @@
 }
 @end
 
+#pragma mark - DHDuckEllipseGroupPilot
+@implementation DHDuckEllipseGroupPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
+{
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        CGPoint pnt = [self centerPnt:_bbox];
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
+    
+    return self;
+}
+@end
+
 #pragma mark - DHDuckSinPilot
 @implementation DHDuckSinPilot
 {
@@ -509,12 +572,28 @@
     double _delta_angle;
 }
 
--(void)adjustEndPos
+-(void)adjustEndPos:(int)idx
 {
-    float a = _bbox.size.width/(CURVE_RATIO);
+    _cur_angle = _delta_angle*Groupfactor*idx;
+    if( _left2right == 1 )
+        _hor_steps = Groupfactor*idx;
+    else
+        _hor_steps = Groupfactor*idx*-1;
+    
+    float a = _bbox.size.width/(1.0*CURVE_RATIO);
     float b = _bbox.size.height/(1.5*CURVE_RATIO);
     
     _endPos.x = _centerPos.x + (float)(_hor_steps * a / _max_curveSteps);
+    if( _endPos.x >= (_bbox.origin.x + _bbox.size.width) )
+    {
+        _endPos.x = (_bbox.origin.x + _bbox.size.width);
+        _left2right = 0;
+    }
+    else if(_endPos.x <= _bbox.origin.x)
+    {
+        _endPos.x = _bbox.origin.x;
+        _left2right = 1;
+    }
     _endPos.y = _centerPos.y + (float)(b * sin(_cur_angle));
 }
 
@@ -529,7 +608,7 @@
         _cur_angle = 0.0;
         _delta_angle = 2 * PI / MaxCurveSteps;
         
-        [self adjustEndPos];
+        [self adjustEndPos:0];
     }
     return self;
 }
@@ -544,7 +623,7 @@
         else
             _hor_steps--;
         
-        float a = _bbox.size.width/(CURVE_RATIO);
+        float a = _bbox.size.width/(1.0*CURVE_RATIO);
         float b = _bbox.size.height/(1.5*CURVE_RATIO);
         
         _position.x = _centerPos.x + (float)(_hor_steps * a / _max_curveSteps);
@@ -591,26 +670,226 @@
 
 @end
 
-#pragma mark - DHDuckILOVEUPilot
-@implementation DHDuckILoveU_IPilot
--(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
+@implementation DHDuckSinGroupPilot
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
 {
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        CGPoint pnt = [self centerPnt:_bbox];
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
+    
     return self;
+}
+@end
+
+#define ILU_BOUNDARY 0.3
+#pragma mark - DHDuckILOVEUPilot
+//5 ducks
+@implementation DHDuckILoveU_IPilot
+-(void)adjustEndPos:(int)idx
+{
+    float b = _bbox.size.height/(1.0*CURVE_RATIO);
+    float db = b/4.0;
+    
+    float dy = 0.0;
+    if( idx %2 == 0 )
+    {
+        dy = db * idx/2;
+    }
+    else
+    {
+        dy = db * (idx/2 + 1)*-1;
+    }
+    
+    _endPos.x = _centerPos.x;
+    _endPos.y = _centerPos.y + dy;
+}
+
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
+{
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        CGPoint pnt = [self centerPnt:_bbox];
+        pnt.x *= ILU_BOUNDARY;
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
+    return self;
+}
+
+-(enum Direction)getHorizationDirection
+{
+    if ([super inCurve])
+    {
+        return RIGHT;
+    }
+    else
+    {
+        return [super getHorizationDirection];
+    }
+}
+
+-(void)update:(ccTime)dt
+{
+    if( [super inCurve] )
+    {
+    }
+    else
+    {
+        [super update:dt];
+    }
 }
 @end
 
 @implementation DHDuckILoveU_LPilot
--(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
 {
+    double _cur_angle;
+    double _delta_angle;
+}
+
+//20 ducks
+-(void)adjustEndPos:(int)idx
+{
+    _cur_angle = _delta_angle*Groupfactor*idx;
+    if( _cur_angle > 2 * PI )
+        _cur_angle = 0.0;
+    
+    float a = _bbox.size.width/(3.0*CURVE_RATIO);
+    float b = _bbox.size.height/(2.0*CURVE_RATIO);
+    
+    double sin_v = sin(_cur_angle);
+    double cos_v = cos(_cur_angle);
+    double cos_2v = cos(2 * _cur_angle);
+    double cos_3v = cos(3 * _cur_angle);
+    double cos_4v = cos(4 * _cur_angle);
+    
+    _endPos.x = _centerPos.x + (float)(a * sin_v * sin_v * sin_v);
+    _endPos.y = _centerPos.y + (float)(b * (cos_v - 5.0*cos_2v/13.0 - 2.0*cos_3v/13.0 - cos_4v/13.0));
+}
+
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
+{
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        _cur_angle = 0.0;
+        _delta_angle = 2 * PI / MaxCurveSteps;
+        
+        CGPoint pnt = [self centerPnt:_bbox];
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
     return self;
 }
 
+-(enum Direction)getHorizationDirection
+{
+    if ([super inCurve])
+    {
+        if( _cur_angle >= 0.5 * PI && _cur_angle < 1.5 * PI )
+            return LEFT;
+        else
+            return RIGHT;
+    }
+    else
+    {
+        return [super getHorizationDirection];
+    }
+}
+
+-(void)update:(ccTime)dt
+{
+    if( [super inCurve] )
+    {
+        _cur_angle += _delta_angle;
+        if (_cur_angle > 2 * PI)
+        {
+            _cur_angle = 0.0;
+        }
+        
+        float a = _bbox.size.width/(3.0*CURVE_RATIO);
+        float b = _bbox.size.height/(2.0*CURVE_RATIO);
+        
+        double sin_v = sin(_cur_angle);
+        double cos_v = cos(_cur_angle);
+        double cos_2v = cos(2 * _cur_angle);
+        double cos_3v = cos(3 * _cur_angle);
+        double cos_4v = cos(4 * _cur_angle);
+        
+        _position.x = _centerPos.x + (float)(a * sin_v * sin_v * sin_v);
+        _position.y = _centerPos.y + (float)(b * (cos_v - 5.0*cos_2v/13.0 - 2.0*cos_3v/13.0 - cos_4v/13.0));
+    }
+    else
+    {
+        [super update:dt];
+    }
+}
 @end
 
 @implementation DHDuckILoveU_UPilot
--(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz
 {
+    double _cur_angle;
+    double _delta_angle;
+}
+//11 ducks
+-(void)adjustEndPos:(int)idx
+{
+    _cur_angle = PI;
+    _cur_angle += _delta_angle*Groupfactor*idx;
+    
+    if( _cur_angle > 2 * PI )
+    {
+        _cur_angle = 2 * PI;
+    }
+    else if( _cur_angle < PI )
+    {
+        _cur_angle = PI;
+    }
+    
+    float a = _bbox.size.width/(5.0*CURVE_RATIO);
+    float b = _bbox.size.height/(1.0*CURVE_RATIO);
+    
+    _endPos.x = _centerPos.x + (float)(a * cos(_cur_angle));
+    _endPos.y = _centerPos.y + (float)(b * sin(_cur_angle));
+}
+
+-(id)initWithWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
+{
+    if( self = [super initWithWinRect:rect andObjSz:sz] )
+    {
+        _cur_angle = 0.0;
+        _delta_angle = 2 * PI / MaxCurveSteps;
+        
+        CGPoint pnt = [self centerPnt:_bbox];
+        pnt.x *= (2.0-ILU_BOUNDARY);
+        pnt.y += _bbox.size.height/(2.0*CURVE_RATIO);
+        [self setEndPos:pnt];
+        [self adjustEndPos:idx];
+    }
     return self;
 }
 
+-(enum Direction)getHorizationDirection
+{
+    if ([super inCurve])
+    {
+        return RIGHT;
+    }
+    else
+    {
+        return [super getHorizationDirection];
+    }
+}
+
+-(void)update:(ccTime)dt
+{
+    if( [super inCurve] )
+    {
+    }
+    else
+    {
+        [super update:dt];
+    }
+}
 @end

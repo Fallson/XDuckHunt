@@ -36,7 +36,7 @@ static DHPilotManager *_sharedDHPilotManager=nil;
 	return self;
 }
 
--(DHDuckPilot*)createPilot: (enum PILOT_TYPE)pilot_type andWinRect:(CGRect)rect andObjSz:(CGSize)sz
+-(DHDuckPilot*)createPilot: (enum PILOT_TYPE)pilot_type andWinRect:(CGRect)rect andObjSz:(CGSize)sz andGroupID:(int)idx
 {
     DHDuckPilot* pilot = nil;
     switch(pilot_type)
@@ -53,23 +53,35 @@ static DHPilotManager *_sharedDHPilotManager=nil;
         case DUCK_EIGHT:
             pilot = [[DHDuckEightPilot alloc]initWithWinRect:rect andObjSz:sz];
             break;
+        case DUCK_EIGHT_GROUP:
+            pilot = [[DHDuckEightGroupPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
+            break;
         case DUCK_CIRCLE:
             pilot = [[DHDuckCirclePilot alloc]initWithWinRect:rect andObjSz:sz];
+            break;
+        case DUCK_CIRCLE_GROUP:
+            pilot = [[DHDuckCircleGroupPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
             break;
         case DUCK_ELLIPSE:
             pilot = [[DHDuckEllipsePilot alloc]initWithWinRect:rect andObjSz:sz];
             break;
+        case DUCK_ELLIPSE_GROUP:
+            pilot = [[DHDuckEllipseGroupPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
+            break;
         case DUCK_SIN:
             pilot = [[DHDuckSinPilot alloc]initWithWinRect:rect andObjSz:sz];
             break;
+        case DUCK_SIN_GROUP:
+            pilot = [[DHDuckSinGroupPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
+            break;
         case DUCK_ILOVEU_I:
-            pilot = [[DHDuckILoveU_IPilot alloc]initWithWinRect:rect andObjSz:sz];
+            pilot = [[DHDuckILoveU_IPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
             break;
         case DUCK_ILOVEU_L:
-            pilot = [[DHDuckILoveU_LPilot alloc]initWithWinRect:rect andObjSz:sz];
+            pilot = [[DHDuckILoveU_LPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
             break;
         case DUCK_ILOVEU_U:
-            pilot = [[DHDuckILoveU_UPilot alloc]initWithWinRect:rect andObjSz:sz];
+            pilot = [[DHDuckILoveU_UPilot alloc]initWithWinRect:rect andObjSz:sz andGroupID:idx];
             break;
     }
     
