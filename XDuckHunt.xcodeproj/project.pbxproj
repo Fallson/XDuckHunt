@@ -20,6 +20,10 @@
 		D2219F3E17F857CC00EFC23B /* parrot.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3B17F857CC00EFC23B /* parrot.png */; };
 		D2219F4017F85A6F00EFC23B /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3F17F85A6F00EFC23B /* shoot.wav */; };
 		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
+		D247350F18052C6900783493 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D247350E18052C6900783493 /* Social.framework */; };
+		D24735131805965600783493 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735101805965600783493 /* facebook.png */; };
+		D24735141805965600783493 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735111805965600783493 /* twitter.png */; };
+		D24735151805965600783493 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735121805965600783493 /* weibo.png */; };
 		D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */; };
 		D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B4B1A17C4A5420021017C /* DHLabel.m */; };
 		D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25B4B2217C79BEB0021017C /* SnapITC.ttf */; };
@@ -217,6 +221,10 @@
 		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
 		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
 		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
+		D247350E18052C6900783493 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D24735101805965600783493 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = Resources/facebook.png; sourceTree = "<group>"; };
+		D24735111805965600783493 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Resources/twitter.png; sourceTree = "<group>"; };
+		D24735121805965600783493 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weibo.png; path = Resources/weibo.png; sourceTree = "<group>"; };
 		D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannelObj.h; sourceTree = "<group>"; };
 		D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannelObj.m; sourceTree = "<group>"; };
 		D25B4B1917C4A5420021017C /* DHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHLabel.h; sourceTree = "<group>"; };
@@ -551,6 +559,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D247350F18052C6900783493 /* Social.framework in Frameworks */,
 				D29EE98217A3AC760072B0EA /* QuartzCore.framework in Frameworks */,
 				D29EE98417A3AC760072B0EA /* OpenGLES.framework in Frameworks */,
 				D29EE98617A3AC760072B0EA /* OpenAL.framework in Frameworks */,
@@ -627,6 +636,7 @@
 		D29EE98017A3AC760072B0EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D247350E18052C6900783493 /* Social.framework */,
 				D29EE98117A3AC760072B0EA /* QuartzCore.framework */,
 				D29EE98317A3AC760072B0EA /* OpenGLES.framework */,
 				D29EE98517A3AC760072B0EA /* OpenAL.framework */,
@@ -672,6 +682,9 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D24735101805965600783493 /* facebook.png */,
+				D24735111805965600783493 /* twitter.png */,
+				D24735121805965600783493 /* weibo.png */,
 				D2219F3F17F85A6F00EFC23B /* shoot.wav */,
 				D2219F3917F857CC00EFC23B /* bird.png */,
 				D2219F3A17F857CC00EFC23B /* duck.png */,
@@ -1136,12 +1149,14 @@
 			files = (
 				D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */,
 				D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */,
+				D24735151805965600783493 /* weibo.png in Resources */,
 				D29EE99817A3AC760072B0EA /* Default.png in Resources */,
 				D29EE99A17A3AC760072B0EA /* Default@2x.png in Resources */,
 				D29EE99C17A3AC760072B0EA /* Default-568h@2x.png in Resources */,
 				D29EE99E17A3AC760072B0EA /* Default-Landscape~ipad.png in Resources */,
 				D29EE9A017A3AC770072B0EA /* Icon-72.png in Resources */,
 				D29EE9A217A3AC770072B0EA /* Icon-Small-50.png in Resources */,
+				D24735141805965600783493 /* twitter.png in Resources */,
 				D29EE9A417A3AC770072B0EA /* Icon-Small.png in Resources */,
 				D2DF441217F31BE900461DA4 /* duck_red_flying.png in Resources */,
 				D29EE9A617A3AC770072B0EA /* Icon-Small@2x.png in Resources */,
@@ -1179,6 +1194,7 @@
 				D2DF441417F31BE900461DA4 /* parrot_flying.png in Resources */,
 				D2DF440F17F31BE900461DA4 /* bird_flying.png in Resources */,
 				D2DF441017F31BE900461DA4 /* dog.mp3 in Resources */,
+				D24735131805965600783493 /* facebook.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

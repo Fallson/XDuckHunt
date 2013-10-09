@@ -298,9 +298,9 @@ static DHGameChapter *_sharedDHGameChapter=nil;
 {
     CGRect rect = [rectValue CGRectValue];
     
-//    enum PILOT_TYPE ptypes_candidates[] = {DUCK_EIGHT_GROUP, DUCK_CIRCLE_GROUP, DUCK_ELLIPSE_GROUP,
-//                                           DUCK_SIN_GROUP, DUCK_ILOVEU_I, DUCK_ILOVEU_L, DUCK_ILOVEU_U};
-        enum PILOT_TYPE ptypes_candidates[] = {DUCK_ILOVEU_I, DUCK_ILOVEU_L, DUCK_ILOVEU_U};
+    enum PILOT_TYPE ptypes_candidates[] = {DUCK_EIGHT_GROUP, DUCK_CIRCLE_GROUP, DUCK_ELLIPSE_GROUP,
+                                           DUCK_SIN_GROUP, DUCK_ILOVEU_I, DUCK_ILOVEU_L, DUCK_ILOVEU_U};
+//    enum PILOT_TYPE ptypes_candidates[] = {DUCK_ILOVEU_I, DUCK_ILOVEU_L, DUCK_ILOVEU_U};
     
     enum PILOT_TYPE type = ptypes_candidates[arc4random()%(sizeof(ptypes_candidates)/sizeof(enum PILOT_TYPE))];
     

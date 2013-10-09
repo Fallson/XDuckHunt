@@ -12,6 +12,7 @@
 #import "CCTouchDispatcher.h"
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
+#import <Social/Social.h>
 
 #import "DHBackGroundObj.h"
 #import "DHConstons.h"
@@ -100,13 +101,17 @@
     [lable setAnchorPoint: ccp(0.5f, 0.5f)];
     [self addChild:lable];
     
+    int red_score = 1;
     for( int i = 0; i < [scores count]; i++ )
     {
         int s = [[scores objectAtIndex:i] intValue];
         NSString* score_str = [NSString stringWithFormat:@"%d", s];
         DHLabel* score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
-        if( s == cur_game_score )
+        if( s == cur_game_score && red_score == 1 )
+        {
             score_label.color = ccRED;
+            red_score = 0;
+        }
         else
             score_label.color = ccYELLOW;
         score_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + (0.8-0.05*i)*_bgRect.size.height);
@@ -127,7 +132,7 @@
     NSString* return_str = [NSString stringWithFormat:@"Return"];
     DHLabel* return_label = [DHLabel labelWithString:return_str fontName:DHLABEL_FONT fontSize:20];
     return_label.color=ccBLUE;
-    return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.4, _bgRect.origin.y + 0.3*_bgRect.size.height);
     [return_label setAnchorPoint: ccp(0.5f, 0.5f)];
     
     CCMenuItem *menuitem_return = [CCMenuItemImage
@@ -136,7 +141,29 @@
     menuitem_return.scale *= CC_CONTENT_SCALE_FACTOR();
     menuitem_return.position = return_label.position;
     
-    CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, nil];
+    //twitter
+    CCMenuItem *menuitem_twitter = [CCMenuItemImage
+                                   itemWithNormalImage:@"twitter.png" selectedImage:@"twitter.png"
+                                   target:self selector:@selector(TwitterMenuPressed:)];
+    menuitem_twitter.scale *= (0.25 * CC_CONTENT_SCALE_FACTOR());
+    menuitem_twitter.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.6, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    
+    //facebook
+    CCMenuItem *menuitem_facebook = [CCMenuItemImage
+                                    itemWithNormalImage:@"facebook.png" selectedImage:@"facebook.png"
+                                    target:self selector:@selector(FacebookMenuPressed:)];
+    menuitem_facebook.scale *= (0.25 * CC_CONTENT_SCALE_FACTOR());
+    menuitem_facebook.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.7, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    
+    //weibo
+    CCMenuItem *menuitem_weibo = [CCMenuItemImage
+                                    itemWithNormalImage:@"weibo.png" selectedImage:@"weibo.png"
+                                    target:self selector:@selector(WeiboMenuPressed:)];
+    menuitem_weibo.scale *= (0.25 * CC_CONTENT_SCALE_FACTOR());
+    menuitem_weibo.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.8, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    
+    
+    CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, menuitem_twitter, menuitem_facebook, menuitem_weibo ,nil];
     main_menu.position = CGPointZero;
     [self addChild:main_menu];
     [self addChild:return_label];
@@ -145,6 +172,95 @@
 -(void)ReturnMenuPressed:(id)sender
 {
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameMenuLayer scene] ]];
+}
+
+- (void)showUnavailableAlertForServiceType: (NSString *)selectedServiceType
+{
+    NSString *serviceName = @"";
+    if (selectedServiceType == SLServiceTypeFacebook)
+    {
+        serviceName = @"Facebook";
+    }
+    else if (selectedServiceType == SLServiceTypeSinaWeibo)
+    {
+        serviceName = @"Sina Weibo";
+    }
+    else if (selectedServiceType == SLServiceTypeTwitter)
+    {
+        serviceName = @"Twitter";
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Account"
+                              message:[NSString stringWithFormat:@"Please go to the device settings and add a %@ account in order to share through that service",serviceName]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+    [alertView show];
+}
+
+-(void)TwitterMenuPressed:(id)sender
+{
+    enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
+    int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *tweetSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
+        if( cur_game_mode == TIME_MODE )
+            [tweetSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in time mode!", cur_game_score]];
+        else if( cur_game_mode == FREE_MODE )
+            [tweetSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in free mode!", cur_game_score]];
+        //[tweetSheet addURL:[NSURL URLWithString:@"http://www.itues.com"]];
+        [tweetSheet addImage:[UIImage imageNamed:@"icon.png"]];
+        [[CCDirector sharedDirector] presentViewController:tweetSheet animated:YES completion:nil];
+    }
+    else
+    {
+        [self showUnavailableAlertForServiceType: SLServiceTypeTwitter];
+    }
+}
+
+-(void)FacebookMenuPressed:(id)sender
+{
+    enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
+    int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewController *facebookSheet = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeFacebook];
+        if( cur_game_mode == TIME_MODE )
+            [facebookSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in time mode!", cur_game_score]];
+        else if( cur_game_mode == FREE_MODE )
+            [facebookSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in free mode!", cur_game_score]];
+        //[facebookSheet addURL:[NSURL URLWithString:@"http://www.itues.com"]];
+        [facebookSheet addImage:[UIImage imageNamed:@"icon.png"]];
+        [[CCDirector sharedDirector] presentViewController:facebookSheet animated:YES completion:nil];
+    }
+    else
+    {
+        [self showUnavailableAlertForServiceType: SLServiceTypeFacebook];
+    }
+}
+
+-(void)WeiboMenuPressed:(id)sender
+{
+    enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
+    int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo])
+    {
+        SLComposeViewController *weiboSheet = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
+        if( cur_game_mode == TIME_MODE )
+            [weiboSheet setInitialText: [NSString stringWithFormat:@"恭喜你在游戏-打鸭子中获得%d的高分!", cur_game_score]];
+        else if( cur_game_mode == FREE_MODE )
+            [weiboSheet setInitialText: [NSString stringWithFormat:@"恭喜你在游戏-打鸭子中获得%d的高分!", cur_game_score]];
+        //[weiboSheet addURL:[NSURL URLWithString:@"http://www.itues.com"]];
+        [weiboSheet addImage:[UIImage imageNamed:@"icon.png"]];
+        [[CCDirector sharedDirector] presentViewController:weiboSheet animated:YES completion:nil];
+    }
+    else
+    {
+        [self showUnavailableAlertForServiceType: SLServiceTypeSinaWeibo];
+    }
 }
 
 #pragma mark - update part

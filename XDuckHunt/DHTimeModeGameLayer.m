@@ -318,7 +318,7 @@ static int duck_scores[] = {100,100,100,200,400};
                 _hit_count++;
                 
                 _gameScore += duck_scores[duckObj.duck_type];
-                if( _gameScore > _gameBonusLvl * 1000 )
+                if( _gameScore > _gameBonusLvl * 2000 )
                 {
                     _gameBonus = 1;
                     _gameBonusLvl += 2;
