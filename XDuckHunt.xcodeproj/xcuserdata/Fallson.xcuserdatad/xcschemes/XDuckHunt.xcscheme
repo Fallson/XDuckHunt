@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D29EE97D17A3AC760072B0EA"
-               BuildableName = "XDuckHunt.app"
-               BlueprintName = "XDuckHunt"
+               BuildableName = "DuckHunt.app"
+               BlueprintName = "DuckHunt"
                ReferencedContainer = "container:XDuckHunt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D29EE97D17A3AC760072B0EA"
-            BuildableName = "XDuckHunt.app"
-            BlueprintName = "XDuckHunt"
+            BuildableName = "DuckHunt.app"
+            BlueprintName = "DuckHunt"
             ReferencedContainer = "container:XDuckHunt.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -52,8 +52,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D29EE97D17A3AC760072B0EA"
-            BuildableName = "XDuckHunt.app"
-            BlueprintName = "XDuckHunt"
+            BuildableName = "DuckHunt.app"
+            BlueprintName = "DuckHunt"
             ReferencedContainer = "container:XDuckHunt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D29EE97D17A3AC760072B0EA"
-            BuildableName = "XDuckHunt.app"
-            BlueprintName = "XDuckHunt"
+            BuildableName = "DuckHunt.app"
+            BlueprintName = "DuckHunt"
             ReferencedContainer = "container:XDuckHunt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -51,7 +51,6 @@
 		D29EE98E17A3AC760072B0EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98D17A3AC760072B0EA /* Foundation.framework */; };
 		D29EE99017A3AC760072B0EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98F17A3AC760072B0EA /* CoreGraphics.framework */; };
 		D29EE99217A3AC760072B0EA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE99117A3AC760072B0EA /* CoreText.framework */; };
-		D29EE99417A3AC760072B0EA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE99317A3AC760072B0EA /* GameKit.framework */; };
 		D29EE99817A3AC760072B0EA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EE99717A3AC760072B0EA /* Default.png */; };
 		D29EE99A17A3AC760072B0EA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EE99917A3AC760072B0EA /* Default@2x.png */; };
 		D29EE99C17A3AC760072B0EA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EE99B17A3AC760072B0EA /* Default-568h@2x.png */; };
@@ -183,6 +182,15 @@
 		D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */; };
 		D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748217ABE89800363DAC /* duck_black_flying.plist */; };
 		D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748317ABE89800363DAC /* duck_black_flying.png */; };
+		D2C27415180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */; };
+		D2C27416180AEFB700EB2A60 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C2740D180AEFB700EB2A60 /* Default-Portrait@2x~ipad.png */; };
+		D2C27417180AEFB700EB2A60 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C2740E180AEFB700EB2A60 /* Default-Portrait~ipad.png */; };
+		D2C27418180AEFB700EB2A60 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C2740F180AEFB700EB2A60 /* icon-40.png */; };
+		D2C27419180AEFB700EB2A60 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27410180AEFB700EB2A60 /* icon-76.png */; };
+		D2C2741A180AEFB700EB2A60 /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27411180AEFB700EB2A60 /* icon-80.png */; };
+		D2C2741B180AEFB700EB2A60 /* icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27412180AEFB700EB2A60 /* icon-100.png */; };
+		D2C2741C180AEFB700EB2A60 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27413180AEFB700EB2A60 /* icon-144.png */; };
+		D2C2741D180AEFB700EB2A60 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27414180AEFB700EB2A60 /* icon-152.png */; };
 		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
 		D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */; };
 		D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */; };
@@ -246,7 +254,7 @@
 		D294E33A17C2655C008307ED /* MenuItem_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuItem_pressed.png; path = Resources/MenuItem_pressed.png; sourceTree = "<group>"; };
 		D294E33B17C2655C008307ED /* MenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuItem.png; path = Resources/MenuItem.png; sourceTree = "<group>"; };
 		D294E33E17C26CD0008307ED /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Resources/SplashScreen.png; sourceTree = "<group>"; };
-		D29EE97E17A3AC760072B0EA /* XDuckHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDuckHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D29EE97E17A3AC760072B0EA /* DuckHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29EE98117A3AC760072B0EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D29EE98317A3AC760072B0EA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D29EE98517A3AC760072B0EA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -256,7 +264,6 @@
 		D29EE98D17A3AC760072B0EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D29EE98F17A3AC760072B0EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D29EE99117A3AC760072B0EA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		D29EE99317A3AC760072B0EA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D29EE99717A3AC760072B0EA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		D29EE99917A3AC760072B0EA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		D29EE99B17A3AC760072B0EA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -537,6 +544,15 @@
 		D2B6748017ABE3A200363DAC /* DHConstons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHConstons.h; sourceTree = "<group>"; };
 		D2B6748217ABE89800363DAC /* duck_black_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_black_flying.plist; path = Resources/duck_black_flying.plist; sourceTree = "<group>"; };
 		D2B6748317ABE89800363DAC /* duck_black_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_black_flying.png; path = Resources/duck_black_flying.png; sourceTree = "<group>"; };
+		D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Resources/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		D2C2740D180AEFB700EB2A60 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Resources/Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		D2C2740E180AEFB700EB2A60 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		D2C2740F180AEFB700EB2A60 /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-40.png"; path = "Resources/icon-40.png"; sourceTree = "<group>"; };
+		D2C27410180AEFB700EB2A60 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "Resources/icon-76.png"; sourceTree = "<group>"; };
+		D2C27411180AEFB700EB2A60 /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-80.png"; path = "Resources/icon-80.png"; sourceTree = "<group>"; };
+		D2C27412180AEFB700EB2A60 /* icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-100.png"; path = "Resources/icon-100.png"; sourceTree = "<group>"; };
+		D2C27413180AEFB700EB2A60 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-144.png"; path = "Resources/icon-144.png"; sourceTree = "<group>"; };
+		D2C27414180AEFB700EB2A60 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "Resources/icon-152.png"; sourceTree = "<group>"; };
 		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
 		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
 		D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_blue_flying.plist; path = Resources/duck_blue_flying.plist; sourceTree = "<group>"; };
@@ -569,7 +585,6 @@
 				D29EE98E17A3AC760072B0EA /* Foundation.framework in Frameworks */,
 				D29EE99017A3AC760072B0EA /* CoreGraphics.framework in Frameworks */,
 				D29EE99217A3AC760072B0EA /* CoreText.framework in Frameworks */,
-				D29EE99417A3AC760072B0EA /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +643,7 @@
 		D29EE97F17A3AC760072B0EA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D29EE97E17A3AC760072B0EA /* XDuckHunt.app */,
+				D29EE97E17A3AC760072B0EA /* DuckHunt.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -646,7 +661,6 @@
 				D29EE98D17A3AC760072B0EA /* Foundation.framework */,
 				D29EE98F17A3AC760072B0EA /* CoreGraphics.framework */,
 				D29EE99117A3AC760072B0EA /* CoreText.framework */,
-				D29EE99317A3AC760072B0EA /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -682,6 +696,15 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */,
+				D2C2740D180AEFB700EB2A60 /* Default-Portrait@2x~ipad.png */,
+				D2C2740E180AEFB700EB2A60 /* Default-Portrait~ipad.png */,
+				D2C2740F180AEFB700EB2A60 /* icon-40.png */,
+				D2C27410180AEFB700EB2A60 /* icon-76.png */,
+				D2C27411180AEFB700EB2A60 /* icon-80.png */,
+				D2C27412180AEFB700EB2A60 /* icon-100.png */,
+				D2C27413180AEFB700EB2A60 /* icon-144.png */,
+				D2C27414180AEFB700EB2A60 /* icon-152.png */,
 				D24735101805965600783493 /* facebook.png */,
 				D24735111805965600783493 /* twitter.png */,
 				D24735121805965600783493 /* weibo.png */,
@@ -1099,9 +1122,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D29EE97D17A3AC760072B0EA /* XDuckHunt */ = {
+		D29EE97D17A3AC760072B0EA /* DuckHunt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D29EEB3117A3AC7A0072B0EA /* Build configuration list for PBXNativeTarget "XDuckHunt" */;
+			buildConfigurationList = D29EEB3117A3AC7A0072B0EA /* Build configuration list for PBXNativeTarget "DuckHunt" */;
 			buildPhases = (
 				D29EE97A17A3AC760072B0EA /* Sources */,
 				D29EE97B17A3AC760072B0EA /* Frameworks */,
@@ -1111,9 +1134,9 @@
 			);
 			dependencies = (
 			);
-			name = XDuckHunt;
+			name = DuckHunt;
 			productName = XDuckHunt;
-			productReference = D29EE97E17A3AC760072B0EA /* XDuckHunt.app */;
+			productReference = D29EE97E17A3AC760072B0EA /* DuckHunt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1124,6 +1147,16 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Fallson;
+				TargetAttributes = {
+					D29EE97D17A3AC760072B0EA = {
+						DevelopmentTeam = 3D44ZQTQDW;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = D29EE97917A3AC760072B0EA /* Build configuration list for PBXProject "XDuckHunt" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1137,7 +1170,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D29EE97D17A3AC760072B0EA /* XDuckHunt */,
+				D29EE97D17A3AC760072B0EA /* DuckHunt */,
 			);
 		};
 /* End PBXProject section */
@@ -1150,20 +1183,26 @@
 				D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */,
 				D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */,
 				D24735151805965600783493 /* weibo.png in Resources */,
+				D2C27419180AEFB700EB2A60 /* icon-76.png in Resources */,
 				D29EE99817A3AC760072B0EA /* Default.png in Resources */,
 				D29EE99A17A3AC760072B0EA /* Default@2x.png in Resources */,
+				D2C27417180AEFB700EB2A60 /* Default-Portrait~ipad.png in Resources */,
 				D29EE99C17A3AC760072B0EA /* Default-568h@2x.png in Resources */,
+				D2C27416180AEFB700EB2A60 /* Default-Portrait@2x~ipad.png in Resources */,
 				D29EE99E17A3AC760072B0EA /* Default-Landscape~ipad.png in Resources */,
 				D29EE9A017A3AC770072B0EA /* Icon-72.png in Resources */,
 				D29EE9A217A3AC770072B0EA /* Icon-Small-50.png in Resources */,
 				D24735141805965600783493 /* twitter.png in Resources */,
+				D2C27415180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png in Resources */,
 				D29EE9A417A3AC770072B0EA /* Icon-Small.png in Resources */,
 				D2DF441217F31BE900461DA4 /* duck_red_flying.png in Resources */,
 				D29EE9A617A3AC770072B0EA /* Icon-Small@2x.png in Resources */,
 				D29EE9A817A3AC770072B0EA /* Icon.png in Resources */,
 				D29EE9AA17A3AC770072B0EA /* Icon@2x.png in Resources */,
 				D2DF441117F31BE900461DA4 /* duck_red_flying.plist in Resources */,
+				D2C2741A180AEFB700EB2A60 /* icon-80.png in Resources */,
 				D29EE9AD17A3AC770072B0EA /* iTunesArtwork in Resources */,
+				D2C2741C180AEFB700EB2A60 /* icon-144.png in Resources */,
 				D29EEB0617A3AC790072B0EA /* ChangeLog in Resources */,
 				D29EEB5417A4F2130072B0EA /* bg_grass.png in Resources */,
 				D29EEB5517A4F2130072B0EA /* bg_sky.png in Resources */,
@@ -1171,11 +1210,13 @@
 				D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */,
 				D273CAB917F16EC700698331 /* duck_live.wav in Resources */,
 				D2219F3E17F857CC00EFC23B /* parrot.png in Resources */,
+				D2C2741B180AEFB700EB2A60 /* icon-100.png in Resources */,
 				D273CAB817F16EC700698331 /* duck_dead.wav in Resources */,
 				D273CABD17F1872C00698331 /* checkbox_checked.png in Resources */,
 				D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */,
 				D27049C017A6AB1600342505 /* Cloud.png in Resources */,
 				D2219F3D17F857CC00EFC23B /* duck.png in Resources */,
+				D2C27418180AEFB700EB2A60 /* icon-40.png in Resources */,
 				D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */,
 				D2219F4017F85A6F00EFC23B /* shoot.wav in Resources */,
 				D2219F3C17F857CC00EFC23B /* bird.png in Resources */,
@@ -1186,6 +1227,7 @@
 				D273CABE17F1872C00698331 /* checkbox_unchecked.png in Resources */,
 				D294E33D17C2655C008307ED /* MenuItem.png in Resources */,
 				D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */,
+				D2C2741D180AEFB700EB2A60 /* icon-152.png in Resources */,
 				D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */,
 				D2DF440E17F31BE900461DA4 /* bird_flying.plist in Resources */,
 				D290A5D617C8709D00C2EDDE /* dog.plist in Resources */,
@@ -1384,6 +1426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1396,6 +1439,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1404,6 +1448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XDuckHunt/Prefix.pch;
@@ -1415,6 +1460,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1432,7 +1478,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D29EEB3117A3AC7A0072B0EA /* Build configuration list for PBXNativeTarget "XDuckHunt" */ = {
+		D29EEB3117A3AC7A0072B0EA /* Build configuration list for PBXNativeTarget "DuckHunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D29EEB3217A3AC7A0072B0EA /* Debug */,
