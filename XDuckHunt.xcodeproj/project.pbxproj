@@ -744,6 +744,7 @@
 				D29EE99717A3AC760072B0EA /* Default.png */,
 				D29EE99917A3AC760072B0EA /* Default@2x.png */,
 				D29EE99B17A3AC760072B0EA /* Default-568h@2x.png */,
+				D29EE9AB17A3AC770072B0EA /* Info.plist */,
 				D29EE99D17A3AC760072B0EA /* Default-Landscape~ipad.png */,
 				D29EE99F17A3AC760072B0EA /* Icon-72.png */,
 				D29EE9A117A3AC770072B0EA /* Icon-Small-50.png */,
@@ -751,7 +752,6 @@
 				D29EE9A517A3AC770072B0EA /* Icon-Small@2x.png */,
 				D29EE9A717A3AC770072B0EA /* Icon.png */,
 				D29EE9A917A3AC770072B0EA /* Icon@2x.png */,
-				D29EE9AB17A3AC770072B0EA /* Info.plist */,
 				D29EE9AC17A3AC770072B0EA /* iTunesArtwork */,
 			);
 			name = Resources;

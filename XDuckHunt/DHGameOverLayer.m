@@ -194,6 +194,19 @@
     [alertView show];
 }
 
+-(NSString*)getFullPath:(NSString*)path
+{
+    CCFileUtils *fileUtils = [CCFileUtils sharedFileUtils];
+    path = [fileUtils standarizePath:path];
+    ccResolutionType resolution;
+    NSString *fullpath = [fileUtils fullPathForFilename:path resolutionType:&resolution];
+    if( ! fullpath ) {
+        CCLOG(@"cocos2d: Couldn't find file:%@", path);
+        return nil;
+    }
+    return fullpath;
+}
+
 -(void)TwitterMenuPressed:(id)sender
 {
     enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
@@ -204,11 +217,18 @@
         SLComposeViewController *tweetSheet = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeTwitter];
         if( cur_game_mode == TIME_MODE )
-            [tweetSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in time mode!", cur_game_score]];
+            [tweetSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in time mode! https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8", cur_game_score]];
         else if( cur_game_mode == FREE_MODE )
-            [tweetSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in free mode!", cur_game_score]];
-        //[tweetSheet addURL:[NSURL URLWithString:@"http://www.itues.com"]];
-        [tweetSheet addImage:[UIImage imageNamed:@"icon.png"]];
+            [tweetSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in free mode! https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8", cur_game_score]];
+     
+//        NSURL* url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8"];
+//        BOOL ret = [tweetSheet addURL: url];
+        
+        NSString* fullpath = [self getFullPath:@"Icon.png"];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:fullpath];
+        [tweetSheet addImage:img];
+        [img release];
+        
         [[CCDirector sharedDirector] presentViewController:tweetSheet animated:YES completion:nil];
     }
     else
@@ -227,11 +247,18 @@
         SLComposeViewController *facebookSheet = [SLComposeViewController
                                                   composeViewControllerForServiceType:SLServiceTypeFacebook];
         if( cur_game_mode == TIME_MODE )
-            [facebookSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in time mode!", cur_game_score]];
+            [facebookSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in time mode! https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8", cur_game_score]];
         else if( cur_game_mode == FREE_MODE )
-            [facebookSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in free mode!", cur_game_score]];
-        //[facebookSheet addURL:[NSURL URLWithString:@"http://www.itues.com"]];
-        [facebookSheet addImage:[UIImage imageNamed:@"icon.png"]];
+            [facebookSheet setInitialText: [NSString stringWithFormat:@"Great work in game DuckHunt, you got %d in free mode! https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8", cur_game_score]];
+        
+        //        NSURL* url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8"];
+        //        BOOL ret = [tweetSheet addURL: url];
+        
+        NSString* fullpath = [self getFullPath:@"Icon.png"];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:fullpath];
+        [facebookSheet addImage:img];
+        [img release];
+        
         [[CCDirector sharedDirector] presentViewController:facebookSheet animated:YES completion:nil];
     }
     else
@@ -250,11 +277,15 @@
         SLComposeViewController *weiboSheet = [SLComposeViewController
                                                   composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
         if( cur_game_mode == TIME_MODE )
-            [weiboSheet setInitialText: [NSString stringWithFormat:@"恭喜你在游戏-打鸭子中获得%d的高分!", cur_game_score]];
+            [weiboSheet setInitialText: [NSString stringWithFormat:@"恭喜你在游戏-打鸭子中获得%d的高分! https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8", cur_game_score]];
         else if( cur_game_mode == FREE_MODE )
-            [weiboSheet setInitialText: [NSString stringWithFormat:@"恭喜你在游戏-打鸭子中获得%d的高分!", cur_game_score]];
-        //[weiboSheet addURL:[NSURL URLWithString:@"http://www.itues.com"]];
-        [weiboSheet addImage:[UIImage imageNamed:@"icon.png"]];
+            [weiboSheet setInitialText: [NSString stringWithFormat:@"恭喜你在游戏-打鸭子中获得%d的高分! https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8", cur_game_score]];
+        //[weiboSheet addURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/duckhunt/id725538960?ls=1&mt=8"]];
+        
+        NSString* fullpath = [self getFullPath:@"Icon.png"];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:fullpath];
+        [weiboSheet addImage:img];
+        [img release];
         [[CCDirector sharedDirector] presentViewController:weiboSheet animated:YES completion:nil];
     }
     else
