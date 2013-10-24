@@ -24,6 +24,7 @@
 #import "DHGameOverLayer.h"
 #import "DHIntroPannelObj.h"
 #import "SimpleAudioEngine.h"
+#import "DHGameMenuLayer.h"
 #pragma mark - DHFreeModeGameLayer
 
 static int duck_scores[] = {100,100,100,200,400};
@@ -94,6 +95,7 @@ static int duck_scores[] = {100,100,100,200,400};
         [self initIntro];
         [self initDucks];
         [self initPannel];
+        [self initPauseMenu];
         
         _nextDuckTime = 0;
         _gameTime = 0;
@@ -160,6 +162,27 @@ static int duck_scores[] = {100,100,100,200,400};
     _pannelRect.size.height *= 0.1;
     _pannel = [[DHFreeModePannelObj alloc] initWithWinRect:_pannelRect];
     [_pannel addtoScene:self];
+}
+
+-(void)initPauseMenu
+{
+    CGRect rect = _bgRect;
+    CCMenuItem *menuitem_pause = [CCMenuItemImage
+                                  itemWithNormalImage:@"Pause.png" selectedImage:@"Pause.png"
+                                  target:self selector:@selector(PauseMenuPressed:)];
+    menuitem_pause.position = ccp(rect.origin.x + rect.size.width*0.85, rect.origin.y + rect.size.height*0.1);
+    menuitem_pause.scale *= (0.5*CC_CONTENT_SCALE_FACTOR());
+    
+    CCMenu* main_menu = [CCMenu menuWithItems:menuitem_pause, nil];
+    main_menu.position = CGPointZero;
+    [self addChild:main_menu];
+}
+
+-(void)PauseMenuPressed:(id)sender
+{
+    [DHGameData sharedDHGameData].cur_game_pause = 1;
+    //[[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.1 scene:[DHGameScoreListLayer scene] ]];
+    [[CCDirector sharedDirector] pushScene: [CCTransitionFade transitionWithDuration:0.1 scene:[DHGameMenuLayer scene] ]];
 }
 
 #pragma mark - update part

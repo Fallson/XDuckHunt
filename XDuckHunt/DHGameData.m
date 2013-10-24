@@ -38,8 +38,10 @@ static DHGameData *_sharedDHGameData=nil;
     {
         [self loadScores];
         [self loadMusics];
+        
         self.cur_game_mode = TIME_MODE;
         self.cur_game_score = 0;
+        self.cur_game_pause = 0;
 	}
     
 	return self;

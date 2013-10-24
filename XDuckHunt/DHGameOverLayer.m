@@ -209,6 +209,14 @@
 
 -(void)TwitterMenuPressed:(id)sender
 {
+    if( SYSTEM_VERSION_LESS_THAN(@"6.0") )
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Low Version"
+                                                            message:[NSString stringWithFormat:@"This function can't work below ios 6.0"]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
     enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
     int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
     
@@ -239,6 +247,14 @@
 
 -(void)FacebookMenuPressed:(id)sender
 {
+    if( SYSTEM_VERSION_LESS_THAN(@"6.0") )
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Low Version"
+                                                            message:[NSString stringWithFormat:@"This function can't work below ios 6.0"]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
     enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
     int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
     
@@ -269,6 +285,14 @@
 
 -(void)WeiboMenuPressed:(id)sender
 {
+    if( SYSTEM_VERSION_LESS_THAN(@"6.0") )
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Low Version"
+                                                            message:[NSString stringWithFormat:@"This function can't work below ios 6.0"]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
     enum GAME_MODE cur_game_mode = [DHGameData sharedDHGameData].cur_game_mode;
     int cur_game_score = [DHGameData sharedDHGameData].cur_game_score;
     

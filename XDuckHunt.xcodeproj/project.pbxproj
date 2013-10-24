@@ -42,6 +42,8 @@
 		D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33A17C2655C008307ED /* MenuItem_pressed.png */; };
 		D294E33D17C2655C008307ED /* MenuItem.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33B17C2655C008307ED /* MenuItem.png */; };
 		D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33E17C26CD0008307ED /* SplashScreen.png */; };
+		D298014918191C420097FBE7 /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = D298014718191C420097FBE7 /* continue.png */; };
+		D298014A18191C420097FBE7 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = D298014818191C420097FBE7 /* Pause.png */; };
 		D29EE98217A3AC760072B0EA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98117A3AC760072B0EA /* QuartzCore.framework */; };
 		D29EE98417A3AC760072B0EA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98317A3AC760072B0EA /* OpenGLES.framework */; };
 		D29EE98617A3AC760072B0EA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98517A3AC760072B0EA /* OpenAL.framework */; };
@@ -254,6 +256,8 @@
 		D294E33A17C2655C008307ED /* MenuItem_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuItem_pressed.png; path = Resources/MenuItem_pressed.png; sourceTree = "<group>"; };
 		D294E33B17C2655C008307ED /* MenuItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuItem.png; path = Resources/MenuItem.png; sourceTree = "<group>"; };
 		D294E33E17C26CD0008307ED /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Resources/SplashScreen.png; sourceTree = "<group>"; };
+		D298014718191C420097FBE7 /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continue.png; path = Resources/continue.png; sourceTree = "<group>"; };
+		D298014818191C420097FBE7 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = Resources/Pause.png; sourceTree = "<group>"; };
 		D29EE97E17A3AC760072B0EA /* DuckHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29EE98117A3AC760072B0EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D29EE98317A3AC760072B0EA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -696,6 +700,8 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D298014718191C420097FBE7 /* continue.png */,
+				D298014818191C420097FBE7 /* Pause.png */,
 				D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */,
 				D2C2740D180AEFB700EB2A60 /* Default-Portrait@2x~ipad.png */,
 				D2C2740E180AEFB700EB2A60 /* Default-Portrait~ipad.png */,
@@ -1206,6 +1212,7 @@
 				D29EEB0617A3AC790072B0EA /* ChangeLog in Resources */,
 				D29EEB5417A4F2130072B0EA /* bg_grass.png in Resources */,
 				D29EEB5517A4F2130072B0EA /* bg_sky.png in Resources */,
+				D298014A18191C420097FBE7 /* Pause.png in Resources */,
 				D29EEB5617A4F2130072B0EA /* bg_tree.png in Resources */,
 				D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */,
 				D273CAB917F16EC700698331 /* duck_live.wav in Resources */,
@@ -1224,6 +1231,7 @@
 				D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */,
 				D294E33C17C2655C008307ED /* MenuItem_pressed.png in Resources */,
 				D2DF441317F31BE900461DA4 /* parrot_flying.plist in Resources */,
+				D298014918191C420097FBE7 /* continue.png in Resources */,
 				D273CABE17F1872C00698331 /* checkbox_unchecked.png in Resources */,
 				D294E33D17C2655C008307ED /* MenuItem.png in Resources */,
 				D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */,

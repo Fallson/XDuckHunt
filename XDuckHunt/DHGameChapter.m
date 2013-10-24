@@ -88,14 +88,14 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL, DUCK_SIN,
                                     DUCK_ELLIPSE};
-        float speeds[] = {1.0, 1.0, 1.0, 1.0};
+        float speeds[] = {1.0, 1.0, 1.2, 1.0};
         
         CREATE_DUCKS
     }
     else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_NORMAL};
-        float speeds[] = {1.0, 1.0};
+        float speeds[] = {1.0, 1.2};
         
         CREATE_DUCKS
     }
@@ -112,14 +112,14 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT};
-        float speeds[] = {1.0, 1.0, 1.0, 1.0, 1.0};
+        float speeds[] = {1.0, 1.0, 1.2, 1.2, 1.0};
         
         CREATE_DUCKS
     }
     else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_NORMAL};
-        float speeds[] = {1.0, 1.0, 1.0};
+        float speeds[] = {1.0, 1.2, 1.0};
         
         CREATE_DUCKS
     }
@@ -136,14 +136,14 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT};
-        float speeds[] = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+        float speeds[] = {1.0, 1.2, 1.5, 1.5, 1.2, 1.0};
         CREATE_DUCKS
     }
     else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL};
-        float speeds[] = {1.0, 1.0, 1.0, 1.0};
+        float speeds[] = {1.0, 1.2, 1.2, 1.0};
         
         CREATE_DUCKS
     }
@@ -160,14 +160,14 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT};
-        float speeds[] = {1.0, 1.2, 1.2, 1.2, 1.0, 1.0};
+        float speeds[] = {1.2, 1.5, 1.8, 1.8, 1.5, 1.2};
         CREATE_DUCKS
     }
     else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL};
-        float speeds[] = {1.0, 1.2, 1.2, 1.0};
+        float speeds[] = {1.2, 1.5, 1.5, 1.2};
         
         CREATE_DUCKS
     }
@@ -184,7 +184,7 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT};
-        float speeds[] = {1.0, 1.2, 1.2, 1.0, 1.0, 1.2, 1.0};
+        float speeds[] = {1.5, 1.8, 1.8, 1.5, 1.5, 1.8, 1.5};
         
         CREATE_DUCKS
     }
@@ -192,7 +192,7 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL};
-        float speeds[] = {1.0, 1.2, 1.2, 1.0, 1.0};
+        float speeds[] = {1.2, 1.5, 1.8, 1.5, 1.2};
         
         CREATE_DUCKS
     }
@@ -209,14 +209,14 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN};
-        float speeds[] = {1.0, 1.2, 1.2, 1.0, 1.0, 1.2, 1.2, 1.0};
+        float speeds[] = {1.5, 1.8, 2.0, 1.8, 2.0, 1.8, 1.5, 1.8};
         CREATE_DUCKS
     }
     else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT};
-        float speeds[] = {1.0, 1.2, 1.2, 1.0, 1.0, 1.2};
+        float speeds[] = {1.2, 1.5, 1.8, 1.8, 1.5, 1.2};
         
         CREATE_DUCKS
     }
@@ -233,14 +233,14 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN};
-        float speeds[] = {1.2, 1.5, 1.5, 1.2, 1.0, 1.5, 1.5, 1.2};
+        float speeds[] = {1.8, 2.0, 1.8, 2.0, 2.0, 2.0, 2.0, 2.0};
         CREATE_DUCKS
     }
     else if( [DHGameData sharedDHGameData].cur_game_mode == FREE_MODE )
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT};
-        float speeds[] = {1.2, 1.5, 1.5, 1.2, 1.2, 1.5};
+        float speeds[] = {1.8, 1.8, 1.8, 1.8, 1.8, 1.8};
         
         CREATE_DUCKS
     }
@@ -258,7 +258,7 @@ static DHGameChapter *_sharedDHGameChapter=nil;
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_NORMAL, DUCK_EIGHT, DUCK_SIN,
                                     DUCK_ELLIPSE};
-        float speeds[] = {1.2, 1.5, 1.5, 1.2, 1.2, 1.5, 1.2, 1.2, 1.5};
+        float speeds[] = {2.0, 2.0, 2.2, 2.5, 2.2, 2.0, 2.2, 2.2, 2.0};
         
         CREATE_DUCKS
     }
@@ -266,7 +266,7 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     {
         enum PILOT_TYPE ptypes[] = {DUCK_EIGHT, DUCK_CIRCLE, DUCK_ELLIPSE, DUCK_SIN,
                                     DUCK_NORMAL, DUCK_EIGHT, DUCK_CIRCLE};
-        float speeds[] = {1.2, 1.5, 1.5, 1.2, 1.2, 1.5, 1.2};
+        float speeds[] = {1.8, 1.8, 1.8, 2.0, 2.0, 1.8, 2.0};
         
         CREATE_DUCKS
     }
@@ -285,9 +285,9 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     for( int i = 0; i < LAST_CHP_DUCK_NUM; i++ )
     {
         ptypes[i] = DUCK_NORMAL;
-        speeds[i] = 1.5 + (float)(arc4random()%10)/(float)10.0;
-        if( speeds[i] > 2.5 )
-            speeds[i] = 2.5;
+        speeds[i] = 2.0 + (float)(arc4random()%10)/(float)10.0;
+        if( speeds[i] > 3.0 )
+            speeds[i] = 3.0;
     }
     
     CREATE_DUCKS

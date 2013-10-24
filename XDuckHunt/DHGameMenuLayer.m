@@ -15,6 +15,7 @@
 
 #import "DHBackGroundObj.h"
 #import "DHMenuObj.h"
+#import "DHGameData.h"
 #pragma mark - DHGameMenuLayer
 
 // DHGameMenuLayer implementation
@@ -54,6 +55,7 @@
     {
         [self initBG];
         [self initMenu];
+        [self initContinueMenu];
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -79,6 +81,32 @@
     _menuRect = _bgRect;
     _menuObj = [[DHMenuObj alloc] initWithWinRect:_menuRect];
     [_menuObj addtoScene: self];
+}
+
+-(void)initContinueMenu
+{
+    if( [DHGameData sharedDHGameData].cur_game_pause == 1 )
+    {
+        CGRect rect = _bgRect;
+        CCMenuItem *menuitem_con = [CCMenuItemImage
+                                    itemWithNormalImage:@"continue.png" selectedImage:@"continue.png"
+                                    target:self selector:@selector(ContinueMenuPressed:)];
+        menuitem_con.position = ccp(rect.origin.x + rect.size.width*0.85, rect.origin.y + rect.size.height*0.1);
+        menuitem_con.scale *= (0.5*CC_CONTENT_SCALE_FACTOR());
+        
+        CCMenu* main_menu = [CCMenu menuWithItems:menuitem_con, nil];
+        main_menu.position = CGPointZero;
+        [self addChild:main_menu];
+    }
+}
+
+-(void)ContinueMenuPressed:(id)sender
+{
+    if( [DHGameData sharedDHGameData].cur_game_pause == 1 )
+    {
+        [DHGameData sharedDHGameData].cur_game_pause = 0;
+        [[CCDirector sharedDirector] popScene];
+    }
 }
 
 #pragma mark - update part

@@ -61,6 +61,7 @@
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"dog.mp3"];
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"duck_live.wav"];
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"duck_dead.wav"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"shoot.wav"];
 	}
 	
 	return self;

@@ -12,6 +12,7 @@
 #import "DHFreeModeGameLayer.h"
 #import "DHGameOptionLayer.h"
 #import "DHGameScoreListLayer.h"
+#import "DHGameData.h"
 
 @interface DHMenuObj()
 {
@@ -119,11 +120,21 @@
 
 -(void)FreeModeMenuPressed:(id)sender
 {
+    if( [DHGameData sharedDHGameData].cur_game_pause == 1 )
+    {
+        [DHGameData sharedDHGameData].cur_game_pause = 0;
+        [[CCDirector sharedDirector] popScene];
+    }
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHFreeModeGameLayer scene] ]];
 }
 
 -(void)TimeModeMenuPressed:(id)sender
 {
+    if( [DHGameData sharedDHGameData].cur_game_pause == 1 )
+    {
+        [DHGameData sharedDHGameData].cur_game_pause = 0;
+        [[CCDirector sharedDirector] popScene];
+    }
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHTimeModeGameLayer scene] ]];
 }
 

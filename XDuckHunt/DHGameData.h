@@ -13,6 +13,8 @@
 
 @property(nonatomic, assign)enum GAME_MODE cur_game_mode;
 @property(nonatomic, assign)int cur_game_score;
+@property(nonatomic, assign)int cur_game_pause;
+
 @property(nonatomic, assign)int bgMusic;//BackGround Sound
 @property(nonatomic, assign)int gameMusic;//Game Sound
 @property(nonatomic, retain)NSMutableArray* timemode_scores;
