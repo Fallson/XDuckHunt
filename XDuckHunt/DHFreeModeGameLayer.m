@@ -27,7 +27,7 @@
 #import "DHGameMenuLayer.h"
 #pragma mark - DHFreeModeGameLayer
 
-static int duck_scores[] = {100,100,100,200,400};
+static int duck_scores[] = {100,100,100,200,400,0};
 
 @interface DHFreeModeGameLayer()
 @property (nonatomic,retain) NSMutableArray* ducks;

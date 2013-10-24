@@ -12,7 +12,7 @@
 @class DHDuckPilot;
 
 enum DUCK_STATE{FLYING=0, START_DEAD, DEAD, START_FLYAWAY, FLYAWAY, DISAPPEAR};
-enum DUCK_TYPE{BLACK_DUCK=0, BLUE_DUCK, RED_DUCK, BIRD_DUCK, PARROT_DUCK, MAX_DUCK};
+enum DUCK_TYPE{BLACK_DUCK=0, BLUE_DUCK, RED_DUCK, BIRD_DUCK, PARROT_DUCK, FALLSON_DUCK, MAX_DUCK};
 
 @interface DHDuckObj : NSObject
 
@@ -23,6 +23,7 @@ enum DUCK_TYPE{BLACK_DUCK=0, BLUE_DUCK, RED_DUCK, BIRD_DUCK, PARROT_DUCK, MAX_DU
 @property(nonatomic, assign) ccTime duck_living_time;
 
 -(id)initWithWinRect: (CGRect)rect;
+-(id)initWithWinRect:(CGRect)rect andType:(enum DUCK_TYPE) type;
 -(void)addtoScene: (CCLayer*)layer;
 -(void)removeFromScene: (CCLayer*)layer;
 -(void)updatePos:(CGPoint)pos;

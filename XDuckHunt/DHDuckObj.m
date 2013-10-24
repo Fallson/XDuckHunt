@@ -23,7 +23,8 @@ static NSString* duck_files[]={
     @"duck_blue_flying",
     @"duck_red_flying",
     @"bird_flying",
-    @"parrot_flying"};
+    @"parrot_flying",
+    @"fallson_flying"};
 
 @interface DHDuckObj()
 {
@@ -47,23 +48,12 @@ static NSString* duck_files[]={
 @synthesize duck_spriteSheet = _duck_spriteSheet;
 @synthesize duck = _duck;
 
-
--(id)initWithWinRect:(CGRect)rect
+-(id)initWithWinRect:(CGRect)rect andType:(enum DUCK_TYPE) type;
 {
     if( (self=[super init]) )
     {
         self.duck_state = FLYING;
-        int dt = arc4random()%12;
-        if( dt < 3 && dt >= 0)
-            self.duck_type = BLACK_DUCK;
-        else if( dt < 6 && dt >= 3)
-            self.duck_type = BLUE_DUCK;
-        else if( dt < 9 && dt >= 6)
-            self.duck_type = RED_DUCK;
-        else if( dt == 9 || dt == 10)
-            self.duck_type = BIRD_DUCK;
-        else if( dt == 11)
-            self.duck_type = PARROT_DUCK;
+        self.duck_type = type;
         
         _winRect = rect;
         
@@ -87,6 +77,24 @@ static NSString* duck_files[]={
         _duck_live_sound = false;
 	}
 	return self;
+}
+
+-(id)initWithWinRect:(CGRect)rect
+{
+    enum DUCK_TYPE type = BLACK_DUCK;
+    int dt = arc4random()%12;
+    if( dt < 3 && dt >= 0)
+        type = BLACK_DUCK;
+    else if( dt < 6 && dt >= 3)
+        type = BLUE_DUCK;
+    else if( dt < 9 && dt >= 6)
+        type = RED_DUCK;
+    else if( dt == 9 || dt == 10)
+        type = BIRD_DUCK;
+    else if( dt == 11)
+        type = PARROT_DUCK;
+    
+    return [self initWithWinRect:rect andType:type];
 }
 
 -(void)addtoScene:(CCLayer *)layer

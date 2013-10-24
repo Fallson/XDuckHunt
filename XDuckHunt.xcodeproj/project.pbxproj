@@ -44,6 +44,8 @@
 		D294E33F17C26CD0008307ED /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D294E33E17C26CD0008307ED /* SplashScreen.png */; };
 		D298014918191C420097FBE7 /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = D298014718191C420097FBE7 /* continue.png */; };
 		D298014A18191C420097FBE7 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = D298014818191C420097FBE7 /* Pause.png */; };
+		D298014D18195B470097FBE7 /* fallson_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D298014B18195B470097FBE7 /* fallson_flying.plist */; };
+		D298014E18195B470097FBE7 /* fallson_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D298014C18195B470097FBE7 /* fallson_flying.png */; };
 		D29EE98217A3AC760072B0EA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98117A3AC760072B0EA /* QuartzCore.framework */; };
 		D29EE98417A3AC760072B0EA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98317A3AC760072B0EA /* OpenGLES.framework */; };
 		D29EE98617A3AC760072B0EA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29EE98517A3AC760072B0EA /* OpenAL.framework */; };
@@ -258,6 +260,8 @@
 		D294E33E17C26CD0008307ED /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen.png; path = Resources/SplashScreen.png; sourceTree = "<group>"; };
 		D298014718191C420097FBE7 /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continue.png; path = Resources/continue.png; sourceTree = "<group>"; };
 		D298014818191C420097FBE7 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = Resources/Pause.png; sourceTree = "<group>"; };
+		D298014B18195B470097FBE7 /* fallson_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fallson_flying.plist; path = Resources/fallson_flying.plist; sourceTree = "<group>"; };
+		D298014C18195B470097FBE7 /* fallson_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fallson_flying.png; path = Resources/fallson_flying.png; sourceTree = "<group>"; };
 		D29EE97E17A3AC760072B0EA /* DuckHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29EE98117A3AC760072B0EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D29EE98317A3AC760072B0EA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -700,6 +704,8 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D298014B18195B470097FBE7 /* fallson_flying.plist */,
+				D298014C18195B470097FBE7 /* fallson_flying.png */,
 				D298014718191C420097FBE7 /* continue.png */,
 				D298014818191C420097FBE7 /* Pause.png */,
 				D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */,
@@ -1187,6 +1193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D290A5D317C86A3B00C2EDDE /* sniglet.ttf in Resources */,
+				D298014D18195B470097FBE7 /* fallson_flying.plist in Resources */,
 				D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */,
 				D24735151805965600783493 /* weibo.png in Resources */,
 				D2C27419180AEFB700EB2A60 /* icon-76.png in Resources */,
@@ -1210,6 +1217,7 @@
 				D29EE9AD17A3AC770072B0EA /* iTunesArtwork in Resources */,
 				D2C2741C180AEFB700EB2A60 /* icon-144.png in Resources */,
 				D29EEB0617A3AC790072B0EA /* ChangeLog in Resources */,
+				D298014E18195B470097FBE7 /* fallson_flying.png in Resources */,
 				D29EEB5417A4F2130072B0EA /* bg_grass.png in Resources */,
 				D29EEB5517A4F2130072B0EA /* bg_sky.png in Resources */,
 				D298014A18191C420097FBE7 /* Pause.png in Resources */,

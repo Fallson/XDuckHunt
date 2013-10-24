@@ -25,9 +25,10 @@
 #import "DHIntroPannelObj.h"
 #import "SimpleAudioEngine.h"
 #import "DHGameMenuLayer.h"
+#import "DHPilotManager.h"
 #pragma mark - DHTimeModeGameLayer
 
-static int duck_scores[] = {100,100,100,200,400};
+static int duck_scores[] = {100,100,100,200,400,4000};
 @interface DHTimeModeGameLayer()
 @property (nonatomic, retain)NSMutableArray* ducks;
 @end
@@ -56,6 +57,7 @@ static int duck_scores[] = {100,100,100,200,400};
     int            _gameScore;
     int            _gameBonus;
     int            _gameBonusLvl;
+    int            _fallsonBonus;
     
     bool           _game_over;
 }
@@ -100,6 +102,7 @@ static int duck_scores[] = {100,100,100,200,400};
         _gameScore = 0;
         _gameBonus = 0;
         _gameBonusLvl = 1;
+        _fallsonBonus = 0;
         
         _game_over = false;
         
@@ -270,6 +273,18 @@ static int duck_scores[] = {100,100,100,200,400};
             
             new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
         }
+        
+        if( _fallsonBonus == 1 )
+        {
+            DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_duckRect andType:FALLSON_DUCK];
+            duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot: DUCK_NORMAL andWinRect:_duckRect andObjSz:duck1.duck_size andGroupID:0];
+            [duck1.duck_pilot setSpeedRatio:5.0];
+            [duck1 updatePos: [duck1.duck_pilot getPosition]];
+            [new_ducks addObject:duck1];
+            
+            _fallsonBonus = 0;
+        }
+        
         if( new_ducks != nil )
         {
             for( DHDuckObj* duckObj in new_ducks )
@@ -330,6 +345,24 @@ static int duck_scores[] = {100,100,100,200,400};
 
 -(void)touchDucks:(CGPoint)location
 {
+    static int fallson_cnt = 0;
+    static CGPoint pnt = {10.0, 10.0};
+    double dist = (location.x - pnt.x)*(location.x-pnt.x) + (location.y-pnt.y)*(location.y-pnt.y);
+    if( dist < 1000.0 )
+    {
+        //NSLog(@"fallson bonus");
+        fallson_cnt++;
+        if( fallson_cnt >= 5 )
+        {
+            _fallsonBonus = 1;
+            fallson_cnt = 0;
+        }
+    }
+    else
+    {
+        fallson_cnt = 0;
+    }
+    
     for( DHDuckObj* duckObj in _ducks)
     {
         if( duckObj.duck_state == FLYING || duckObj.duck_state == FLYAWAY )

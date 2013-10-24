@@ -11,6 +11,8 @@
 @implementation DHGameData
 @synthesize cur_game_score = _cur_game_score;
 @synthesize cur_game_mode = _cur_game_mode;
+@synthesize cur_game_pause = _cur_game_pause;
+
 @synthesize bgMusic = _bgMusic;
 @synthesize gameMusic = _gameMusic;
 @synthesize timemode_scores = _timemode_scores;
