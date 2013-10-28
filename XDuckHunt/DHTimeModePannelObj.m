@@ -92,6 +92,8 @@
     
     NSString* left_time_str = [NSString stringWithFormat:@"left time: %d", (int)self.left_time];
     [self.left_time_label setString:left_time_str];
+    if( (int)(self.left_time) < 10 )
+        self.left_time_label.color = ccRED;
     
     NSString* hit_count_str = [NSString stringWithFormat:@"hit count: %d", self.hit_count];
     [self.hit_count_label setString:hit_count_str];

@@ -69,6 +69,11 @@
     [layer addChild: self.dog_spriteSheet];
 }
 
+-(void)removeFromScene: (CCLayer*)layer
+{
+    [layer removeChild:self.dog_spriteSheet];
+}
+
 -(void)update:(ccTime)dt
 {
     _accDT += dt;

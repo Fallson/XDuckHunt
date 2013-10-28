@@ -19,5 +19,6 @@ enum DOG_STATE{DOG_RUNNING=0, DOG_SEEKING, DOG_RUNNING2, DOG_FOUND,
 
 -(id)initWithWinRect: (CGRect)rect;
 -(void)addtoScene: (CCLayer*)layer;
+-(void)removeFromScene: (CCLayer*)layer;
 -(void)update:(ccTime)dt;
 @end

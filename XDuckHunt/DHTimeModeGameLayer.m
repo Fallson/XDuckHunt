@@ -199,7 +199,7 @@ static int duck_scores[] = {100,100,100,200,400,4000};
         _gameTime += dt;
         [self updateDucks:dt];
         
-        if( TIMEMODE_TOTAL_TIME < (int)_gameTime )
+        if( TIMEMODE_TOTAL_TIME <= (int)_gameTime )
         {
             [self game_over];
         }

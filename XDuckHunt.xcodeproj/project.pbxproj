@@ -25,6 +25,8 @@
 		D24735141805965600783493 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735111805965600783493 /* twitter.png */; };
 		D24735151805965600783493 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735121805965600783493 /* weibo.png */; };
 		D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */; };
+		D250B115181EAF2B00499BDA /* duck_icon_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D250B113181EAF2B00499BDA /* duck_icon_gray.png */; };
+		D250B116181EAF2B00499BDA /* duck_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D250B114181EAF2B00499BDA /* duck_icon.png */; };
 		D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B4B1A17C4A5420021017C /* DHLabel.m */; };
 		D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25B4B2217C79BEB0021017C /* SnapITC.ttf */; };
 		D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B706417AFDD3500F7C915 /* DHGameChapter.m */; };
@@ -239,6 +241,8 @@
 		D24735121805965600783493 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weibo.png; path = Resources/weibo.png; sourceTree = "<group>"; };
 		D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannelObj.h; sourceTree = "<group>"; };
 		D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannelObj.m; sourceTree = "<group>"; };
+		D250B113181EAF2B00499BDA /* duck_icon_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_icon_gray.png; path = Resources/duck_icon_gray.png; sourceTree = "<group>"; };
+		D250B114181EAF2B00499BDA /* duck_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_icon.png; path = Resources/duck_icon.png; sourceTree = "<group>"; };
 		D25B4B1917C4A5420021017C /* DHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHLabel.h; sourceTree = "<group>"; };
 		D25B4B1A17C4A5420021017C /* DHLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHLabel.m; sourceTree = "<group>"; };
 		D25B4B2217C79BEB0021017C /* SnapITC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SnapITC.ttf; path = Resources/SnapITC.ttf; sourceTree = "<group>"; };
@@ -704,6 +708,8 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D250B113181EAF2B00499BDA /* duck_icon_gray.png */,
+				D250B114181EAF2B00499BDA /* duck_icon.png */,
 				D298014B18195B470097FBE7 /* fallson_flying.plist */,
 				D298014C18195B470097FBE7 /* fallson_flying.png */,
 				D298014718191C420097FBE7 /* continue.png */,
@@ -1197,6 +1203,7 @@
 				D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */,
 				D24735151805965600783493 /* weibo.png in Resources */,
 				D2C27419180AEFB700EB2A60 /* icon-76.png in Resources */,
+				D250B116181EAF2B00499BDA /* duck_icon.png in Resources */,
 				D29EE99817A3AC760072B0EA /* Default.png in Resources */,
 				D29EE99A17A3AC760072B0EA /* Default@2x.png in Resources */,
 				D2C27417180AEFB700EB2A60 /* Default-Portrait~ipad.png in Resources */,
@@ -1250,6 +1257,7 @@
 				D273CABA17F16EC700698331 /* gameMusic.mp3 in Resources */,
 				D290A5D717C8709D00C2EDDE /* dog.png in Resources */,
 				D2DF441417F31BE900461DA4 /* parrot_flying.png in Resources */,
+				D250B115181EAF2B00499BDA /* duck_icon_gray.png in Resources */,
 				D2DF440F17F31BE900461DA4 /* bird_flying.png in Resources */,
 				D2DF441017F31BE900461DA4 /* dog.mp3 in Resources */,
 				D24735131805965600783493 /* facebook.png in Resources */,

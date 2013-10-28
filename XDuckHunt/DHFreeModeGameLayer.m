@@ -200,7 +200,7 @@ static int duck_scores[] = {100,100,100,200,400,0};
         _gameTime += dt;
         [self updateDucks:dt];
 
-        if(FREEMODE_TOTAL_DUCK < _miss_count)
+        if(FREEMODE_TOTAL_DUCK <= _miss_count)
         {
             [self game_over];
         }

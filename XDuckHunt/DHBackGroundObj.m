@@ -12,7 +12,7 @@
 #import "DHGameData.h"
 #import "SimpleAudioEngine.h"
 
-#define CLOUD_MV_STEP    5
+#define CLOUD_MV_STEP    2
 #define SMOKE_SPRITE_NUM 5
 
 @interface DHBackGroundObj()
