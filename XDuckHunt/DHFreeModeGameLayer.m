@@ -292,7 +292,7 @@ static int duck_scores[] = {100,100,100,200,400,0};
 
 -(void)updatePannel:(ccTime)dt
 {
-    [_pannel setLeft_duck:FREEMODE_TOTAL_DUCK-_miss_count];
+    [_pannel setLeft_duck:(FREEMODE_TOTAL_DUCK-_miss_count)<0?0:(FREEMODE_TOTAL_DUCK-_miss_count)];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_gameScore];
     [_pannel setHighest_score:[[DHGameData sharedDHGameData] getHighestScore:FREE_MODE]];

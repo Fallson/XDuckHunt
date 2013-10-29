@@ -298,7 +298,7 @@ static int duck_scores[] = {100,100,100,200,400,4000};
 
 -(void)updatePannel:(ccTime)dt
 {
-    [_pannel setLeft_time: TIMEMODE_TOTAL_TIME - (int)_gameTime];
+    [_pannel setLeft_time: (TIMEMODE_TOTAL_TIME - (int)_gameTime)<0?0:(TIMEMODE_TOTAL_TIME - (int)_gameTime)];
     [_pannel setHit_count:_hit_count];
     [_pannel setScore:_gameScore];
     [_pannel setHighest_score: [[DHGameData sharedDHGameData] getHighestScore:TIME_MODE] ];
