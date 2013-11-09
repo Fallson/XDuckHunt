@@ -25,9 +25,8 @@
 #import "DHIntroPannelObj.h"
 #import "SimpleAudioEngine.h"
 #import "DHGameMenuLayer.h"
+#import "DHScore.h"
 #pragma mark - DHFreeModeGameLayer
-
-static int duck_scores[] = {100,100,100,200,400,0};
 
 @interface DHFreeModeGameLayer()
 @property (nonatomic,retain) NSMutableArray* ducks;
@@ -267,16 +266,16 @@ static int duck_scores[] = {100,100,100,200,400,0};
         if( _gameBonus )
         {
             _gameBonus = 0;
-            new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:CHAPTER_FUNNY andWinRect:_duckRect];
+            new_ducks = [[DHGameChapter sharedDHGameChapter] getBonusDucks:_duckRect];
         }
         else
         {
             _cur_chp++;
             if( _cur_chp >= CHAPTER_MAX )
             {
-                _cur_chp = CHAPTER_MAX-2;
+                _cur_chp = CHAPTER_MAX-1;
             }
-            new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
+            new_ducks = [[DHGameChapter sharedDHGameChapter] getChapterDucks:_cur_chp andWinRect:_duckRect];
         }
         
         if( new_ducks != nil )
@@ -349,7 +348,7 @@ static int duck_scores[] = {100,100,100,200,400,0};
                 duckObj.duck_state = START_DEAD;
                 _hit_count++;
                 
-                _gameScore += duck_scores[duckObj.duck_type];
+                _gameScore += [DHScore GetScoreByType:duckObj.duck_type];
                 if( _gameScore > _gameBonusLvl * 5000 )
                 {
                     _gameBonus = 1;

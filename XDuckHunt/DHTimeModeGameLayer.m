@@ -26,9 +26,9 @@
 #import "SimpleAudioEngine.h"
 #import "DHGameMenuLayer.h"
 #import "DHPilotManager.h"
+#import "DHScore.h"
 #pragma mark - DHTimeModeGameLayer
 
-static int duck_scores[] = {100,100,100,200,400,4000};
 @interface DHTimeModeGameLayer()
 @property (nonatomic, retain)NSMutableArray* ducks;
 @end
@@ -261,26 +261,22 @@ static int duck_scores[] = {100,100,100,200,400,4000};
         if( _gameBonus )
         {
             _gameBonus = 0;
-            new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:CHAPTER_FUNNY andWinRect:_duckRect];
+            new_ducks = [[DHGameChapter sharedDHGameChapter] getBonusDucks:_duckRect];
         }
         else
         {
             _cur_chp++;
             if( _cur_chp >= CHAPTER_MAX )
             {
-                _cur_chp = CHAPTER_MAX-2;
+                _cur_chp = CHAPTER_MAX-1;
             }
             
-            new_ducks = [[DHGameChapter sharedDHGameChapter] getDucks:_cur_chp andWinRect:_duckRect];
+            new_ducks = [[DHGameChapter sharedDHGameChapter] getChapterDucks:_cur_chp andWinRect:_duckRect];
         }
         
         if( _fallsonBonus == 1 )
         {
-            DHDuckObj* duck1 = [[DHDuckObj alloc] initWithWinRect:_duckRect andType:FALLSON_DUCK];
-            duck1.duck_pilot = [[DHPilotManager sharedDHPilotManager] createPilot: DUCK_NORMAL andWinRect:_duckRect andObjSz:duck1.duck_size andGroupID:0];
-            [duck1.duck_pilot setSpeedRatio:5.0];
-            [duck1 updatePos: [duck1.duck_pilot getPosition]];
-            [new_ducks addObject:duck1];
+            [new_ducks addObjectsFromArray:[[DHGameChapter sharedDHGameChapter] getFallsonBonusDucks:_duckRect]];
             
             _fallsonBonus = 0;
         }
@@ -373,7 +369,7 @@ static int duck_scores[] = {100,100,100,200,400,4000};
                 duckObj.duck_state = START_DEAD;
                 _hit_count++;
                 
-                _gameScore += duck_scores[duckObj.duck_type];
+                _gameScore += [DHScore GetScoreByType:duckObj.duck_type];
                 if( _gameScore > _gameBonusLvl * 2000 )
                 {
                     _gameBonus = 1;

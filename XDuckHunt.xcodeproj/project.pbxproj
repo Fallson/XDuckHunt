@@ -197,6 +197,7 @@
 		D2C2741B180AEFB700EB2A60 /* icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27412180AEFB700EB2A60 /* icon-100.png */; };
 		D2C2741C180AEFB700EB2A60 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27413180AEFB700EB2A60 /* icon-144.png */; };
 		D2C2741D180AEFB700EB2A60 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27414180AEFB700EB2A60 /* icon-152.png */; };
+		D2D0DEFC182E042100C9368C /* DHScore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFB182E042100C9368C /* DHScore.m */; };
 		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
 		D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */; };
 		D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */; };
@@ -565,6 +566,8 @@
 		D2C27412180AEFB700EB2A60 /* icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-100.png"; path = "Resources/icon-100.png"; sourceTree = "<group>"; };
 		D2C27413180AEFB700EB2A60 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-144.png"; path = "Resources/icon-144.png"; sourceTree = "<group>"; };
 		D2C27414180AEFB700EB2A60 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "Resources/icon-152.png"; sourceTree = "<group>"; };
+		D2D0DEFA182E042100C9368C /* DHScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHScore.h; sourceTree = "<group>"; };
+		D2D0DEFB182E042100C9368C /* DHScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHScore.m; sourceTree = "<group>"; };
 		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
 		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
 		D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_blue_flying.plist; path = Resources/duck_blue_flying.plist; sourceTree = "<group>"; };
@@ -701,6 +704,8 @@
 				D21E8C7C17C0884E00D1F499 /* DHDogObj.m */,
 				D2F81D3617DA09FE0043A338 /* DHGameData.h */,
 				D2F81D3717DA09FE0043A338 /* DHGameData.m */,
+				D2D0DEFA182E042100C9368C /* DHScore.h */,
+				D2D0DEFB182E042100C9368C /* DHScore.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1163,7 +1168,7 @@
 		D29EE97617A3AC760072B0EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Fallson;
 				TargetAttributes = {
 					D29EE97D17A3AC760072B0EA = {
@@ -1353,6 +1358,7 @@
 				D29EEAB717A3AC790072B0EA /* CCArray.m in Sources */,
 				D29EEABA17A3AC790072B0EA /* ccCArray.m in Sources */,
 				D29EEABD17A3AC790072B0EA /* CCFileUtils.m in Sources */,
+				D2D0DEFC182E042100C9368C /* DHScore.m in Sources */,
 				D29EEAC017A3AC790072B0EA /* CCProfiling.m in Sources */,
 				D29EEAC217A3AC790072B0EA /* ccUtils.c in Sources */,
 				D29EEAC617A3AC790072B0EA /* CCVertex.m in Sources */,
@@ -1409,7 +1415,12 @@
 		D29EEB2F17A3AC7A0072B0EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1419,9 +1430,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1430,7 +1446,12 @@
 		D29EEB3017A3AC7A0072B0EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1438,7 +1459,11 @@
 					"NS_BLOCK_ASSERTIONS=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;

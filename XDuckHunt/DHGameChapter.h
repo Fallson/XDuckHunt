@@ -10,10 +10,13 @@
 #import "DHConstons.h"
 
 enum CHAPTER_LVL{CHAPTER0=-1,CHAPTER1=0,CHAPTER2,CHAPTER3,CHAPTER4,CHAPTER5,
-                 CHAPTER6, CHAPTER7, CHAPTER8, CHAPTER9, CHAPTER10, CHAPTER_FUNNY, CHAPTER_MAX};
+                 CHAPTER6, CHAPTER7, CHAPTER8, CHAPTER9, CHAPTER10, CHAPTER_MAX};
 
 @interface DHGameChapter : NSObject
 
 +(DHGameChapter *)sharedDHGameChapter;
--(NSMutableArray*)getDucks:(enum CHAPTER_LVL) lvl andWinRect:(CGRect)rect;
+-(NSMutableArray*)getChapterDucks:(enum CHAPTER_LVL) lvl andWinRect:(CGRect)rect;
+-(NSMutableArray*)getBonusDucks:(CGRect)rect;
+-(NSMutableArray*)getFallsonBonusDucks:(CGRect)rect;
+-(NSMutableArray*)getBGDucks:(CGRect)rect;
 @end

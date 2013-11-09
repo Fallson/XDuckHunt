@@ -13,7 +13,7 @@
 #import "SimpleAudioEngine.h"
 
 #define DOG_SPRITE_NUM 4
-#define DOG_MV_STEP    8
+#define DOG_MV_STEP    8.0/3
 #define DOG_RUNNING_ROUND 4
 
 @interface DHDogObj()

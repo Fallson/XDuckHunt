@@ -11,6 +11,8 @@
 #import "DHZDepth.h"
 #import "DHGameData.h"
 #import "SimpleAudioEngine.h"
+#import "DHDuckObj.h"
+#import "DHGameChapter.h"
 
 #define CLOUD_MV_STEP    2
 #define SMOKE_SPRITE_NUM 5
@@ -20,6 +22,7 @@
     int _smoke_idx;
     ccTime _accDT;
     CGRect _winRect;
+    CGRect _duckRect;
 }
 
 @property(nonatomic, retain)CCSprite* bg_sky;
@@ -28,6 +31,7 @@
 @property(nonatomic, retain)CCSprite* bg_cloud;
 @property(nonatomic, retain)CCSpriteBatchNode* smoke_spriteSheet;
 @property(nonatomic, retain)CCSprite* smoke;
+@property(nonatomic, retain)NSMutableArray* ducks;
 
 @end
 @implementation DHBackGroundObj
@@ -38,7 +42,7 @@
 @synthesize bg_cloud=_bg_cloud;
 @synthesize smoke_spriteSheet=_smoke_spriteSheet;
 @synthesize smoke=_smoke;
-
+@synthesize ducks=_ducks;
 
 -(id) initWithWinRect: (CGRect)rect
 {
@@ -87,6 +91,12 @@
         [self.smoke_spriteSheet addChild:self.smoke];
         self.smoke_spriteSheet.zOrder = BG_SMOKE_Z;
         
+        //add ducks
+        _duckRect = _winRect;
+        _duckRect.origin.y += 0.25*_duckRect.size.height;
+        _duckRect.size.height *= 0.75;
+        self.ducks = [[NSMutableArray alloc] initWithArray:[[DHGameChapter sharedDHGameChapter] getBGDucks:_duckRect]];
+        
         if( [DHGameData sharedDHGameData].bgMusic==1 )
         {
             if( [SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying )
@@ -108,10 +118,21 @@
     [layer addChild:self.bg_cloud];
     
     [layer addChild:self.smoke_spriteSheet];
+    
+    for( DHDuckObj* duckObj in self.ducks )
+    {
+        [duckObj addtoScene:layer];
+    }
 }
 
 -(void)update:(ccTime)dt
 {
+    //ducks animation first, because there is internal accDT control in duckObj
+    for( DHDuckObj* duckObj in self.ducks )
+    {
+        [duckObj update:dt];
+    }
+    
     _accDT += dt;
     if( _accDT < BG_UPDATE_TIME )
         return;
@@ -133,7 +154,13 @@
         cur.x = -self.bg_cloud.contentSize.width/2;
     }
     self.bg_cloud.position = cur;
-    
 }
 
+- (void) dealloc
+{
+    [_ducks release];
+    
+	// don't forget to call "super dealloc"
+	[super dealloc];
+}
 @end
