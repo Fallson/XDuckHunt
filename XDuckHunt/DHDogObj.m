@@ -14,7 +14,7 @@
 
 #define DOG_SPRITE_NUM 4
 #define DOG_MV_STEP    8.0/3
-#define DOG_RUNNING_ROUND 4
+#define DOG_RUNNING_ROUND 8
 
 @interface DHDogObj()
 {
@@ -189,7 +189,7 @@
             [self.dog setDisplayFrame:frame];
             
             _dog_running_round++;
-            if( _dog_running_round >= DOG_RUNNING_ROUND/2 )
+            if( _dog_running_round >= DOG_RUNNING_ROUND/4 )
             {
                 self.dog_state = DOG_JUMPING_DOWN;
                 _dog_running_round = 0;

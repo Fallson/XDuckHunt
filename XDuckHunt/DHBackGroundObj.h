@@ -12,6 +12,7 @@
 @interface DHBackGroundObj : NSObject
 
 -(id) initWithWinRect: (CGRect)rect;
+-(id) initWithWinRect: (CGRect)rect andDucks:(bool)needDuck;
 -(void)addtoScene: (CCLayer*)layer;
 -(void)update:(ccTime)dt;
 @end

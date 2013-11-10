@@ -14,6 +14,8 @@
 #import "DHZDepth.h"
 #import "SimpleAudioEngine.h"
 #import "DHGameData.h"
+#import "DHFloatingScoreObj.h"
+#import "DHScore.h"
 
 #define DUCK_SPRITE_NUM 3
 
@@ -32,9 +34,11 @@ static NSString* duck_files[]={
     ccTime _accDT;
     CGRect _winRect;
     bool _duck_live_sound;
+    CCLayer* _layer;
 }
 @property(nonatomic, retain) CCSpriteBatchNode* duck_spriteSheet;
 @property(nonatomic, retain) CCSprite* duck;
+@property(nonatomic, retain) DHFloatingScoreObj* float_score;
 @end
 
 @implementation DHDuckObj
@@ -47,6 +51,7 @@ static NSString* duck_files[]={
 
 @synthesize duck_spriteSheet = _duck_spriteSheet;
 @synthesize duck = _duck;
+@synthesize float_score = _float_score;
 
 -(id)initWithWinRect:(CGRect)rect andType:(enum DUCK_TYPE) type;
 {
@@ -75,6 +80,9 @@ static NSString* duck_files[]={
         _accDT = 0;
         
         _duck_live_sound = false;
+        _layer = nil;
+        
+        self.float_score = nil;
 	}
 	return self;
 }
@@ -101,6 +109,7 @@ static NSString* duck_files[]={
 {
     //NSLog(@"duck_spritesheet:%d",(int)self.duck_spriteSheet);
     [layer addChild:self.duck_spriteSheet];
+    _layer = layer;
 }
 
 -(void)removeFromScene:(CCLayer *)layer
@@ -174,6 +183,13 @@ static NSString* duck_files[]={
             [self.duck_pilot setEndPos:cur_p];
             [self.duck_pilot setSpeedRatio:2.0];
             
+            if( self.float_score == nil )
+            {
+                int score = [DHScore GetScoreByType:self.duck_type];
+                self.float_score = [[DHFloatingScoreObj alloc] initWithWinRect:_winRect andPos:self.duck.position andScore:score];
+            }
+            [self.float_score addtoScene:_layer];
+            
             if( [DHGameData sharedDHGameData].gameMusic == 1 )
                 [[SimpleAudioEngine sharedEngine] playEffect:@"duck_dead.wav"];
         }
@@ -187,6 +203,11 @@ static NSString* duck_files[]={
             
             [self.duck_pilot update:dt];
             [self.duck setPosition:[self.duck_pilot getPosition]];
+            
+            if( self.float_score.visible )
+                [self.float_score update:dt];
+            else
+                [self.float_score removeFromScene:_layer];
         }
             break;
         case START_FLYAWAY:
@@ -221,6 +242,8 @@ static NSString* duck_files[]={
     if( [self PntInRect: self.duck.position andRect: rect] == 0 )
     {
         self.duck_state = DISAPPEAR;
+        if( self.float_score )
+            [self.float_score removeFromScene:_layer];
     }
 }
 
@@ -242,6 +265,16 @@ static NSString* duck_files[]={
 
 -(void)dealloc
 {
+    if( self.duck_pilot )
+    {
+        [self.duck_pilot release];
+    }
+    
+    if( self.float_score )
+    {
+        [self.float_score release];
+    }
+    
     [super dealloc];
 }
 @end

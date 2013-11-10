@@ -22,6 +22,8 @@
     int _smoke_idx;
     ccTime _accDT;
     CGRect _winRect;
+    
+    bool _needDuck;
     CGRect _duckRect;
 }
 
@@ -44,10 +46,8 @@
 @synthesize smoke=_smoke;
 @synthesize ducks=_ducks;
 
--(id) initWithWinRect: (CGRect)rect
+-(id) initWithWinRect: (CGRect)rect andDucks:(bool)needDuck
 {
-    //static int inited = 0; //we should use singleton
-    
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) )
@@ -58,8 +58,8 @@
         
         self.bg_sky = [CCSprite spriteWithFile: @"bg_sky.png"];
         float scale_r = sz.height/self.bg_sky.contentSize.height;
-//        NSLog(@"sz(%f,%f) and sky(%f,%f), scale_r is: %f", sz.width, sz.height,
-//              self.bg_sky.contentSize.width, self.bg_sky.contentSize.height ,scale_r);
+        //        NSLog(@"sz(%f,%f) and sky(%f,%f), scale_r is: %f", sz.width, sz.height,
+        //              self.bg_sky.contentSize.width, self.bg_sky.contentSize.height ,scale_r);
         self.bg_sky.scale = scale_r;
         self.bg_sky.position = ccp( ori.x + sz.width/2, ori.y + sz.height/2 );
         self.bg_sky.zOrder = BG_SKY_Z;
@@ -92,10 +92,14 @@
         self.smoke_spriteSheet.zOrder = BG_SMOKE_Z;
         
         //add ducks
-        _duckRect = _winRect;
-        _duckRect.origin.y += 0.25*_duckRect.size.height;
-        _duckRect.size.height *= 0.75;
-        self.ducks = [[NSMutableArray alloc] initWithArray:[[DHGameChapter sharedDHGameChapter] getBGDucks:_duckRect]];
+        _needDuck = needDuck;
+        if( _needDuck )
+        {
+            _duckRect = _winRect;
+            _duckRect.origin.y += 0.25*_duckRect.size.height;
+            _duckRect.size.height *= 0.75;
+            self.ducks = [[NSMutableArray alloc] initWithArray:[[DHGameChapter sharedDHGameChapter] getBGDucks:_duckRect]];
+        }
         
         if( [DHGameData sharedDHGameData].bgMusic==1 )
         {
@@ -110,6 +114,11 @@
 	return self;
 }
 
+-(id) initWithWinRect: (CGRect)rect
+{
+    return [self initWithWinRect:rect andDucks:false];
+}
+
 -(void)addtoScene: (CCLayer*)layer
 {
     [layer addChild:self.bg_sky];
@@ -119,18 +128,24 @@
     
     [layer addChild:self.smoke_spriteSheet];
     
-    for( DHDuckObj* duckObj in self.ducks )
+    if( _needDuck )
     {
-        [duckObj addtoScene:layer];
+        for( DHDuckObj* duckObj in self.ducks )
+        {
+            [duckObj addtoScene:layer];
+        }
     }
 }
 
 -(void)update:(ccTime)dt
 {
-    //ducks animation first, because there is internal accDT control in duckObj
-    for( DHDuckObj* duckObj in self.ducks )
+    if( _needDuck )
     {
-        [duckObj update:dt];
+        //ducks animation first, because there is internal accDT control in duckObj
+        for( DHDuckObj* duckObj in self.ducks )
+        {
+            [duckObj update:dt];
+        }
     }
     
     _accDT += dt;
@@ -158,7 +173,10 @@
 
 - (void) dealloc
 {
-    [_ducks release];
+    if( _needDuck )
+    {
+        [_ducks release];
+    }
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

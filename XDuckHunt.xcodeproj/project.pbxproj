@@ -198,6 +198,7 @@
 		D2C2741C180AEFB700EB2A60 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27413180AEFB700EB2A60 /* icon-144.png */; };
 		D2C2741D180AEFB700EB2A60 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27414180AEFB700EB2A60 /* icon-152.png */; };
 		D2D0DEFC182E042100C9368C /* DHScore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFB182E042100C9368C /* DHScore.m */; };
+		D2D0DEFF182E151A00C9368C /* DHFloatingScoreObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */; };
 		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
 		D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */; };
 		D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */; };
@@ -568,6 +569,8 @@
 		D2C27414180AEFB700EB2A60 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "Resources/icon-152.png"; sourceTree = "<group>"; };
 		D2D0DEFA182E042100C9368C /* DHScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHScore.h; sourceTree = "<group>"; };
 		D2D0DEFB182E042100C9368C /* DHScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHScore.m; sourceTree = "<group>"; };
+		D2D0DEFD182E151A00C9368C /* DHFloatingScoreObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFloatingScoreObj.h; sourceTree = "<group>"; };
+		D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFloatingScoreObj.m; sourceTree = "<group>"; };
 		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
 		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
 		D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_blue_flying.plist; path = Resources/duck_blue_flying.plist; sourceTree = "<group>"; };
@@ -706,6 +709,8 @@
 				D2F81D3717DA09FE0043A338 /* DHGameData.m */,
 				D2D0DEFA182E042100C9368C /* DHScore.h */,
 				D2D0DEFB182E042100C9368C /* DHScore.m */,
+				D2D0DEFD182E151A00C9368C /* DHFloatingScoreObj.h */,
+				D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1396,6 +1401,7 @@
 				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
 				D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */,
 				D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */,
+				D2D0DEFF182E151A00C9368C /* DHFloatingScoreObj.m in Sources */,
 				D21E8C7D17C0884E00D1F499 /* DHDogObj.m in Sources */,
 				D21E8C8017C0ABAF00D1F499 /* DHFreeModeGameLayer.m in Sources */,
 				D21E8C8917C0AC3300D1F499 /* DHGameMenuLayer.m in Sources */,

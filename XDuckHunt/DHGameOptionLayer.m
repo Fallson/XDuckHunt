@@ -84,7 +84,7 @@
     CGPoint ori = ccp(0,0);
     _bgRect.origin = ori;
     _bgRect.size = sz;
-    _bgObj = [[DHBackGroundObj alloc] initWithWinRect: _bgRect];
+    _bgObj = [[DHBackGroundObj alloc] initWithWinRect: _bgRect andDucks:true];
     [_bgObj addtoScene: self];
 }
 
