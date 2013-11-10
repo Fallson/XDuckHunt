@@ -10,6 +10,7 @@
 
 @implementation DHGameData
 @synthesize cur_game_score = _cur_game_score;
+@synthesize cur_game_hit = _cur_game_hit;
 @synthesize cur_game_mode = _cur_game_mode;
 @synthesize cur_game_pause = _cur_game_pause;
 
@@ -43,6 +44,9 @@ static DHGameData *_sharedDHGameData=nil;
         
         self.cur_game_mode = TIME_MODE;
         self.cur_game_score = 0;
+        _cur_game_hit.duck_hit = 0;
+        _cur_game_hit.bird_hit = 0;
+        _cur_game_hit.parrot_hit = 0;
         self.cur_game_pause = 0;
 	}
     

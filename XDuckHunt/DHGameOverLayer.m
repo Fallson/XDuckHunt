@@ -19,6 +19,7 @@
 #import "DHGameData.h"
 #import "DHLabel.h"
 #import "DHGameMenuLayer.h"
+#import "DHIntroPannelObj.h"
 #pragma mark - DHGameOverLayer
 
 
@@ -27,6 +28,9 @@
 {
     DHBackGroundObj* _bgObj;
     CGRect           _bgRect;
+    
+    DHIntroPannelObj* _game_hitObj;
+    CGRect            _game_hitRect;
 }
 
 // Helper class method that creates a Scene with the DHGameOverLayer as the only child.
@@ -55,6 +59,7 @@
     {
         [self initBG];
         [self initScores];
+        [self initHits];
         [self initMenu];
         
         //[self schedule:@selector(nextFrame:)];
@@ -83,90 +88,67 @@
     
     [[DHGameData sharedDHGameData] addScore: cur_game_score gameMode:cur_game_mode];
     
-    
-    NSMutableArray* scores = nil;
-    if( cur_game_mode == TIME_MODE )
-    {
-        scores = [DHGameData sharedDHGameData].timemode_scores;
-    }
-    else if( cur_game_mode == FREE_MODE )
-    {
-        scores = [DHGameData sharedDHGameData].freemode_scores;
-    }
-    
     NSString* str = [NSString stringWithFormat:@"Game Over, Your score : %d", cur_game_score];
     DHLabel* lable = [DHLabel labelWithString:str fontName:DHLABEL_FONT fontSize:24];
     lable.color = ccYELLOW;
     lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
     [lable setAnchorPoint: ccp(0.5f, 0.5f)];
     [self addChild:lable];
+}
+
+-(void)initHits
+{
+    _game_hitRect = _bgRect;
+    _game_hitRect.origin.y +=0.25*_game_hitRect.size.height;
+    _game_hitRect.size.height *= 0.65;
     
-    int red_score = 1;
-    for( int i = 0; i < [scores count]; i++ )
-    {
-        int s = [[scores objectAtIndex:i] intValue];
-        NSString* score_str = [NSString stringWithFormat:@"%d", s];
-        DHLabel* score_label = [DHLabel labelWithString:score_str fontName:DHLABEL_FONT fontSize:24];
-        if( s == cur_game_score && red_score == 1 )
-        {
-            score_label.color = ccRED;
-            red_score = 0;
-        }
-        else
-            score_label.color = ccYELLOW;
-        score_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + (0.8-0.05*i)*_bgRect.size.height);
-        [score_label setAnchorPoint: ccp(0.5f, 0.5f)];
-        [self addChild:score_label];
-        
-        //left alignment
-        //[label setAnchorPoint: ccp(0, 0.5f)];
-        // right alignment
-        //[label setAnchorPoint: ccp(1, 0.5f)];
-        // center aligment (default)
-        //[label setAnchorPoint: ccp(0.5f, 0.5f)];
-    }
+    _game_hitObj = [[DHIntroPannelObj alloc] initWithWinRect:_game_hitRect
+                                                  andDuckNum:[DHGameData sharedDHGameData].cur_game_hit.duck_hit
+                                                  andBirdNum:[DHGameData sharedDHGameData].cur_game_hit.bird_hit
+                                                andPirrotNum:[DHGameData sharedDHGameData].cur_game_hit.parrot_hit];
+    [_game_hitObj addtoScene:self];
 }
 
 -(void)initMenu
 {
-    NSString* return_str = [NSString stringWithFormat:@"Return"];
-    DHLabel* return_label = [DHLabel labelWithString:return_str fontName:DHLABEL_FONT fontSize:20];
-    return_label.color=ccBLUE;
-    return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.4, _bgRect.origin.y + 0.3*_bgRect.size.height);
-    [return_label setAnchorPoint: ccp(0.5f, 0.5f)];
-    
-    CCMenuItem *menuitem_return = [CCMenuItemImage
-                                   itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
-                                   target:self selector:@selector(ReturnMenuPressed:)];
-    menuitem_return.scale *= CC_CONTENT_SCALE_FACTOR();
-    menuitem_return.position = return_label.position;
+//    NSString* return_str = [NSString stringWithFormat:@"Return"];
+//    DHLabel* return_label = [DHLabel labelWithString:return_str fontName:DHLABEL_FONT fontSize:20];
+//    return_label.color=ccBLUE;
+//    return_label.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.4, _bgRect.origin.y + 0.3*_bgRect.size.height);
+//    [return_label setAnchorPoint: ccp(0.5f, 0.5f)];
+//    
+//    CCMenuItem *menuitem_return = [CCMenuItemImage
+//                                   itemWithNormalImage:@"MenuItem.png" selectedImage:@"MenuItem_pressed.png"
+//                                   target:self selector:@selector(ReturnMenuPressed:)];
+//    menuitem_return.scale *= CC_CONTENT_SCALE_FACTOR();
+//    menuitem_return.position = return_label.position;
     
     //twitter
     CCMenuItem *menuitem_twitter = [CCMenuItemImage
                                    itemWithNormalImage:@"twitter.png" selectedImage:@"twitter.png"
                                    target:self selector:@selector(TwitterMenuPressed:)];
     menuitem_twitter.scale *= (0.25 * CC_CONTENT_SCALE_FACTOR());
-    menuitem_twitter.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.6, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    menuitem_twitter.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.4, _bgRect.origin.y + 0.3*_bgRect.size.height);
     
     //facebook
     CCMenuItem *menuitem_facebook = [CCMenuItemImage
                                     itemWithNormalImage:@"facebook.png" selectedImage:@"facebook.png"
                                     target:self selector:@selector(FacebookMenuPressed:)];
     menuitem_facebook.scale *= (0.25 * CC_CONTENT_SCALE_FACTOR());
-    menuitem_facebook.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.7, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    menuitem_facebook.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.3*_bgRect.size.height);
     
     //weibo
     CCMenuItem *menuitem_weibo = [CCMenuItemImage
                                     itemWithNormalImage:@"weibo.png" selectedImage:@"weibo.png"
                                     target:self selector:@selector(WeiboMenuPressed:)];
     menuitem_weibo.scale *= (0.25 * CC_CONTENT_SCALE_FACTOR());
-    menuitem_weibo.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.8, _bgRect.origin.y + 0.3*_bgRect.size.height);
+    menuitem_weibo.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.6, _bgRect.origin.y + 0.3*_bgRect.size.height);
     
     
-    CCMenu* main_menu = [CCMenu menuWithItems:menuitem_return, menuitem_twitter, menuitem_facebook, menuitem_weibo ,nil];
+    CCMenu* main_menu = [CCMenu menuWithItems:/*menuitem_return,*/ menuitem_twitter, menuitem_facebook, menuitem_weibo ,nil];
     main_menu.position = CGPointZero;
     [self addChild:main_menu];
-    [self addChild:return_label];
+//    [self addChild:return_label];
 }
 
 -(void)ReturnMenuPressed:(id)sender
@@ -214,6 +196,9 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Low Version"
                                                             message:[NSString stringWithFormat:@"This function can't work below ios 6.0"]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
         [alertView show];
+        
+        [self ReturnMenuPressed:nil];
+        
         return;
     }
     
@@ -243,6 +228,8 @@
     {
         [self showUnavailableAlertForServiceType: SLServiceTypeTwitter];
     }
+    
+    [self ReturnMenuPressed:nil];
 }
 
 -(void)FacebookMenuPressed:(id)sender
@@ -252,6 +239,9 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Low Version"
                                                             message:[NSString stringWithFormat:@"This function can't work below ios 6.0"]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
         [alertView show];
+        
+        [self ReturnMenuPressed:nil];
+        
         return;
     }
     
@@ -281,6 +271,8 @@
     {
         [self showUnavailableAlertForServiceType: SLServiceTypeFacebook];
     }
+    
+    [self ReturnMenuPressed:nil];
 }
 
 -(void)WeiboMenuPressed:(id)sender
@@ -290,6 +282,9 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Low Version"
                                                             message:[NSString stringWithFormat:@"This function can't work below ios 6.0"]delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
         [alertView show];
+        
+        [self ReturnMenuPressed:nil];
+        
         return;
     }
     
@@ -316,17 +311,25 @@
     {
         [self showUnavailableAlertForServiceType: SLServiceTypeSinaWeibo];
     }
+    
+    [self ReturnMenuPressed:nil];
 }
 
 #pragma mark - update part
 -(void) update:(ccTime)dt
 {
     [self updateBG:dt];
+    [self updateHits:dt];
 }
 
 -(void) updateBG:(ccTime)dt
 {
     [_bgObj update:dt];
+}
+
+-(void) updateHits:(ccTime)dt
+{
+    [_game_hitObj update:dt];
 }
 
 #pragma mark - dealloc part
@@ -337,6 +340,7 @@
 	// in this particular example nothing needs to be released.
 	// cocos2d will automatically release all the children (Label)
 	[_bgObj release];
+    [_game_hitObj release];
     
 	// don't forget to call "super dealloc"
 	[super dealloc];

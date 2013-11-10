@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "DHConstons.h"
 
+typedef struct GameHit_
+{
+    int duck_hit;
+    int bird_hit;
+    int parrot_hit;
+}GameHit;
+
 @interface DHGameData : NSObject
 
 @property(nonatomic, assign)enum GAME_MODE cur_game_mode;
 @property(nonatomic, assign)int cur_game_score;
+@property(nonatomic, assign)GameHit cur_game_hit;
 @property(nonatomic, assign)int cur_game_pause;
 
 @property(nonatomic, assign)int bgMusic;//BackGround Sound

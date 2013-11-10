@@ -52,9 +52,12 @@
     
     ccTime         _nextDuckTime;
     ccTime         _gameTime;
+    
     int            _hit_count;
     int            _miss_count;
+    GameHit        _game_hit;
     int            _gameScore;
+    
     int            _gameBonus;
     int            _gameBonusLvl;
     
@@ -98,9 +101,14 @@
         
         _nextDuckTime = 0;
         _gameTime = 0;
+        
         _hit_count = 0;
+        _game_hit.duck_hit = 0;
+        _game_hit.bird_hit = 0;
+        _game_hit.parrot_hit = 0;
         _miss_count = 0;
         _gameScore = 0;
+        
         _gameBonus = 0;
         _gameBonusLvl = 1;
         
@@ -138,7 +146,7 @@
 {
     _introRect = _bgRect;
     _introRect.origin.y +=0.25*_introRect.size.height;
-    _introRect.size.height *= 0.75;
+    _introRect.size.height *= 0.65;
     
     _introObj = [[DHIntroPannelObj alloc] initWithWinRect:_introRect];
     [_introObj addtoScene:self];
@@ -305,6 +313,7 @@
     
     _game_over = true;
     [DHGameData sharedDHGameData].cur_game_score = _gameScore;
+    [DHGameData sharedDHGameData].cur_game_hit = _game_hit;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];    
 }
 
@@ -346,7 +355,24 @@
             if( duckHit )
             {
                 duckObj.duck_state = START_DEAD;
+                
                 _hit_count++;
+                switch( duckObj.duck_type )
+                {
+                    case BLACK_DUCK:
+                    case BLUE_DUCK:
+                    case RED_DUCK:
+                        _game_hit.duck_hit++;
+                        break;
+                    case BIRD_DUCK:
+                        _game_hit.bird_hit++;
+                        break;
+                    case PARROT_DUCK:
+                        _game_hit.parrot_hit++;
+                        break;
+                    default:
+                        break;
+                }
                 
                 _gameScore += [DHScore GetScoreByType:duckObj.duck_type];
                 if( _gameScore > _gameBonusLvl * 5000 )

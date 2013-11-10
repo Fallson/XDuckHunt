@@ -53,8 +53,11 @@
     
     ccTime         _nextDuckTime;
     ccTime         _gameTime;
+    
     int            _hit_count;
+    GameHit        _game_hit;
     int            _gameScore;
+    
     int            _gameBonus;
     int            _gameBonusLvl;
     int            _fallsonBonus;
@@ -98,8 +101,13 @@
         
         _nextDuckTime = 0;
         _gameTime = 0;
+        
         _hit_count = 0;
+        _game_hit.duck_hit = 0;
+        _game_hit.bird_hit = 0;
+        _game_hit.parrot_hit = 0;
         _gameScore = 0;
+        
         _gameBonus = 0;
         _gameBonusLvl = 1;
         _fallsonBonus = 0;
@@ -138,7 +146,7 @@
 {
     _introRect = _bgRect;
     _introRect.origin.y +=0.25*_introRect.size.height;
-    _introRect.size.height *= 0.75;
+    _introRect.size.height *= 0.65;
     
     _introObj = [[DHIntroPannelObj alloc] initWithWinRect:_introRect];
     [_introObj addtoScene:self];
@@ -308,6 +316,7 @@
     
     _game_over = true;
     [DHGameData sharedDHGameData].cur_game_score = _gameScore;
+    [DHGameData sharedDHGameData].cur_game_hit = _game_hit;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];
 }
 
@@ -339,14 +348,13 @@
     [self touchDucks:location];
 }
 
--(void)touchDucks:(CGPoint)location
+-(void)fallsonBonus:(CGPoint)location
 {
     static int fallson_cnt = 0;
     static CGPoint pnt = {10.0, 10.0};
     double dist = (location.x - pnt.x)*(location.x-pnt.x) + (location.y-pnt.y)*(location.y-pnt.y);
     if( dist < 1000.0 )
     {
-        //NSLog(@"fallson bonus");
         fallson_cnt++;
         if( fallson_cnt >= 5 )
         {
@@ -358,6 +366,11 @@
     {
         fallson_cnt = 0;
     }
+}
+
+-(void)touchDucks:(CGPoint)location
+{
+    [self fallsonBonus:location];//haha
     
     for( DHDuckObj* duckObj in _ducks)
     {
@@ -367,7 +380,24 @@
             if( duckHit )
             {
                 duckObj.duck_state = START_DEAD;
+                
                 _hit_count++;
+                switch( duckObj.duck_type )
+                {
+                    case BLACK_DUCK:
+                    case BLUE_DUCK:
+                    case RED_DUCK:
+                        _game_hit.duck_hit++;
+                        break;
+                    case BIRD_DUCK:
+                        _game_hit.bird_hit++;
+                        break;
+                    case PARROT_DUCK:
+                        _game_hit.parrot_hit++;
+                        break;
+                    default:
+                        break;
+                }
                 
                 _gameScore += [DHScore GetScoreByType:duckObj.duck_type];
                 if( _gameScore > _gameBonusLvl * 2000 )

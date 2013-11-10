@@ -10,7 +10,7 @@
 #import "DHLabel.h"
 
 #define SCORE_MV_STEP    2
-#define MAX_MV_CNT       20
+#define MAX_MV_CNT       10
 
 @interface DHFloatingScoreObj()
 {
