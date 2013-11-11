@@ -21,6 +21,7 @@ typedef struct GameHit_
 @property(nonatomic, assign)enum GAME_MODE cur_game_mode;
 @property(nonatomic, assign)int cur_game_score;
 @property(nonatomic, assign)GameHit cur_game_hit;
+@property(nonatomic, assign)int cur_game_miss;
 @property(nonatomic, assign)int cur_game_pause;
 
 @property(nonatomic, assign)int bgMusic;//BackGround Sound

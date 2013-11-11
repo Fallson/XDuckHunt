@@ -47,6 +47,7 @@ static DHGameData *_sharedDHGameData=nil;
         _cur_game_hit.duck_hit = 0;
         _cur_game_hit.bird_hit = 0;
         _cur_game_hit.parrot_hit = 0;
+        self.cur_game_miss = 0;
         self.cur_game_pause = 0;
 	}
     

@@ -200,6 +200,7 @@
 		D2D0DEFC182E042100C9368C /* DHScore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFB182E042100C9368C /* DHScore.m */; };
 		D2D0DEFF182E151A00C9368C /* DHFloatingScoreObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */; };
 		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
+		D2DA2DD918310F7900CEF3AA /* DHFreeModeContinueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA2DD818310F7900CEF3AA /* DHFreeModeContinueLayer.m */; };
 		D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */; };
 		D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */; };
 		D2DF440E17F31BE900461DA4 /* bird_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440717F31BE900461DA4 /* bird_flying.plist */; };
@@ -573,6 +574,8 @@
 		D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFloatingScoreObj.m; sourceTree = "<group>"; };
 		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
 		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
+		D2DA2DD718310F6400CEF3AA /* DHFreeModeContinueLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFreeModeContinueLayer.h; sourceTree = "<group>"; };
+		D2DA2DD818310F7900CEF3AA /* DHFreeModeContinueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModeContinueLayer.m; sourceTree = "<group>"; };
 		D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_blue_flying.plist; path = Resources/duck_blue_flying.plist; sourceTree = "<group>"; };
 		D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_blue_flying.png; path = Resources/duck_blue_flying.png; sourceTree = "<group>"; };
 		D2DF440717F31BE900461DA4 /* bird_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bird_flying.plist; path = Resources/bird_flying.plist; sourceTree = "<group>"; };
@@ -612,6 +615,8 @@
 		D21E8C8D17C0AC5400D1F499 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D2DA2DD718310F6400CEF3AA /* DHFreeModeContinueLayer.h */,
+				D2DA2DD818310F7900CEF3AA /* DHFreeModeContinueLayer.m */,
 				D29EEB2917A3AC7A0072B0EA /* DHTimeModeGameLayer.h */,
 				D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */,
 				D21E8C7E17C0ABAF00D1F499 /* DHFreeModeGameLayer.h */,
@@ -1366,6 +1371,7 @@
 				D2D0DEFC182E042100C9368C /* DHScore.m in Sources */,
 				D29EEAC017A3AC790072B0EA /* CCProfiling.m in Sources */,
 				D29EEAC217A3AC790072B0EA /* ccUtils.c in Sources */,
+				D2DA2DD918310F7900CEF3AA /* DHFreeModeContinueLayer.m in Sources */,
 				D29EEAC617A3AC790072B0EA /* CCVertex.m in Sources */,
 				D29EEAC917A3AC790072B0EA /* CGPointExtension.m in Sources */,
 				D29EEACC17A3AC790072B0EA /* NSThread+performBlock.m in Sources */,

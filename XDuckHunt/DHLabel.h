@@ -9,6 +9,7 @@
 #import "CCLabelTTF.h"
 
 #define DHLABEL_FONT @"Snap ITC"
+static const ccColor3B ccDH = {255,255,0};
 
 @interface DHLabel : CCLabelTTF
 

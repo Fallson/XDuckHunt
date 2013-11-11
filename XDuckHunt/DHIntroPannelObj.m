@@ -48,36 +48,36 @@
         self.parrot_num = pn;
         
         self.duck = [CCSprite spriteWithFile:@"duck.png"];
-        self.duck.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
-        self.duck.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.8);
+        self.duck.scale *= 0.4*CC_CONTENT_SCALE_FACTOR();
+        self.duck.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.7);
         [self.duck setAnchorPoint:ccp(0.5f, 0.5f)];
         
         NSString* duck_str = [NSString stringWithFormat:@" X %d = %d", self.duck_num, self.duck_num * [DHScore GetScoreByType:BLACK_DUCK]];
-        self.duck_label = [DHLabel labelWithString:duck_str fontName:DHLABEL_FONT fontSize:28];
-        self.duck_label.color = ccYELLOW;
-        self.duck_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.8);
+        self.duck_label = [DHLabel labelWithString:duck_str fontName:DHLABEL_FONT fontSize:24];
+        self.duck_label.color = ccDH;
+        self.duck_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.7);
         [self.duck_label setAnchorPoint: ccp(0, 0.5f)];
         
         
         self.bird = [CCSprite spriteWithFile:@"bird.png"];
-        self.bird.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
-        self.bird.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.65);
+        self.bird.scale *= 0.4*CC_CONTENT_SCALE_FACTOR();
+        self.bird.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.6);
         [self.bird setAnchorPoint:ccp(0.5f, 0.5f)];
         
         NSString* bird_str = [NSString stringWithFormat:@" X %d = %d", self.bird_num, self.bird_num * [DHScore GetScoreByType:BIRD_DUCK]];
-        self.bird_label = [DHLabel labelWithString:bird_str fontName:DHLABEL_FONT fontSize:28];
-        self.bird_label.color = ccYELLOW;
-        self.bird_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.65);
+        self.bird_label = [DHLabel labelWithString:bird_str fontName:DHLABEL_FONT fontSize:24];
+        self.bird_label.color = ccDH;
+        self.bird_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.6);
         [self.bird_label setAnchorPoint: ccp(0, 0.5f)];
         
         self.parrot = [CCSprite spriteWithFile:@"parrot.png"];
-        self.parrot.scale *= 0.5*CC_CONTENT_SCALE_FACTOR();
+        self.parrot.scale *= 0.4*CC_CONTENT_SCALE_FACTOR();
         self.parrot.position = ccp(_winRect.origin.x + _winRect.size.width*0.4, _winRect.origin.y + _winRect.size.height*0.5);
         [self.parrot setAnchorPoint:ccp(0.5f, 0.5f)];
         
         NSString* parrot_str = [NSString stringWithFormat:@" X %d = %d", self.parrot_num, self.parrot_num * [DHScore GetScoreByType:PARROT_DUCK]];
-        self.parrot_label = [DHLabel labelWithString:parrot_str fontName:DHLABEL_FONT fontSize:28];
-        self.parrot_label.color = ccYELLOW;
+        self.parrot_label = [DHLabel labelWithString:parrot_str fontName:DHLABEL_FONT fontSize:24];
+        self.parrot_label.color = ccDH;
         self.parrot_label.position = ccp(_winRect.origin.x + _winRect.size.width*0.5, _winRect.origin.y + _winRect.size.height*0.5);
         [self.parrot_label setAnchorPoint: ccp(0, 0.5f)];
 	}

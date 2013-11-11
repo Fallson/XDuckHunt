@@ -88,9 +88,9 @@
     
     [[DHGameData sharedDHGameData] addScore: cur_game_score gameMode:cur_game_mode];
     
-    NSString* str = [NSString stringWithFormat:@"Game Over, Your score : %d", cur_game_score];
+    NSString* str = [NSString stringWithFormat:@"Game Over\n Your Score : %d", cur_game_score];
     DHLabel* lable = [DHLabel labelWithString:str fontName:DHLABEL_FONT fontSize:24];
-    lable.color = ccYELLOW;
+    lable.color = ccDH;
     lable.position = ccp(_bgRect.origin.x + _bgRect.size.width*0.5, _bgRect.origin.y + 0.9*_bgRect.size.height);
     [lable setAnchorPoint: ccp(0.5f, 0.5f)];
     [self addChild:lable];

@@ -26,6 +26,7 @@
 #import "SimpleAudioEngine.h"
 #import "DHGameMenuLayer.h"
 #import "DHScore.h"
+#import "DHFreeModeContinueLayer.h"
 #pragma mark - DHFreeModeGameLayer
 
 @interface DHFreeModeGameLayer()
@@ -38,7 +39,8 @@
     DHBackGroundObj* _bgObj;
     CGRect           _bgRect;
     
-    enum CHAPTER_LVL _cur_chp;
+    int              _cur_chp;
+    int              _next_chp;
     CGRect           _duckRect;
     
     DHFreeModePannelObj* _pannel;
@@ -60,8 +62,6 @@
     
     int            _gameBonus;
     int            _gameBonusLvl;
-    
-    bool           _game_over;
 }
 @synthesize ducks = _ducks;
 
@@ -112,8 +112,6 @@
         _gameBonus = 0;
         _gameBonusLvl = 1;
         
-        _game_over = false;
-        
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
         
@@ -159,6 +157,7 @@
     _duckRect.size.height *= 0.75;
     
     _cur_chp = CHAPTER0;
+    _next_chp = _cur_chp + FREEMODE_CHAPTER_STEP;
     _ducks = [[NSMutableArray alloc] init];
 }
 
@@ -210,6 +209,12 @@
         if(FREEMODE_TOTAL_DUCK <= _miss_count)
         {
             [self game_over];
+        }
+        
+        if( _cur_chp == _next_chp )
+        {
+            _next_chp += FREEMODE_CHAPTER_STEP;
+            [self game_continue];
         }
     }
 }
@@ -280,10 +285,9 @@
         {
             _cur_chp++;
             if( _cur_chp >= CHAPTER_MAX )
-            {
-                _cur_chp = CHAPTER_MAX-1;
-            }
-            new_ducks = [[DHGameChapter sharedDHGameChapter] getChapterDucks:_cur_chp andWinRect:_duckRect];
+                new_ducks = [[DHGameChapter sharedDHGameChapter] getChapterDucks:CHAPTER_MAX-1 andWinRect:_duckRect];
+            else
+                new_ducks = [[DHGameChapter sharedDHGameChapter] getChapterDucks:_cur_chp andWinRect:_duckRect];
         }
         
         if( new_ducks != nil )
@@ -306,12 +310,16 @@
     [_pannel update:dt];
 }
 
+-(void)game_continue
+{
+    [DHGameData sharedDHGameData].cur_game_score = _gameScore;
+    [DHGameData sharedDHGameData].cur_game_hit = _game_hit;
+    [DHGameData sharedDHGameData].cur_game_miss = _miss_count;
+    [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHFreeModeContinueLayer scene] ]];
+}
+
 -(void)game_over
 {
-    if( _game_over )
-        return;
-    
-    _game_over = true;
     [DHGameData sharedDHGameData].cur_game_score = _gameScore;
     [DHGameData sharedDHGameData].cur_game_hit = _game_hit;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];    

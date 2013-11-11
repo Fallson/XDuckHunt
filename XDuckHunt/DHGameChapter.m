@@ -285,14 +285,15 @@ static DHGameChapter *_sharedDHGameChapter=nil;
     }
 }
 
-#define LAST_CHP_DUCK_NUM 12
+#define LAST_CHP_MAX_DUCK_NUM 20
 -(void)setDucks_Chapter10:(NSMutableArray*)ducks andWinRect:(NSValue*)rectValue
 {
     CGRect rect = [rectValue CGRectValue];
     
-    enum PILOT_TYPE ptypes[LAST_CHP_DUCK_NUM];
-    float speeds[LAST_CHP_DUCK_NUM];
-    for( int i = 0; i < LAST_CHP_DUCK_NUM; i++ )
+    enum PILOT_TYPE ptypes[LAST_CHP_MAX_DUCK_NUM];
+    float speeds[LAST_CHP_MAX_DUCK_NUM];
+    int duck_num = (arc4random()%11 + 10);
+    for( int i = 0; i < duck_num; i++ )
     {
         ptypes[i] = DUCK_NORMAL;
         speeds[i] = 2.0 + (float)(arc4random()%10)/(float)10.0;
@@ -300,7 +301,10 @@ static DHGameChapter *_sharedDHGameChapter=nil;
             speeds[i] = 3.0;
     }
     
-    CREATE_DUCKS
+    for( int i = 0; i < duck_num; i++ )
+    {
+        CREATE_DUCKS_IN_LOOP
+    }
 }
 
 -(NSMutableArray*)getChapterDucks:(enum CHAPTER_LVL) lvl andWinRect:(CGRect)rect
