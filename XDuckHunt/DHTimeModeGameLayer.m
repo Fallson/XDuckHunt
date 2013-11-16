@@ -61,6 +61,8 @@
     int            _gameBonus;
     int            _gameBonusLvl;
     int            _fallsonBonus;
+    
+    bool           _gameover;
 }
 @synthesize ducks = _ducks;
 
@@ -110,6 +112,7 @@
         _gameBonusLvl = 1;
         _fallsonBonus = 0;
         
+        _gameover = false;
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -308,6 +311,10 @@
 
 -(void)game_over
 {
+    if( _gameover )//it will enter multi-times, if we didn't set the flag
+        return;
+    
+    _gameover = true;
     [DHGameData sharedDHGameData].cur_game_score = _gameScore;
     [DHGameData sharedDHGameData].cur_game_hit = _game_hit;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];

@@ -62,6 +62,8 @@
     
     int            _gameBonus;
     int            _gameBonusLvl;
+    
+    bool           _gameover;
 }
 @synthesize ducks = _ducks;
 
@@ -111,6 +113,8 @@
         
         _gameBonus = 0;
         _gameBonusLvl = 1;
+        
+        _gameover = false;
         
         //[self schedule:@selector(nextFrame:)];
         [self scheduleUpdate];
@@ -320,6 +324,10 @@
 
 -(void)game_over
 {
+    if( _gameover )
+        return;
+    
+    _gameover = true;
     [DHGameData sharedDHGameData].cur_game_score = _gameScore;
     [DHGameData sharedDHGameData].cur_game_hit = _game_hit;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.1 scene:[DHGameOverLayer scene] ]];    
