@@ -7,29 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D21E8C7D17C0884E00D1F499 /* DHDogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C7C17C0884E00D1F499 /* DHDogObj.m */; };
-		D21E8C8017C0ABAF00D1F499 /* DHFreeModeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C7F17C0ABAF00D1F499 /* DHFreeModeGameLayer.m */; };
-		D21E8C8917C0AC3300D1F499 /* DHGameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8217C0AC3200D1F499 /* DHGameMenuLayer.m */; };
-		D21E8C8A17C0AC3300D1F499 /* DHGameOptionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */; };
-		D21E8C8B17C0AC3300D1F499 /* DHGameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */; };
-		D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */; };
-		D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */; };
-		D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E8C9217C1D37900D1F499 /* DHMenuObj.m */; };
 		D2219F3C17F857CC00EFC23B /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3917F857CC00EFC23B /* bird.png */; };
 		D2219F3D17F857CC00EFC23B /* duck.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3A17F857CC00EFC23B /* duck.png */; };
 		D2219F3E17F857CC00EFC23B /* parrot.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3B17F857CC00EFC23B /* parrot.png */; };
 		D2219F4017F85A6F00EFC23B /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3F17F85A6F00EFC23B /* shoot.wav */; };
-		D227F06917ACC7C300981E06 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D227F06817ACC7C300981E06 /* DHPilot.m */; };
 		D247350F18052C6900783493 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D247350E18052C6900783493 /* Social.framework */; };
 		D24735131805965600783493 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735101805965600783493 /* facebook.png */; };
 		D24735141805965600783493 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735111805965600783493 /* twitter.png */; };
 		D24735151805965600783493 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735121805965600783493 /* weibo.png */; };
-		D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */; };
 		D250B115181EAF2B00499BDA /* duck_icon_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D250B113181EAF2B00499BDA /* duck_icon_gray.png */; };
 		D250B116181EAF2B00499BDA /* duck_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D250B114181EAF2B00499BDA /* duck_icon.png */; };
-		D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D25B4B1A17C4A5420021017C /* DHLabel.m */; };
 		D25B4B2317C79BEB0021017C /* SnapITC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25B4B2217C79BEB0021017C /* SnapITC.ttf */; };
-		D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B706417AFDD3500F7C915 /* DHGameChapter.m */; };
 		D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */ = {isa = PBXBuildFile; fileRef = D27049BB17A6A4C300342505 /* sky_smoke.plist */; };
 		D27049BE17A6A4C300342505 /* sky_smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BC17A6A4C300342505 /* sky_smoke.png */; };
 		D27049C017A6AB1600342505 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = D27049BF17A6AB1600342505 /* Cloud.png */; };
@@ -179,13 +167,31 @@
 		D29EEB2017A3AC7A0072B0EA /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB1F17A3AC7A0072B0EA /* vec4.c */; };
 		D29EEB2517A3AC7A0072B0EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2417A3AC7A0072B0EA /* main.m */; };
 		D29EEB2817A3AC7A0072B0EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2717A3AC7A0072B0EA /* AppDelegate.m */; };
-		D29EEB2B17A3AC7A0072B0EA /* DHTimeModeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */; };
-		D29EEB2E17A3AC7A0072B0EA /* DHGameSplashLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB2D17A3AC7A0072B0EA /* DHGameSplashLayer.m */; };
 		D29EEB5417A4F2130072B0EA /* bg_grass.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EEB5117A4F2130072B0EA /* bg_grass.png */; };
 		D29EEB5517A4F2130072B0EA /* bg_sky.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EEB5217A4F2130072B0EA /* bg_sky.png */; };
 		D29EEB5617A4F2130072B0EA /* bg_tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D29EEB5317A4F2130072B0EA /* bg_tree.png */; };
-		D29EEB5917A4F3140072B0EA /* DHBackGroundObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB5817A4F3130072B0EA /* DHBackGroundObj.m */; };
-		D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */; };
+		D2A57FD618BF6B4900283BF4 /* DHBackGroundObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FC918BF6B4900283BF4 /* DHBackGroundObj.m */; };
+		D2A57FD718BF6B4900283BF4 /* DHFloatingScoreObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FCB18BF6B4900283BF4 /* DHFloatingScoreObj.m */; };
+		D2A57FD818BF6B4900283BF4 /* DHFreeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FCD18BF6B4900283BF4 /* DHFreeModePannelObj.m */; };
+		D2A57FD918BF6B4900283BF4 /* DHIntroPannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FCF18BF6B4900283BF4 /* DHIntroPannelObj.m */; };
+		D2A57FDA18BF6B4900283BF4 /* DHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FD118BF6B4900283BF4 /* DHLabel.m */; };
+		D2A57FDB18BF6B4900283BF4 /* DHMenuObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FD318BF6B4900283BF4 /* DHMenuObj.m */; };
+		D2A57FDC18BF6B4900283BF4 /* DHTimeModePannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FD518BF6B4900283BF4 /* DHTimeModePannelObj.m */; };
+		D2A57FED18BF6B6100283BF4 /* DHFreeModeContinueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FDE18BF6B6100283BF4 /* DHFreeModeContinueLayer.m */; };
+		D2A57FEE18BF6B6100283BF4 /* DHFreeModeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FE018BF6B6100283BF4 /* DHFreeModeGameLayer.m */; };
+		D2A57FEF18BF6B6100283BF4 /* DHGameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FE218BF6B6100283BF4 /* DHGameMenuLayer.m */; };
+		D2A57FF018BF6B6100283BF4 /* DHGameOptionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FE418BF6B6100283BF4 /* DHGameOptionLayer.m */; };
+		D2A57FF118BF6B6100283BF4 /* DHGameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FE618BF6B6100283BF4 /* DHGameOverLayer.m */; };
+		D2A57FF218BF6B6100283BF4 /* DHGameScoreListLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FE818BF6B6100283BF4 /* DHGameScoreListLayer.m */; };
+		D2A57FF318BF6B6100283BF4 /* DHGameSplashLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FEA18BF6B6100283BF4 /* DHGameSplashLayer.m */; };
+		D2A57FF418BF6B6100283BF4 /* DHTimeModeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FEC18BF6B6100283BF4 /* DHTimeModeGameLayer.m */; };
+		D2A5800518BF6B7A00283BF4 /* DHDogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FF718BF6B7A00283BF4 /* DHDogObj.m */; };
+		D2A5800618BF6B7A00283BF4 /* DHDuckObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FF918BF6B7A00283BF4 /* DHDuckObj.m */; };
+		D2A5800718BF6B7A00283BF4 /* DHGameChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FFB18BF6B7A00283BF4 /* DHGameChapter.m */; };
+		D2A5800818BF6B7A00283BF4 /* DHGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FFD18BF6B7A00283BF4 /* DHGameData.m */; };
+		D2A5800918BF6B7A00283BF4 /* DHPilot.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A57FFF18BF6B7A00283BF4 /* DHPilot.m */; };
+		D2A5800A18BF6B7A00283BF4 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A5800118BF6B7A00283BF4 /* DHPilotManager.m */; };
+		D2A5800B18BF6B7A00283BF4 /* DHScore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A5800318BF6B7A00283BF4 /* DHScore.m */; };
 		D2B6748617ABE89800363DAC /* duck_black_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748217ABE89800363DAC /* duck_black_flying.plist */; };
 		D2B6748717ABE89800363DAC /* duck_black_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B6748317ABE89800363DAC /* duck_black_flying.png */; };
 		D2C27415180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */; };
@@ -197,10 +203,6 @@
 		D2C2741B180AEFB700EB2A60 /* icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27412180AEFB700EB2A60 /* icon-100.png */; };
 		D2C2741C180AEFB700EB2A60 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27413180AEFB700EB2A60 /* icon-144.png */; };
 		D2C2741D180AEFB700EB2A60 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C27414180AEFB700EB2A60 /* icon-152.png */; };
-		D2D0DEFC182E042100C9368C /* DHScore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFB182E042100C9368C /* DHScore.m */; };
-		D2D0DEFF182E151A00C9368C /* DHFloatingScoreObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */; };
-		D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */; };
-		D2DA2DD918310F7900CEF3AA /* DHFreeModeContinueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DA2DD818310F7900CEF3AA /* DHFreeModeContinueLayer.m */; };
 		D2DF440517F31BBA00461DA4 /* duck_blue_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */; };
 		D2DF440617F31BBA00461DA4 /* duck_blue_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */; };
 		D2DF440E17F31BE900461DA4 /* bird_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440717F31BE900461DA4 /* bird_flying.plist */; };
@@ -210,47 +212,20 @@
 		D2DF441217F31BE900461DA4 /* duck_red_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440B17F31BE900461DA4 /* duck_red_flying.png */; };
 		D2DF441317F31BE900461DA4 /* parrot_flying.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440C17F31BE900461DA4 /* parrot_flying.plist */; };
 		D2DF441417F31BE900461DA4 /* parrot_flying.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DF440D17F31BE900461DA4 /* parrot_flying.png */; };
-		D2DF441717F3378C00461DA4 /* DHIntroPannelObj.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DF441617F3378C00461DA4 /* DHIntroPannelObj.m */; };
-		D2F81D3817DA09FE0043A338 /* DHGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F81D3717DA09FE0043A338 /* DHGameData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D21E8C7B17C0884E00D1F499 /* DHDogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHDogObj.h; sourceTree = "<group>"; };
-		D21E8C7C17C0884E00D1F499 /* DHDogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHDogObj.m; sourceTree = "<group>"; };
-		D21E8C7E17C0ABAF00D1F499 /* DHFreeModeGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFreeModeGameLayer.h; sourceTree = "<group>"; };
-		D21E8C7F17C0ABAF00D1F499 /* DHFreeModeGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModeGameLayer.m; sourceTree = "<group>"; };
-		D21E8C8117C0AC3200D1F499 /* DHGameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameMenuLayer.h; sourceTree = "<group>"; };
-		D21E8C8217C0AC3200D1F499 /* DHGameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameMenuLayer.m; sourceTree = "<group>"; };
-		D21E8C8317C0AC3200D1F499 /* DHGameOptionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameOptionLayer.h; sourceTree = "<group>"; };
-		D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameOptionLayer.m; sourceTree = "<group>"; };
-		D21E8C8517C0AC3200D1F499 /* DHGameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameOverLayer.h; sourceTree = "<group>"; };
-		D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameOverLayer.m; sourceTree = "<group>"; };
-		D21E8C8717C0AC3200D1F499 /* DHGameScoreListLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameScoreListLayer.h; sourceTree = "<group>"; };
-		D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameScoreListLayer.m; sourceTree = "<group>"; };
-		D21E8C8E17C1CE6A00D1F499 /* DHFreeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFreeModePannelObj.h; sourceTree = "<group>"; };
-		D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModePannelObj.m; sourceTree = "<group>"; };
-		D21E8C9117C1D37800D1F499 /* DHMenuObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHMenuObj.h; sourceTree = "<group>"; };
-		D21E8C9217C1D37900D1F499 /* DHMenuObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHMenuObj.m; sourceTree = "<group>"; };
 		D2219F3917F857CC00EFC23B /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bird.png; path = Resources/bird.png; sourceTree = "<group>"; };
 		D2219F3A17F857CC00EFC23B /* duck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck.png; path = Resources/duck.png; sourceTree = "<group>"; };
 		D2219F3B17F857CC00EFC23B /* parrot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = parrot.png; path = Resources/parrot.png; sourceTree = "<group>"; };
 		D2219F3F17F85A6F00EFC23B /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shoot.wav; path = Resources/shoot.wav; sourceTree = "<group>"; };
-		D227F06717ACC74500981E06 /* DHPilot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHPilot.h; sourceTree = "<group>"; };
-		D227F06817ACC7C300981E06 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilot.m; sourceTree = "<group>"; };
-		D227F06A17ACD4C600981E06 /* DHZDepth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHZDepth.h; sourceTree = "<group>"; };
 		D247350E18052C6900783493 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D24735101805965600783493 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = Resources/facebook.png; sourceTree = "<group>"; };
 		D24735111805965600783493 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Resources/twitter.png; sourceTree = "<group>"; };
 		D24735121805965600783493 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weibo.png; path = Resources/weibo.png; sourceTree = "<group>"; };
-		D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHTimeModePannelObj.h; sourceTree = "<group>"; };
-		D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHTimeModePannelObj.m; sourceTree = "<group>"; };
 		D250B113181EAF2B00499BDA /* duck_icon_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_icon_gray.png; path = Resources/duck_icon_gray.png; sourceTree = "<group>"; };
 		D250B114181EAF2B00499BDA /* duck_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_icon.png; path = Resources/duck_icon.png; sourceTree = "<group>"; };
-		D25B4B1917C4A5420021017C /* DHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHLabel.h; sourceTree = "<group>"; };
-		D25B4B1A17C4A5420021017C /* DHLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHLabel.m; sourceTree = "<group>"; };
 		D25B4B2217C79BEB0021017C /* SnapITC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SnapITC.ttf; path = Resources/SnapITC.ttf; sourceTree = "<group>"; };
-		D26B706317AFDD3500F7C915 /* DHGameChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameChapter.h; sourceTree = "<group>"; };
-		D26B706417AFDD3500F7C915 /* DHGameChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameChapter.m; sourceTree = "<group>"; };
 		D27049BB17A6A4C300342505 /* sky_smoke.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sky_smoke.plist; path = Resources/sky_smoke.plist; sourceTree = "<group>"; };
 		D27049BC17A6A4C300342505 /* sky_smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sky_smoke.png; path = Resources/sky_smoke.png; sourceTree = "<group>"; };
 		D27049BF17A6AB1600342505 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cloud.png; path = Resources/Cloud.png; sourceTree = "<group>"; };
@@ -545,18 +520,55 @@
 		D29EEB2417A3AC7A0072B0EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D29EEB2617A3AC7A0072B0EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D29EEB2717A3AC7A0072B0EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D29EEB2917A3AC7A0072B0EA /* DHTimeModeGameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHTimeModeGameLayer.h; sourceTree = "<group>"; };
-		D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHTimeModeGameLayer.m; sourceTree = "<group>"; };
-		D29EEB2C17A3AC7A0072B0EA /* DHGameSplashLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHGameSplashLayer.h; sourceTree = "<group>"; };
-		D29EEB2D17A3AC7A0072B0EA /* DHGameSplashLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DHGameSplashLayer.m; sourceTree = "<group>"; };
 		D29EEB5117A4F2130072B0EA /* bg_grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_grass.png; path = Resources/bg_grass.png; sourceTree = "<group>"; };
 		D29EEB5217A4F2130072B0EA /* bg_sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_sky.png; path = Resources/bg_sky.png; sourceTree = "<group>"; };
 		D29EEB5317A4F2130072B0EA /* bg_tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_tree.png; path = Resources/bg_tree.png; sourceTree = "<group>"; };
-		D29EEB5717A4F3130072B0EA /* DHBackGroundObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHBackGroundObj.h; sourceTree = "<group>"; };
-		D29EEB5817A4F3130072B0EA /* DHBackGroundObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHBackGroundObj.m; sourceTree = "<group>"; };
-		D29EEB5A17A4FDAD0072B0EA /* DHDuckObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHDuckObj.h; sourceTree = "<group>"; };
-		D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHDuckObj.m; sourceTree = "<group>"; };
-		D2B6748017ABE3A200363DAC /* DHConstons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHConstons.h; sourceTree = "<group>"; };
+		D2A57FC818BF6B4900283BF4 /* DHBackGroundObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHBackGroundObj.h; path = ../../DuckHunt_Common/UIObjs/DHBackGroundObj.h; sourceTree = "<group>"; };
+		D2A57FC918BF6B4900283BF4 /* DHBackGroundObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHBackGroundObj.m; path = ../../DuckHunt_Common/UIObjs/DHBackGroundObj.m; sourceTree = "<group>"; };
+		D2A57FCA18BF6B4900283BF4 /* DHFloatingScoreObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHFloatingScoreObj.h; path = ../../DuckHunt_Common/UIObjs/DHFloatingScoreObj.h; sourceTree = "<group>"; };
+		D2A57FCB18BF6B4900283BF4 /* DHFloatingScoreObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHFloatingScoreObj.m; path = ../../DuckHunt_Common/UIObjs/DHFloatingScoreObj.m; sourceTree = "<group>"; };
+		D2A57FCC18BF6B4900283BF4 /* DHFreeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHFreeModePannelObj.h; path = ../../DuckHunt_Common/UIObjs/DHFreeModePannelObj.h; sourceTree = "<group>"; };
+		D2A57FCD18BF6B4900283BF4 /* DHFreeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHFreeModePannelObj.m; path = ../../DuckHunt_Common/UIObjs/DHFreeModePannelObj.m; sourceTree = "<group>"; };
+		D2A57FCE18BF6B4900283BF4 /* DHIntroPannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHIntroPannelObj.h; path = ../../DuckHunt_Common/UIObjs/DHIntroPannelObj.h; sourceTree = "<group>"; };
+		D2A57FCF18BF6B4900283BF4 /* DHIntroPannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHIntroPannelObj.m; path = ../../DuckHunt_Common/UIObjs/DHIntroPannelObj.m; sourceTree = "<group>"; };
+		D2A57FD018BF6B4900283BF4 /* DHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHLabel.h; path = ../../DuckHunt_Common/UIObjs/DHLabel.h; sourceTree = "<group>"; };
+		D2A57FD118BF6B4900283BF4 /* DHLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHLabel.m; path = ../../DuckHunt_Common/UIObjs/DHLabel.m; sourceTree = "<group>"; };
+		D2A57FD218BF6B4900283BF4 /* DHMenuObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHMenuObj.h; path = ../../DuckHunt_Common/UIObjs/DHMenuObj.h; sourceTree = "<group>"; };
+		D2A57FD318BF6B4900283BF4 /* DHMenuObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHMenuObj.m; path = ../../DuckHunt_Common/UIObjs/DHMenuObj.m; sourceTree = "<group>"; };
+		D2A57FD418BF6B4900283BF4 /* DHTimeModePannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHTimeModePannelObj.h; path = ../../DuckHunt_Common/UIObjs/DHTimeModePannelObj.h; sourceTree = "<group>"; };
+		D2A57FD518BF6B4900283BF4 /* DHTimeModePannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHTimeModePannelObj.m; path = ../../DuckHunt_Common/UIObjs/DHTimeModePannelObj.m; sourceTree = "<group>"; };
+		D2A57FDD18BF6B6100283BF4 /* DHFreeModeContinueLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHFreeModeContinueLayer.h; path = ../../DuckHunt_Common/Scenes/DHFreeModeContinueLayer.h; sourceTree = "<group>"; };
+		D2A57FDE18BF6B6100283BF4 /* DHFreeModeContinueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHFreeModeContinueLayer.m; path = ../../DuckHunt_Common/Scenes/DHFreeModeContinueLayer.m; sourceTree = "<group>"; };
+		D2A57FDF18BF6B6100283BF4 /* DHFreeModeGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHFreeModeGameLayer.h; path = ../../DuckHunt_Common/Scenes/DHFreeModeGameLayer.h; sourceTree = "<group>"; };
+		D2A57FE018BF6B6100283BF4 /* DHFreeModeGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHFreeModeGameLayer.m; path = ../../DuckHunt_Common/Scenes/DHFreeModeGameLayer.m; sourceTree = "<group>"; };
+		D2A57FE118BF6B6100283BF4 /* DHGameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameMenuLayer.h; path = ../../DuckHunt_Common/Scenes/DHGameMenuLayer.h; sourceTree = "<group>"; };
+		D2A57FE218BF6B6100283BF4 /* DHGameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameMenuLayer.m; path = ../../DuckHunt_Common/Scenes/DHGameMenuLayer.m; sourceTree = "<group>"; };
+		D2A57FE318BF6B6100283BF4 /* DHGameOptionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameOptionLayer.h; path = ../../DuckHunt_Common/Scenes/DHGameOptionLayer.h; sourceTree = "<group>"; };
+		D2A57FE418BF6B6100283BF4 /* DHGameOptionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameOptionLayer.m; path = ../../DuckHunt_Common/Scenes/DHGameOptionLayer.m; sourceTree = "<group>"; };
+		D2A57FE518BF6B6100283BF4 /* DHGameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameOverLayer.h; path = ../../DuckHunt_Common/Scenes/DHGameOverLayer.h; sourceTree = "<group>"; };
+		D2A57FE618BF6B6100283BF4 /* DHGameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameOverLayer.m; path = ../../DuckHunt_Common/Scenes/DHGameOverLayer.m; sourceTree = "<group>"; };
+		D2A57FE718BF6B6100283BF4 /* DHGameScoreListLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameScoreListLayer.h; path = ../../DuckHunt_Common/Scenes/DHGameScoreListLayer.h; sourceTree = "<group>"; };
+		D2A57FE818BF6B6100283BF4 /* DHGameScoreListLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameScoreListLayer.m; path = ../../DuckHunt_Common/Scenes/DHGameScoreListLayer.m; sourceTree = "<group>"; };
+		D2A57FE918BF6B6100283BF4 /* DHGameSplashLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameSplashLayer.h; path = ../../DuckHunt_Common/Scenes/DHGameSplashLayer.h; sourceTree = "<group>"; };
+		D2A57FEA18BF6B6100283BF4 /* DHGameSplashLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameSplashLayer.m; path = ../../DuckHunt_Common/Scenes/DHGameSplashLayer.m; sourceTree = "<group>"; };
+		D2A57FEB18BF6B6100283BF4 /* DHTimeModeGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHTimeModeGameLayer.h; path = ../../DuckHunt_Common/Scenes/DHTimeModeGameLayer.h; sourceTree = "<group>"; };
+		D2A57FEC18BF6B6100283BF4 /* DHTimeModeGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHTimeModeGameLayer.m; path = ../../DuckHunt_Common/Scenes/DHTimeModeGameLayer.m; sourceTree = "<group>"; };
+		D2A57FF518BF6B7A00283BF4 /* DHConstons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHConstons.h; path = ../../DuckHunt_Common/DHConstons.h; sourceTree = "<group>"; };
+		D2A57FF618BF6B7A00283BF4 /* DHDogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHDogObj.h; path = ../../DuckHunt_Common/DHDogObj.h; sourceTree = "<group>"; };
+		D2A57FF718BF6B7A00283BF4 /* DHDogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHDogObj.m; path = ../../DuckHunt_Common/DHDogObj.m; sourceTree = "<group>"; };
+		D2A57FF818BF6B7A00283BF4 /* DHDuckObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHDuckObj.h; path = ../../DuckHunt_Common/DHDuckObj.h; sourceTree = "<group>"; };
+		D2A57FF918BF6B7A00283BF4 /* DHDuckObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHDuckObj.m; path = ../../DuckHunt_Common/DHDuckObj.m; sourceTree = "<group>"; };
+		D2A57FFA18BF6B7A00283BF4 /* DHGameChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameChapter.h; path = ../../DuckHunt_Common/DHGameChapter.h; sourceTree = "<group>"; };
+		D2A57FFB18BF6B7A00283BF4 /* DHGameChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameChapter.m; path = ../../DuckHunt_Common/DHGameChapter.m; sourceTree = "<group>"; };
+		D2A57FFC18BF6B7A00283BF4 /* DHGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHGameData.h; path = ../../DuckHunt_Common/DHGameData.h; sourceTree = "<group>"; };
+		D2A57FFD18BF6B7A00283BF4 /* DHGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHGameData.m; path = ../../DuckHunt_Common/DHGameData.m; sourceTree = "<group>"; };
+		D2A57FFE18BF6B7A00283BF4 /* DHPilot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHPilot.h; path = ../../DuckHunt_Common/DHPilot.h; sourceTree = "<group>"; };
+		D2A57FFF18BF6B7A00283BF4 /* DHPilot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHPilot.m; path = ../../DuckHunt_Common/DHPilot.m; sourceTree = "<group>"; };
+		D2A5800018BF6B7A00283BF4 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHPilotManager.h; path = ../../DuckHunt_Common/DHPilotManager.h; sourceTree = "<group>"; };
+		D2A5800118BF6B7A00283BF4 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHPilotManager.m; path = ../../DuckHunt_Common/DHPilotManager.m; sourceTree = "<group>"; };
+		D2A5800218BF6B7A00283BF4 /* DHScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHScore.h; path = ../../DuckHunt_Common/DHScore.h; sourceTree = "<group>"; };
+		D2A5800318BF6B7A00283BF4 /* DHScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DHScore.m; path = ../../DuckHunt_Common/DHScore.m; sourceTree = "<group>"; };
+		D2A5800418BF6B7A00283BF4 /* DHZDepth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DHZDepth.h; path = ../../DuckHunt_Common/DHZDepth.h; sourceTree = "<group>"; };
 		D2B6748217ABE89800363DAC /* duck_black_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_black_flying.plist; path = Resources/duck_black_flying.plist; sourceTree = "<group>"; };
 		D2B6748317ABE89800363DAC /* duck_black_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_black_flying.png; path = Resources/duck_black_flying.png; sourceTree = "<group>"; };
 		D2C2740C180AEFB700EB2A60 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Resources/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -568,14 +580,6 @@
 		D2C27412180AEFB700EB2A60 /* icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-100.png"; path = "Resources/icon-100.png"; sourceTree = "<group>"; };
 		D2C27413180AEFB700EB2A60 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-144.png"; path = "Resources/icon-144.png"; sourceTree = "<group>"; };
 		D2C27414180AEFB700EB2A60 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "Resources/icon-152.png"; sourceTree = "<group>"; };
-		D2D0DEFA182E042100C9368C /* DHScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHScore.h; sourceTree = "<group>"; };
-		D2D0DEFB182E042100C9368C /* DHScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHScore.m; sourceTree = "<group>"; };
-		D2D0DEFD182E151A00C9368C /* DHFloatingScoreObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFloatingScoreObj.h; sourceTree = "<group>"; };
-		D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFloatingScoreObj.m; sourceTree = "<group>"; };
-		D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPilotManager.h; sourceTree = "<group>"; };
-		D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPilotManager.m; sourceTree = "<group>"; };
-		D2DA2DD718310F6400CEF3AA /* DHFreeModeContinueLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFreeModeContinueLayer.h; sourceTree = "<group>"; };
-		D2DA2DD818310F7900CEF3AA /* DHFreeModeContinueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHFreeModeContinueLayer.m; sourceTree = "<group>"; };
 		D2DF440317F31BBA00461DA4 /* duck_blue_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = duck_blue_flying.plist; path = Resources/duck_blue_flying.plist; sourceTree = "<group>"; };
 		D2DF440417F31BBA00461DA4 /* duck_blue_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_blue_flying.png; path = Resources/duck_blue_flying.png; sourceTree = "<group>"; };
 		D2DF440717F31BE900461DA4 /* bird_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bird_flying.plist; path = Resources/bird_flying.plist; sourceTree = "<group>"; };
@@ -585,10 +589,6 @@
 		D2DF440B17F31BE900461DA4 /* duck_red_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck_red_flying.png; path = Resources/duck_red_flying.png; sourceTree = "<group>"; };
 		D2DF440C17F31BE900461DA4 /* parrot_flying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = parrot_flying.plist; path = Resources/parrot_flying.plist; sourceTree = "<group>"; };
 		D2DF440D17F31BE900461DA4 /* parrot_flying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = parrot_flying.png; path = Resources/parrot_flying.png; sourceTree = "<group>"; };
-		D2DF441517F3378C00461DA4 /* DHIntroPannelObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHIntroPannelObj.h; sourceTree = "<group>"; };
-		D2DF441617F3378C00461DA4 /* DHIntroPannelObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHIntroPannelObj.m; sourceTree = "<group>"; };
-		D2F81D3617DA09FE0043A338 /* DHGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGameData.h; sourceTree = "<group>"; };
-		D2F81D3717DA09FE0043A338 /* DHGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGameData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -615,22 +615,22 @@
 		D21E8C8D17C0AC5400D1F499 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D2DA2DD718310F6400CEF3AA /* DHFreeModeContinueLayer.h */,
-				D2DA2DD818310F7900CEF3AA /* DHFreeModeContinueLayer.m */,
-				D29EEB2917A3AC7A0072B0EA /* DHTimeModeGameLayer.h */,
-				D29EEB2A17A3AC7A0072B0EA /* DHTimeModeGameLayer.m */,
-				D21E8C7E17C0ABAF00D1F499 /* DHFreeModeGameLayer.h */,
-				D21E8C7F17C0ABAF00D1F499 /* DHFreeModeGameLayer.m */,
-				D29EEB2C17A3AC7A0072B0EA /* DHGameSplashLayer.h */,
-				D29EEB2D17A3AC7A0072B0EA /* DHGameSplashLayer.m */,
-				D21E8C8117C0AC3200D1F499 /* DHGameMenuLayer.h */,
-				D21E8C8217C0AC3200D1F499 /* DHGameMenuLayer.m */,
-				D21E8C8317C0AC3200D1F499 /* DHGameOptionLayer.h */,
-				D21E8C8417C0AC3200D1F499 /* DHGameOptionLayer.m */,
-				D21E8C8517C0AC3200D1F499 /* DHGameOverLayer.h */,
-				D21E8C8617C0AC3200D1F499 /* DHGameOverLayer.m */,
-				D21E8C8717C0AC3200D1F499 /* DHGameScoreListLayer.h */,
-				D21E8C8817C0AC3200D1F499 /* DHGameScoreListLayer.m */,
+				D2A57FDD18BF6B6100283BF4 /* DHFreeModeContinueLayer.h */,
+				D2A57FDE18BF6B6100283BF4 /* DHFreeModeContinueLayer.m */,
+				D2A57FDF18BF6B6100283BF4 /* DHFreeModeGameLayer.h */,
+				D2A57FE018BF6B6100283BF4 /* DHFreeModeGameLayer.m */,
+				D2A57FE118BF6B6100283BF4 /* DHGameMenuLayer.h */,
+				D2A57FE218BF6B6100283BF4 /* DHGameMenuLayer.m */,
+				D2A57FE318BF6B6100283BF4 /* DHGameOptionLayer.h */,
+				D2A57FE418BF6B6100283BF4 /* DHGameOptionLayer.m */,
+				D2A57FE518BF6B6100283BF4 /* DHGameOverLayer.h */,
+				D2A57FE618BF6B6100283BF4 /* DHGameOverLayer.m */,
+				D2A57FE718BF6B6100283BF4 /* DHGameScoreListLayer.h */,
+				D2A57FE818BF6B6100283BF4 /* DHGameScoreListLayer.m */,
+				D2A57FE918BF6B6100283BF4 /* DHGameSplashLayer.h */,
+				D2A57FEA18BF6B6100283BF4 /* DHGameSplashLayer.m */,
+				D2A57FEB18BF6B6100283BF4 /* DHTimeModeGameLayer.h */,
+				D2A57FEC18BF6B6100283BF4 /* DHTimeModeGameLayer.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -638,18 +638,20 @@
 		D25B4B1817C4A4A40021017C /* UIObjs */ = {
 			isa = PBXGroup;
 			children = (
-				D2DF441517F3378C00461DA4 /* DHIntroPannelObj.h */,
-				D2DF441617F3378C00461DA4 /* DHIntroPannelObj.m */,
-				D21E8C9117C1D37800D1F499 /* DHMenuObj.h */,
-				D21E8C9217C1D37900D1F499 /* DHMenuObj.m */,
-				D24DEADB17BD14A500514902 /* DHTimeModePannelObj.h */,
-				D24DEADC17BD14A500514902 /* DHTimeModePannelObj.m */,
-				D21E8C8E17C1CE6A00D1F499 /* DHFreeModePannelObj.h */,
-				D21E8C8F17C1CE6B00D1F499 /* DHFreeModePannelObj.m */,
-				D29EEB5717A4F3130072B0EA /* DHBackGroundObj.h */,
-				D29EEB5817A4F3130072B0EA /* DHBackGroundObj.m */,
-				D25B4B1917C4A5420021017C /* DHLabel.h */,
-				D25B4B1A17C4A5420021017C /* DHLabel.m */,
+				D2A57FC818BF6B4900283BF4 /* DHBackGroundObj.h */,
+				D2A57FC918BF6B4900283BF4 /* DHBackGroundObj.m */,
+				D2A57FCA18BF6B4900283BF4 /* DHFloatingScoreObj.h */,
+				D2A57FCB18BF6B4900283BF4 /* DHFloatingScoreObj.m */,
+				D2A57FCC18BF6B4900283BF4 /* DHFreeModePannelObj.h */,
+				D2A57FCD18BF6B4900283BF4 /* DHFreeModePannelObj.m */,
+				D2A57FCE18BF6B4900283BF4 /* DHIntroPannelObj.h */,
+				D2A57FCF18BF6B4900283BF4 /* DHIntroPannelObj.m */,
+				D2A57FD018BF6B4900283BF4 /* DHLabel.h */,
+				D2A57FD118BF6B4900283BF4 /* DHLabel.m */,
+				D2A57FD218BF6B4900283BF4 /* DHMenuObj.h */,
+				D2A57FD318BF6B4900283BF4 /* DHMenuObj.m */,
+				D2A57FD418BF6B4900283BF4 /* DHTimeModePannelObj.h */,
+				D2A57FD518BF6B4900283BF4 /* DHTimeModePannelObj.m */,
 			);
 			name = UIObjs;
 			sourceTree = "<group>";
@@ -691,31 +693,29 @@
 		D29EE99517A3AC760072B0EA /* XDuckHunt */ = {
 			isa = PBXGroup;
 			children = (
-				D25B4B1817C4A4A40021017C /* UIObjs */,
 				D21E8C8D17C0AC5400D1F499 /* Scenes */,
+				D25B4B1817C4A4A40021017C /* UIObjs */,
+				D2A57FF518BF6B7A00283BF4 /* DHConstons.h */,
+				D2A57FF618BF6B7A00283BF4 /* DHDogObj.h */,
+				D2A57FF718BF6B7A00283BF4 /* DHDogObj.m */,
+				D2A57FF818BF6B7A00283BF4 /* DHDuckObj.h */,
+				D2A57FF918BF6B7A00283BF4 /* DHDuckObj.m */,
+				D2A57FFA18BF6B7A00283BF4 /* DHGameChapter.h */,
+				D2A57FFB18BF6B7A00283BF4 /* DHGameChapter.m */,
+				D2A57FFC18BF6B7A00283BF4 /* DHGameData.h */,
+				D2A57FFD18BF6B7A00283BF4 /* DHGameData.m */,
+				D2A57FFE18BF6B7A00283BF4 /* DHPilot.h */,
+				D2A57FFF18BF6B7A00283BF4 /* DHPilot.m */,
+				D2A5800018BF6B7A00283BF4 /* DHPilotManager.h */,
+				D2A5800118BF6B7A00283BF4 /* DHPilotManager.m */,
+				D2A5800218BF6B7A00283BF4 /* DHScore.h */,
+				D2A5800318BF6B7A00283BF4 /* DHScore.m */,
+				D2A5800418BF6B7A00283BF4 /* DHZDepth.h */,
 				D29EEB2617A3AC7A0072B0EA /* AppDelegate.h */,
 				D29EEB2717A3AC7A0072B0EA /* AppDelegate.m */,
 				D29EE99617A3AC760072B0EA /* Resources */,
 				D29EE9AE17A3AC770072B0EA /* libs */,
 				D29EEB2217A3AC7A0072B0EA /* Supporting Files */,
-				D2B6748017ABE3A200363DAC /* DHConstons.h */,
-				D227F06A17ACD4C600981E06 /* DHZDepth.h */,
-				D29EEB5A17A4FDAD0072B0EA /* DHDuckObj.h */,
-				D29EEB5B17A4FDAD0072B0EA /* DHDuckObj.m */,
-				D227F06717ACC74500981E06 /* DHPilot.h */,
-				D227F06817ACC7C300981E06 /* DHPilot.m */,
-				D2D58EFF17BBC047004AD9B8 /* DHPilotManager.h */,
-				D2D58F0017BBC047004AD9B8 /* DHPilotManager.m */,
-				D26B706317AFDD3500F7C915 /* DHGameChapter.h */,
-				D26B706417AFDD3500F7C915 /* DHGameChapter.m */,
-				D21E8C7B17C0884E00D1F499 /* DHDogObj.h */,
-				D21E8C7C17C0884E00D1F499 /* DHDogObj.m */,
-				D2F81D3617DA09FE0043A338 /* DHGameData.h */,
-				D2F81D3717DA09FE0043A338 /* DHGameData.m */,
-				D2D0DEFA182E042100C9368C /* DHScore.h */,
-				D2D0DEFB182E042100C9368C /* DHScore.m */,
-				D2D0DEFD182E151A00C9368C /* DHFloatingScoreObj.h */,
-				D2D0DEFE182E151A00C9368C /* DHFloatingScoreObj.m */,
 			);
 			path = XDuckHunt;
 			sourceTree = "<group>";
@@ -1286,17 +1286,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A5800B18BF6B7A00283BF4 /* DHScore.m in Sources */,
 				D29EE9B217A3AC770072B0EA /* CCAction.m in Sources */,
 				D29EE9B517A3AC770072B0EA /* CCActionCamera.m in Sources */,
 				D29EE9B817A3AC770072B0EA /* CCActionCatmullRom.m in Sources */,
 				D29EE9BB17A3AC770072B0EA /* CCActionEase.m in Sources */,
 				D29EE9BE17A3AC770072B0EA /* CCActionGrid.m in Sources */,
 				D29EE9C117A3AC770072B0EA /* CCActionGrid3D.m in Sources */,
+				D2A5800918BF6B7A00283BF4 /* DHPilot.m in Sources */,
+				D2A57FD718BF6B4900283BF4 /* DHFloatingScoreObj.m in Sources */,
+				D2A57FDC18BF6B4900283BF4 /* DHTimeModePannelObj.m in Sources */,
+				D2A57FF418BF6B6100283BF4 /* DHTimeModeGameLayer.m in Sources */,
 				D29EE9C417A3AC770072B0EA /* CCActionInstant.m in Sources */,
 				D29EE9C717A3AC770072B0EA /* CCActionInterval.m in Sources */,
 				D29EE9CA17A3AC770072B0EA /* CCActionManager.m in Sources */,
 				D29EE9CD17A3AC770072B0EA /* CCActionPageTurn3D.m in Sources */,
 				D29EE9D017A3AC770072B0EA /* CCActionProgressTimer.m in Sources */,
+				D2A57FF218BF6B6100283BF4 /* DHGameScoreListLayer.m in Sources */,
 				D29EE9D317A3AC770072B0EA /* CCActionTiledGrid.m in Sources */,
 				D29EE9D617A3AC770072B0EA /* CCActionTween.m in Sources */,
 				D29EE9D917A3AC770072B0EA /* CCAnimation.m in Sources */,
@@ -1305,6 +1311,7 @@
 				D29EE9E217A3AC770072B0EA /* CCCamera.m in Sources */,
 				D29EE9E517A3AC770072B0EA /* CCClippingNode.m in Sources */,
 				D29EE9E917A3AC770072B0EA /* CCConfiguration.m in Sources */,
+				D2A57FEE18BF6B6100283BF4 /* DHFreeModeGameLayer.m in Sources */,
 				D29EE9EC17A3AC770072B0EA /* ccDeprecated.m in Sources */,
 				D29EE9EF17A3AC770072B0EA /* CCDirector.m in Sources */,
 				D29EE9F217A3AC770072B0EA /* CCDrawingPrimitives.m in Sources */,
@@ -1320,6 +1327,7 @@
 				D29EEA1017A3AC770072B0EA /* CCLabelTTF.m in Sources */,
 				D29EEA1317A3AC770072B0EA /* CCLayer.m in Sources */,
 				D29EEA1717A3AC770072B0EA /* CCMenu.m in Sources */,
+				D2A5800618BF6B7A00283BF4 /* DHDuckObj.m in Sources */,
 				D29EEA1A17A3AC770072B0EA /* CCMenuItem.m in Sources */,
 				D29EEA1D17A3AC770072B0EA /* CCMotionStreak.m in Sources */,
 				D29EEA2017A3AC770072B0EA /* CCNode+Debug.m in Sources */,
@@ -1339,6 +1347,8 @@
 				D29EEA5A17A3AC780072B0EA /* ccShaders.m in Sources */,
 				D29EEA5D17A3AC780072B0EA /* CCSprite.m in Sources */,
 				D29EEA6017A3AC780072B0EA /* CCSpriteBatchNode.m in Sources */,
+				D2A57FDB18BF6B4900283BF4 /* DHMenuObj.m in Sources */,
+				D2A57FD818BF6B4900283BF4 /* DHFreeModePannelObj.m in Sources */,
 				D29EEA6317A3AC780072B0EA /* CCSpriteFrame.m in Sources */,
 				D29EEA6617A3AC780072B0EA /* CCSpriteFrameCache.m in Sources */,
 				D29EEA6917A3AC780072B0EA /* CCTexture2D.m in Sources */,
@@ -1349,38 +1359,42 @@
 				D29EEA7817A3AC780072B0EA /* CCTMXLayer.m in Sources */,
 				D29EEA7B17A3AC780072B0EA /* CCTMXObjectGroup.m in Sources */,
 				D29EEA7E17A3AC780072B0EA /* CCTMXTiledMap.m in Sources */,
+				D2A57FEF18BF6B6100283BF4 /* DHGameMenuLayer.m in Sources */,
 				D29EEA8117A3AC780072B0EA /* CCTMXXMLParser.m in Sources */,
 				D29EEA8417A3AC780072B0EA /* CCTransition.m in Sources */,
 				D29EEA8717A3AC780072B0EA /* CCTransitionPageTurn.m in Sources */,
 				D29EEA8A17A3AC780072B0EA /* CCTransitionProgress.m in Sources */,
-				D2DF441717F3378C00461DA4 /* DHIntroPannelObj.m in Sources */,
 				D29EEA8E17A3AC780072B0EA /* cocos2d.m in Sources */,
 				D29EEA9517A3AC780072B0EA /* CCDirectorIOS.m in Sources */,
 				D29EEA9817A3AC780072B0EA /* CCES2Renderer.m in Sources */,
 				D29EEA9C17A3AC780072B0EA /* CCGLView.m in Sources */,
 				D29EEAA017A3AC790072B0EA /* CCTouchDispatcher.m in Sources */,
+				D2A57FD918BF6B4900283BF4 /* DHIntroPannelObj.m in Sources */,
 				D29EEAA317A3AC790072B0EA /* CCTouchHandler.m in Sources */,
 				D29EEAA717A3AC790072B0EA /* CCDirectorMac.m in Sources */,
+				D2A57FED18BF6B6100283BF4 /* DHFreeModeContinueLayer.m in Sources */,
 				D29EEAAA17A3AC790072B0EA /* CCEventDispatcher.m in Sources */,
 				D29EEAAD17A3AC790072B0EA /* CCGLView.m in Sources */,
 				D29EEAB017A3AC790072B0EA /* CCWindow.m in Sources */,
+				D2A57FF118BF6B6100283BF4 /* DHGameOverLayer.m in Sources */,
 				D29EEAB317A3AC790072B0EA /* base64.c in Sources */,
 				D29EEAB717A3AC790072B0EA /* CCArray.m in Sources */,
 				D29EEABA17A3AC790072B0EA /* ccCArray.m in Sources */,
 				D29EEABD17A3AC790072B0EA /* CCFileUtils.m in Sources */,
-				D2D0DEFC182E042100C9368C /* DHScore.m in Sources */,
 				D29EEAC017A3AC790072B0EA /* CCProfiling.m in Sources */,
 				D29EEAC217A3AC790072B0EA /* ccUtils.c in Sources */,
-				D2DA2DD918310F7900CEF3AA /* DHFreeModeContinueLayer.m in Sources */,
 				D29EEAC617A3AC790072B0EA /* CCVertex.m in Sources */,
 				D29EEAC917A3AC790072B0EA /* CGPointExtension.m in Sources */,
 				D29EEACC17A3AC790072B0EA /* NSThread+performBlock.m in Sources */,
 				D29EEAD017A3AC790072B0EA /* TGAlib.m in Sources */,
 				D29EEAD317A3AC790072B0EA /* TransformUtils.m in Sources */,
+				D2A57FDA18BF6B4900283BF4 /* DHLabel.m in Sources */,
 				D29EEAD817A3AC790072B0EA /* ZipUtils.m in Sources */,
 				D29EEADD17A3AC790072B0EA /* CDAudioManager.m in Sources */,
+				D2A5800518BF6B7A00283BF4 /* DHDogObj.m in Sources */,
 				D29EEAE117A3AC790072B0EA /* CDOpenALSupport.m in Sources */,
 				D29EEAE417A3AC790072B0EA /* CDXMacOSXSupport.m in Sources */,
+				D2A57FF018BF6B6100283BF4 /* DHGameOptionLayer.m in Sources */,
 				D29EEAE717A3AC790072B0EA /* CDXPropertyModifierAction.m in Sources */,
 				D29EEAEA17A3AC790072B0EA /* CocosDenshion.m in Sources */,
 				D29EEAEE17A3AC790072B0EA /* SimpleAudioEngine.m in Sources */,
@@ -1388,36 +1402,22 @@
 				D29EEB0A17A3AC790072B0EA /* mat4stack.c in Sources */,
 				D29EEB0C17A3AC790072B0EA /* matrix.c in Sources */,
 				D29EEB0E17A3AC790072B0EA /* mat3.c in Sources */,
+				D2A5800818BF6B7A00283BF4 /* DHGameData.m in Sources */,
 				D29EEB1017A3AC790072B0EA /* mat4.c in Sources */,
 				D29EEB1217A3AC790072B0EA /* neon_matrix_impl.c in Sources */,
 				D29EEB1417A3AC790072B0EA /* plane.c in Sources */,
 				D29EEB1617A3AC790072B0EA /* quaternion.c in Sources */,
 				D29EEB1817A3AC790072B0EA /* ray2.c in Sources */,
+				D2A5800718BF6B7A00283BF4 /* DHGameChapter.m in Sources */,
 				D29EEB1A17A3AC7A0072B0EA /* utility.c in Sources */,
 				D29EEB1C17A3AC7A0072B0EA /* vec2.c in Sources */,
 				D29EEB1E17A3AC7A0072B0EA /* vec3.c in Sources */,
 				D29EEB2017A3AC7A0072B0EA /* vec4.c in Sources */,
+				D2A5800A18BF6B7A00283BF4 /* DHPilotManager.m in Sources */,
+				D2A57FD618BF6B4900283BF4 /* DHBackGroundObj.m in Sources */,
 				D29EEB2517A3AC7A0072B0EA /* main.m in Sources */,
 				D29EEB2817A3AC7A0072B0EA /* AppDelegate.m in Sources */,
-				D29EEB2B17A3AC7A0072B0EA /* DHTimeModeGameLayer.m in Sources */,
-				D29EEB2E17A3AC7A0072B0EA /* DHGameSplashLayer.m in Sources */,
-				D29EEB5917A4F3140072B0EA /* DHBackGroundObj.m in Sources */,
-				D29EEB5C17A4FDAD0072B0EA /* DHDuckObj.m in Sources */,
-				D227F06917ACC7C300981E06 /* DHPilot.m in Sources */,
-				D26B706517AFDD3500F7C915 /* DHGameChapter.m in Sources */,
-				D2D58F0117BBC047004AD9B8 /* DHPilotManager.m in Sources */,
-				D24DEADD17BD14A500514902 /* DHTimeModePannelObj.m in Sources */,
-				D2D0DEFF182E151A00C9368C /* DHFloatingScoreObj.m in Sources */,
-				D21E8C7D17C0884E00D1F499 /* DHDogObj.m in Sources */,
-				D21E8C8017C0ABAF00D1F499 /* DHFreeModeGameLayer.m in Sources */,
-				D21E8C8917C0AC3300D1F499 /* DHGameMenuLayer.m in Sources */,
-				D21E8C8A17C0AC3300D1F499 /* DHGameOptionLayer.m in Sources */,
-				D21E8C8B17C0AC3300D1F499 /* DHGameOverLayer.m in Sources */,
-				D21E8C8C17C0AC3300D1F499 /* DHGameScoreListLayer.m in Sources */,
-				D21E8C9017C1CE6B00D1F499 /* DHFreeModePannelObj.m in Sources */,
-				D21E8C9317C1D37A00D1F499 /* DHMenuObj.m in Sources */,
-				D25B4B1B17C4A5420021017C /* DHLabel.m in Sources */,
-				D2F81D3817DA09FE0043A338 /* DHGameData.m in Sources */,
+				D2A57FF318BF6B6100283BF4 /* DHGameSplashLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
