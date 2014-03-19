@@ -11,6 +11,7 @@
 		D2219F3D17F857CC00EFC23B /* duck.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3A17F857CC00EFC23B /* duck.png */; };
 		D2219F3E17F857CC00EFC23B /* parrot.png in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3B17F857CC00EFC23B /* parrot.png */; };
 		D2219F4017F85A6F00EFC23B /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = D2219F3F17F85A6F00EFC23B /* shoot.wav */; };
+		D22D225A18D849A3007D11E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D22D225C18D849A3007D11E6 /* InfoPlist.strings */; };
 		D247350F18052C6900783493 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D247350E18052C6900783493 /* Social.framework */; };
 		D24735131805965600783493 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735101805965600783493 /* facebook.png */; };
 		D24735141805965600783493 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = D24735111805965600783493 /* twitter.png */; };
@@ -219,6 +220,8 @@
 		D2219F3A17F857CC00EFC23B /* duck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duck.png; path = Resources/duck.png; sourceTree = "<group>"; };
 		D2219F3B17F857CC00EFC23B /* parrot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = parrot.png; path = Resources/parrot.png; sourceTree = "<group>"; };
 		D2219F3F17F85A6F00EFC23B /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shoot.wav; path = Resources/shoot.wav; sourceTree = "<group>"; };
+		D22D225E18D849F5007D11E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D22D226218D852D8007D11E6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D247350E18052C6900783493 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D24735101805965600783493 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = Resources/facebook.png; sourceTree = "<group>"; };
 		D24735111805965600783493 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Resources/twitter.png; sourceTree = "<group>"; };
@@ -723,6 +726,7 @@
 		D29EE99617A3AC760072B0EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D22D225C18D849A3007D11E6 /* InfoPlist.strings */,
 				D250B113181EAF2B00499BDA /* duck_icon_gray.png */,
 				D250B114181EAF2B00499BDA /* duck_icon.png */,
 				D298014B18195B470097FBE7 /* fallson_flying.plist */,
@@ -1197,6 +1201,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				"zh-Hans",
 			);
 			mainGroup = D29EE97517A3AC760072B0EA;
 			productRefGroup = D29EE97F17A3AC760072B0EA /* Products */;
@@ -1246,6 +1252,7 @@
 				D29EEB5617A4F2130072B0EA /* bg_tree.png in Resources */,
 				D27049BD17A6A4C300342505 /* sky_smoke.plist in Resources */,
 				D273CAB917F16EC700698331 /* duck_live.wav in Resources */,
+				D22D225A18D849A3007D11E6 /* InfoPlist.strings in Resources */,
 				D2219F3E17F857CC00EFC23B /* parrot.png in Resources */,
 				D2C2741B180AEFB700EB2A60 /* icon-100.png in Resources */,
 				D273CAB817F16EC700698331 /* duck_dead.wav in Resources */,
@@ -1422,6 +1429,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D22D225C18D849A3007D11E6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D22D225E18D849F5007D11E6 /* en */,
+				D22D226218D852D8007D11E6 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D29EEB2F17A3AC7A0072B0EA /* Debug */ = {
